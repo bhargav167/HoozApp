@@ -1,0 +1,82 @@
+<div class="container-sm">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light1">
+   
+      <a class="navbar-brand" href="#">
+        <img class="img-responsive" src="../../../assets/Logo/hoozlogo.png"/>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      
+        <form class="d-flex">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Wall</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Posts</a>
+            </li>
+            <li class="nav-item dropdown profileimg">
+              <img 
+              src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg" 
+              class="nav-link dropdown-toggle img-circle" style="width: 52px; height: 49px;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"/>
+              
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="#">LogOut</a></li>
+                <!-- <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+              </ul>
+            </li>
+            
+          </ul>
+        </form>
+      </div>
+    
+  </nav>
+
+  <br/>
+  <div class="row">
+    <div class="col-sm-10 col-md-11"> 
+      <!-- //Form Section -->
+      <p class="small-font">POST YOUR REQUIREMENT</p>
+      <p class="medium-font">Create your post</p> 
+      </div>
+
+    <div class="col-sm-2 col-md-1">
+      <button class="btn btn-hoozGreen"> 
+        <p class="button-content">
+          Post&nbsp;&nbsp;<i class="fa fa-paper-plane"></i>
+        </p>
+      </button>
+    </div>
+  </div>
+<br>
+  <!-- Form -->
+  <div class="row">
+    <div class="col-md-12">
+      <form>
+        <div class="mb-4">
+          <label for="exampleInputEmail1" class="form-label">Description* &nbsp;<span class="smallDetails">
+            Raise your issues, describe your requirements, ask for anything
+          </span></label>
+          <input type="text" class="form-control one" placeholder="What are you looking for?" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+        </div>
+        <div class="mb-4">
+          <label for="exampleInputPassword1" class="form-label">Add Image</label>
+          <button class="EditBtn"><i   class="fas fa-pencil-alt"></i></button>
+          <input type="text" readonly placeholder="Click here to add image" class="form-control two" id="exampleInputPassword1">
+        </div>
+
+        <div class="mb-4">
+          <label for="exampleInputPassword1" class="form-label">Tags* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <button class="EditBtn"><i   class="fas fa-pencil-alt"></i></button>
+          <input type="text" readonly placeholder="travel,planners,wedding,managers,govt,education" class="form-control one" id="exampleInputPassword1">
+        </div>
+       
+      </form>
+    </div>
+  </div>
+</div>

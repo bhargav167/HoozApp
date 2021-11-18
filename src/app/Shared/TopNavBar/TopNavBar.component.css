@@ -1,0 +1,174 @@
+@media (min-width: 576px) {  
+    .btn-hoozGreen{
+        margin-top: 20px;  
+        background-color: #00fa9a; 
+        height: 30px;
+        width: 85px;
+        font-weight: bold; 
+        margin-left: -188px;
+        border-radius: 8px; 
+    }
+ }
+ @media (min-width: 476px) {  
+     
+    .EditBtn{
+        padding: 0;
+        margin-left: 412px;
+        height: 30px;
+        width: 30px;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+    }
+ }
+ @media (min-width: 376px) {  
+    .btn-hoozGreen{
+        margin-top: -50px; 
+        margin-left: 389px;
+        background-color: #00fa9a; 
+        height: 30px;
+        width: 85px;
+        font-weight: bold; 
+        border-radius: 8px; 
+    }
+ }
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+    .btn-hoozGreen{
+        margin-top: 20px; 
+        margin-left: -309px;
+        background-color: #00fa9a; 
+        height: 30px;
+        width: 85px;
+        font-weight: bold; 
+        border-radius: 8px; 
+    }
+    .EditBtn{
+        padding: 0;
+        margin-left: 591px;
+        height: 30px;
+        width: 30px;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+    }
+  }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .btn-hoozGreen{
+        margin-top: 20px;  
+        background-color: #00fa9a; 
+        height: 30px;
+        width: 85px;
+        font-weight: bold; 
+        margin-left: -55px;
+        border-radius: 8px; 
+    }
+    .EditBtn{
+        padding: 0;
+        margin-left: 670px;
+        height: 30px;
+        width: 30px;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+    }
+  }
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .btn-hoozGreen{
+        margin-top: 22px;  
+        background-color: #00fa9a; 
+        height: 30px;
+        width: 85px;
+        font-weight: bold; 
+        margin-left: -45px;
+        border-radius: 8px; 
+    }
+    .EditBtn{
+        padding: 0;
+        margin-left: 670px;
+        height: 30px;
+        width: 30px;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+    }
+  }
+ .fa-pencil-alt{
+     color:#b4b4b4 ;
+ }
+.container-sm{
+    width: 800px; 
+}
+.bg-light1{
+    background-color: white;
+}
+.nav-item{
+    font-weight: bold;
+}
+.navbar-toggler-icon{
+    font-weight: lighter;
+}
+.small-font{
+    color: #b4b4b4;
+    font-size: 8px; 
+    font-weight: bolder; 
+    margin:0;
+    padding:0;
+}
+.medium-font{
+    color: black;
+    font-size: 17px;
+    font-weight: bolder; 
+    margin:0;
+    padding:0;
+} 
+.button-content{
+   margin: -10px;
+    font-weight: bold;
+    color: black;
+}
+.fa{
+    color: white;
+} 
+.dropdown-menu{
+    float: left;
+    margin-left: -94px;
+}
+.smallDetails{
+    font-weight: bold;
+    font-size: 9px;
+    color: black;
+    font-family: sans-serif;
+    color: #666666;
+}
+.form-label{
+    font-weight: bold;
+    font-size: 14px;
+    color: black;
+}
+.one{
+    height: 50px;
+    background-color: #efeff0;
+    font-weight: bold;
+    color: #b4b4b4;
+    border-width: 0vh;
+}
+.two{
+    height: 150px;
+    background-color: #efeff0;
+    font-weight: bold;
+    color: #b4b4b4;
+    border-width: 0vh;
+}
