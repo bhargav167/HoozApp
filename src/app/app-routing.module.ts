@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { JobPostComponent } from './JobPost/JobPost.component';
 
 const routes: Routes = [
-  // {
-  //   path: 'settings',
-  //   loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
-  // },
+  {
+    path: 'jobpost',
+    component:JobPostComponent
+  },
   // {
   //   path: 'profile',
   //   loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)

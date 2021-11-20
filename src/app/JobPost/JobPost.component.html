@@ -1,0 +1,107 @@
+<div class="container-sm">
+  <div class="row">
+    <div class="col-sm-10 col-md-11"> 
+      <!-- //Form Section -->
+      <p class="small-font">POST YOUR REQUIREMENT</p>
+      <p class="medium-font">Create your post</p> 
+      </div>
+  
+    <div class="col-sm-2 col-md-1">
+      <button class="btn btn-hoozGreen"> 
+        <p class="button-content">
+          Post&nbsp;&nbsp;<i class="fa fa-paper-plane"></i>
+        </p>
+      </button>
+    </div>
+  </div>
+  <br>
+  <!-- Form -->
+  <div class="row">
+    <div class="col-md-12">
+      <form>
+        <div class="mb-4">
+          <label for="exampleInputEmail1" class="form-label">Description* &nbsp;<span class="smallDetails">
+            Raise your issues, describe your requirements, ask for anything
+          </span></label>
+          <input type="text" class="form-control one" placeholder="What are you looking for?" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+        </div>
+        <div class="mb-4">
+          <label for="exampleInputPassword1" class="form-label">Add Image</label>
+          <button class="EditBtn"><i class="fas fa-pencil-alt"></i></button>
+          <input type="text" readonly placeholder="Click here to add image" class="form-control two" id="exampleInputPassword1">
+        </div>
+  
+        <div class="mb-4">
+          <label for="exampleInputPassword1" class="form-label">Tags* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <button class="EditBtn"><i   class="fas fa-pencil-alt"></i></button>
+          <input type="text" readonly placeholder="travel,planners,wedding,managers,govt,education" class="form-control one" id="exampleInputPassword1">
+        </div>
+  
+        <div class="mb-4">
+          <label for="exampleInputPassword1" class="form-label">Location* &nbsp; </label>
+          <button class="EditBtn"><i   class="fas fa-pencil-alt"></i></button>
+        <p style="font-size: 12px; font-weight: bold;">Sector 112, Noida Extension, Noida</p>
+        </div>
+       
+      </form>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="flexcheckDefault" id="flexcheckboxDefault1">
+        <label class="form-check-label" for="flexcheckboxDefault1">
+          Post Anonymously
+        </label>
+        <p class="parapost">This post will be shown as posted by anonymous user<br>Creator's information will not be shown</p>
+      </div>
+     
+    </div>
+    <div class="col-md-6">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="flexcheckDefault" id="flexcheckboxDefault2" checked >
+        <label class="form-check-label" for="flexcheckboxDefault2">
+          Public Post
+        </label>
+        <p class="parapost">This post will be shown to everyone<br>irrespective to their tags</p>
+      </div>
+    </div>
+  </div> 
+  
+  <div class="row">
+    <div class="col-md-6">
+      <p class="headingparapost">Local or Global decides the reach of your post</p>
+     <div class="row">
+       <div class="col-md-6">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Local
+          </label>
+        </div>
+       </div>
+       <div class="col-md-6">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked >
+          <label class="form-check-label" for="flexRadioDefault2">
+            Global
+          </label></div>
+       </div>
+     </div>
+    
+     
+    </div>
+   
+    <div class="col-lg-6">
+      
+     
+      <div class="form-check">
+        <p class="headingparapost1">Set local post reach   <span id="rangeValue">0&nbsp;kms</span></p>
+        <input class="range" type="range"   value="0" min="0" max="1000" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"/>
+      </div>
+     
+    </div>
+  </div>
+</div>
