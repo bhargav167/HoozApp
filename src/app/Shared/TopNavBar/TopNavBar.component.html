@@ -13,6 +13,7 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Wall</a>
           </li>
+         
           <li class="nav-item">
             <a class="nav-link" href="#">My Posts</a>
           </li>
@@ -22,6 +23,9 @@
             class="nav-link dropdown-toggle img-circle" style="width: 52px; height: 49px;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"/>
             
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/jobpost']"  >Create Posts</a>
+              </li>
               <li><a class="dropdown-item" href="#">Edit Profile</a></li>
               <li><a class="dropdown-item" href="#">LogOut</a></li>
               <!-- <li><hr class="dropdown-divider"></li>

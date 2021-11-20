@@ -14,15 +14,13 @@
 .dropdown-menu{
     float: left;
     margin-left: -94px;
-}
-
+} 
 
 @media (min-width: 400px) {
   .navbar-toggler {
     margin-right: 175px;
   }
-}
- 
+} 
 
 @media (min-width: 360px) {
     .navbar-toggler {

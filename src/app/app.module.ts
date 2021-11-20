@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './Shared/Shared.module';
 import { TopNavBarComponent } from './Shared/TopNavBar/TopNavBar.component';
+import { JobPostComponent } from './JobPost/JobPost.component';
 
 @NgModule({
-  declarations: [AppComponent,TopNavBarComponent],
+  declarations: [AppComponent,TopNavBarComponent,JobPostComponent],
   imports: [
     BrowserModule,
     CoreModule,

@@ -1,8 +1,6 @@
-
 .container-sm{
     width: 800px; 
-}
- 
+} 
 @media (min-width< 576px) {  
     .btn-hoozGreen{
         margin-top: 20px;  
@@ -177,8 +175,7 @@
     .form-control{
         width: 70%;
     }
-  }
-
+  } 
 /* Large devices (desktops, 992px and up) */
 @media (min-width>= 992px) { 
     .btn-hoozGreen{
@@ -201,8 +198,7 @@
         background-color: white;
         border-radius: 8px;
     }
-  }
-
+  } 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
     .btn-hoozGreen{
@@ -366,30 +362,7 @@ input[type="radio"] {
   
   input[type="radio"]:checked::before {
     transform: scale(1);
-   }
-
- /* .slidecontainer {
-    width: 100%;
-  }
-  
-  .slider {
-      padding: 0;
-    -webkit-appearance: none;
-   height: 5px;
-    background: #efeff0;
-    
-  }  
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background: white;
-    cursor: pointer;
-    border: 5px;
-    border-color: #b4b4b4;
-  } */
-
+   } 
   #rangeValue { 
     font-size: 1.02em;
     color: #999;
