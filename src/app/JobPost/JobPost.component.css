@@ -23,7 +23,20 @@
         color: #b4b4b4;
         background-color: white;
         border-radius: 8px;
-    }  
+    } 
+    .EditBtn1{
+        padding: 0;
+        margin-left: 412px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
  }
  @media (min-width: 376px) {  
     .btn-hoozGreen{
@@ -50,12 +63,11 @@
  @media (min-width: 360px) {  
     .btn-hoozGreen{
         margin-top: -50px; 
-        margin-left: 385px;
+        margin-left: 370px;
         background-color: #00fa9a; 
         height: 30px;
-        width: 85px;
-        font-weight: bold; 
-        border-radius: 8px; 
+        width: 106px;
+        font-weight: 700;
     }
     .EditBtn{
         padding: 0;
@@ -68,9 +80,22 @@
         background-color: white;
         border-radius: 8px;
     }
+    .EditBtn1{
+        padding: 0;
+        margin-left: 360px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
     .form-control{
         width: 60%;
-    }
+    } 
  }
 
  @media (min-width:  587px) {  
@@ -79,10 +104,9 @@
         margin-left: -192px;
         background-color: #00fa9a; 
         height: 30px;
-        width: 85px;
-        font-weight: bold; 
-        border-radius: 8px; 
-    }
+        width: 106px;
+        font-weight: 700;
+    } 
     .EditBtn{
         padding: 0;
         margin-left: 258px;
@@ -94,6 +118,19 @@
         background-color: white;
         border-radius: 8px;
     }
+    .EditBtn1{
+        padding: 0;
+        margin-left: 258px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
     .form-control{
         width: 70%;
     }
@@ -102,16 +139,15 @@
  @media (min-width:  784px) {  
     .btn-hoozGreen{
         margin-top: 10px; 
-        margin-left: -310px;
+        margin-left: -270px;
         background-color: #00fa9a; 
         height: 30px;
-        width: 85px;
-        font-weight: bold; 
-        border-radius: 8px; 
-    }
+        width: 106px;
+        font-weight: 700;
+    } 
     .EditBtn{
         padding: 0;
-        margin-left: 335px;
+        margin-left: 395px;
         height: 30px;
         width: 30px;
         border-width: 0.1vh; 
@@ -120,20 +156,32 @@
         background-color: white;
         border-radius: 8px;
     }
+    .EditBtn1{
+        padding: 0;
+        margin-left: 395px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
     .form-control{
-        width: 63%;
+        width: 72%;
     }
  }
 
  @media (min-width:  1000px) {  
     .btn-hoozGreen{
-        margin-top: 10px; 
-        margin-left: -50px;
-        background-color: #00fa9a; 
+        margin-top: 10px;
+        margin-left: -72px;
+        background-color: #00fa9a;
         height: 30px;
-        width: 85px;
-        font-weight: bold; 
-        border-radius: 8px; 
+        width: 106px;
+        font-weight: 700;
     }
     .EditBtn{
         padding: 0;
@@ -146,6 +194,20 @@
         background-color: white;
         border-radius: 8px;
     }
+    .EditBtn1{
+        padding: 0;
+        margin-left: 670px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
+  
     .form-control{
         width: 100%;
     }
@@ -157,9 +219,8 @@
         margin-left: -190px;
         background-color: #00fa9a; 
         height: 30px;
-        width: 85px;
-        font-weight: bold; 
-        border-radius: 8px; 
+        width: 106px;
+        font-weight: 700;
     }
     .EditBtn{
         padding: 0;
@@ -171,7 +232,20 @@
         color: b4b4b4;
         background-color: white;
         border-radius: 8px;
-    }
+    } 
+    .EditBtn1{
+        padding: 0;
+        margin-left: 258px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
     .form-control{
         width: 70%;
     }
@@ -197,18 +271,30 @@
         color: b4b4b4;
         background-color: white;
         border-radius: 8px;
-    }
+    } 
+    .EditBtn1{
+        padding: 0;
+        margin-left: 670px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
   } 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { 
     .btn-hoozGreen{
         margin-top: 15px;  
-        background-color: #00fa9a; 
+        background-color: #00fa9a;  
+        margin-left: -65px; 
         height: 30px;
-        width: 85px;
-        font-weight: bold; 
-        margin-left: -45px;
-        border-radius: 8px; 
+        width: 106px;
+        font-weight: 700;
     }
     .EditBtn{
         padding: 0;
@@ -220,19 +306,33 @@
         color: b4b4b4;
         background-color: white;
         border-radius: 8px;
-    }
+    } 
+    .EditBtn1{
+        padding: 0;
+        margin-left: 670px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
     .form-control{
         width: 100%;
     }
   }
+  
  .fa-pencil-alt{
-     color:#b4b4b4 ;
+     color:#adb5bd;
  }
 
 .small-font{
     color: #b4b4b4;
-    font-size: 8px; 
-    font-weight: bolder; 
+    font-size: 12px; 
+    font-weight: 500; 
     margin:0;
     padding:0;
 }
@@ -253,30 +353,33 @@
 } 
 
 .smallDetails{
-    font-weight: bold;
-    font-size: 9px;
-    color: black;
+    font-weight: 700;
+    font-size: 12px;
     font-family: sans-serif;
-    color: #666666;
+    color: #919da9;
 }
 .form-label{
     font-weight: bold;
     font-size: 14px;
     color: black;
 }
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #d1d1d1;
+}
 .one{
     height: 50px;
-    background-color: #efeff0;
-    font-weight: bold;
-    color: #b4b4b4;
-    border-width: 0vh;
+    background-color: #f7f7f9;
+    font-weight: 300;
+   color: #d1d1d1;
+    border-width: 0;
+
 }
 .two{
     height: 150px;
-    background-color: #efeff0;
-    font-weight: bold;
-    color: #b4b4b4;
-    border-width: 0vh;
+    background-color: #f7f7f9;
+    font-weight: 300;
+   color: #d1d1d1;
+    border-width: 0;
 }
 
 .form-check-label{
@@ -292,16 +395,16 @@
     padding-left: 50px;
 }
 .headingparapost{
-    font-weight: normal;
+    font-weight: 400;
     font-family: sans-serif;
-    font-size: 10px;
+    font-size: 12px;
     color: #b4b4b4;
     padding-left: 30px;
 }
 .headingparapost1{
-    font-weight: normal;
+    font-weight: 400;
     font-family: sans-serif;
-    font-size: 10px;
+    font-size: 12px;
     color: #b4b4b4;
     padding-left: 20px;
 }
@@ -334,7 +437,7 @@ input[type="checkbox"]::before {
   }
   
   input[type="checkbox"]:checked::before {
-    transform: scale(1.5);
+    transform: scale(0);
    
   } 
 input[type="radio"] {
@@ -390,4 +493,10 @@ input[type="radio"] {
     cursor: pointer;
     border-radius: 12px;
     border-color: #b4b4b4;
-  }
+  } 
+
+
+
+input[type="file"] {
+    display: none;
+}

@@ -7,6 +7,9 @@
 .nav-item{
     font-weight: bold;
 }
+.profileimg{
+margin-top: -4px;
+}
 .navbar-toggler-icon{
     font-weight: lighter;
     
