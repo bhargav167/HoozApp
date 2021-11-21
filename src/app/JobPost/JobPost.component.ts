@@ -11,5 +11,7 @@ export class JobPostComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  AddTagging($event){
+    alert($event.taget.value);
+  }
 }

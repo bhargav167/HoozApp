@@ -15,6 +15,7 @@
     </div>
   </div>
   <br>
+
   <!-- Form -->
   <div class="row">
     <div class="col-md-12">
@@ -28,18 +29,26 @@
         </div>
         <div class="mb-4">
           <label for="exampleInputPassword1" class="form-label">Add Image</label>
-          <label id="custom-button" class="EditBtn1"> <i class="fas fa-pencil-alt"></i>
-            <input id="real-file"  onChange="FileUpload()" type="file" size="60" >
-            </label> 
+          <label id="custom-button" class="form-control two"> 
+            <div style="text-align: center; margin-top: 55px;">
+              <i   class="fas fa-plus"></i>
+            </div>
+           
+            <input id="real-file" onChange="FileUpload()" type="file" size="60" >
+            </label>  
          
-          <input id="custom-text" type="text" readonly placeholder="Click here to add image" class="form-control two"  >
-        </div>
-  
+        </div> 
+
         <div class="mb-4">
-          <label for="exampleInputPassword1" class="form-label">Tags* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-          <button class="EditBtn"><i class="fas fa-pencil-alt"></i></button>
-          <input type="text" readonly placeholder="travel,planners,wedding,managers,govt,education" class="form-control one" id="exampleInputPassword1">
+          <label for="exampleInputPassword1" class="form-label">Add Tags* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          
+          <div class="buttonIn">
+            <input placeholder=" add tags to your post" class="form-control taginput" type="text" id="enter">
+            <button class="tagbutton" id="clear">Add</button>
         </div>
+        </div>
+       
+      
   
         <div class="mb-4">
           <label for="exampleInputPassword1" class="form-label">Location* &nbsp; </label>
@@ -96,7 +105,7 @@
      
     </div>
    
-    <div class="col-lg-6">
+    <div class="col-md-6 col-sm-6">
       
      
       <div class="form-check">

@@ -8,7 +8,11 @@
     font-weight: bold;
 }
 .profileimg{
-margin-top: -4px;
+margin-top: -12px; 
+}
+element.style {
+  width: 52px;
+  height: 52px;
 }
 .navbar-toggler-icon{
     font-weight: lighter;
@@ -40,4 +44,4 @@ margin-top: -4px;
     .navbar-toggler {
       margin-right: 210px;
     }
-  }
+  }  
