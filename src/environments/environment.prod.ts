@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api_url: 'https://localhost:5001/api/'
+  api_url: 'http://hoozonlive-001-site1.btempurl.com/api/'
 };
