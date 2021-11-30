@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // import {
 //   ApiService,
@@ -14,7 +15,9 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     

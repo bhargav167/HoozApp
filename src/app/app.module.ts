@@ -6,6 +6,8 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './Shared/Shared.module';
 import { TopNavBarComponent } from './Shared/TopNavBar/TopNavBar.component';
 import { JobPostComponent } from './JobPost/JobPost.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent,TopNavBarComponent,JobPostComponent],
@@ -13,7 +15,10 @@ import { JobPostComponent } from './JobPost/JobPost.component';
     BrowserModule,
     CoreModule,
      SharedModule,  
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
