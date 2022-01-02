@@ -1,0 +1,257 @@
+/* For nav */
+@media only screen and (min-width: 320px) {
+  .hideInSmall{
+    display: none;
+  }
+  .img-responsive{
+    margin-bottom: 2px;
+  } 
+  .form-input{
+    font-size: x-small;
+  }
+.form {
+  width: 190px;
+  margin-left: -20px;
+ }
+} 
+
+
+@media only screen and (min-width: 500px) {
+  .hideInSmall{
+    display: none;
+  }
+  .img-responsive{
+    margin-bottom: 2px; 
+  } 
+  
+.form {
+  width: 280px; 
+  margin-left: 38px;
+  
+ }
+} 
+
+
+@media only screen and (min-width: 1024px) { 
+  .form {
+    width: 550px;  
+   }
+   
+   .hideInSmall{
+    display:contents;
+  }
+  .form-input{
+    font-size:medium;
+  }
+  } 
+  
+  @media only screen and (min-width< 300px) {
+    .hideInSmall{
+      display: none;
+    }
+    .img-responsive{
+      margin-bottom: 2px;
+    } 
+    
+  .form {
+    width: 490px; 
+    
+   }
+  } 
+  @media only screen and (min-width< 160px) {
+    .hideInSmall{
+      display: none;
+    }
+    .img-responsive{
+      margin-bottom: 2px;
+    } 
+    
+  .form {
+    width: 280px; 
+    
+   }
+  } 
+
+  @media only screen and (min-width< 100px) {
+    .hideInSmall{
+      display: none;
+    }
+    .img-responsive{
+      margin-bottom: 2px;
+    } 
+    
+  .form {
+    width: 300px; 
+    margin-left: 150px;
+   }
+  } 
+ 
+.dropdown-item{
+  cursor: pointer;
+}
+.bg-light1{
+  background-color: white;
+} 
+.form .fa-search {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #9ca3af
+}
+ 
+.form span {
+  position: absolute;
+  right: 17px;
+  top: 4px;
+  padding: 2px; 
+}
+
+ 
+.form-input {
+  height: 35px;
+  text-indent: 0px;
+  border-radius: 10px;
+  background-color: hsl(0, 0%, 90%);
+  color: black;
+  
+}
+.nav-item{
+  font-weight: bold;
+}
+.navbar-expand-lg .navbar-nav .nav-link  {
+  padding: 0.8rem; 
+}  
+element.style {
+  width: 52px;
+  height: 52px;
+}
+.profileimg{
+  margin-top: -8px; 
+  }
+  .dropdown-menu{
+    float: left;
+    margin-left: -94px;
+} 
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+} 
+ 
+/* Nav Over */
+
+
+body {
+    background-color: #eee;
+    width: 100%;
+}
+
+.card {
+    border: none;
+    border-radius: 10px
+}
+
+.c-details span {
+    font-weight: 300;
+    font-size: 13px
+}
+ 
+.icon {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 39px
+}
+
+.badge span {
+    background-color: #fffbec;
+    width: 60px;
+    height: 25px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    display: flex;
+    color: #fed85d;
+    justify-content: center;
+    align-items: center
+} 
+ 
+.text1 {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.text2 {
+    color: #a5aec0
+}
+ 
+.card{
+  cursor: pointer;
+} 
+/* //Loader */
+ 
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin-left: 700px;
+  border: 8px solid black;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: black transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Search Suggetions */  
+.searchSuggetion{   
+  background: #f2f2f2;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 20px 8px #d0d0d0;  
+	z-index: 999; 
+  width:inherit;
+  position:absolute; 
+} 
+.searchSuggetion ul li {
+  font-weight: 600;
+    font-size: 14px;
+    color: rgb(4, 17, 29);
+  list-style-type: none;
+  margin-left: -32px;
+  line-height: 5ch;
+  border-bottom: 1px solid rgb(229, 232, 235); 
+  
+} 
+.searchSuggetion ul li:hover { 
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  box-shadow: 0 0 1px 1px lightgray; 
+}

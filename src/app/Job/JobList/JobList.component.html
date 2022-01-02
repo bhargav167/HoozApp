@@ -1,0 +1,30 @@
+<app-TopNavBar></app-TopNavBar>
+<div>
+    <div *ngIf="isLoading" class="loader">Loading...</div>
+  <div *ngIf="!isLoading" class="row">
+
+      <div *ngFor="let item of jobModel.data" class="col-md-3">
+          <div [routerLink]="['/jobDetails',item.Id]" routerLinkActive="router-link-active"  class="card p-3 mb-2">
+              <div class="d-flex justify-content-between">
+                  <div class="d-flex flex-row align-items-center">
+                      <div class="icon"> <img class="rounded-circle img-fluid" src="{{item?.User.ImageUrl}}"> </div>
+                      <div class="ms-2 c-details">
+                          <h6 class="mb-0">{{item?.User.Name}}</h6> <span>{{item?.TimeAgo}}</span>
+                      </div>
+                  </div>
+                  <div class="badge"> <span>Share</span> </div>
+              </div>
+              <div class="mt-1">
+                  <p class="heading">{{item?.Descriptions}} </p>
+                  <div class="mt-2">
+                      <div class="col-md-12 p-1 bg-white">
+                           <img class="img-thumbnail img-responsive img-fluid" style="height: 250px; width: 850px;" src="{{item?.ImagesUrl!=null? item?.ImagesUrl:'https://ichef.bbci.co.uk/news/976/cpsprodpb/16755/production/_119298919_repair2.png' }}" >
+                      </div>
+                      <!-- <div class="mt-3"> <span class="text1">32 Applied <span class="text2">of 50 capacity</span></span> </div> -->
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+  </div> 
+</div>

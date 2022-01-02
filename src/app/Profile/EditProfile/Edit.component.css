@@ -1,0 +1,633 @@
+body{
+    height: 100%
+
+}
+.container-sm{
+    width: 800px; 
+} 
+@media (min-width< 576px) {  
+    .btn-hoozGreen{
+        margin-top: 20px;  
+        background-color: #00fa9a; 
+        height: 35px;
+        width: 85px;
+        font-weight: bold; 
+        margin-left:-188px;
+        border-radius: 8px; 
+    }
+ }
+ @media (min-width: 476px) {
+    .EditBtn{
+        padding: 0;
+        margin-left: 412px;
+        height: 30px;
+        width: 30px;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+    } 
+    .EditBtn1{
+        padding: 0;
+        margin-left: 412px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
+ }
+ @media (min-width: 376px) {  
+    .btn-hoozGreen{
+        margin-top: -50px; 
+        margin-left: 389px;
+        background-color: #00fa9a; 
+        height: 35px;
+        width: 85px;
+        font-weight: bold; 
+        border-radius: 8px; 
+    }
+    
+ }
+ @media (min-width:  500px) {  
+    .btn-hoozGreen{
+        margin-top: 10px; 
+        margin-left: -192px;
+        background-color: #00fa9a; 
+        height: 35px;
+        width: 85px;
+        font-weight: bold; 
+        border-radius: 8px; 
+    }
+ }
+ @media (min-width: 360px) {  
+    .btn-hoozGreen{
+        margin-top: -50px; 
+        margin-left: 370px;
+        background-color: #00fa9a; 
+        height: 35px;
+        width: 106px;
+        font-weight: 700;
+    }
+    .EditBtn{
+        padding: 0;
+        margin-left: 360px;
+        height: 30px;
+        width: 30px;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+    }
+    .EditBtn1{
+        padding: 0;
+        margin-left: 360px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
+    .form-control{
+        width: 60%;
+    }  
+    .buttonIn>.tagbutton{
+        position: absolute;
+        border-radius: 8px;
+        right: 320px;
+        z-index: 2;
+        border: none;
+        top: 10px; 
+        height: 30px;
+        width: 8%;
+        cursor: pointer;
+        color: black;
+        background-color: #00fa9a;
+        font-weight: bold;
+        font-size: 16px;
+        transform: translateX(2px);
+      }
+      .form-check>input[type=range] {
+        height: 6px;
+        -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+        width: 58%; /* Specific width is required for Firefox. */
+        background-color: #00fa9a; /* Otherwise white in Chrome */
+      }
+      .taginput{
+        height: 50px;
+        background-color: #f7f7f9;
+        font-weight: 300;
+       color: #d1d1d1;
+        border-width: 0;
+      }
+ }
+
+ @media (min-width:  587px) {  
+    .btn-hoozGreen{
+        margin-top: 10px; 
+        margin-left: -192px;
+        background-color: #00fa9a; 
+        height: 35px;
+        width: 106px;
+        font-weight: 700;
+    } 
+    .EditBtn{
+        padding: 0;
+        margin-left: 258px;
+        height: 30px;
+        width: 30px;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+    }
+    .EditBtn1{
+        padding: 0;
+        margin-left: 258px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
+    .form-control{
+        width: 70%;
+    }
+ }
+
+ @media (min-width:  784px) {  
+    .btn-hoozGreen{
+        margin-top: 10px; 
+        margin-left: -270px;
+        background-color: #00fa9a; 
+        height: 35px;
+        width: 106px;
+        font-weight: 700;
+    } 
+    .EditBtn{
+        padding: 0;
+        margin-left: 395px;
+        height: 30px;
+        width: 30px;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+    }
+    .EditBtn1{
+        padding: 0;
+        margin-left: 395px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
+    .form-control{
+        width: 72%;
+    }
+     
+ }
+
+ @media (min-width:  1000px) {  
+    .btn-hoozGreen{
+        margin-top: 10px;
+        margin-left: -72px;
+        background-color: #00fa9a;
+        height: 35px;
+        width: 106px;
+        font-weight: 700;
+    }
+    .EditBtn{
+        padding: 0;
+        margin-left: 670px;
+        height: 30px;
+        width: 30px;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+    }
+    .EditBtn1{
+        padding: 0;
+        margin-left: 670px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
+  
+    .form-control{
+        width: 100%;
+    }
+ }
+/* Medium devices (tablets, 768px and up) */
+@media (min-width>= 560px) { 
+    .btn-hoozGreen{
+        margin-top: 20px; 
+        margin-left: -190px;
+        background-color: #00fa9a; 
+        height: 35px;
+        width: 106px;
+        font-weight: 700;
+    }
+    .EditBtn{
+        padding: 0;
+        margin-left: 258px;
+        height: 30px;
+        width: 30px;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+    } 
+    .EditBtn1{
+        padding: 0;
+        margin-left: 258px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
+    .form-control{
+        width: 70%;
+    }
+  } 
+/* Large devices (desktops, 992px and up) */
+@media (min-width>= 992px) { 
+    .btn-hoozGreen{
+        margin-top: 20px;  
+        background-color: #00fa9a; 
+        height: 35px;
+        width: 85px;
+        font-weight: bold; 
+        margin-left: -55px;
+        border-radius: 8px; 
+    }
+    .EditBtn{
+        padding: 0;
+        margin-left: 670px;
+        height: 30px;
+        width: 30px;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+    } 
+    .EditBtn1{
+        padding: 0;
+        margin-left: 670px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
+  } 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .btn-hoozGreen{
+        margin-top: 15px;  
+        background-color: #00fa9a;  
+        margin-left: -65px; 
+        height: 35px;
+        width: 106px;
+        font-weight: 700;
+    }
+    .EditBtn{
+        padding: 0;
+        margin-left: 670px;
+        height: 30px;
+        width: 30px;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+    } 
+    .EditBtn1{
+        padding: 0;
+        margin-left: 670px;
+        height: 30px;
+        width: 30px;
+        text-align: center;
+        border-width: 0.1vh; 
+        border-color: #b4b4b4;
+        color: #b4b4b4;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid #b4b4b4;
+         }  
+    .form-control{
+        width: 100%;
+    }
+    .buttonIn>.tagbutton{
+        position: absolute;
+        top: 0;
+        border-radius: 8px;
+        right: 0px;
+        z-index: 2;
+        border: none;
+        top: 10px;
+        right: 1%;
+        height: 30px;
+        width: 8%;
+        cursor: pointer;
+        color: black;
+        background-color: #00fa9a;
+        font-weight: bold;
+        font-size: 16px;
+        transform: translateX(2px);
+      }
+      .form-check>input[type=range] {
+        height: 6px;
+        -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+        width: 100%; /* Specific width is required for Firefox. */
+        background-color: #00fa9a; /* Otherwise white in Chrome */
+      }
+  }
+
+ .fa-pencil-alt{
+     color:#adb5bd;
+ }
+
+.small-font{
+    color: #b4b4b4;
+    font-size: 12px; 
+    font-weight: 500; 
+    margin:0;
+    padding:0;
+}
+.medium-font{
+    color: black;
+    font-size: 26px;
+    font-weight: bolder; 
+    margin:0;
+    padding:0;
+} 
+.button-content{
+   margin: -10px;
+    font-weight: bold;
+    color: black;
+}
+.fa{
+    color: white;
+} 
+
+.smallDetails{
+    font-weight: 700;
+    font-size: 12px;
+    font-family: sans-serif;
+    color: #919da9;
+}
+.form-label{
+    font-weight: bold;
+    font-size: 14px;
+    color: black;
+}
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #d1d1d1;
+}
+.one{
+    height: 50px;
+    background-color: #f7f7f9;
+    font-weight: 300;
+   color: #d1d1d1;
+    border-width: 0;
+
+}
+.btn-hooztag{ 
+    background-color: #00fa9a;  
+    font-weight: bold; 
+     color: black;
+    border-radius: 10px; 
+}
+.two{
+    height: 150px;
+    background-color: #f7f7f9;
+    font-weight: 300;
+   color: #d1d1d1;
+    border-width: 0;
+}
+.form-check {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 0;
+    margin-bottom: 0.125rem;
+}
+.form-check-label{
+    font-weight: bold;
+    font-size: 14px;
+    padding-left: 20px;
+}
+.parapost{
+    font-weight: normal;
+    font-family: sans-serif;
+    font-size: 10px;
+    color: #b4b4b4;
+    padding-left: 50px;
+}
+.headingparapost{
+    font-weight: 400;
+    font-family: sans-serif;
+    font-size: 12px;
+    color: #b4b4b4;
+    padding-left: 0px;
+}
+.headingparapost1{
+    font-weight: 400;
+    font-family: sans-serif;
+    font-size: 12px;
+    color: #b4b4b4;
+    padding-left: 0px;
+}
+input[type="checkbox"]  {
+    appearance: none;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 2.05em;
+    height: 2.05em;
+    border: 0.15em solid  #b4b4b4;
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+   }
+ 
+  input[type="checkbox"]:checked{
+    background-color: black;
+  }
+ 
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1.5em 1.5em white; 
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+  
+  input[type="checkbox"]:checked::before {
+    transform: scale(0);
+   
+  } 
+input[type="radio"] {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.60em;
+    height: 1.60em;
+    border: 0.11em solid #b4b4b4;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+  }
+  input[type="radio"]::before {
+    content: "";
+    width: 1.10em;
+    height: 1.10em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em black;
+  }
+  
+  input[type="radio"]:checked::before {
+    transform: scale(1);
+   } 
+  #rangeValue { 
+    font-size: 1.02em;
+    color: #999;
+    font-weight: 100;
+    font-weight: bold; 
+    margin-left: 210px;
+  } 
+
+
+  
+  input[type=range] {
+    height: 6px;
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background-color: #00fa9a; /* Otherwise white in Chrome */
+  }
+  
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+
+  input[type="text"]  {
+    color: black;
+    font-size: 300;
+  }
+  
+  input[type=range]:focus {
+    outline: none;  
+  }
+  
+  input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+  
+    /* Hides the slider so custom styles can be added */
+    background: transparent; 
+    border-color: transparent;
+    color: transparent;
+  }
+  .range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  border: 1px solid gray;
+  height: 25px;
+  width: 22px;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  margin-top: 0px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+  } 
+  .buttonIn {
+    width: 100%;
+    position: relative;
+}
+  
+  .taginput{
+    height: 50px;
+    background-color: #f7f7f9;
+    font-weight: 300;
+   color: #d1d1d1;
+    border-width: 0;
+  }
+ 
+input[type="file"] {
+    display: none;
+}
+
+.EditBtn{
+  display: none;
+} 
+.EditBtn1{
+   display: none;
+   }
+
+   .bg-badge {
+     background-color: #b4b4b4;
+   } 
+   .badgeTag{
+    display: inline-block;
+       padding: 3px;
+   }
+   .btn-hoozGreen:disabled{
+       background-color: grey;
+   }
+   .alert-success {
+     transition: all .5s ease-in-out;
+     overflow: hidden;
+     margin-top: -120px;
+   }
+   
+   .alert-success:target {
+    transition: all .5s ease-in-out;
+    overflow: hidden;
+    margin-top: -120px;
+  }

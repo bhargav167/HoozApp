@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpParams} from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { JobModel } from '../../Model/Job/JobModel';
 
@@ -15,5 +15,11 @@ export class JobPostService {
 
     AddPostImages(jobId:number, file:any){
       return  this._http.post(this.baseURL + 'Job/AddJobImage/'+jobId,file);
+    }
+    GetAllJob(){
+      return this._http.get(this.baseURL+'Job/AllJob');
+    }
+    GetJobById(id:number){ 
+      return this._http.get(this.baseURL+'Job/WebSingleJobByJobId/'+id);
     }
 }

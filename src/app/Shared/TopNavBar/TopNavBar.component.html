@@ -1,42 +1,83 @@
-<div class="container-sm">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light1">
-    <a class="navbar-brand" href="#">
-      <img class="img-responsive" src="../../../assets/Logo/hoozlogo.png"/>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-expanded="true" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse  justify-content-end" id="navbarSupportedContent">
-    
-      <form class="d-flex">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Wall</a>
-          </li>
-         
-          <li class="nav-item">
-            <a class="nav-link" href="#">My Posts</a>
-          </li>
-          <li class="nav-item dropdown profileimg">
-            <img 
-            src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg" 
-            class="nav-link dropdown-toggle img-circle" style="width: 64px; height: 64px;" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"/>
-            
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/jobpost']"  >Create Posts</a>
-              </li>
-              <li><a class="dropdown-item" href="#">Edit Profile</a></li>
-              <li><a class="dropdown-item" href="#">LogOut</a></li>
-              <!-- <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-            </ul>
-          </li>
-          
-        </ul>
-      </form>
-    </div>
+<nav class="mb-5 navbar navbar-expand-lg navbar-light bg-light1">
+  <div class="container-fluid">
+    <img class="img-responsive" style="height: 3.2rem; width: 4.5rem;" src="../../../assets/Logo/hoozlogo.png"/>
+    <div class="navbar-nav hideInSmall">
+      <a href="#" class="nav-item nav-link active"> </a>
+      <a href="#" class="nav-item nav-link"> </a>
+      <a href="#" class="nav-item nav-link"> </a>
+      <a href="#" class="nav-item nav-link"> </a>
+      <a href="#" class="nav-item nav-link"> </a>
+      <a href="#" class="nav-item nav-link active"> </a>
+      <a href="#" class="nav-item nav-link"> </a>
+      <a href="#" class="nav-item nav-link"> </a>
+      <a href="#" class="nav-item nav-link"> </a>
+      <a href="#" class="nav-item nav-link"> </a>
+      <a href="#" class="nav-item nav-link"> </a>
+      <a href="#" class="nav-item nav-link"> </a>
+      <a href="#" class="nav-item nav-link"> </a>
+      <a href="#" class="nav-item nav-link"> </a>
+      <a href="#" class="nav-item nav-link"> </a>
+      
+      <div class="nav-item  "> 
+      </div>
+  </div>
+
   
-  </nav> 
-  <br/> 
-</div>
+  <form class="d-flex">
+      <div class="input-group">                    
+        <div class="form "> <input   id="searchTag" type="text" class="form-control form-input" placeholder="search your interest or needs"> 
+          
+          <span style="cursor: pointer;"   class="left-pan"> <i class="fa fa-times-circle"></i></span>
+        </div>
+      </div>
+  </form>
+
+
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between " id="navbarCollapse">
+          <div class="navbar-nav hideInSmall">
+              <a href="#" class="nav-item nav-link active"> </a>
+              <a href="#" class="nav-item nav-link"> </a>
+              <a href="#" class="nav-item nav-link"> </a>
+              <a href="#" class="nav-item nav-link"> </a>
+              <div class="nav-item  "> 
+              </div>
+          </div>
+        
+          <div class="navbar-nav">
+            <form class="d-flex">
+              <ul class="navbar-nav ">
+                 <li *ngIf="isLogedIn"  class="nav-item">
+                  <a class="nav-link active" [routerLink]="['/jobpost']">Create Posts</a>
+                </li>  
+                <li *ngIf="!isLogedIn"  class="nav-item">
+                  <a class="nav-link active" [routerLink]="['/login']">Login</a>
+                </li>  
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" [routerLink]="['/']">Wall</a>
+                </li>
+      
+              
+                  <li *ngIf="isLogedIn"  class="nav-item dropdown profileimg">
+                  <img
+                  src="{{user?.ImageUrl=='https://res.cloudinary.com/livsolution/image/upload/v1640110201/imgs_pg46ar.png'?'../../../assets/DummyProfileImg/DefaultUser.png':user?.ImageUrl}}"
+  
+                  class="nav-link dropdown-toggle img-circle" style="width: 64px; height: 64px;" href="#"
+                    id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
+      
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" [routerLink]="['/profile',user.Id]">My Profile</a></li>
+                    <li><a class="dropdown-item"  [routerLink]="['/editProfile']" routerLinkActive="router-link-active" >Edit Profile</a></li>
+                    <li><a class="dropdown-item"  (click)="LogOut()">LogOut</a></li>
+                   
+                  </ul>
+                </li>
+       
+              </ul>
+            </form>
+          </div>
+      </div>
+  </div>
+</nav>
