@@ -89,8 +89,12 @@ isLogedIn:boolean=false;
       // subscription for response
     ).subscribe((text: string) => {
       //Search api call
-      this.searchGetCall(text).subscribe((res:TagMaster) => {
-       this.tag=res; 
+      this.searchGetCall(text).subscribe((res:any) => { 
+        if(res.data.length==0){
+          this.hidesearchlist=false; 
+          return;
+        }
+       this.tag=res;  
        this.hidesearchlist=true;
        this.showClose=true;
       }, (err) => { 

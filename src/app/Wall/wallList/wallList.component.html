@@ -1,26 +1,8 @@
-<nav class="mb-5 navbar navbar-expand-lg navbar-light bg-light1">
-  <div class="container-fluid">
-    <img class="img-responsive" style="height: 3.2rem; width: 4.5rem;" src="../../../assets/Logo/hoozlogo.png"/>
-    <div class="navbar-nav hideInSmall">
-      <a href="#" class="nav-item nav-link active"> </a>
-      <a href="#" class="nav-item nav-link"> </a>
-      <a href="#" class="nav-item nav-link"> </a>
-      <a href="#" class="nav-item nav-link"> </a>
-      <a href="#" class="nav-item nav-link"> </a>
-      <a href="#" class="nav-item nav-link active"> </a>
-      <a href="#" class="nav-item nav-link"> </a>
-      <a href="#" class="nav-item nav-link"> </a>
-      <a href="#" class="nav-item nav-link"> </a>
-      <a href="#" class="nav-item nav-link"> </a>
-      <a href="#" class="nav-item nav-link"> </a>
-      <a href="#" class="nav-item nav-link"> </a>
-      <a href="#" class="nav-item nav-link"> </a>
-      <a href="#" class="nav-item nav-link"> </a> 
-       
-  </div>
-
-  
-  <form class="d-flex justify-content-center">
+<nav class="mb-5 navbar navbar-light bg-light1">
+  <div class="container-fluid"> 
+        <img  class="img-responsive" style="height: 3.2rem; width: 4.5rem; cursor: pointer;" src="../../../assets/Logo/hoozlogo.png"/>
+        
+  <form class="d-flex justify-content-between">
       <div class="input-group">                    
         <div class="form "> <input (keyup.enter)="Search(searchval)" [(ngModel)]="searchval" #movieSearchInput id="searchTag" type="text" class="form-control form-input" placeholder="search your interest or needs"> 
           <div class="searchSuggetion" *ngIf="hidesearchlist">
@@ -30,27 +12,20 @@
               </li>
             </ul>
           </div>
-          <span style="cursor: pointer;" *ngIf="!showClose"  class="left-pan"> <i class="fa fa-search-plus"></i></span>
+          <span style="cursor: pointer;" *ngIf="!showClose"  class="left-pan"> 
+          <img class="justify-content-end  img-responsive" style="height: 18px; width: 18px;" src="../../../assets/Logo/searchIco.png"/>
+          </span>
           <span style="cursor: pointer;" (click)="ClearSearch()" *ngIf="showClose"  class="left-pan"> <i class="fa fa-times-circle"></i></span>
         </div>
       </div>
-  </form>
+  </form> 
 
-
-    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <button type="button" class="navbar-toggler justify-content-end tog" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse  justify-content-end" id="navbarCollapse">
-          <div class="navbar-nav hideInSmall">
-              <a href="#" class="nav-item nav-link active"> </a>
-              <a href="#" class="nav-item nav-link"> </a>
-              <a href="#" class="nav-item nav-link"> </a>
-              <a href="#" class="nav-item nav-link"> </a>
-              <div class="nav-item  "> 
-              </div>
-          </div>
-        
-          <div class="navbar-nav">
+    <div class="collapse navbar-collapse tog justify-content-end" id="navbarCollapse">
+          
+          <div class="navbar-nav mr-auto mt-2 mt-md-0">
             <form class="d-flex">
               <ul class="navbar-nav ">
                  <li *ngIf="isLogedIn"  class="nav-item">
@@ -66,7 +41,7 @@
               
                   <li *ngIf="isLogedIn"  class="nav-item dropdown profileimg">
                   <img
-                  src="{{user?.ImageUrl=='https://res.cloudinary.com/livsolution/image/upload/v1640110201/imgs_pg46ar.png'?'../../../assets/DummyProfileImg/DefaultUser.png':user?.ImageUrl}}"
+                  src="{{user?.ImageUrl}}"
   
                   class="nav-link dropdown-toggle img-circle" style="width: 64px; height: 64px;" href="#"
                     id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
@@ -82,47 +57,70 @@
               </ul>
             </form>
           </div>
-      </div>
-  </div>
+      </div>  
+
+      <div  class="justify-content-end togs"> 
+        <a class="links" *ngIf="isLogedIn" [routerLink]="['/jobpost']">Create Posts &nbsp;&nbsp;</a>
+        <a class="links" *ngIf="!isLogedIn"   [routerLink]="['/login']">Login&nbsp;&nbsp;</a>
+        <a  class="links" aria-current="page" [routerLink]="['/']">Wall</a> &nbsp;&nbsp;
+        <a *ngIf="isLogedIn"  class="nav-item dropdown profileimg">
+          <img 
+          src="{{user?.ImageUrl=='https://res.cloudinary.com/livsolution/image/upload/v1640110201/imgs_pg46ar.png'?'../../../assets/DummyProfileImg/DefaultUser.png':user?.ImageUrl}}"
+          class="dropdown-toggle img-circle" style="margin-top: -8px; width: 38px; height: 38px;" href="#"
+            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" [routerLink]="['/profile',user.Id]">My Profile</a></li>
+              <li><a class="dropdown-item"  [routerLink]="['/editProfile']" routerLinkActive="router-link-active" >Edit Profile</a></li>
+              <li><a class="dropdown-item"  (click)="LogOut()">LogOut</a></li>
+             
+            </ul>
+         
+      </a>
+    </div>
+</div> 
 </nav>
-
-
   
-  <div  
-  infiniteScroll
-  [infiniteScrollDistance]="7"
-  (scrolled)="onScroll()"
-  class="search-results">
-  <div class="container-fluid row">
-  
-      <div *ngFor="let item of walldatas; let i = index" class="col-md-3">
-          <div [routerLink]="['/jobDetails',item.Job.Id]" routerLinkActive="router-link-active"  class="card p-3 mb-2">
+  <div infiniteScroll [infiniteScrollDistance]="7" (scrolled)="onScroll()" class="search-results">
+  <div class="row"> 
+      <div *ngFor="let item of walldatas; let i = index" class="col-lg-3 col-md-4">
+          <div [routerLink]="['/jobDetails',item.Job.Id]" routerLinkActive="router-link-active"  class="card p-3  ">
               <div class="d-flex justify-content-between">
                   <div class="d-flex flex-row align-items-center">
                       <div class="icon">
                          <img *ngIf="item.Job.IsAnonymous===false" class="rounded-circle img-fluid" 
-                        src="{{item.Job.User?.ImageUrl=='https://res.cloudinary.com/livsolution/image/upload/v1640110201/imgs_pg46ar.png'?'../../../assets/DummyProfileImg/DefaultUser.png':item.Job.User?.ImageUrl}}"
+                        src="{{item.Job.User?.ImageUrl}}"
                         > 
                         <img *ngIf="item.Job.IsAnonymous===true" class="rounded-circle img-fluid" 
-                        src="../../../assets/DummyProfileImg/anonymous.png"
+                        src="{{item.Job?.AnonmousUserPic}}"
                         > 
                       </div>
                       <div class="ms-2 c-details">
-                          <h6 class="mb-0">{{item?.Job.User.Name}}</h6> <span>{{item?.Job.TimeAgo}}</span>
+                          <h6 class="mb-0"  >{{item?.Job.User.Name}}<br> <span>{{item?.Job.TimeAgo}}</span></h6> 
                       </div>
                   </div>
-                  <div class="badge"> <span>Share</span> </div>
+                  <div class=""> <span><img class="img img-responsive share" src="./../../../assets/Logo/share.png"/></span> </div>
               </div>
               <div class="mt-1">
-                  <p class="heading">{{item?.Job.Descriptions}} </p>
-                  <div class="mt-2">
-                      <div class="col-md-12 p-1 bg-white">
-                       
-                           <img class="img-thumbnail img-responsive img-fluid" 
-                           src="{{item?.Job.ImageName!=null?item?.Job.ThumbNailImage:'../../../assets/DummyProfileImg/plumbing-repair.jpg'}}" >
-                      </div>
-                      <!-- <div class="mt-3"> <span class="text1">32 Applied <span class="text2">of 50 capacity</span></span> </div> -->
-                  </div>
+                  <p class="heading">{{item?.Job.Descriptions | slice:0:50}}{{ item?.Job.Descriptions.length > 40 ? '...' : '' }} </p>
+                  <div class=" ">
+                    
+                      <div style="margin-top: -8px;" class="col-md-12 bg-white"> 
+                           <!-- If Job Image Avalable -->
+                           <img *ngIf="item?.Job.ImagesUrl!=null" class="img-thumbnail img-responsive img-fluid" 
+                           src="{{item?.Job.ThumbNailImage}}" >
+                           
+                           <!-- If No Job Image Avalable -->
+                           <div *ngIf="item?.Job.ImagesUrl==null" [ngStyle]="{background: item?.Job?.ColorCode}" style="border-radius: 1.55rem;"  class="card cd">
+                            <div class="content">
+                              <div class="card-body"> 
+                                <p *ngIf="item?.Job.Descriptions.length>=1 && item?.Job.Descriptions.length<=20" class="card-text text-center mt-5"> {{item?.Job.Descriptions | slice:0:20}}</p> 
+                                <p *ngIf="item?.Job.Descriptions.length>20 && item?.Job.Descriptions.length<=35" class="card-text text-center mt-2"> {{item?.Job.Descriptions | slice:0:45}}</p> 
+                                <p *ngIf="item?.Job.Descriptions.length>35"  class="card-text text-center mt-0"> {{item?.Job.Descriptions | slice:0:45}}{{ item?.Job.Descriptions.length > 50 ? '...' : '' }}</p>  
+                              </div>
+                            </div>
+                        </div>
+                          </div>
+                        </div>
               </div>
           </div>
       </div>
@@ -134,7 +132,9 @@
         <div></div>
        <br><br>
       </div>
+    
       <div *ngIf = "!NotEmptPost" class=""> 
+        <br><br>  <br> 
         <div class="col-md-12 d-flex justify-content-center">
           <div class="text-muted h6 alert alert-secondary p-2">Explore more with different keyword</div>
         </div> 

@@ -1,48 +1,79 @@
 /* For nav */
 @media only screen and (min-width: 320px) {
-  .hideInSmall{
-    display: none;
-  }
+  
+
   .img-responsive{
     margin-bottom: 2px;
   } 
-  .form-input{
-    font-size: x-small;
+  .form-input{ 
+    font-size: 10px;
+    font-weight: bold;
   }
+  .togs{
+    display: none;
+  }
+  .card-text{ 
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+     }
 .form {
   width: 190px;
-  margin-left: -20px;
+  margin-left: -15px;
  }
-} 
-
+ 
+}  
 
 @media only screen and (min-width: 500px) {
   .hideInSmall{
     display: none;
   }
+
+  .togs{
+    display: none;
+  }
+  .form-input{ 
+    font-size: medium;
+    font-weight: normal;
+  }
   .img-responsive{
     margin-bottom: 2px; 
   } 
-  
+  .card-text{ 
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+     }
 .form {
   width: 280px; 
-  margin-left: 38px;
-  
+  margin-left: 38px; 
  }
-} 
 
+}  
 
 @media only screen and (min-width: 1024px) { 
   .form {
     width: 550px;  
    }
-   
+   .tog{
+     display: none;
+   } 
+   .togs{
+    display: block;
+  }
    .hideInSmall{
     display:contents;
   }
   .form-input{
     font-size:medium;
-  }
+    font-weight: normal;
+  } 
+ 
+  .card-text{ 
+    font-size: 28px;
+    font-weight: bolder;
+    color: white;
+     }
   } 
   
   @media only screen and (min-width< 300px) {
@@ -52,11 +83,16 @@
     .img-responsive{
       margin-bottom: 2px;
     } 
-    
+    .form-input{
+      font-size:medium;
+    } 
+    .togs{
+      display: none;
+    }
   .form {
-    width: 490px; 
-    
+    width: 490px;  
    }
+
   } 
   @media only screen and (min-width< 160px) {
     .hideInSmall{
@@ -66,6 +102,9 @@
       margin-bottom: 2px;
     } 
     
+       .togs{
+    display: none;
+  }
   .form {
     width: 280px; 
     
@@ -76,16 +115,60 @@
     .hideInSmall{
       display: none;
     }
+   
     .img-responsive{
       margin-bottom: 2px;
     } 
-    
+    .form-input{
+      font-size:small;
+    } 
+    .togs{
+      display: none;
+    }
   .form {
     width: 300px; 
     margin-left: 150px;
    }
   } 
- 
+ .links{
+  font-weight:bold;
+   color: black;
+   padding: 1px;
+   text-decoration: none;
+ } 
+ .share{
+  height: 1.8rem;
+  width: 1.3rem;
+ }
+  /* Card For No Job Images */ 
+  .cd{
+    height: 230px;
+    border-radius: 50%; 
+  }
+  
+  .tog1{
+    display: none;
+  }
+.card {
+  border-radius: 1.55rem;
+  /* -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+  box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16); */
+  border: none;
+  padding: 0ch;
+  margin-bottom: 0px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.card .card-block { 
+  border-radius: 1.55rem; 
+}
+
+.order-card i {
+  font-size: 20px;
+} 
+  /*End  Card For No Job Images */
+
 .dropdown-item{
   cursor: pointer;
 }
@@ -105,15 +188,14 @@
   top: 4px;
   padding: 2px; 
 }
-
+ 
  
 .form-input {
-  height: 35px;
-  text-indent: 0px;
+  height: 40px;
+  text-indent: 0;
   border-radius: 10px;
-  background-color: hsl(0, 0%, 90%);
-  color: black;
-  
+  background-color: #eff2f5;
+  color: #000; 
 }
 .nav-item{
   font-weight: bold;
@@ -132,16 +214,29 @@ element.style {
     float: left;
     margin-left: -94px;
 } 
+.heading{ 
+  margin-top: 5px;
+}
 .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: black;
-} 
- 
+}  
+.img-thumbnail {
+  padding: 0rem;
+  background-color: #fff;
+  border: 0px solid #dee2e6;
+  border-radius: 1.55rem;
+  max-width: 100%;
+  height: auto;
+}
 /* Nav Over */
 
-
+.search-results{
+  overflow-x: hidden; 
+}
 body {
     background-color: #eee;
     width: 100%;
+    overflow-x: hidden;
 }
 
 .card {
@@ -151,7 +246,7 @@ body {
 
 .c-details span {
     font-weight: 300;
-    font-size: 13px
+    font-size: 13px;  
 }
  
 .icon {
@@ -230,11 +325,11 @@ body {
 
 /* Search Suggetions */  
 .searchSuggetion{   
-  background: #f2f2f2;
+  background: #ffffff;
   overflow: hidden;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 0 20px 8px #d0d0d0;  
+  box-shadow: 0 0 20px 8px #00000014;  
 	z-index: 999; 
   width:inherit;
   position:absolute; 

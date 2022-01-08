@@ -1,6 +1,30 @@
-<div class="login-box">
+<!-- <div class="login-box">
     <h2>HoozOn</h2>
     <a href="#" class="social-button" id="facebook-connect"> <span>Connect with Facebook</span></a>
     <a (click)="signInWithGoogle()" class="social-button" id="google-connect"> <span>Connect with Google</span></a>
     
+</div> -->
+
+<div class="wrapper">
+    <div class="logo"> <img src="./../../../assets/Logo/LoginHooz.png" alt=""> </div>
+    <div class="text-center mt-2 name"> Login to your account with </div>
+    <div class="text-center mt-2 "> 
+        <img class="img img-responsive socialBtn"  (click)="signInWithGoogle()"  src="./../../../assets/Logo/google.png" alt="">
+        <img class="img img-responsive socialBtn" src="./../../../assets/Logo/FB.png" alt=""> 
+    </div>
+    <div class="text-center mt-1" style="color: black; font-weight: bold; font-family: initial;"> Or</div>
+    <form class="p-3 mt-3">
+      <div class="form-field d-flex align-items-center"> <input type="text" name="userName" id="userName"
+          placeholder="Email address"> </div>
+      <div class="form-field d-flex align-items-center"> <input type="password" name="password" id="pwd"
+          placeholder="Create password"> </div> <button class="btn mt-3">Continue</button>
+          <div class="text-left fs-6 mt-3"> 
+            <p class="condition">By continuing, you agree to HoozOnline Terms of Services and acknowledge that you've read our Privacy policy </p>
+        </div>
+        <div class="text-left fs-6 mt-2"> 
+            <p style="font-size: 15px;">Already a member? <button type="button" class="btn-hoozGreen">Login</button> </p>
+        </div>
+        </form>
+   
+
 </div>

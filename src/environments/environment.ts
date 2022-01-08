@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://hoozonlive-001-site1.btempurl.com/api/',
-  client_Id:'589474938406-tpaov89gu7o8hhg70qelbc8ivclseodj.apps.googleusercontent.com'
+    api_url: 'http://hoozonlive-001-site1.btempurl.com/api/',
+  // api_url: 'https://localhost:5001/api/',
 };

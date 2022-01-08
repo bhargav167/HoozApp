@@ -5,6 +5,9 @@
   .img-responsive{
     margin-bottom: 2px;
   } 
+  .togs{
+    display: none;
+  }
   .form-input{
     font-size: x-small;
   }
@@ -21,7 +24,9 @@
   .img-responsive{
     margin-bottom: 2px;
   } 
-  
+  .togs{
+    display: none;
+  }
 .form {
   width: 280px;
  }
@@ -34,11 +39,22 @@
  .hideInSmall{
   display:contents;
 }
+.tog{
+  display: none;
+} 
+.togs{
+ display: block;
+}
 .form-input{
-  font-size:medium;
+  font-size:medium; 
 }
 } 
- 
+@media only screen and (min-width< 100px) {
+  
+  .togs{
+    display: none;
+  } 
+} 
 .dropdown-item{
   cursor: pointer;
 }
@@ -46,7 +62,13 @@
   background-color: white;
 }
  
-
+.form-input {
+  height: 40px;
+  text-indent: 0;
+  border-radius: 10px;
+  background-color: #eff2f5;
+  color: #000; 
+}
 .form .fa-search {
   position: absolute;
   top: 20px;
@@ -63,11 +85,11 @@
 
  
 .form-input {
-  height: 35px;
-  text-indent: 0px;
+  height: 40px;
+  text-indent: 0;
   border-radius: 10px;
-  background-color: hsl(0, 0%, 90%);
-  color: black;
+  background-color: #eff2f5;
+  color: #000; 
 }
 .nav-item{
   font-weight: bold;
@@ -81,6 +103,15 @@ element.style {
 }
 .profileimg{
   margin-top: -8px; 
+  }
+  .links{
+    font-weight:bold;
+     color: black;
+     padding: 1px;
+     text-decoration: none;
+   } 
+   .tog1{
+    display: none;
   }
   .dropdown-menu{
     float: left;

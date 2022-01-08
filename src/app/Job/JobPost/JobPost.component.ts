@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators }  from '@angular/forms';   
+import { FormGroup, FormBuilder, Validators }  from '@angular/forms';
 import { JobModel } from '../../Model/Job/JobModel';
 import { JobTags } from '../../Model/Job/JobTags';
 import { JobPostService } from '../../services/JobPost/JobPost.service';
-
+function isValid(str){
+  return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(str);
+ }
 @Component({
   selector: 'app-JobPost',
   templateUrl: './JobPost.component.html',
@@ -70,8 +72,12 @@ export class JobPostComponent implements OnInit {
     this.jobPostForm.controls['Tags'].setValue(this.Tags); 
     this.jobModel = Object.assign({}, this.jobPostForm.value); 
 
-    this._jobServices.AddJobPost(this.jobModel).subscribe((data:any)=>{
-    this.uploadFile(data.CreatedJob.Id,this.filetoPost);
+    this._jobServices.AddJobPost(this.jobModel).subscribe((data:any)=>{ 
+     if(this.filetoPost==undefined){
+      this._jobServices.AddPostImages(data.CreatedJob.Id,null).subscribe(()=>{
+       },error=>{
+         console.log(error);
+       })
       this.jobPostForm.controls['Tags'].setValue(''); 
       this.Tags=[];
       this.Tagmessage='';
@@ -85,8 +91,9 @@ export class JobPostComponent implements OnInit {
           this.showAlert = false;
         }
       }, 3200);
-      // Add Job Image
-      
+     }else{
+      this.uploadFile(data.CreatedJob.Id,this.filetoPost); 
+     }
    
     },error=>{
       console.log(error);
@@ -94,16 +101,26 @@ export class JobPostComponent implements OnInit {
   }
 
   public uploadFile = (jobId,files) => {
-    if (files.length === 0) {
-      return;
-    }
+    if (files.length === 0) 
+    return;
  
     let fileToUpload = <File>files[0];
     const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
- 
+    formData.append('file', fileToUpload, fileToUpload.name); 
    this._jobServices.AddPostImages(jobId,formData).subscribe(()=>{
+    this.jobPostForm.controls['Tags'].setValue(''); 
+    this.Tags=[];
+    this.Tagmessage='';
+    this.btnLoader=false;
+    this.imgURL=null;
+    this.jobPostForm.reset();
+    this.showAlert=true;
 
+    setTimeout(() => {
+      if (this.showAlert == true) {
+        this.showAlert = false;
+      }
+    }, 3200);
    },error=>{
      console.log(error);
    })
@@ -111,23 +128,24 @@ export class JobPostComponent implements OnInit {
 
 
 
-  AddTagging() { 
-    if (!this.jobPostForm.controls['Tags'].value || this.jobPostForm.controls['Tags'].value == ' ')
+  AddTagging() {   
+    if (this.jobPostForm.controls['Tags'].value == ''
+      || this.jobPostForm.controls['Tags'].value.indexOf('  ') != -1 || !isValid(this.jobPostForm.controls['Tags'].value))
       return;
 
     this.jobTag = {
-      TagName: this.jobPostForm.controls['Tags'].value,
+      TagName: this.jobPostForm.controls['Tags'].value.trim(),
       TagMasterId: 0
     };
     this.Tags.push(this.jobTag);
     this.jobPostForm.controls['Tags'].setValue(null);
     this.Tagmessage = '';
   }
+
   RemoveTagging(item) {
     this.Tags = this.Tags.filter(function (obj) {
       return obj.TagName != item;
     });
-
   }
 
   FileUpload(files): void {
