@@ -1,16 +1,73 @@
-<app-TopNavBar></app-TopNavBar>
-<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
-  <div class="card p-4">
-      <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img src="{{user?.ImageUrl}}" height="100" width="100" /></button> <span class="name mt-3">{{user?.Name}}</span> <span class="idd">{{user?.UserName}}</span>
-          <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">{{user?.MobileNumber!=''?user?.MobileNumber:'NA'}}</span> <span><i class="fa fa-copy"></i></span> </div>
-          <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number">{{user?.AboutUs}}  </span> </div>
-          <p class="colors">Tags: 
-            <span *ngFor="let item1 of user.tags" class="badge bg-badge text-dark">{{item1.TagName}} &nbsp;  </span> 
-        </p>
-          <div class=" d-flex mt-2"> <button [routerLink]="['/editProfile']" routerLinkActive="router-link-active"  class="btn1 btn-dark">Edit Profile</button> </div>
-         
-          <!-- <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> </div> -->
-          <!-- <div class=" px-2 rounded mt-4 date "> <span class="join">Joined May,2021</span> </div> -->
+<app-TopNavBar></app-TopNavBar> 
+
+
+<div class="container-sm mt-4">  
+  <!-- User Card Section-1 -->
+    <div class="row col-sm-12"> 
+      <div class="d-flex flex-row justify-content-start">
+        <div class="outer-div">
+          <div class="inner-div">
+            <div class="front">
+              <div
+                style="background-image: url({{user.CoverImageUrl}});"
+                class="front__bkg-photo">
+              </div>
+              <div
+                style="background-image: url({{user.ImageUrl}});"
+                class="front__face-photo">
+              </div>
+
+            </div>
+
+          </div>
+        </div>
       </div>
+
+      <div style="margin-top:  110px;" class="ms-0 d-flex flex-row justify-content-start">
+        <h5 style="font-weight: bold;">{{user.Name}}  <br>
+           <span  style="font-weight:lighter; font-size: small;">{{user.UserAddress}}</span></h5>
+      
+      </div>
+
+      <div class="d-flex justify-content-end"> <span>
+          <button type="button" class="btn btn-ChatHooz">Chat</button>
+          <button type="button" class="btn btn-EditHooz">Edit</button>
+
+        </span>
+      </div> 
+</div>
+
+  <!-- Tag Section-2 -->
+  <div class="row col-md-11 mt-2"> 
+    <h5 style="font-weight: bold;">Tags</h5>
+    <div class="d-flex">
+    
+        <div *ngFor="let item of user.tags" class="badgeTag" >
+            <span class="badge bg-badge text-dark"><p class="text text-center" style="color: white; margin-top: 4px;">{{item.TagName}}</p>   </span>
+            &nbsp; 
+           </div>
+    </div> 
   </div>
+
+    <!-- AboutMe Section-3 -->
+    <div class="row col-md-10 mt-2"> 
+      <h5 style="font-weight: bold;">About me</h5>
+      <div class="d-flex">
+        <p>
+        {{user.AboutUs}}
+        </p>
+      </div> 
+    </div>
+
+     <!-- Link Section-3 -->
+     <div class="row col-md-10 mt-2"> 
+      <h5 style="font-weight: bold;">Link</h5>
+      <div class="d-flex">
+        <p>
+         <a href="#">{{user.WebSiteUrl}}</a>
+        </p>
+      </div> 
+    </div>
+
+
 </div>

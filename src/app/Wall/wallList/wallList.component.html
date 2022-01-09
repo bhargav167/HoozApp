@@ -1,6 +1,25 @@
+<!-- Overlay nav -->
+<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+    <a style="cursor: pointer;" href="/aboutUs">About Us</a>
+    <a style="cursor: pointer;"  href="/help">Get Help</a>
+    <a style="cursor: pointer;"  href="/contactUs">Contact Us</a>
+    <a style="cursor: pointer;"  >Log Out</a>
+    <br>
+    <br>
+    <br>
+    <a href="/t&c">Terms and Conditions</a>
+    <a href="/privacypolicy">Privacy</a>
+    <br>
+    <br>
+    <br>
+    <h3 style="font-weight: bolder; color: #245570;">Hooz</h3>
+  </div>
+</div>
 <nav class="mb-5 navbar navbar-light bg-light1">
   <div class="container-fluid"> 
-        <img  class="img-responsive" style="height: 3.2rem; width: 4.5rem; cursor: pointer;" src="../../../assets/Logo/hoozlogo.png"/>
+        <img [routerLink]="['/']" routerLinkActive="router-link-active"  class="img-responsive" style="height: 3.2rem; width: 4.5rem; cursor: pointer;" src="../../../assets/Logo/hoozlogo.png"/>
         
   <form class="d-flex justify-content-between">
       <div class="input-group">                    
@@ -53,7 +72,11 @@
                    
                   </ul>
                 </li>
-       
+                <!-- <li>
+                  <span onclick="openNav()" style="cursor: pointer; line-height:2.5rem;">
+                    <img style="height: 12px; cursor: pointer;" src="../../../assets/Logo/Toggle.png" />&nbsp;&nbsp; 
+                  </span>
+                </li> -->
               </ul>
             </form>
           </div>
@@ -76,10 +99,18 @@
             </ul>
          
       </a>
+      <a>
+       
+          <!-- <span onclick="openNav()" style="cursor: pointer; line-height:2.5rem;">
+            <img style="height: 12px; cursor: pointer;" src="../../../assets/Logo/Toggle.png" />&nbsp;&nbsp; 
+          </span> -->
+         
+      </a>
     </div>
 </div> 
-</nav>
-  
+</nav> 
+
+<!-- MAIN CONTENT -->
   <div infiniteScroll [infiniteScrollDistance]="7" (scrolled)="onScroll()" class="search-results">
   <div class="row"> 
       <div *ngFor="let item of walldatas; let i = index" class="col-lg-3 col-md-4">
@@ -98,7 +129,7 @@
                           <h6 class="mb-0"  >{{item?.Job.User.Name}}<br> <span>{{item?.Job.TimeAgo}}</span></h6> 
                       </div>
                   </div>
-                  <div class=""> <span><img class="img img-responsive share" src="./../../../assets/Logo/share.png"/></span> </div>
+                  <div class=""> <span><img class="img img-responsive share" src="./../../../assets/Logo/shareDot.png"/></span> </div>
               </div>
               <div class="mt-1">
                   <p class="heading">{{item?.Job.Descriptions | slice:0:50}}{{ item?.Job.Descriptions.length > 40 ? '...' : '' }} </p>
@@ -110,7 +141,7 @@
                            src="{{item?.Job.ThumbNailImage}}" >
                            
                            <!-- If No Job Image Avalable -->
-                           <div *ngIf="item?.Job.ImagesUrl==null" [ngStyle]="{background: item?.Job?.ColorCode}" style="border-radius: 1.55rem;"  class="card cd">
+                           <div *ngIf="item?.Job.ImagesUrl==null" [ngStyle]="{background: item?.Job?.ColorCode}" style="border-radius: 0.5rem;"  class="card cd">
                             <div class="content">
                               <div class="card-body"> 
                                 <p *ngIf="item?.Job.Descriptions.length>=1 && item?.Job.Descriptions.length<=20" class="card-text text-center mt-5"> {{item?.Job.Descriptions | slice:0:20}}</p> 
@@ -146,6 +177,3 @@
   <br>
 
   </div>
-  
-
-  

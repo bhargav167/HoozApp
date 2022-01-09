@@ -1,7 +1,4 @@
-body{
-    height: 100%;
-    overflow-x: hidden;
-}
+
 .container-sm{
     width: 800px; 
     display: flow-root;

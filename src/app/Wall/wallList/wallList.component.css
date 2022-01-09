@@ -130,20 +130,74 @@
     margin-left: 150px;
    }
   } 
+  /* //For Overlay nav */
+  
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  background-color: #cefae9;
+  background-color: #cefae9;
+  overflow-x: hidden;
+  transition: 0.2s;
+}
+
+.overlay-content {
+  position: relative;
+  top:10%;
+  width: 100%;
+  text-align: center;
+ 
+  margin-top: 20px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 30px;
+  color: #245570;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #245575;
+  opacity: 0.5;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  color: #245575;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
  .links{
   font-weight:bold;
    color: black;
    padding: 1px;
    text-decoration: none;
  } 
- .share{
-  height: 1.8rem;
-  width: 1.3rem;
+ .share{ 
+  height: 1.3rem;
+  width: auto;
  }
   /* Card For No Job Images */ 
   .cd{
     height: 230px;
-    border-radius: 50%; 
+    border-radius: 0.5rem; 
   }
   
   .tog1{
@@ -224,7 +278,7 @@ element.style {
   padding: 0rem;
   background-color: #fff;
   border: 0px solid #dee2e6;
-  border-radius: 1.55rem;
+  border-radius: 0.5rem;
   max-width: 100%;
   height: auto;
 }
