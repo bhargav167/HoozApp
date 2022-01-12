@@ -1,4 +1,4 @@
-<nav class="mb-5 navbar navbar-light bg-light1">
+<nav class="mb-3 navbar navbar-light bg-light1">
   <div class="container-fluid"> 
         <img [routerLink]="['/']" routerLinkActive="router-link-active"  class="img-responsive" style="height: 3.2rem; width: 4.5rem; cursor: pointer;" src="../../../assets/Logo/hoozlogo.png"/>
         
@@ -21,6 +21,9 @@
           <div class="navbar-nav mr-auto mt-2 mt-md-0">
             <form class="d-flex">
               <ul class="navbar-nav ">
+                <li *ngIf="isLogedIn"  class="nav-item">
+                  <a class="nav-link active" [routerLink]="['/joblist']">Job listing</a>
+                </li>  
                  <li *ngIf="isLogedIn"  class="nav-item">
                   <a class="nav-link active" [routerLink]="['/jobpost']">Create Posts</a>
                 </li>  
@@ -53,6 +56,7 @@
       </div>  
 
       <div  class="justify-content-end togs"> 
+        <a class="links" *ngIf="isLogedIn" [routerLink]="['/joblist']">Job listing &nbsp;&nbsp;</a>
         <a class="links" *ngIf="isLogedIn" [routerLink]="['/jobpost']">Create Posts &nbsp;&nbsp;</a>
         <a class="links" *ngIf="!isLogedIn"   [routerLink]="['/login']">Login&nbsp;&nbsp;</a>
         <a  class="links" aria-current="page" [routerLink]="['/']">Wall</a> &nbsp;&nbsp;

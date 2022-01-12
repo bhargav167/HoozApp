@@ -1,5 +1,7 @@
 <app-TopNavBar></app-TopNavBar> 
 
+<body>
+  <i [routerLink]="['/']"   style="padding-left: 10px; cursor: pointer;" class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
 
 <div class="container-sm mt-4">  
   <!-- User Card Section-1 -->
@@ -9,11 +11,11 @@
           <div class="inner-div">
             <div class="front">
               <div
-                style="background-image: url({{user.CoverImageUrl}});"
+                style="background-image: url({{user?.CoverImageUrl}});"
                 class="front__bkg-photo">
               </div>
               <div
-                style="background-image: url({{user.ImageUrl}});"
+                style="background-image: url({{user?.ImageUrl}});"
                 class="front__face-photo">
               </div>
 
@@ -24,15 +26,14 @@
       </div>
 
       <div style="margin-top:  110px;" class="ms-0 d-flex flex-row justify-content-start">
-        <h5 style="font-weight: bold;">{{user.Name}}  <br>
-           <span  style="font-weight:lighter; font-size: small;">{{user.UserAddress}}</span></h5>
+        <h5 style="font-weight: bold;">{{user?.Name}}  <br>
+           <span  style="font-weight:lighter; font-size: small;">{{user?.UserAddress}}</span></h5>
       
       </div>
 
-      <div class="d-flex justify-content-end"> <span>
+      <div style="z-index: 1;" class="d-flex justify-content-end"> <span>
           <button type="button" class="btn btn-ChatHooz">Chat</button>
-          <button type="button" class="btn btn-EditHooz">Edit</button>
-
+          <button type="button"  [routerLink]="['/editProfile']" routerLinkActive="router-link-active" class="btn btn-EditHooz">Edit</button> 
         </span>
       </div> 
 </div>
@@ -42,7 +43,7 @@
     <h5 style="font-weight: bold;">Tags</h5>
     <div class="d-flex">
     
-        <div *ngFor="let item of user.tags" class="badgeTag" >
+        <div *ngFor="let item of user?.tags" class="badgeTag" >
             <span class="badge bg-badge text-dark"><p class="text text-center" style="color: white; margin-top: 4px;">{{item.TagName}}</p>   </span>
             &nbsp; 
            </div>
@@ -54,7 +55,7 @@
       <h5 style="font-weight: bold;">About me</h5>
       <div class="d-flex">
         <p>
-        {{user.AboutUs}}
+        {{user?.AboutUs}}
         </p>
       </div> 
     </div>
@@ -64,10 +65,11 @@
       <h5 style="font-weight: bold;">Link</h5>
       <div class="d-flex">
         <p>
-         <a href="#">{{user.WebSiteUrl}}</a>
+         <a href="#">{{user?.WebSiteUrl}}</a>
         </p>
       </div> 
     </div>
 
 
 </div>
+</body>

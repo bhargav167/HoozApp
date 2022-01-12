@@ -12,17 +12,25 @@ import { ProfileService } from '../../services/Auth/Profile.service';
 export class EditComponent implements OnInit {
   authUser: SocialAuthentication;
   userId:number;
-  public btnLoader: boolean;
+  
   userForm:FormGroup;
   Tags:Tags[]=[]; 
   userTag:Tags; 
+  tagname:string;
   public imagePath;
   imgURL: any;
   filetoPost:any;
+
+  public btnLoader: boolean;
   showAlert:boolean=false;
+  profileImgUploading:boolean=false;
+  coverImgUploading:boolean=false;
   
   public message: string;
   public Tagmessage: string;
+
+  ImageUrl:string;
+  CoverImageUrl:string; 
   constructor(private _profileServices: ProfileService,private fb:FormBuilder) {
   let user= JSON.parse(localStorage.getItem('user'));
   this.userId=user.Id;
@@ -35,18 +43,19 @@ export class EditComponent implements OnInit {
 
   createUserForm() {
     this.userForm = this.fb.group({
-      UserName:[''],
+      UserName:['',Validators.required],
       ImageUrl: [''],
       Email:[''],
       CoverImageUrl: [''],
-      Name: [''],
+      Name: ['',Validators.required],
       MobileNumber: [''],
       WebSiteUrl: [''],
       Latitude: [''],
       Longitude: [''],
       UserAddress: [''],
       AboutUs: [''],
-      tags: []
+      tags: [],
+      stringTags:['']
     })
   }
 
@@ -65,25 +74,14 @@ export class EditComponent implements OnInit {
       this.userForm.controls['Longitude'].setValue(this.authUser.Longitude);
       this.userForm.controls['WebSiteUrl'].setValue(this.authUser.WebSiteUrl);
       this.userForm.controls['UserName'].setValue(this.authUser.UserName);
-      this.authUser = Object.assign({}, this.userForm.value);
+      this.ImageUrl=this.authUser.ImageUrl;
+      this.CoverImageUrl=this.authUser.CoverImageUrl;
+      this.Tags=this.authUser.tags;
+      this.authUser = Object.assign({}, this.userForm.value); 
     })
   }
-  public uploadFile = (jobId,files) => {
-    if (files.length === 0) {
-      return;
-    }
- 
-    let fileToUpload = <File>files[0];
-    const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
- 
-  //  this._jobServices.AddPostImages(jobId,formData).subscribe(()=>{
-
-  //  },error=>{
-  //    console.log(error);
-  //  })
-  } 
-  FileUpload(files): void {
+  // File Upload Cover
+  FileUploadCover(files): void {
     if (files.length === 0)
       return;
 
@@ -98,30 +96,77 @@ export class EditComponent implements OnInit {
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
       this.imgURL = reader.result;
+      this.CoverImageUrl=this.imgURL;
       this.filetoPost=files;
       this.message = "";
     }
+
+    let fileToUpload = <File>files[0];
+    const formData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name); 
+    this._profileServices.AddAuthUserCoverImage(this.userId,formData).subscribe((data)=>{
+      console.log(data);
+    })
+  }
+  //File Upload User
+  FileUploadUser(files): void { 
+    if (files.length === 0)
+      return;
+
+      this.profileImgUploading=true;
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result; 
+      this.ImageUrl=this.imgURL;
+      this.filetoPost=files;
+      this.message = "";
+    }
+
+    let fileToUpload = <File>files[0];
+    const formData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name); 
+    this._profileServices.UpdateUserPhoto(this.userId,formData).subscribe((data)=>{ 
+      this.profileImgUploading=false;
+    })
   }
 
   UpdateProfile() {
-    // this._profileServices.UpdateUser(this.userId, this.authUser).subscribe((data: SocialAuthentication) => {
-      
-    // })
+    this.btnLoader=true;
+    this.authUser=this.userForm.value; 
+    this._profileServices.UpdateUser(this.userId, this.authUser).subscribe((data: SocialAuthentication) => {
+      this.btnLoader=false;
+      this.showAlert=true;
+      setTimeout(() => {
+        if (this.showAlert == true) {
+          this.showAlert = false;
+        }
+      }, 3200);
+    })
   }
+  
 
   AddTagging() { 
     this.userTag = {
-      TagName: this.userForm.controls['tags'].value,
-       UserId:1,
-    };
+      TagName:   this.userForm.controls['stringTags'].value,
+       UserId:this.userId,
+    }; 
     this.Tags.push(this.userTag);
-    this.userForm.controls['tags'].setValue(null);
+    this.userForm.controls['tags'].setValue(this.Tags);
     this.Tagmessage = '';
+    this.userForm.controls['stringTags'].setValue(''); 
   }
   RemoveTagging(item) {
     this.Tags = this.Tags.filter(function (obj) {
       return obj.TagName != item;
     });
-
+    this.userForm.controls['tags'].setValue(this.Tags);
   }
 }

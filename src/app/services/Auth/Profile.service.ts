@@ -15,6 +15,12 @@ export class ProfileService {
   UpdateUser(id:number,user:SocialAuthentication){
     return this._http.post(this.baseURL+'User/'+id,user);
   }
+  UpdateUserPhoto(userId: number, file: any) {
+    return this._http.post(this.baseURL + 'AuthLogin/AddAuthUserImage/' + userId, file);
+  }
+  AddAuthUserCoverImage(userId: number, file: any) {
+    return this._http.post(this.baseURL + 'AuthLogin/AddAuthUserCoverImage/' + userId, file);
+  }
   Login(user:SocialAuthentication){
     return this._http.post(this.baseURL+'AuthLogin/AddAuthUser',user);
   }

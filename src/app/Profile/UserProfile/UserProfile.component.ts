@@ -20,8 +20,7 @@ export class UserProfileComponent implements OnInit {
   }
   LoadUserData(id: number) {
     this._userServices.GetUserProfile(id).subscribe((data: SocialAuthentication) => {
-      this.user = data;
-      console.log(this.user);
+      this.user = data; 
     })
   }
 }

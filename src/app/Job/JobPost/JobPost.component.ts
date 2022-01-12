@@ -126,8 +126,6 @@ export class JobPostComponent implements OnInit {
    })
   } 
 
-
-
   AddTagging() {   
     if (this.jobPostForm.controls['Tags'].value == ''
       || this.jobPostForm.controls['Tags'].value.indexOf('  ') != -1 || !isValid(this.jobPostForm.controls['Tags'].value))

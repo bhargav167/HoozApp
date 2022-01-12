@@ -1,30 +1,92 @@
 <app-TopNavBar></app-TopNavBar>
-<div>
-    <div *ngIf="isLoading" class="loader">Loading...</div>
-  <div *ngIf="!isLoading" class="row">
-
-      <div *ngFor="let item of jobModel.data" class="col-md-3">
-          <div [routerLink]="['/jobDetails',item.Id]" routerLinkActive="router-link-active"  class="card p-3 mb-2">
-              <div class="d-flex justify-content-between">
-                  <div class="d-flex flex-row align-items-center">
-                      <div class="icon"> <img class="rounded-circle img-fluid" src="{{item?.User.ImageUrl}}"> </div>
-                      <div class="ms-2 c-details">
-                          <h6 class="mb-0">{{item?.User.Name}}</h6> <span>{{item?.TimeAgo}}</span>
-                      </div>
-                  </div>
-                  <div class="badge"> <span>Share</span> </div>
-              </div>
-              <div class="mt-1">
-                  <p class="heading">{{item?.Descriptions}} </p>
-                  <div class="mt-2">
-                      <div class="col-md-12 p-1 bg-white">
-                           <img class="img-thumbnail img-responsive img-fluid" style="height: 250px; width: 850px;" src="{{item?.ImagesUrl!=null? item?.ImagesUrl:'https://ichef.bbci.co.uk/news/976/cpsprodpb/16755/production/_119298919_repair2.png' }}" >
-                      </div>
-                      <!-- <div class="mt-3"> <span class="text1">32 Applied <span class="text2">of 50 capacity</span></span> </div> -->
-                  </div>
-              </div>
+ <!--  Tab Toggle -->  
+ <div class="container-sm mt-0">
+    <div class="row col-sm-12"> 
+        <div class="d-flex">
+          <div class="d-flex flex-row justify-content-between">
+            <div [(ngModel)]="IsOnJob"  (change)="checkValue(IsOnJob?false:true)" class="switch-button">
+              <input  class="switch-button-checkbox" type="checkbox" />
+              <label  class="switch-button-label" for=""><span class="switch-button-label-span">Jobs</span></label>
+            </div> 
           </div>
-      </div>
-      
-  </div> 
+        </div>
+    </div> 
 </div>
+
+<!-- MAIN CONTENT -->
+<div class="container-sm "> 
+<div infiniteScroll [infiniteScrollDistance]="7" (scrolled)="onScroll()" class="search-results"> 
+   <div *ngFor="let item of jobModels; let i = index">
+       <!-- User Sections --> 
+    <div class="row col-sm-12 mt-4">
+      <div class="d-flex">
+        <div class="d-flex flex-row justify-content-start">
+          <div class="icon">
+           
+              <img *ngIf="item.IsAnonymous===false" class="rounded-circle img-fluid" 
+             src="{{item.User?.ImageUrl}}"
+             > 
+             <img *ngIf="item.IsAnonymous===true" class="rounded-circle img-fluid" 
+             src="{{item?.AnonmousUserPic}}"
+             >  
+          </div>
+          <div class="ms-2 c-details">
+            <h6 class="mt-2">{{item.User.Name}}<br> <span>{{item.TimeAgo}}</span></h6>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end"> <span><img class="img   share"
+            src="./../../../assets/Logo/shareDot.png" /></span> </div>
+  
+    </div>
+  
+    <!-- post Sections -->
+    <div class="row col-lg-10 mt-0">
+      <div class="d-flex">
+        <div class="d-flex   justify-content-between">
+          <p>
+            {{item.Descriptions}}
+          </p> 
+        </div>
+      </div> 
+    </div>
+
+    <!-- Image Section -->
+    <div class="row col-sm-10 mb-4"> 
+        <div class="d-flex justify-content-between"> 
+                <label id="custom-button" class="form-control two">
+                    <div *ngIf="item.ImagesUrl==null"  style="text-align: center; margin-top: 60px;">
+                        <img  style="height: 80px; width: 80px;" src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
+                    </div> 
+
+                    <div *ngIf="item.ImagesUrl!=null"  style="text-align: center; margin-top: 8px;">
+                      <img  style="height: 170px; width: 300px;" [src]="item.ThumbNailImage" alt="your image" />
+                  </div> 
+                  </label> 
+        </div>
+    </div>
+   </div> 
+   
+  <div *ngIf="isLoading" class="lds-ring">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+   <br><br>
+  </div>
+
+  <div *ngIf = "!NotEmptPost" class=""> 
+    <br><br>  <br> 
+    <div class="col-md-12 d-flex justify-content-center">
+      <div class="text-muted h6 alert alert-secondary p-2">No More Result</div>
+    </div> 
+</div>
+  </div>
+
+  <br>
+  <br>
+
+</div>
+
+
+
