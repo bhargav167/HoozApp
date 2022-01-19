@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators }  from '@angular/forms';  
+import { FormGroup, FormBuilder, Validators }  from '@angular/forms';
+import { HotToastService } from '@ngneat/hot-toast';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { Tags } from '../../Model/User/Tags';
 import { ProfileService } from '../../services/Auth/Profile.service';
@@ -11,8 +12,7 @@ import { ProfileService } from '../../services/Auth/Profile.service';
 })
 export class EditComponent implements OnInit {
   authUser: SocialAuthentication;
-  userId:number;
-  
+  userId:number; 
   userForm:FormGroup;
   Tags:Tags[]=[]; 
   userTag:Tags; 
@@ -31,7 +31,7 @@ export class EditComponent implements OnInit {
 
   ImageUrl:string;
   CoverImageUrl:string; 
-  constructor(private _profileServices: ProfileService,private fb:FormBuilder) {
+  constructor(private _profileServices: ProfileService,private fb:FormBuilder,private toast: HotToastService) {
   let user= JSON.parse(localStorage.getItem('user'));
   this.userId=user.Id;
   }
@@ -39,6 +39,14 @@ export class EditComponent implements OnInit {
   ngOnInit() {  
     this.createUserForm();
     this.loadUserDetais(this.userId); 
+  
+  }
+
+  showToast() {
+    this.toast.success('Profile Updated Successfully', {
+     
+      position: 'top-center', 
+    }); 
   }
 
   createUserForm() {
@@ -138,22 +146,24 @@ export class EditComponent implements OnInit {
     })
   }
 
-  UpdateProfile() {
+  UpdateProfile() { 
     this.btnLoader=true;
     this.authUser=this.userForm.value; 
     this._profileServices.UpdateUser(this.userId, this.authUser).subscribe((data: SocialAuthentication) => {
       this.btnLoader=false;
       this.showAlert=true;
-      setTimeout(() => {
-        if (this.showAlert == true) {
-          this.showAlert = false;
-        }
-      }, 3200);
+      this.showToast();
     })
   }
   
 
   AddTagging() { 
+    if(this.userForm.controls['stringTags'].value==''){ 
+        this.toast.warning('Tag is required!', { 
+          position: 'top-center', 
+        });  
+      return;
+    }
     this.userTag = {
       TagName:   this.userForm.controls['stringTags'].value,
        UserId:this.userId,

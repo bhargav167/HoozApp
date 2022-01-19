@@ -1,7 +1,5 @@
 <app-TopNavBar></app-TopNavBar>
-<div *ngIf="showAlert" class="alert alert-success text text-center" role="alert">
-  Your profile updated successfully!
-</div>
+ 
 <!-- Main Content -->
  <body>
   <i [routerLink]="['/']"   style="padding-left: 10px; cursor: pointer;" class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
@@ -43,7 +41,7 @@
     <br> 
     <br> 
   
-    <form id="postForm" [formGroup]="userForm"  (ngSubmit)="UpdateProfile()"> 
+    <form (keydown.enter)="$event.preventDefault()" id="postForm" [formGroup]="userForm"  (ngSubmit)="UpdateProfile()"> 
   <!-- Name Section -->
     <div class="row mb-4"> 
       <div class="col-lg-6">
@@ -74,7 +72,7 @@
       <div class="">
         <label for="exampleInputEmail1" class="form-label">Tags &nbsp; </label>
         <div class="buttonInside">
-          <input type="text" formControlName="stringTags" class="form-control taginput " id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input (keyup.enter)="AddTagging()" type="text" formControlName="stringTags" class="form-control taginput " id="exampleInputEmail1" aria-describedby="emailHelp">
           <button type="button" (click)="AddTagging()" class="tagbutton" id="showPassword">Add</button> 
         </div>
       </div>
@@ -98,8 +96,12 @@
     <div class="col-md-12">
       <div class="">
         <label for="exampleInputEmail1" class="form-label">About Me &nbsp; </label>
-        <input placeholder="Short bio" type="text" formControlName="AboutUs"
-        class="form-control about"  id="exampleInputEmail1" aria-describedby="emailHelp"> 
+        
+        <textarea style="height: 80px;"
+        placeholder="Short bio" type="text" formControlName="AboutUs"
+         
+        class="form-control about"  id="exampleInputEmail1" aria-describedby="emailHelp"
+        ></textarea>
       </div>
      </div>
     

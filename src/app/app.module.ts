@@ -12,6 +12,8 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from 'angularx-social-login';
+ 
+
 import { HttpClientModule } from '@angular/common/http';
 import { JobListComponent } from './Job/JobList/JobList.component';
 import { JobDetailComponent } from './Job/JobDetails/JobDetail.component';
@@ -22,8 +24,9 @@ import { EditComponent } from './Profile/EditProfile/Edit.component';
 import {CloudinaryModule} from '@cloudinary/ng';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll'; 
- 
-
+import { AgmCoreModule } from '@agm/core';
+import { MessagesComponent } from './Shared/messages/messages.component';
+import { HotToastModule } from '@ngneat/hot-toast';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +37,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     UserProfileComponent,
     LoginComponent,
     EditComponent,
+    MessagesComponent,
     WallListComponent],
   imports: [ 
     BrowserModule,
@@ -46,7 +50,12 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     HttpClientModule,
     CloudinaryModule,
     AutocompleteLibModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    HotToastModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCQUre6wTSYWzorWYhozBfVtTEBgIzfQgg',
+      libraries: ['places']
+    })
   ],
   providers: [
     {
@@ -57,7 +66,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '686535990215-6j4hhcqvmi1rdlqg8rq96da45o6gkpph.apps.googleusercontent.com'
+              '547202752586-q5lou7tho2mp7ej1g7cfci3hq5offm46.apps.googleusercontent.com'
             )
           },
           {

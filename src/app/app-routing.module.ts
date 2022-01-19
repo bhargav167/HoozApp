@@ -6,6 +6,7 @@ import { JobListComponent } from './Job/JobList/JobList.component';
 import { JobPostComponent } from './Job/JobPost/JobPost.component';
 import { EditComponent } from './Profile/EditProfile/Edit.component';
 import { UserProfileComponent } from './Profile/UserProfile/UserProfile.component';
+import { MessagesComponent } from './Shared/messages/messages.component';
 import { WallListComponent } from './Wall/wallList/wallList.component';
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path:'editProfile',
     component:EditComponent
+  },
+  {
+    path:'message',
+    component:MessagesComponent
   },
   {
     path: '',

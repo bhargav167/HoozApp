@@ -16,6 +16,7 @@ pagination: Pagination;
 currentPage: number = 1;
 itemsPerPage: number = 4;
 user:SocialAuthentication;
+userId:number;
 isLogedIn:boolean=false;
 isLoading:boolean=true;
 
@@ -30,9 +31,11 @@ IsOnJob:boolean=true;
   ngOnInit() {
     if(localStorage.getItem('user')){
       this.user= JSON.parse(localStorage.getItem('user'));
+      this.userId=this.user.Id;
       this.isLogedIn=true; 
     }else{
       this.isLogedIn=false;
+      window.location.href='/login';
     }
     this.LoadAllWithAddedJob(this.currentPage, this.itemsPerPage); 
   }

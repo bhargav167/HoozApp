@@ -6,6 +6,7 @@ export interface SocialAuthentication {
   Email:string;
   LoginProvider:string;
   ImageUrl:string;
+  UserImage:string;
   CoverImageUrl:string;
   Name:string;
   MobileNumber:string;

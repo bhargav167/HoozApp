@@ -7,6 +7,7 @@ import { PaginatedResult, Pagination } from '../../Model/Pagination';
 import { TagMaster } from '../../Model/TagMaster';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication'; 
 import { WallResponce } from '../../Model/Wall/WallResponce';
+import { ProfileService } from '../../services/Auth/Profile.service';
 import { WallService } from '../../services/Wall/Wall.service';
  
 @Component({
@@ -31,21 +32,27 @@ export class WallListComponent implements OnInit {
   tag:TagMaster;
   searchval:string; 
 user:SocialAuthentication;
-
 //Scroll Variable
 NotEmptPost:boolean=true;
 notScrollY:boolean=true;
 isLogedIn:boolean=false;
+navbarUserPic:string;
  
-  constructor(private _wallServices:WallService,private _http:HttpClient) {  
-  } 
-  ngOnInit() { 
+  constructor(private _wallServices:WallService,private _profileServices:ProfileService, private _http:HttpClient) {  
     if(localStorage.getItem('user')){
       this.user= JSON.parse(localStorage.getItem('user'));
+      this._profileServices.GetUserProfile(this.user.Id).subscribe((data:SocialAuthentication)=>{
+        this.navbarUserPic=data.UserImage;
+        console.log()
+      },err=>{
+        console.log("Something wen wrong"+err);
+      })
       this.isLogedIn=true; 
     }else{
-      this.isLogedIn=false;
+      this.isLogedIn=false; 
     }
+  } 
+  ngOnInit() {  
     this.fireSearchlist(); 
     this.LoadWallData(this.currentPage, this.itemsPerPage, this.userParams); 
   }

@@ -1,6 +1,12 @@
 @media only screen and (max-width: 1600px) and (min-width: 960px) {
-.container-sm {
-  width: 710px;
+  .container-sm{
+    width:710px; 
+    margin-left: 285px;
+  } 
+  .container-fluid {
+    width: 615px;
+    display: flow-root;
+    margin-left: -13px;
 } 
 .about{
   height: 40px; 
@@ -139,7 +145,7 @@ margin-left: -50px;
   border: 0px solid white;
   background: 
     no-repeat;
-  background-size: contain;
+  background-size: cover;
   overflow: hidden;
   /* backface-visibility: hidden;
   transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
@@ -194,8 +200,8 @@ position:absolute;
 right: 139px;
 top: 20px;
 border:none;
-height:30px;
-width:8%;
+height:35px;
+width:15%;
 background-color: black;
 color: white;
 border-radius:8px;
@@ -207,7 +213,11 @@ padding:2px;
   .container-sm {
     width: 710px;
   }  
-
+  .container-fluid {
+    width: 475px;
+    display: flow-root;
+    margin-left: -13px;
+} 
 .btn-ChatHooz{
   background-color: #00fa9a;
   color: black;
@@ -284,7 +294,7 @@ padding:2px;
   border: 0px solid white;
   background: 
     no-repeat;
-  background-size: contain;
+  background-size: cover;
   overflow: hidden;
 /* backface-visibility: hidden;
   transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
@@ -432,7 +442,7 @@ padding:2px;
   border: 0px solid white;
   background: 
     no-repeat;
-  background-size: contain;
+  background-size: cover;
   overflow: hidden;
   /* backface-visibility: hidden;
   transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
@@ -488,7 +498,7 @@ right:20px;
 top: 20px;
 border:none;
 height:30px;
-width:12%;
+width:18%;
 background-color: black;
 color: white;
 border-radius:8px;
@@ -499,7 +509,12 @@ padding:2px;
 } 
   .container-sm {
     width: 100%; 
-  }  
+  } 
+  .container-fluid {
+    width: 375px;
+    display: flow-root;
+    margin-left: -13px;
+} 
   .btn-ChatHooz{
   background-color:  #00fa9a;
   color: black;
@@ -562,26 +577,22 @@ padding:2px;
 }
 .front__face-photo {
   position: relative;
-  top: -47px;
-  height: 82px;
-  width: 94px;
-  margin: 0 auto;
-  margin-right: 180px;
-  border-radius: 50%;
-  border: 0px solid white;
-  
-  background: no-repeat;
-  background-size: cover;
-  overflow: hidden;
+    top: -47px;
+    height: 94px;
+    width: 94px;
+    margin: 0 auto;
+    margin-right: 180px;
+    border-radius: 50%;
+    border: 0px solid white;
+    background: no-repeat;
+    background-size: cover;
+    overflow: hidden;
 }
 }  
 input[type="file"] {
   display: none;
 }
-.container-fluid {
-  width: 800px;
-   display: flow-root; 
-}
+
   .badgeTag{
     display: inline-block;
        padding: 3px;  

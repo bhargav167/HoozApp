@@ -9,10 +9,18 @@ import { ProfileService } from '../../services/Auth/Profile.service';
 })
 export class UserProfileComponent implements OnInit {
   userId: number;
+  loggedUserId:number;
+  loggeduser: SocialAuthentication;
   user: SocialAuthentication;
   constructor(private _userServices: ProfileService,
     private _router: ActivatedRoute) {
     this.userId = _router.snapshot.params['id'];
+
+    if(localStorage.getItem('user')){
+      this.loggeduser= JSON.parse(localStorage.getItem('user')); 
+      this.loggedUserId=this.loggeduser.Id;
+    }else{ 
+    }
   }
 
   ngOnInit() {
@@ -21,6 +29,7 @@ export class UserProfileComponent implements OnInit {
   LoadUserData(id: number) {
     this._userServices.GetUserProfile(id).subscribe((data: SocialAuthentication) => {
       this.user = data; 
+
     })
   }
 }

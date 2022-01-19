@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-    api_url: 'http://hoozonlive-001-site1.btempurl.com/api/',
-  // api_url: 'https://localhost:5001/api/',
+ api_url: 'http://hoozonlive-001-site1.btempurl.com/api/',
+   //  api_url: 'http://localhost:5000/api/',
 };

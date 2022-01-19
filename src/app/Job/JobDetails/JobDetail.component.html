@@ -10,7 +10,7 @@
           <div class="d-flex flex-row justify-content-start">
             <div class="icon">
               <img class="rounded-circle img-fluid"
-                [src]="job.IsAnonymous==false?job.User.ImageUrl:job.AnonmousUserPic"/>
+                [src]="job.IsAnonymous==false?job.User.UserImage:job.AnonmousUserPic"/>
 
             </div>
             <div class="ms-2 c-details">
@@ -26,7 +26,7 @@
 
       <!-- Section-2 Job Status -->
       <div class="row col-sm-12 mt-4"> 
-        <div class="d-flex">
+        <div *ngIf="loggedUserId==job.User.Id" class="d-flex">
           <div class="d-flex flex-row justify-content-start">
             <div class="">
                <p style="font-weight: bold;">Job status</p>
@@ -54,8 +54,8 @@
                 <div  *ngIf="job.ImagesUrl==null"  style="text-align: center; margin-top: 60px;">
                     <img  style="height: 80px; width: 80px;" src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
                 </div>
-                <div  *ngIf="job.ImagesUrl!=null"  style="text-align: center; margin-top: 10px;">
-                  <img  style="height: 180px; width: 180px;" [src]="job.ThumbNailImage" alt="job image" />
+                <div  *ngIf="job.ImagesUrl!=null"  style="text-align: center; margin-top: 2px;">
+                  <img class="img img-responsive img-fluid"  style="height: 183px; width: 560px;" [src]="job.ThumbNailImage" alt="job image" />
               </div>
               
     

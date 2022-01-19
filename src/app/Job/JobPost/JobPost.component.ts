@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators }  from '@angular/forms';
 import { JobModel } from '../../Model/Job/JobModel';
 import { JobTags } from '../../Model/Job/JobTags';
-import { JobPostService } from '../../services/JobPost/JobPost.service';
+import { JobPostService } from '../../services/JobPost/JobPost.service'; 
+import { HotToastService } from '@ngneat/hot-toast';
 function isValid(str){
   return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(str);
  }
@@ -26,15 +27,19 @@ export class JobPostComponent implements OnInit {
   ischeckedAnonymously:boolean=false;
   ischeckedPublic:boolean=true;
   userId:number;
-  constructor(private fb:FormBuilder,private _jobServices:JobPostService) {
+
+  
+  latitude: number;
+  longitude: number;
+  constructor(private fb:FormBuilder,private _jobServices:JobPostService,private toast: HotToastService) {
     if(localStorage.getItem('user')){
       let user= JSON.parse(localStorage.getItem('user'));
     this.userId=user.Id;
     }else{
       window.location.href='/login';
-    }
+    } 
+   }
    
-   } 
   ngOnInit() {
     this.createJobPostForm(); 
   }
@@ -59,45 +64,46 @@ export class JobPostComponent implements OnInit {
   changePostPublic(){
     this.ischeckedPublic=!this.ischeckedPublic;
     this.jobPostForm.controls['IsPublic'].setValue(this.ischeckedPublic);
-  }
+  } 
 
+  showToast() {
+    this.toast.success('Job created Successfully', { 
+      position: 'top-center', 
+    }); 
+  }
   AddJobPost() {
     if(this.Tags.length==0){ 
-      this.Tagmessage='Tags is Mandatory. Please provide one.';
+      this.toast.warning('Tag is required!', { 
+        position: 'top-center', 
+      }); 
       return;
-    }
-    
-    this.btnLoader=true;
-    this.jobPostForm.controls['UserId'].setValue(this.userId); 
-    this.jobPostForm.controls['Tags'].setValue(this.Tags); 
-    this.jobModel = Object.assign({}, this.jobPostForm.value); 
+    } 
+    this.btnLoader=true;  
+        this.jobPostForm.controls['UserId'].setValue(this.userId);
+        this.jobPostForm.controls['Tags'].setValue(this.Tags);
+        this.jobModel = Object.assign({}, this.jobPostForm.value);
+        this._jobServices.AddJobPost(this.jobModel).subscribe((data: any) => {
+          if (this.filetoPost == undefined) {
+            this._jobServices.AddPostImages(data.CreatedJob.Id, null).subscribe(() => {
+            }, error => {
+              console.log(error);
+            })
+            this.jobPostForm.controls['Tags'].setValue('');
+            this.Tags = [];
+            this.Tagmessage = '';
+            this.btnLoader = false;
+            this.imgURL = null;
+            this.jobPostForm.reset();
+            this.showAlert = true;
 
-    this._jobServices.AddJobPost(this.jobModel).subscribe((data:any)=>{ 
-     if(this.filetoPost==undefined){
-      this._jobServices.AddPostImages(data.CreatedJob.Id,null).subscribe(()=>{
-       },error=>{
-         console.log(error);
-       })
-      this.jobPostForm.controls['Tags'].setValue(''); 
-      this.Tags=[];
-      this.Tagmessage='';
-      this.btnLoader=false;
-      this.imgURL=null;
-      this.jobPostForm.reset();
-      this.showAlert=true;
+           this.showToast();
+          } else {
+            this.uploadFile(data.CreatedJob.Id, this.filetoPost);
+          }
 
-      setTimeout(() => {
-        if (this.showAlert == true) {
-          this.showAlert = false;
-        }
-      }, 3200);
-     }else{
-      this.uploadFile(data.CreatedJob.Id,this.filetoPost); 
-     }
-   
-    },error=>{
-      console.log(error);
-    }) 
+        }, error => {
+          console.log(error);
+        }) 
   }
 
   public uploadFile = (jobId,files) => {
@@ -126,11 +132,13 @@ export class JobPostComponent implements OnInit {
    })
   } 
 
-  AddTagging() {   
-    if (this.jobPostForm.controls['Tags'].value == ''
-      || this.jobPostForm.controls['Tags'].value.indexOf('  ') != -1 || !isValid(this.jobPostForm.controls['Tags'].value))
+  AddTagging() {  
+    if(this.jobPostForm.controls['Tags'].value == ''){ 
+      this.toast.warning('Tag is required!', { 
+        position: 'top-center', 
+      }); 
       return;
-
+    }  
     this.jobTag = {
       TagName: this.jobPostForm.controls['Tags'].value.trim(),
       TagMasterId: 0

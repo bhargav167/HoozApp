@@ -17,10 +17,9 @@ export class WallService {
   GetWall(page?, itemsPerPage?,searchTerm?): Observable<PaginatedResult<WallResponce>>{
     const paginatedResult: PaginatedResult<WallResponce> = new PaginatedResult<WallResponce>();
     let params = new HttpParams();
-    if (page != null && itemsPerPage != null) {
+    if (page != null && itemsPerPage != null) { 
       params = params.append('pageNumber', page);
-      params = params.append('pageSize', itemsPerPage);
-      
+      params = params.append('pageSize', itemsPerPage); 
     }
      params = params.append('searchTag', searchTerm);
     return this._http.get<WallResponce>(this.baseURL+'Wall/WebGetJobsByMultiTags',{ observe: 'response', params })
