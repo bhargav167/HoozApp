@@ -2,7 +2,7 @@
  
 <!-- Main Content -->
  <body>
-  <i [routerLink]="['/']"   style="padding-left: 10px; cursor: pointer;" class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+  <i  (click)="backClicked()"   style="padding-left: 10px; cursor: pointer;" class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
 
   <div class="container-sm ">  
      <!-- User Card Section-1 -->
@@ -124,7 +124,7 @@
   <br><br><br> <br><br>
   <footer id="footer" class="d-flex fixed-bottom">
     <div class="container d-flex align-items-center justify-content-center   text-center">
-      <button  role="button" class="btn btn-lg btn-reset">Reset</button>&nbsp;&nbsp;
+      <button (click)="Reset()"  role="button" class="btn btn-lg btn-reset">Reset</button>&nbsp;&nbsp;
       <button  type="submit" form="postForm" [disabled]="!userForm.valid || btnLoader" class="btn btn-lg btn-save">
           <span *ngIf="this.btnLoader"  class="spinner-border spinner-border-sm" role="status"></span>
           <span *ngIf="this.btnLoader"  class="load-text"> Saving...</span>

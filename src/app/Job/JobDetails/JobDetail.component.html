@@ -1,6 +1,6 @@
 <app-TopNavBar></app-TopNavBar> 
 
-<i [routerLink]="['/']"   style="padding-left: 10px; cursor: pointer;" class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+<i  (click)="backClicked()"   style="padding-left: 10px; cursor: pointer;" class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
 
 <div class="container-sm mt-4"> 
   
@@ -10,51 +10,59 @@
           <div class="d-flex flex-row justify-content-start">
             <div class="icon">
               <img class="rounded-circle img-fluid"
-                [src]="job.IsAnonymous==false?job.User.UserImage:job.AnonmousUserPic"/>
+                [src]="job?.IsAnonymous==false?job?.User?.UserImage:job?.AnonmousUserPic"/>
 
             </div>
             <div class="ms-2 c-details">
-              <h6 class="mt-2">{{job.User.Name}}<br> <span>{{job.TimeAgo}}</span></h6>
+              <h6 class="mt-2">{{job?.User?.Name}}<br> <span>{{job?.TimeAgo}}</span></h6>
             </div>
           </div> 
         </div>
         <div class="d-flex justify-content-end"> <span>
-            <button type="button" class="btn btn-EditHooz">Chat</button>
+            <button *ngIf="loggedUserId!=job?.User?.Id" type="button" class="btn btn-EditHooz">Chat</button>
+            <button style="color: white; background-color: black;" *ngIf="loggedUserId==job?.User?.Id" type="button" class="btn btn-EditHooz">Edit</button>
           </span>
         </div>
       </div>
 
       <!-- Section-2 Job Status -->
       <div class="row col-sm-12 mt-4"> 
-        <div *ngIf="loggedUserId==job.User.Id" class="d-flex">
+        <div *ngIf="loggedUserId==job?.User?.Id" class="d-flex">
           <div class="d-flex flex-row justify-content-start">
-            <div class="">
+            <div class="mt-2">
                <p style="font-weight: bold;">Job status</p>
             </div>
             <div class="ms-2 c-details">
                 <div class="select">
-                    <select name="nameValueSelect" class="select__field" required>
-                        <option>OPEN</option>
-                        <option>CLOSED</option>
-                        <option>DELETED</option>
+                    <select (change)="UpdateStatus($event)" name="nameValueSelect" class="select__field" required>
+                        <option [selected]="job.JobStatus==='OPEN'" value="OPEN">OPEN&nbsp;</option>
+                        <option [selected]="job.JobStatus==='ONHOLD'" value="ONHOLD">ONHOLD&nbsp;</option>
+                        <option [selected]="job.JobStatus==='CLOSED'" value="CLOSED">CLOSED&nbsp;</option>
+                        <option [selected]="job.JobStatus==='DELETED'" value="DELETED">DELETED&nbsp;</option>
                     </select>
                   </div>
             
             </div>
           </div>  
         </div>
-        <div class="d-flex justify-content-end"> <span><img class="img   share" src="./../../../assets/Logo/shareDot.png"/></span> </div>
-       
-      </div>
-
+        <div class="d-flex justify-content-end">
+          <span>
+            <img class="img share" src="./../../../assets/Logo/shareDot.png" />
+          </span>
+          
+        </div>
+        
+      
+        </div>
+     
       <!-- Image Section-2 --> 
        <div class="row col-sm-12 mt-0"> 
         <div class="d-flex">
             <label id="custom-button" class="form-control two">
-                <div  *ngIf="job.ImagesUrl==null"  style="text-align: center; margin-top: 60px;">
+                <div  *ngIf="job?.ImagesUrl==null"  style="text-align: center; margin-top: 60px;">
                     <img  style="height: 80px; width: 80px;" src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
                 </div>
-                <div  *ngIf="job.ImagesUrl!=null"  style="text-align: center; margin-top: 2px;">
+                <div  *ngIf="job?.ImagesUrl!=null"  style="text-align: center; margin-top: 2px;">
                   <img class="img img-responsive img-fluid"  style="height: 183px; width: 560px;" [src]="job.ThumbNailImage" alt="job image" />
               </div>
               
@@ -67,14 +75,14 @@
          <!-- Job Descriptions --> 
          <div class="row col-md-10 mt-2"> 
             <div class="d-flex">
-              <p style="font-family: roboto;">{{job.Descriptions}}</p>
+              <p style="font-family: roboto;">{{job?.Descriptions}}</p>
             </div> 
           </div>
 
            <!-- Tags --> 
          <div class="row col-md-11 mt-2"> 
             <div class="d-flex">
-                <div *ngFor="let item of job.Tags" class="badgeTag" >
+                <div *ngFor="let item of job?.Tags" class="badgeTag" >
                     <span class="badge bg-badge text-dark"><p class="text text-center" style="color: white; margin-top: 4px;">{{item.TagName}}</p>   </span>
                     &nbsp; 
                    </div>
@@ -88,7 +96,7 @@
            
                     <label for="exampleInputPassword1"  class="form-label">Location  </label>
                    
-                  <p style="font-size: 12px; font-weight: bold;">{{job.Address}}</p>
+                  <p style="font-size: 12px; font-weight: bold;">{{job?.Address}}</p>
                   </div>
           </div>
      </div>

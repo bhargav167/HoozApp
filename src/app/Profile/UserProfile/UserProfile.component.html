@@ -1,7 +1,7 @@
 <app-TopNavBar></app-TopNavBar> 
 
 <body>
-  <i [routerLink]="['/']"   style="padding-left: 10px; cursor: pointer;" class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+  <i  (click)="backClicked()"   style="padding-left: 10px; cursor: pointer;" class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
 
 <div class="container-sm mt-4">  
   <!-- User Card Section-1 -->
@@ -32,7 +32,7 @@
       </div>
 
       <div style="z-index: 1;" class="d-flex justify-content-end"> <span>
-          <button type="button" class="btn btn-ChatHooz">Chat</button>
+          <button type="button" *ngIf="userId!=loggedUserId" class="btn btn-ChatHooz">Chat</button>
           <button type="button" *ngIf="userId==loggedUserId"  [routerLink]="['/editProfile']" routerLinkActive="router-link-active" class="btn btn-EditHooz">Edit</button> 
         </span>
       </div> 

@@ -277,7 +277,7 @@
 } 
 }
 
-@media only screen and (max-width:480px) and (min-width:100px) {
+@media only screen and (max-width:480px) and (min-width:359px) {
   
   .container-sm {
     width: 100%; 
@@ -359,6 +359,27 @@
   background-size: cover;
   overflow: hidden;
 }
+.btn-EditHooz{
+  background-color: black;
+  color: white;
+  border-radius: 0.5rem;
+  width: 4.6rem;
+  font-weight: bold;
+  margin-top: -80px;
+  margin-left: -77px; 
+}
+} 
+
+@media only screen and (max-width:360px) and (min-width:100px) {
+  .btn-EditHooz{
+    background-color: black;
+    color: white;
+    border-radius: 0.5rem;
+    width: 4.6rem;
+    font-weight: bold;
+    margin-top: -80px;
+    margin-left: -77px; 
+  }
 } 
 
 .container-fluid {

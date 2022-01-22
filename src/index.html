@@ -23,26 +23,18 @@
    
     //File Change Event code
    
-    const customBtn = document.getElementById("custom-button");
-    customBtn.addEventListener("click", function(e) {
+  //   const customBtn = document.getElementById("custom-button");
+  //   customBtn.addEventListener("click", function(e) {
      
-  realFileBtn.click();
-});
+  // realFileBtn.click();
+//});
 
 function FileUpload() { 
   document.getElementById("custom-text").value = document.getElementById("real-file").value.match(
       /[\/\\]([\w\d\s\.\-\(\)]+)$/
     )[1];
     
-}
- 
-function openNav() {
-  document.getElementById("myNav").style.width = "100%";
-}
-
-function closeNav() {
-  document.getElementById("myNav").style.width = "0%";
-}
+} 
 function rangeSlide(value) {
         document.getElementById('rangeValue').innerHTML = value+' kms';
     }

@@ -9,7 +9,7 @@
     display: none;
   }
   .form-input{
-    font-size: x-small;
+    font-size: medium;
   }
 .form {
   width: 290px;
@@ -86,7 +86,7 @@
   font-size:medium; 
 }
 } 
-@media only screen and (max-width:480px) and (min-width:100px) {
+@media only screen and (max-width:480px) and (min-width:359px) {
   .section-dropdown1 {
     position: absolute;
       background-color: #111;
@@ -110,13 +110,56 @@
     display: none;
   } 
   .form {
-    width: 178px; 
+    width: 181px; 
    }
   
 .form-input::placeholder{
-  font-size: x-small;
+  font-size: medium;
 }
 } 
+
+@media only screen and (max-width:360px) and (min-width:100px){
+  .form {
+    width:170px;  
+   }
+   .addIco{
+    margin-left: 4px;
+  }
+  .section-dropdown1 {
+    position: absolute;
+      background-color: #111;
+      color: #fff !important;
+      padding: 2px;
+      top: 70px;
+      margin-left: 172px;
+      width: 16%;
+      border-radius: 0.6rem;
+      display: block;
+      box-shadow: 0 14px 35px 0 rgb(9 9 12 / 40%);
+      z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+      /* transform: translateY(20px);
+      transition: all 200ms linear; */
+      
+    height: 500px;
+  }
+  .togs{
+    display: none;
+  }
+  .form-input::placeholder{
+    font-size: medium;
+  }
+  .form-input{
+    height: 40px;
+    text-indent: 0;
+    border-radius: 10px;
+    background-color: #eff2f5;
+    color: #000;
+    font-size: medium;
+    margin-left: 5px;
+}
+}
 
 
 /* //Toggle css */ 
@@ -162,7 +205,7 @@
 .section-dropdown1:after {
   position: absolute;
   top: -7px;
-  left: 161px;
+  left: 152px;
   width: 0; 
   height: 0; 
   border-left: 8px solid transparent;
@@ -170,7 +213,7 @@
   border-bottom: 8px solid #111;
   content: '';
   display: block;
-  z-index: 2;
+  z-index: 999;
   transition: all 200ms linear;
 } 
 .dropdown:checked ~ .section-dropdown1{
@@ -193,7 +236,7 @@
     border-radius: 0.6rem;
     display: block;
     box-shadow: 0 14px 35px 0 rgb(9 9 12 / 40%);
-    z-index: 2;
+    z-index: 999;
     opacity: 0;
     pointer-events: none;
     /* transform: translateY(20px);

@@ -4,7 +4,8 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { Tags } from '../../Model/User/Tags';
 import { ProfileService } from '../../services/Auth/Profile.service';
-
+import swal from 'sweetalert2';
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-Edit',
   templateUrl: './Edit.component.html',
@@ -31,7 +32,7 @@ export class EditComponent implements OnInit {
 
   ImageUrl:string;
   CoverImageUrl:string; 
-  constructor(private _profileServices: ProfileService,private fb:FormBuilder,private toast: HotToastService) {
+  constructor(private _profileServices: ProfileService,private fb:FormBuilder,private toast: HotToastService,private _location: Location) {
   let user= JSON.parse(localStorage.getItem('user'));
   this.userId=user.Id;
   }
@@ -43,8 +44,7 @@ export class EditComponent implements OnInit {
   }
 
   showToast() {
-    this.toast.success('Profile Updated Successfully', {
-     
+    this.toast.success('Profile Updated Successfully', { 
       position: 'top-center', 
     }); 
   }
@@ -178,5 +178,29 @@ export class EditComponent implements OnInit {
       return obj.TagName != item;
     });
     this.userForm.controls['tags'].setValue(this.Tags);
+  }
+
+  //Reset Profile
+  Reset(){
+    swal.fire({
+      text: `Are you sure to reset`,
+      showDenyButton: true, 
+      confirmButtonText: 'Yes',
+      confirmButtonColor:'#00fa9a', 
+      denyButtonText: `No`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.userForm.reset();
+      } else if (result.isDenied) {
+        swal.fire('Reset Abort', '', 'info')
+      }
+    })
+   
+  }
+  
+  //Back loacation History
+  backClicked() {
+    this._location.back();
   }
 }

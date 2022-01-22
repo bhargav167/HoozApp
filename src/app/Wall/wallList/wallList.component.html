@@ -2,11 +2,11 @@
 <nav class="mb-5 navbar navbar-light bg-light1">
   <div class="container-fluid"> 
         <img [routerLink]="['/']" routerLinkActive="router-link-active"  class="img-responsive" style="height: 3.2rem; width: 4.5rem; cursor: pointer;" src="../../../assets/Logo/hoozlogo.png"/>
-        
+    
   <form class="d-flex justify-content-between">
       <div class="input-group">                    
         <div class="form "> 
-          <input (keyup.enter)="Search(searchval)" [(ngModel)]="searchval" #movieSearchInput id="searchTag" type="text" class="form-control form-input" placeholder="search your interest or needs"> 
+          <input (keyup.enter)="Search(searchval)" [(ngModel)]="searchval" #movieSearchInput id="searchTag" type="text" class="form-control form-input" placeholder="Search here.."> 
           <div class="searchSuggetion" *ngIf="hidesearchlist">
             <ul>
               <li *ngFor="let item of tag.data" (click)="Search(item.TagName)">
@@ -22,9 +22,11 @@
       </div>
   </form> 
 
+  <img [routerLink]="['/jobpost']" class="addIco img img-responsive img-fluid tog" routerLinkActive="router-link-active"  *ngIf="isLogedIn" style="padding: 2px; height: 1.9rem; width: 2rem; cursor: pointer;"  src="../../../assets/HoozIcon/HoozAdd.png"/>
+  
   <div type="button" class="navbar-toggler justify-content-end tog"  >
     <label class="for-dropdown" for="dropdown1">
-      <img style="height: 0.7rem; width: 1.9rem; cursor: pointer;" class=" img img-responsive img-fluid"
+      <img style="height: 0.7rem; width: 1.7rem; cursor: pointer;" class=" img img-responsive img-fluid"
         src="../../../assets/Logo//Toggle.png" />
     </label> 
     </div> 
@@ -34,10 +36,11 @@
       <div *ngIf="isLogedIn">
         <a id="b" [routerLink]="['/profile',user.Id]"><i class="far fa-user-circle"></i>&nbsp;&nbsp; MY PROFILE
         </a><br><br>
-        <a id="b"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;MY JOB POSTS </a><br><br>
+        <a id="b"[routerLink]="['/joblist']"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;Job Listing </a><br><br>
+        <a id="b"[routerLink]="['/jobpost']"> <i class="fa fa-plus"></i>&nbsp;&nbsp;Create Post </a><br><br>
       </div>
       <a id="b" href="#"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br> 
-      <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;Login </a><br><br> 
+      <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;Login </a><br> 
      
       <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
 
@@ -69,7 +72,7 @@
                 </li>
       
               
-                  <li *ngIf="isLogedIn"  class="nav-item dropdown profileimg">
+                  <li [routerLink]="['/profile',user.Id]" *ngIf="isLogedIn"  class="nav-item dropdown profileimg">
                   <img
                   src="{{user?.ImageUrl}}"
   
@@ -89,7 +92,7 @@
         <a class="links" *ngIf="!isLogedIn"   [routerLink]="['/login']">Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
        
         <!-- <a  class="links" aria-current="page" [routerLink]="['/']">Wall</a> &nbsp;&nbsp; -->
-        <a *ngIf="isLogedIn"  class="nav-item dropdown profileimg">
+        <a *ngIf="isLogedIn" [routerLink]="['/profile',user.Id]"  class="nav-item dropdown profileimg">
           <img 
           src="{{navbarUserPic}}" 
           class="rounded-circle img-fluid" style="margin-top: -8px; width: 38px; height: 38px;" href="#"
@@ -108,7 +111,7 @@
           <div *ngIf="isLogedIn">
             <a id="b" [routerLink]="['/profile',user.Id]"><i class="far fa-user-circle"></i>&nbsp;&nbsp; MY PROFILE
             </a><br><br>
-            <a id="b"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;MY JOB POSTS </a><br><br>
+            <a [routerLink]="['/joblist']"  id="b"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;Job Listing </a><br><br>
           </div>
           <a id="b" href="#"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br> 
           <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;Login </a><br><br> 

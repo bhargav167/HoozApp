@@ -1,17 +1,19 @@
 <app-TopNavBar></app-TopNavBar>
+<i  (click)="backClicked()"   style="padding-left: 10px; cursor: pointer;" class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+
  <!--  Tab Toggle -->  
  <div class="container-sm mt-0">
     <div class="row col-sm-12"> 
         <div class="d-flex">
           <div class="d-flex flex-row justify-content-between">
-            <div [(ngModel)]="IsOnJob"  (change)="checkValue(IsOnJob?false:true)" class="switch-button">
-              <input  class="switch-button-checkbox" type="checkbox" />
+            <div   class="switch-button">
+              <input [(ngModel)]="!IsOnJob" (change)="checkValue(IsOnJob?false:true)" class="switch-button-checkbox" type="checkbox" />
               <label  class="switch-button-label" for=""><span class="switch-button-label-span">Jobs</span></label>
             </div> 
           </div>
         </div>
     </div> 
-</div>
+</div> 
 
 <!-- MAIN CONTENT -->
 <div class="container-sm "> 
@@ -41,47 +43,43 @@
   
     </div> 
     <!-- post Sections -->
-    <div class="row col-lg-10 mt-0">
-      <div class="d-flex">
-        <div class="d-flex   justify-content-between">
-          <p>
-            {{item.Descriptions}}
-          </p> 
-        </div>
+    <div style="cursor: pointer;"  [routerLink]="['/jobDetails',item.Id]" >
+      <div class="row col-lg-10 mt-0">
+        <div class="d-flex">
+          <div class="d-flex   justify-content-between">
+            <p>
+              {{item.Descriptions}}
+            </p> 
+          </div>
+        </div> 
       </div> 
-    </div> 
-    <!-- Image Section -->
-    <div class="row col-sm-10 mb-4"> 
-        <div class="d-flex justify-content-between"> 
-                <label id="custom-button" class="form-control two">
-                    <div *ngIf="item.ImagesUrl==null"  style="text-align: center; margin-top: 60px;">
-                        <img  style="height: 80px; width: 80px;" src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
+      <!-- Image Section -->
+      <div  class="row col-sm-10 mb-4"> 
+          <div class="d-flex justify-content-between"> 
+                  <label id="custom-button" class="form-control two">
+                      <div style="cursor: pointer;" *ngIf="item.ImagesUrl==null"  style="text-align: center; margin-top: 60px;">
+                          <img  style="height: 80px; width: 80px;" src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
+                      </div> 
+  
+                      <div style="cursor: pointer;" *ngIf="item.ImagesUrl!=null"  style="text-align: center; margin-top: 8px;">
+                        <img  style="height: 170px; width: 300px;" [src]="item.ThumbNailImage" alt="your image" />
                     </div> 
-
-                    <div *ngIf="item.ImagesUrl!=null"  style="text-align: center; margin-top: 8px;">
-                      <img  style="height: 170px; width: 300px;" [src]="item.ThumbNailImage" alt="your image" />
-                  </div> 
-                  </label> 
-        </div>
+                    </label> 
+          </div>
+      </div>
     </div>
+ 
      </div>
     
    </div> 
-   
-  <div *ngIf="isLoading" class="lds-ring">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-   <br><br>
-  </div>
-
-  <div *ngIf = "!NotEmptPost" class=""> 
-    <br><br>  <br> 
-    <div class="col-md-12 d-flex justify-content-center">
-      <div class="text-muted h6 alert alert-secondary p-2">No More Result</div>
-    </div> 
-</div>
+   <div *ngIf="isLoading" class="lds-ring">
+     <div></div>
+     <div></div>
+     <div></div>
+     <div></div>
+     <br><br>
+   </div>
+ 
   </div>
 
   <br>

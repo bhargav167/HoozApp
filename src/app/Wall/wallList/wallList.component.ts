@@ -68,6 +68,7 @@ navbarUserPic:string;
     this.currentPage=1;
     this.hidesearchlist=false; 
     this.userParams=(document.getElementById("searchTag") as HTMLInputElement).value;
+   
     this.LoadWallData(this.currentPage, this.itemsPerPage, searchTerm); 
     this.searchval=searchTerm; 
   }
@@ -96,15 +97,18 @@ navbarUserPic:string;
       // subscription for response
     ).subscribe((text: string) => {
       //Search api call
-      this.searchGetCall(text).subscribe((res:any) => { 
-        if(res.data.length==0){
-          this.hidesearchlist=false; 
+     if(text==''){
+       this.hidesearchlist=false;
+     }
+      this.searchGetCall(text).subscribe((res: any) => {
+        if (res.data.length == 0) {
+          this.hidesearchlist = false;
           return;
         }
-       this.tag=res;  
-       this.hidesearchlist=true;
-       this.showClose=true;
-      }, (err) => { 
+        this.tag = res;
+        this.hidesearchlist = true;
+        this.showClose = true;
+      }, (err) => {
         console.log('error', err);
       });
     }); 

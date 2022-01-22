@@ -12,8 +12,6 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from 'angularx-social-login';
- 
-
 import { HttpClientModule } from '@angular/common/http';
 import { JobListComponent } from './Job/JobList/JobList.component';
 import { JobDetailComponent } from './Job/JobDetails/JobDetail.component';
@@ -21,12 +19,18 @@ import { UserProfileComponent } from './Profile/UserProfile/UserProfile.componen
 import { WallListComponent } from './Wall/wallList/wallList.component';
 import { LoginComponent } from './Auth/Login/Login.component';
 import { EditComponent } from './Profile/EditProfile/Edit.component';
-import {CloudinaryModule} from '@cloudinary/ng';
-import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll'; 
 import { AgmCoreModule } from '@agm/core';
 import { MessagesComponent } from './Shared/messages/messages.component';
 import { HotToastModule } from '@ngneat/hot-toast';
+// for HttpClient import:
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+
+// for Router import:
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+
+// for Core import:
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,9 +52,15 @@ import { HotToastModule } from '@ngneat/hot-toast';
     AppRoutingModule,
     SocialLoginModule,
     HttpClientModule,
-    CloudinaryModule,
-    AutocompleteLibModule,
     InfiniteScrollModule,
+      // for HttpClient use:
+      LoadingBarHttpClientModule,
+
+      // for Router use:
+      LoadingBarRouterModule,
+  
+      // for Core use:
+      LoadingBarModule,
     HotToastModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCQUre6wTSYWzorWYhozBfVtTEBgIzfQgg',

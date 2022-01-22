@@ -13,9 +13,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
   this.token = localStorage.getItem('user');
-  this.IsLogin();
- 
-
+  this.IsLogin(); 
   }
   IsLogin(){
     if (this.token) {

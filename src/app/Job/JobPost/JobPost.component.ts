@@ -4,6 +4,8 @@ import { JobModel } from '../../Model/Job/JobModel';
 import { JobTags } from '../../Model/Job/JobTags';
 import { JobPostService } from '../../services/JobPost/JobPost.service'; 
 import { HotToastService } from '@ngneat/hot-toast';
+import {Location} from '@angular/common';
+import { Router } from '@angular/router';
 function isValid(str){
   return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(str);
  }
@@ -20,8 +22,7 @@ export class JobPostComponent implements OnInit {
   jobModel:JobModel;
   public imagePath;
   imgURL: any;
-  filetoPost:any;
-  showAlert:boolean=false;
+  filetoPost:any; 
   public message: string;
   public Tagmessage: string;
   ischeckedAnonymously:boolean=false;
@@ -31,7 +32,11 @@ export class JobPostComponent implements OnInit {
   
   latitude: number;
   longitude: number;
-  constructor(private fb:FormBuilder,private _jobServices:JobPostService,private toast: HotToastService) {
+  constructor(private fb:FormBuilder,
+    private _jobServices:JobPostService,
+    private toast: HotToastService,
+    private _router:Router,
+    private _location: Location) {
     if(localStorage.getItem('user')){
       let user= JSON.parse(localStorage.getItem('user'));
     this.userId=user.Id;
@@ -81,7 +86,9 @@ export class JobPostComponent implements OnInit {
     this.btnLoader=true;  
         this.jobPostForm.controls['UserId'].setValue(this.userId);
         this.jobPostForm.controls['Tags'].setValue(this.Tags);
-        this.jobModel = Object.assign({}, this.jobPostForm.value);
+        this.jobPostForm.controls['IsAnonymous'].setValue(this.ischeckedAnonymously);
+        this.jobPostForm.controls['IsPublic'].setValue(this.ischeckedPublic);
+        this.jobModel = Object.assign({}, this.jobPostForm.value); 
         this._jobServices.AddJobPost(this.jobModel).subscribe((data: any) => {
           if (this.filetoPost == undefined) {
             this._jobServices.AddPostImages(data.CreatedJob.Id, null).subscribe(() => {
@@ -93,10 +100,9 @@ export class JobPostComponent implements OnInit {
             this.Tagmessage = '';
             this.btnLoader = false;
             this.imgURL = null;
+            this.showToast();
             this.jobPostForm.reset();
-            this.showAlert = true;
-
-           this.showToast();
+            this._router.navigate(['/joblist'], { queryParams: {target: 'MyPost'}});
           } else {
             this.uploadFile(data.CreatedJob.Id, this.filetoPost);
           }
@@ -119,14 +125,8 @@ export class JobPostComponent implements OnInit {
     this.Tagmessage='';
     this.btnLoader=false;
     this.imgURL=null;
-    this.jobPostForm.reset();
-    this.showAlert=true;
-
-    setTimeout(() => {
-      if (this.showAlert == true) {
-        this.showAlert = false;
-      }
-    }, 3200);
+    this.jobPostForm.reset();  
+    this._router.navigate(['/joblist'], { queryParams: {target: 'MyPost'}});
    },error=>{
      console.log(error);
    })
@@ -172,5 +172,11 @@ export class JobPostComponent implements OnInit {
       this.filetoPost=files;
       this.message = "";
     }
+  }
+
+  
+   //Back loacation History
+   backClicked() {
+    this._location.back();
   }
 }

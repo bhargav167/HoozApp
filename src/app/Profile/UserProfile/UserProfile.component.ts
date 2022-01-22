@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; 
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { ProfileService } from '../../services/Auth/Profile.service';
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-UserProfile',
   templateUrl: './UserProfile.component.html',
@@ -12,7 +13,8 @@ export class UserProfileComponent implements OnInit {
   loggedUserId:number;
   loggeduser: SocialAuthentication;
   user: SocialAuthentication;
-  constructor(private _userServices: ProfileService,
+  constructor(private _userServices: ProfileService
+    ,private _location: Location,
     private _router: ActivatedRoute) {
     this.userId = _router.snapshot.params['id'];
 
@@ -28,8 +30,12 @@ export class UserProfileComponent implements OnInit {
   }
   LoadUserData(id: number) {
     this._userServices.GetUserProfile(id).subscribe((data: SocialAuthentication) => {
-      this.user = data; 
-
+      this.user = data;  
     })
+  }
+  
+  //Back loacation History
+  backClicked() {
+    this._location.back();
   }
 }
