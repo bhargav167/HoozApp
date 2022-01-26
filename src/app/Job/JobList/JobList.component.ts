@@ -6,6 +6,7 @@ import { JobPostService } from '../../services/JobPost/JobPost.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import {Location} from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { SharedService } from '../../services/SharedServices/Shared.service';
 @Component({
   selector: 'app-JobList',
   templateUrl: './JobList.component.html',
@@ -30,7 +31,9 @@ export class JobListComponent implements OnInit {
   IsOnJob: boolean = true;
   constructor(private _jobServices: JobPostService,
     private activatedRoute: ActivatedRoute, 
+    private _sharedServices:SharedService,
     private _location: Location) { 
+      this._sharedServices.checkInterNetConnection();
      this.loadUserData();
     }
 

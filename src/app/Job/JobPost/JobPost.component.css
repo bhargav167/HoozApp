@@ -563,10 +563,14 @@ input[type="file"] {
    }
    .btn-hoozGreen:disabled .load-text{
     color: white;
-   }
-   
+   }  
    .alert-success:target {
     transition: all .5s ease-in-out;
     overflow: hidden;
     margin-top: -120px;
   }
+  textarea[type="text"]{
+    color: black;
+    font-size: 300;
+    height: 100px;
+}

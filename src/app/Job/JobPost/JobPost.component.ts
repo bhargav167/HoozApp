@@ -6,6 +6,7 @@ import { JobPostService } from '../../services/JobPost/JobPost.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import {Location} from '@angular/common';
 import { Router } from '@angular/router';
+import { SharedService } from '../../services/SharedServices/Shared.service';
 function isValid(str){
   return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(str);
  }
@@ -36,13 +37,16 @@ export class JobPostComponent implements OnInit {
     private _jobServices:JobPostService,
     private toast: HotToastService,
     private _router:Router,
+    private _sharedServices:SharedService,
     private _location: Location) {
+      this._sharedServices.checkInterNetConnection();
     if(localStorage.getItem('user')){
       let user= JSON.parse(localStorage.getItem('user'));
     this.userId=user.Id;
     }else{
       window.location.href='/login';
     } 
+  
    }
    
   ngOnInit() {

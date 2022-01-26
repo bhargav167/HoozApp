@@ -9,7 +9,7 @@ import { ProfileService } from '../../services/Auth/Profile.service';
 })
 export class TopNavBarComponent implements OnInit {
 user:SocialAuthentication; 
-navbarUserPic:string;
+navbarUserPic:string='http://res.cloudinary.com/livsolution/image/upload/c_fill,f_auto,g_faces,h_128,q_auto,w_128/DefaultUser_ktw7ga.png';
 
 isLogedIn:boolean=false;
 @Input() searchTerm:string;

@@ -31,6 +31,8 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 // for Core import:
 import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { SharedService } from './services/SharedServices/Shared.service';
+import { JobEditComponent } from './Job/JobEdit/JobEdit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +40,7 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
     JobPostComponent,
     JobListComponent,
     JobDetailComponent,
+    JobEditComponent,
     UserProfileComponent,
     LoginComponent,
     EditComponent,
@@ -68,6 +71,7 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
     })
   ],
   providers: [
+    SharedService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

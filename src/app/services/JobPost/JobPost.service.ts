@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { PaginatedResult } from '../../Model/Pagination';
 import { JobResponces } from '../../Model/Job/JobResponces';
 import { map } from 'rxjs/operators';
+import { UserJobs } from '../../Model/Job/UserJobs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,10 @@ export class JobPostService {
   AddJobPost(job:JobModel){
     return  this._http.post(this.baseURL + 'Job/AddJob',job);
     } 
+
+  UpdateJobPost(jobId: number, job: JobModel) {
+    return this._http.post(this.baseURL + 'Job/UpdateJob/' + jobId, job);
+  } 
 
     AddPostImages(jobId:number, file:any){
       return  this._http.post(this.baseURL + 'Job/AddJobImage/'+jobId,file);
@@ -75,4 +80,9 @@ export class JobPostService {
     UpdateJobStatus(jobId:number, JobStatus:string){
       return  this._http.post(this.baseURL + 'Job/UpdateJobStatus/'+jobId+'/'+JobStatus,{});
     }
+
+    //Add Job By User
+    AddJobToUser(userJobs:UserJobs){
+    return  this._http.post(this.baseURL + 'User/AddUserJobs',userJobs);
+  }
 }

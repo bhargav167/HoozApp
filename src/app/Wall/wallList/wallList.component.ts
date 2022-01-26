@@ -8,7 +8,9 @@ import { TagMaster } from '../../Model/TagMaster';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication'; 
 import { WallResponce } from '../../Model/Wall/WallResponce';
 import { ProfileService } from '../../services/Auth/Profile.service';
+import { SharedService } from '../../services/SharedServices/Shared.service';
 import { WallService } from '../../services/Wall/Wall.service';
+
  
 @Component({
   selector: 'app-wallList',
@@ -36,9 +38,14 @@ user:SocialAuthentication;
 NotEmptPost:boolean=true;
 notScrollY:boolean=true;
 isLogedIn:boolean=false;
-navbarUserPic:string;
- 
-  constructor(private _wallServices:WallService,private _profileServices:ProfileService, private _http:HttpClient) {  
+navbarUserPic:string='http://res.cloudinary.com/livsolution/image/upload/c_fill,f_auto,g_faces,h_128,q_auto,w_128/DefaultUser_ktw7ga.png';
+
+isOnline:boolean;
+
+  constructor(private _wallServices:WallService,
+     private _profileServices:ProfileService,
+     private _sharedServices:SharedService,
+     private _http:HttpClient) { 
     if(localStorage.getItem('user')){
       this.user= JSON.parse(localStorage.getItem('user'));
       this._profileServices.GetUserProfile(this.user.Id).subscribe((data:SocialAuthentication)=>{
@@ -53,6 +60,7 @@ navbarUserPic:string;
     }
   } 
   ngOnInit() {  
+    this._sharedServices.checkInterNetConnection();
     this.fireSearchlist(); 
     this.LoadWallData(this.currentPage, this.itemsPerPage, this.userParams); 
   }

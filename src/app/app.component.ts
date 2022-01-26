@@ -8,10 +8,10 @@ import { Component, OnInit } from "@angular/core";
 })
 export class AppComponent implements OnInit {
   token:string;
-  loggedIn:boolean=false;
+  loggedIn:boolean=false; 
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit() { 
   this.token = localStorage.getItem('user');
   this.IsLogin(); 
   }

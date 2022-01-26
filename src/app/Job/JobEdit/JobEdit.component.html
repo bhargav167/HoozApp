@@ -7,22 +7,21 @@
     <div class="row mb-4">
       <div class="col-sm-10 col-md-11">
         <!-- //Form Section -->
-        <p class="small-font">POST YOUR REQUIREMENT  </p>
+        <p class="small-font">Update YOUR REQUIREMENT  </p>
         
-        <p class="medium-font">Create your post</p>
+        <p class="medium-font">Update your post</p>
         </div>
        
       <div class="col-sm-2 col-md-1">
         <button type="submit"   form="postForm" id="post" [disabled]="!jobPostForm.valid || btnLoader"  class="btn btn-hoozGreen">
           <p class="button-content">
             <span *ngIf="this.btnLoader"  class="spinner-border text-light spinner-border-sm" role="status"></span>
-            <span *ngIf="this.btnLoader"  class="load-text"> Posting...</span>
-            <span *ngIf="!this.btnLoader" class="btn-text">  Post &nbsp;&nbsp;</span>
+            <span *ngIf="this.btnLoader"  class="load-text"> Updating...</span>
+            <span *ngIf="!this.btnLoader" class="btn-text">  Update &nbsp;&nbsp;</span>
            <i *ngIf="!this.btnLoader" class="fa fa-paper-plane"></i>
           </p>
         </button>
-      </div>
-    
+      </div> 
     </div>
 
     <div class="row">
@@ -45,7 +44,7 @@
           <div class="mb-4">
             <label for="exampleInputPassword1" class="form-label">Add Image</label>
             <label id="custom-button" class="form-control two">
-              <div  *ngIf="!imgURL" style="text-align: center; margin-top: 50px;">
+              <div  *ngIf="!imgURL && !jobModel.ImagesUrl==null" style="text-align: center; margin-top: 50px;">
                 <i  class="fas fa-plus"></i>
               </div>
               <div *ngIf="imgURL" style="text-align: center; margin-top: 0px;">
@@ -58,25 +57,12 @@
               <small class="text text-danger">{{message}}</small>
           </div>
   
-          <div class="row col-sm-12">
-            <label for="exampleInputPassword1" class="form-label">Tags* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-          <div class="buttonInside">
-            <input (keyup.enter)="AddTagging()"  formControlName="Tags" placeholder=" add tags to your post"  class="form-control taginput"  type="text">
-            <button type="button" (click)="AddTagging()" class="tagbutton" id="showPassword">Add</button> 
-           
-          </div>
-          </div>  
+        
         </form>
       </div>
     </div> 
     <br>
-  </div>
-
-  <div class="container-fluid mb-4"> 
-      <div *ngFor="let item of Tags" class="badgeTag" >
-        <span   class="badge bg-badge text-dark">{{item.TagName}} &nbsp; <i (click)="RemoveTagging(item.TagName)" class="fa fa-times" aria-hidden="true"></i></span>
-      </div>  
-  </div>
+  </div> 
 
   <div class="container-sm">
     <div class="row mt-1">

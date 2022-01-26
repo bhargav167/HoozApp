@@ -6,6 +6,7 @@ import { Tags } from '../../Model/User/Tags';
 import { ProfileService } from '../../services/Auth/Profile.service';
 import swal from 'sweetalert2';
 import {Location} from '@angular/common';
+import { SharedService } from '../../services/SharedServices/Shared.service';
 @Component({
   selector: 'app-Edit',
   templateUrl: './Edit.component.html',
@@ -32,7 +33,11 @@ export class EditComponent implements OnInit {
 
   ImageUrl:string;
   CoverImageUrl:string; 
-  constructor(private _profileServices: ProfileService,private fb:FormBuilder,private toast: HotToastService,private _location: Location) {
+  constructor(private _profileServices: ProfileService,
+    private _sharedServices:SharedService,
+    private fb:FormBuilder,private toast: HotToastService,
+    private _location: Location) {
+      this._sharedServices.checkInterNetConnection();
   let user= JSON.parse(localStorage.getItem('user'));
   this.userId=user.Id;
   }

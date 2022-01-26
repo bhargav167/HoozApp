@@ -1,18 +1,17 @@
+ 
 import { Component, NgZone, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators }  from '@angular/forms'; 
 import { SocialAuthService } from "angularx-social-login";
-import { GoogleLoginProvider } from "angularx-social-login";
-import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
-import { ProfileService } from '../../services/Auth/Profile.service'; 
-import { SharedService } from '../../services/SharedServices/Shared.service';
-
+import { GoogleLoginProvider } from "angularx-social-login"; 
+import { SocialAuthentication } from '../../../Model/User/SocialAuthentication';
+import { ProfileService } from '../../../services/Auth/Profile.service';
 
 @Component({
-  selector: 'app-Login',
-  templateUrl: './Login.component.html',
-  styleUrls: ['./Login.component.css']
+  selector: 'app-AuthModal',
+  templateUrl: './AuthModal.component.html',
+  styleUrls: ['./../../Login/Login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class AuthModalComponent implements OnInit {
   loginUser:SocialAuthentication;
   loginForm:FormGroup;
 
@@ -22,12 +21,14 @@ export class LoginComponent implements OnInit {
   zoom: number;
   address: string; 
 
-  constructor(private fb:FormBuilder, 
+  constructor(private fb:FormBuilder,
+   
     private _profileServices:ProfileService,
-    private _sharedServices:SharedService,
     private authService: SocialAuthService) { 
-      this._sharedServices.checkInterNetConnection();
-       
+      if(localStorage.getItem('user')){
+        window.location.href='/';
+      }else{ 
+      }
     }
 
   ngOnInit() {

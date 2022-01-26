@@ -3,7 +3,6 @@
 <i  (click)="backClicked()"   style="padding-left: 10px; cursor: pointer;" class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
 
 <div class="container-sm mt-4"> 
-  
     <!-- User Sections -->
       <div class="row col-sm-12"> 
         <div class="d-flex">
@@ -18,11 +17,16 @@
             </div>
           </div> 
         </div>
-        <div class="d-flex justify-content-end"> <span>
-            <button *ngIf="loggedUserId!=job?.User?.Id" type="button" class="btn btn-EditHooz">Chat</button>
-            <button style="color: white; background-color: black;" *ngIf="loggedUserId==job?.User?.Id" type="button" class="btn btn-EditHooz">Edit</button>
-          </span>
+        <div *ngIf="loggedUserId!=job?.User?.Id"  class="d-flex justify-content-end"> <span>
+            <button type="button" class="btn btn-EditHooz">Chat</button>
+              </span>
         </div>
+
+        <div *ngIf="loggedUserId==job?.User?.Id" class="d-flex justify-content-end"> <span>
+          <button  style="color: white; background-color: black;" (click)="Edit(job.Id)" type="button" class="btn btn-EditHooz">Edit</button>
+        
+        </span>
+      </div>
       </div>
 
       <!-- Section-2 Job Status -->
@@ -36,20 +40,26 @@
                 <div class="select">
                     <select (change)="UpdateStatus($event)" name="nameValueSelect" class="select__field" required>
                         <option [selected]="job.JobStatus==='OPEN'" value="OPEN">OPEN&nbsp;</option>
-                        <option [selected]="job.JobStatus==='ONHOLD'" value="ONHOLD">ONHOLD&nbsp;</option>
+                        <option [selected]="job.JobStatus==='ON HOLD'" value="ON HOLD">ONHOLD&nbsp;</option>
                         <option [selected]="job.JobStatus==='CLOSED'" value="CLOSED">CLOSED&nbsp;</option>
                         <option [selected]="job.JobStatus==='DELETED'" value="DELETED">DELETED&nbsp;</option>
                     </select>
                   </div>
             
             </div>
+           
           </div>  
         </div>
-        <div class="d-flex justify-content-end">
-          <span>
-            <img class="img share" src="./../../../assets/Logo/shareDot.png" />
-          </span>
-          
+        <div class="d-flex justify-content-end mt-2">
+          <div class="dropdown" style="float:left;"> 
+              <img style="cursor: pointer;" class="img share" src="./../../../assets/Logo/shareDot.png" /> 
+            <div class="dropdown-content mt-0"> 
+              <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId" style="cursor: pointer;" (click)="AddToJob()">Add To Job</a>
+            <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId" style="cursor: pointer;" (click)="Report()">Report</a>
+            <a style="cursor: pointer;">Share</a>
+            </div>
+          </div>
+       
         </div>
         
       

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { ProfileService } from '../../services/Auth/Profile.service';
 import {Location} from '@angular/common';
+import { SharedService } from '../../services/SharedServices/Shared.service';
 @Component({
   selector: 'app-UserProfile',
   templateUrl: './UserProfile.component.html',
@@ -15,13 +16,13 @@ export class UserProfileComponent implements OnInit {
   user: SocialAuthentication;
   constructor(private _userServices: ProfileService
     ,private _location: Location,
+    private _sharedServices:SharedService,
     private _router: ActivatedRoute) {
-    this.userId = _router.snapshot.params['id'];
-
+      this._sharedServices.checkInterNetConnection();
+    this.userId = this._router.snapshot.params['id']; 
     if(localStorage.getItem('user')){
       this.loggeduser= JSON.parse(localStorage.getItem('user')); 
       this.loggedUserId=this.loggeduser.Id;
-    }else{ 
     }
   }
 
