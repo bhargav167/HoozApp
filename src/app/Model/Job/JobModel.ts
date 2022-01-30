@@ -6,6 +6,7 @@ export interface JobModel {
     UserId: number;
     Descriptions: string; 
     ImagesUrl:string;
+    JobDetailImage:string;
     AnonmousUserPic:string;
     Latitude:string;
     Longitude:string;

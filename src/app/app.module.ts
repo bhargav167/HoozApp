@@ -33,6 +33,7 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { SharedService } from './services/SharedServices/Shared.service';
 import { JobEditComponent } from './Job/JobEdit/JobEdit.component';
+import { HelpDeskComponent } from './Settings/HelpDesk/HelpDesk.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +46,7 @@ import { JobEditComponent } from './Job/JobEdit/JobEdit.component';
     LoginComponent,
     EditComponent,
     MessagesComponent,
+    HelpDeskComponent,
     WallListComponent],
   imports: [ 
     BrowserModule,

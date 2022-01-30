@@ -40,7 +40,7 @@ userJob:UserJobs;
   }
   LoadJobDetailsById(id:number){
     this._jobServices.GetJobById(id).subscribe((data:JobModel)=>{
-      this.job=data[0];  
+      this.job=data[0];   
     }) 
   }
 

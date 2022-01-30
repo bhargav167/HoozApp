@@ -52,6 +52,9 @@
           <small class="text text-center"
           *ngIf="userForm.get('Name').hasError('required') && userForm.get('Name').touched"
           id="emailHelp" class="form-text text text-danger">Name is requires.</small>
+          <small class="text text-center"
+          *ngIf="userForm.get('Name').hasError('maxlength') && userForm.get('Name').touched"
+          id="emailHelp" class="form-text text text-danger">Name length should be less than 20.</small>
         </div>
        </div>
        <div class="col-lg-6">

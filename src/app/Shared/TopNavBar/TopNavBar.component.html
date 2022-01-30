@@ -1,4 +1,4 @@
-<nav class="mb-3 navbar navbar-light bg-light1">
+<nav class="mb-3 navbar  navbar-light bg-light1">
   <div class="container-fluid"> 
         <img [routerLink]="['/']" routerLinkActive="router-link-active"  class="img-responsive" style="height: 3.2rem; width: 4.5rem; cursor: pointer;" src="../../../assets/Logo/hoozlogo.png"/>
         
@@ -27,7 +27,7 @@
         <a id="b"[routerLink]="['/joblist']"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;Job Listing </a><br><br>
         <a id="b"[routerLink]="['/jobpost']"> <i class="fa fa-plus"></i>&nbsp;&nbsp;Create Post </a><br><br>
          
-         <a id="b" href="#"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br><br> 
+         <a id="b" [routerLink]="['/settings/helpDesk']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br><br> 
         <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
 
         <div class="section-dropdown-sub"> 
@@ -97,7 +97,7 @@
             </a><br><br>
             <a [routerLink]="['/joblist']" routerLinkActive="router-link-active"  id="b"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;Job Listing </a><br><br>
             </div>
-          <a id="b" href="#"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br> 
+          <a id="b" [routerLink]="['/settings/helpDesk']" routerLinkActive="router-link-active" > <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br> 
           <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;Login </a><br><br> 
          
           <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />

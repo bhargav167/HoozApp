@@ -5,6 +5,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { Location } from '@angular/common'; 
 import { SharedService } from '../../services/SharedServices/Shared.service';
 import { JobPostService } from '../../services/JobPost/JobPost.service';
+import { Router } from '@angular/router';
  @Component({
   selector: 'app-JobEdit',
   templateUrl: './JobEdit.component.html',
@@ -27,6 +28,7 @@ export class JobEditComponent implements OnInit {
   longitude: number;
   constructor(private fb:FormBuilder, 
     private _jobServices:JobPostService,
+    private _router:Router,
     private toast: HotToastService, 
     private _sharedServices:SharedService,
     private _location: Location) {
@@ -62,7 +64,7 @@ export class JobEditComponent implements OnInit {
        this.jobPostForm.controls['ImagesUrl'].setValue(this.jobModel.ImagesUrl);
        this.ischeckedAnonymously = this.jobModel.IsAnonymous;
        this.ischeckedPublic = this.jobModel.IsPublic;
-       this.imgURL = this.jobModel.ImagesUrl;
+       this.imgURL = this.jobModel.JobDetailImage;
      })
    }
 
@@ -76,6 +78,7 @@ export class JobEditComponent implements OnInit {
    this._jobServices.AddPostImages(jobId,formData).subscribe(()=>{ 
     this.btnLoader=false; 
     this.showToast();
+    this._router.navigate(['/joblist'], { queryParams: {target: 'MyPost'}});
    },error=>{
      console.log(error);
    })
@@ -118,11 +121,14 @@ export class JobEditComponent implements OnInit {
     }); 
   }
   AddJobPost() {  
+    this.btnLoader=true;  
     this.jobModel = Object.assign({}, this.jobPostForm.value);
-    this._jobServices.UpdateJobPost(this.editJobId,this.jobModel).subscribe((data:any)=>{
-      
-      if(this.filetoPost==undefined) return this.showToast();;
-
+    this._jobServices.UpdateJobPost(this.editJobId,this.jobModel).subscribe((data:any)=>{  
+      if(this.filetoPost==undefined){
+        this.btnLoader = false;
+        this._router.navigate(['/joblist'], { queryParams: {target: 'MyPost'}});
+        return this.showToast(); 
+      } 
       this.uploadFile(this.editJobId, this.filetoPost);
     })
   } 

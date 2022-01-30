@@ -1,7 +1,19 @@
 <app-TopNavBar></app-TopNavBar> 
 
 <i  (click)="backClicked()"   style="padding-left: 10px; cursor: pointer;" class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
-
+ <!--  Tab Toggle -->  
+ <div *ngIf="loggedUserId==job?.User?.Id" class="container-sm mt-0">
+  <div class="row col-sm-12"> 
+      <div class="d-flex">
+        <div class="d-flex flex-row justify-content-between">
+          <div   class="switch-button">
+            <input  class="switch-button-checkbox" type="checkbox" />
+            <label  class="switch-button-label" for=""><span class="switch-button-label-span">Post</span></label>
+          </div> 
+        </div>
+      </div>
+  </div> 
+</div> 
 <div class="container-sm mt-4"> 
     <!-- User Sections -->
       <div class="row col-sm-12"> 
@@ -73,7 +85,7 @@
                     <img  style="height: 80px; width: 80px;" src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
                 </div>
                 <div  *ngIf="job?.ImagesUrl!=null"  style="text-align: center; margin-top: 2px;">
-                  <img class="img img-responsive img-fluid"  style="height: 183px; width: 560px;" [src]="job.ThumbNailImage" alt="job image" />
+                  <img class="img img-responsive img-fluid"  style="height: 183px; width: 560px;" [src]="job.JobDetailImage" alt="job image" />
               </div>
               
     

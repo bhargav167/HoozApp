@@ -7,6 +7,7 @@ import { ProfileService } from '../../services/Auth/Profile.service';
 import swal from 'sweetalert2';
 import {Location} from '@angular/common';
 import { SharedService } from '../../services/SharedServices/Shared.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-Edit',
   templateUrl: './Edit.component.html',
@@ -36,6 +37,7 @@ export class EditComponent implements OnInit {
   constructor(private _profileServices: ProfileService,
     private _sharedServices:SharedService,
     private fb:FormBuilder,private toast: HotToastService,
+    private _router:Router,
     private _location: Location) {
       this._sharedServices.checkInterNetConnection();
   let user= JSON.parse(localStorage.getItem('user'));
@@ -60,7 +62,7 @@ export class EditComponent implements OnInit {
       ImageUrl: [''],
       Email:[''],
       CoverImageUrl: [''],
-      Name: ['',Validators.required],
+      Name: ['',[Validators.required,Validators.maxLength(25)]],
       MobileNumber: [''],
       WebSiteUrl: [''],
       Latitude: [''],
@@ -158,6 +160,7 @@ export class EditComponent implements OnInit {
       this.btnLoader=false;
       this.showAlert=true;
       this.showToast();
+      this._router.navigate(['/profile/',this.userId]);
     })
   }
   

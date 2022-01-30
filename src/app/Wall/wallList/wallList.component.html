@@ -1,5 +1,5 @@
  
-<nav class="mb-5 navbar navbar-light bg-light1">
+<nav class="mb-5 navbar sticky-top navbar-light bg-light1 mb-5">
   <div class="container-fluid"> 
         <img [routerLink]="['/']" routerLinkActive="router-link-active"  class="img-responsive" style="height: 3.2rem; width: 4.5rem; cursor: pointer;" src="../../../assets/Logo/hoozlogo.png"/>
     
@@ -39,7 +39,7 @@
         <a id="b"[routerLink]="['/joblist']"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;Job Listing </a><br><br>
         <a id="b"[routerLink]="['/jobpost']"> <i class="fa fa-plus"></i>&nbsp;&nbsp;Create Post </a><br><br>
       </div>
-      <a id="b" href="#"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br> 
+      <a id="b" [routerLink]="['/settings/helpDesk']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br> 
       <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;Login </a><br> 
      
       <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
@@ -113,7 +113,7 @@
             </a><br><br>
             <a [routerLink]="['/joblist']"  id="b"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;Job Listing </a><br><br>
           </div>
-          <a id="b" href="#"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br> 
+          <a id="b" [routerLink]="['/settings/helpDesk']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br> 
           <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;Login </a><br><br> 
          
           <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
@@ -130,15 +130,14 @@
      
     </div>
 </div> 
-</nav> 
-
+</nav>  
 <!-- MAIN CONTENT -->
-  <div infiniteScroll [infiniteScrollDistance]="7" (scrolled)="onScroll()" class="search-results">
+  <div infiniteScroll [infiniteScrollDistance]="7" (scrolled)="onScroll()" class="search-results mt-5">
   <div class="row"> 
       <div *ngFor="let item of walldatas; let i = index" class="col-lg-3 col-md-4">
           <div  class="card p-3  ">
-              <div [routerLink]="['/profile',item.Job.User.Id]" class="d-flex justify-content-between">
-                  <div class="d-flex flex-row align-items-center">
+              <div  class="d-flex justify-content-between">
+                  <div [routerLink]="['/profile',item.Job.User.Id]" class="d-flex flex-row align-items-center">
                       <div class="icon">
                          <img *ngIf="item.Job.IsAnonymous===false" class="rounded-circle img-fluid" 
                         src="{{item.Job.User?.UserImage}}"
@@ -150,8 +149,18 @@
                       <div class="ms-2 c-details">
                           <h6 class="mb-0"  >{{item?.Job.User.Name}}<br> <span>{{item?.Job.TimeAgo}}</span></h6> 
                       </div>
+                  </div> 
+                  <div class="d-flex justify-content-end">
+                    <div class="dropdown"> 
+                      <span><img class="img img-responsive share" src="./../../../assets/Logo/shareDot.png"/></span>
+                      <div class="dropdown-content mt-0"> 
+                        <a *ngIf="userId!=item.Job?.User?.Id && userId" style="cursor: pointer;" (click)="AddToJob(item?.Job?.Id)">Add To Job</a>
+                      <a *ngIf="userId!=item.Job?.User?.Id && userId" style="cursor: pointer;" (click)="Report(item?.Job?.Id)">Report</a>
+                      <a style="cursor: pointer;">Share</a>
+                      </div>
+                    </div>
                   </div>
-                  <div class=""> <span><img class="img img-responsive share" src="./../../../assets/Logo/shareDot.png"/></span> </div>
+                
               </div>
               <div  [routerLink]="['/jobDetails',item.Job.Id]" routerLinkActive="router-link-active" class="mt-1">
                   <p class="heading">{{item?.Job.Descriptions | slice:0:50}}{{ item?.Job.Descriptions.length > 40 ? '...' : '' }} </p>

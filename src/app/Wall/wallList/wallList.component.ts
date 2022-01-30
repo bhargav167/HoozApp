@@ -1,15 +1,19 @@
+import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, of } from 'rxjs'; 
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { PaginatedResult, Pagination } from '../../Model/Pagination';
+import { Pagination } from '../../Model/Pagination';
 import { TagMaster } from '../../Model/TagMaster';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication'; 
 import { WallResponce } from '../../Model/Wall/WallResponce';
 import { ProfileService } from '../../services/Auth/Profile.service';
 import { SharedService } from '../../services/SharedServices/Shared.service';
 import { WallService } from '../../services/Wall/Wall.service';
+import swal from 'sweetalert2';
+import { JobPostService } from '../../services/JobPost/JobPost.service';
+import { ReportJobService } from '../../services/JobPost/ReportJob.service';
 
  
 @Component({
@@ -19,7 +23,7 @@ import { WallService } from '../../services/Wall/Wall.service';
 })
 export class WallListComponent implements OnInit { 
   @ViewChild('movieSearchInput', { static: true }) movieSearchInput: ElementRef;
- 
+  currentPosition = window.pageYOffset;
   public flag: boolean = true; 
   userParams: string = '';
   pagination: Pagination;
@@ -34,23 +38,27 @@ export class WallListComponent implements OnInit {
   tag:TagMaster;
   searchval:string; 
 user:SocialAuthentication;
+userId:number;
 //Scroll Variable
 NotEmptPost:boolean=true;
 notScrollY:boolean=true;
 isLogedIn:boolean=false;
 navbarUserPic:string='http://res.cloudinary.com/livsolution/image/upload/c_fill,f_auto,g_faces,h_128,q_auto,w_128/DefaultUser_ktw7ga.png';
 
-isOnline:boolean;
+isOnline:boolean; 
 
   constructor(private _wallServices:WallService,
+    private _reportServices:ReportJobService,
      private _profileServices:ProfileService,
+     private _jobServices:JobPostService,
      private _sharedServices:SharedService,
      private _http:HttpClient) { 
+      
     if(localStorage.getItem('user')){
       this.user= JSON.parse(localStorage.getItem('user'));
+      this.userId=this.user.Id;
       this._profileServices.GetUserProfile(this.user.Id).subscribe((data:SocialAuthentication)=>{
         this.navbarUserPic=data.UserImage;
-        console.log()
       },err=>{
         console.log("Something wen wrong"+err);
       })
@@ -64,7 +72,7 @@ isOnline:boolean;
     this.fireSearchlist(); 
     this.LoadWallData(this.currentPage, this.itemsPerPage, this.userParams); 
   }
-
+ 
   //For Nav
   LogOut(){
     localStorage.clear();
@@ -155,11 +163,76 @@ isOnline:boolean;
       this.pagination = res.pagination;  
     })
   }
-  onScroll(){
-    if(this.notScrollY && this.NotEmptPost){
+  onScroll(){ 
+    if(this.notScrollY && this.NotEmptPost){ 
       this.isLoading=true;
       this.notScrollY=false;
       this.LoadNextPost();
     }
+  } 
+
+
+  // Job Added
+  AddToJob(jobId){
+    swal.fire({
+      text: `Confirm to add Job Post Id: ${jobId}`,
+      showDenyButton: true, 
+      confirmButtonText: 'Yes',
+      confirmButtonColor:'#00fa9a', 
+      denyButtonText: `No`,
+      denyButtonColor:'black'
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        let userJob={
+          jobModelId:jobId,
+          socialAuthenticationId:this.userId
+        };  
+        swal.fire({
+          text:'Please wait.. Adding job',
+          showConfirmButton:false,
+          icon:'info'
+        })
+        this._jobServices.AddJobToUser(userJob).subscribe((data:any)=>{ 
+          swal.fire(`Job ${jobId} Added successfully!`, '', 'success')
+        },err=>{
+          console.log(err);
+        }) 
+      } else if (result.isDenied) {
+        swal.fire('Changes are not saved', '', 'info')
+      }
+    })
+  }
+  Report(jobId){
+    swal.fire({
+      title: `Report`,
+      input: 'textarea',
+      showDenyButton: true, 
+      confirmButtonText: 'Report',
+      confirmButtonColor:'#00fa9a', 
+      denyButtonText: `Cancel`,
+      denyButtonColor:'black'
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        let reportJob={
+          jobModelId:jobId,
+          socialAuthenticationId:this.userId,
+          Isusue:result.value
+        };   
+        swal.fire({
+          text:'Please wait... Reporting',
+          showConfirmButton:false,
+          icon:'info'
+        })
+        this._reportServices.ReportJob(reportJob).subscribe((data:any)=>{ 
+          swal.fire(`Job ${jobId} Reported!`, '', 'success')
+        },err=>{
+          console.log(err);
+        }) 
+      } else if (result.isDenied) {
+        swal.fire('Changes are not saved', '', 'info')
+      }
+    })
   }
 }

@@ -15,7 +15,7 @@
       <div class="col-sm-2 col-md-1">
         <button type="submit"   form="postForm" id="post" [disabled]="!jobPostForm.valid || btnLoader"  class="btn btn-hoozGreen">
           <p class="button-content">
-            <span *ngIf="this.btnLoader"  class="spinner-border text-light spinner-border-sm" role="status"></span>
+            <!-- <span *ngIf="this.btnLoader"  class="spinner-border text-light spinner-border-sm" role="status"></span> -->
             <span *ngIf="this.btnLoader"  class="load-text"> Updating...</span>
             <span *ngIf="!this.btnLoader" class="btn-text">  Update &nbsp;&nbsp;</span>
            <i *ngIf="!this.btnLoader" class="fa fa-paper-plane"></i>
@@ -48,7 +48,7 @@
                 <i  class="fas fa-plus"></i>
               </div>
               <div *ngIf="imgURL" style="text-align: center; margin-top: 0px;">
-                <img  style="height: 138px; width: 200px;" [src]="imgURL" alt="your image" />
+                <img  style="height: 135px; width: 500px;" [src]="imgURL" alt="your image" />
                 
               </div>
   

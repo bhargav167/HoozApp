@@ -34,6 +34,6 @@ isLogedIn:boolean=false;
   }
   LogOut(){
     localStorage.clear();
-    location.href='/login';
+    location.href='/';
   }
 }
