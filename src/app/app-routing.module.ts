@@ -10,8 +10,10 @@ import { JobListComponent } from './Job/JobList/JobList.component';
 import { JobPostComponent } from './Job/JobPost/JobPost.component';
 import { EditComponent } from './Profile/EditProfile/Edit.component';
 import { UserProfileComponent } from './Profile/UserProfile/UserProfile.component';
+import { DownloadComponent } from './Settings/Download/Download.component';
 import { HelpDeskComponent } from './Settings/HelpDesk/HelpDesk.component';
 import { MessagesComponent } from './Shared/messages/messages.component';
+import { UserListComponent } from './Wall/UserList/userList.component';
 import { WallListComponent } from './Wall/wallList/wallList.component';
 
 const routes: Routes = [
@@ -64,9 +66,14 @@ const routes: Routes = [
     path: '',
     component:WallListComponent
   },
+   
   {
     path: 'settings/helpDesk',
     component:HelpDeskComponent
+  },
+  {
+    path: 'settings/download',
+    component:DownloadComponent
   },
 ];
 

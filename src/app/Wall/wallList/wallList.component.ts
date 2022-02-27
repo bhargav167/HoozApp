@@ -19,7 +19,7 @@ import { ReportJobService } from '../../services/JobPost/ReportJob.service';
 @Component({
   selector: 'app-wallList',
   templateUrl: './wallList.component.html',
-  styleUrls: ['./wallList.component.css']
+  styleUrls: ['./wallList.component.scss']
 })
 export class WallListComponent implements OnInit { 
   @ViewChild('movieSearchInput', { static: true }) movieSearchInput: ElementRef;
@@ -38,15 +38,19 @@ export class WallListComponent implements OnInit {
   tag:TagMaster;
   searchval:string; 
 user:SocialAuthentication;
-userId:number;
+userId:number=0;
 //Scroll Variable
 NotEmptPost:boolean=true;
 notScrollY:boolean=true;
 isLogedIn:boolean=false;
+isShowingMenu:boolean=true;
 navbarUserPic:string='http://res.cloudinary.com/livsolution/image/upload/c_fill,f_auto,g_faces,h_128,q_auto,w_128/DefaultUser_ktw7ga.png';
 
 isOnline:boolean; 
+isJobAdded:boolean=false;
 
+// TabToggleTrackVariable
+  IsOnJob: boolean = true;
   constructor(private _wallServices:WallService,
     private _reportServices:ReportJobService,
      private _profileServices:ProfileService,
@@ -69,10 +73,19 @@ isOnline:boolean;
   } 
   ngOnInit() {  
     this._sharedServices.checkInterNetConnection();
-    this.fireSearchlist(); 
-    this.LoadWallData(this.currentPage, this.itemsPerPage, this.userParams); 
+    this.fireSearchlist();
+    this.LoadWallData(this.currentPage, this.itemsPerPage, this.userParams,this.userId); 
   }
- 
+ //Check is this job added already
+ IsAddedJob(userId: number, jobId: number) {
+  this._jobServices.IsAddedJob(userId,jobId).subscribe((data:any)=>{ 
+    if(data.Status==200){
+     this.isJobAdded=false;
+    }else{
+      this.isJobAdded=true;
+    }
+  })
+}
   //For Nav
   LogOut(){
     localStorage.clear();
@@ -80,21 +93,23 @@ isOnline:boolean;
   }
 
   //Search wall
-  Search(searchTerm){ 
+  Search(searchTerm){  
     this.currentPage=1;
-    this.hidesearchlist=false; 
-    this.userParams=(document.getElementById("searchTag") as HTMLInputElement).value;
-   
-    this.LoadWallData(this.currentPage, this.itemsPerPage, searchTerm); 
+    this.hidesearchlist=false;
+    (document.getElementById("searchTag") as HTMLInputElement).value= searchTerm;
+    this.userParams=(document.getElementById("searchTag") as HTMLInputElement).value; 
     this.searchval=searchTerm; 
+    this.LoadWallData(this.currentPage, this.itemsPerPage, searchTerm,this.userId); 
+   
   }
   ClearSearch(){ 
+    (document.getElementById("searchTag") as HTMLInputElement).value= '';
     this.showClose=false;
     this.hidesearchlist=false;
     this.searchval='';
     this.userParams='';
     this.NotEmptPost=true;
-    this.LoadWallData(this.currentPage, this.itemsPerPage, this.userParams); 
+    this.LoadWallData(this.currentPage, this.itemsPerPage, this.userParams,this.userId); 
   }
   fireSearchlist(){
     fromEvent(this.movieSearchInput.nativeElement, 'keyup').pipe(
@@ -140,18 +155,18 @@ isOnline:boolean;
 
   
   
-  LoadWallData(currentPage:number, itemsPerPage:number,userParams) {
+  LoadWallData(currentPage:number, itemsPerPage:number,userParams,userId) {
  this.isLoading=true;
-    this._wallServices.GetWall(currentPage, itemsPerPage, userParams).subscribe((res:any) => { 
+    this._wallServices.GetWall(currentPage, itemsPerPage, userParams,userId).subscribe((res:any) => { 
       this.walldata = res.result; 
       this.walldatas=res.result;
       this.pagination = res.pagination;  
-    this.isLoading=false; 
+    this.isLoading=false;  
     })
   } 
   LoadNextPost(){ 
     this.currentPage=this.currentPage+1;
-     this._wallServices.GetWall(this.currentPage, this.itemsPerPage, this.userParams).subscribe((res:any) => { 
+     this._wallServices.GetWall(this.currentPage, this.itemsPerPage, this.userParams,this.userId).subscribe((res:any) => { 
        const newData=res.result;
        this.isLoading=false;
        if(newData.length===0){
@@ -194,12 +209,17 @@ isOnline:boolean;
           icon:'info'
         })
         this._jobServices.AddJobToUser(userJob).subscribe((data:any)=>{ 
-          swal.fire(`Job ${jobId} Added successfully!`, '', 'success')
+          if(data._responce.Status==422){
+            swal.fire(`This Job ${jobId} is already Added!`, '', 'info')
+          }else{
+            swal.fire(`Job ${jobId} Added successfully!`, '', 'success')
+          }
+         
         },err=>{
           console.log(err);
         }) 
       } else if (result.isDenied) {
-        swal.fire('Changes are not saved', '', 'info')
+        
       }
     })
   }
@@ -235,4 +255,21 @@ isOnline:boolean;
       }
     })
   }
+
+  // Suggetion list focous out
+  hide(){
+     this.hidesearchlist=false;
+     this.isShowingMenu=false; 
+  }
+  ShowMenu(){
+    this.isShowingMenu=true;
+  }
+
+    //Checkbox toggle method
+    checkValue(event: any) {  
+      this.IsOnJob = event;  
+    } 
+    LogoClick(){
+      window.location.href='/';
+    }
 }

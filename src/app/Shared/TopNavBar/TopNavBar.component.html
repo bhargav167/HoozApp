@@ -1,4 +1,4 @@
-<nav class="mb-3 navbar  navbar-light bg-light1">
+<nav class="mb-5 navbar sticky-top navbar-light bg-light1 mb-5">
   <div class="container-fluid"> 
         <img [routerLink]="['/']" routerLinkActive="router-link-active"  class="img-responsive" style="height: 3.2rem; width: 4.5rem; cursor: pointer;" src="../../../assets/Logo/hoozlogo.png"/>
         
@@ -12,7 +12,7 @@
       </div>
   </form> 
 
-  <img [routerLink]="['/jobpost']" routerLinkActive="router-link-active"  *ngIf="isLogedIn" style="padding: 2px; height: 1.9rem; width: 2rem; cursor: pointer;" class="addIco img img-responsive img-fluid tog" src="../../../assets/HoozIcon/HoozAdd.png"/>
+  <img [routerLink]="['/jobpost']" routerLinkActive="router-link-active"  *ngIf="isLogedIn" style="padding: 0px; height: 1.9rem; width: 2rem; cursor: pointer;" class="addIco img img-responsive img-fluid tog" src="../../../assets/HoozIcon/HoozAdd.png"/>
   
     <div type="button" class="navbar-toggler justify-content-end tog"  >
       <label class="for-dropdown" for="dropdown1">
@@ -25,15 +25,15 @@
       <div class="section-dropdown1 tog">
         <a id="b" href="#"><i class="far fa-user-circle"></i>&nbsp;&nbsp; MY PROFILE </a><br><br>
         <a id="b"[routerLink]="['/joblist']"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;Job Listing </a><br><br>
-        <a id="b"[routerLink]="['/jobpost']"> <i class="fa fa-plus"></i>&nbsp;&nbsp;Create Post </a><br><br>
+        <a id="b" [routerLink]="['/settings/download']"> <i class="fa fa-download"></i>&nbsp;&nbsp;Download </a><br><br>
          
-         <a id="b" [routerLink]="['/settings/helpDesk']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br><br> 
+         <a id="b"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br><br> 
         <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
 
         <div class="section-dropdown-sub"> 
         </div>
         <a id="s" href="#">About Us <i class="uil uil-arrow-right"></i></a><br><br>
-        <a id="s" href="#">Help & Support<i class="uil uil-arrow-right"></i></a><br><br>
+        <a id="s"  [routerLink]="['/settings/helpDesk']">Help & Support<i class="uil uil-arrow-right"></i></a><br><br>
         <!-- <a id="s" href="#">Share<i class="uil uil-arrow-right"></i></a><br><br> -->
         <a id="s" href="#">Terms & Conditions<i class="uil uil-arrow-right"></i></a><br><br>
         <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a><br><br>
@@ -46,7 +46,7 @@
             <form class="d-flex">
               <ul class="navbar-nav ">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" [routerLink]="['/']">Download App</a>
+                  <a class="nav-link active" aria-current="page" [routerLink]="['/settings/download']">Download App</a>
                 </li>
                 <li *ngIf="isLogedIn"  class="nav-item">
                   <a class="nav-link active" [routerLink]="['/joblist']">Job Posts</a>
@@ -75,7 +75,7 @@
       </div>  
 
       <div class="justify-content-end togs">
-        <a class="links">Download App &nbsp;&nbsp;</a>
+        <a [routerLink]="['/settings/download']" routerLinkActive="router-link-active"  class="links">Download App &nbsp;&nbsp;</a>
         <a class="links" *ngIf="isLogedIn" [routerLink]="['/joblist']">Job Posts &nbsp;&nbsp;&nbsp;&nbsp;</a>
         <a class="links" *ngIf="isLogedIn" [routerLink]="['/jobpost']">Create Posts &nbsp;&nbsp;&nbsp;&nbsp;</a>
         <a class="links" *ngIf="!isLogedIn" [routerLink]="['/login']">Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -97,7 +97,7 @@
             </a><br><br>
             <a [routerLink]="['/joblist']" routerLinkActive="router-link-active"  id="b"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;Job Listing </a><br><br>
             </div>
-          <a id="b" [routerLink]="['/settings/helpDesk']" routerLinkActive="router-link-active" > <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br> 
+          <a id="b"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br> 
           <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;Login </a><br><br> 
          
           <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
@@ -105,7 +105,7 @@
           <div class="section-dropdown-sub"> 
           </div>
           <a id="s" href="#">About Us <i class="uil uil-arrow-right"></i></a><br><br>
-          <a id="s" href="#">Help & Support<i class="uil uil-arrow-right"></i></a><br><br> 
+          <a id="s"  [routerLink]="['/settings/helpDesk']">Help & Support<i class="uil uil-arrow-right"></i></a><br><br> 
           <a id="s" href="#">Terms & Conditions<i class="uil uil-arrow-right"></i></a><br><br>
           <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a><br><br>
           <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a><br><br>

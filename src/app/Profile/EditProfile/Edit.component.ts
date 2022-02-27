@@ -162,8 +162,7 @@ export class EditComponent implements OnInit {
       this.showToast();
       this._router.navigate(['/profile/',this.userId]);
     })
-  }
-  
+  } 
 
   AddTagging() { 
     if(this.userForm.controls['stringTags'].value==''){ 
@@ -207,6 +206,24 @@ export class EditComponent implements OnInit {
    
   }
   
+  //Remove Profile Photo
+  RemoveProfilePhotos(){
+    swal.fire({
+      text: `Are you sure to Delete you photo`,
+      showDenyButton: true, 
+      confirmButtonText: 'Yes',
+      confirmButtonColor:'#00fa9a', 
+      denyButtonText: `No`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this._profileServices.RemoveUserPhoto(this.userId).subscribe((data:any)=>{
+          this.loadUserDetais(this.userId);
+        }) 
+      } else if (result.isDenied) { 
+      }
+    }) 
+  }
   //Back loacation History
   backClicked() {
     this._location.back();

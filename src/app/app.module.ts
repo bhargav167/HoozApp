@@ -34,6 +34,8 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { SharedService } from './services/SharedServices/Shared.service';
 import { JobEditComponent } from './Job/JobEdit/JobEdit.component';
 import { HelpDeskComponent } from './Settings/HelpDesk/HelpDesk.component';
+import { DownloadComponent } from './Settings/Download/Download.component';
+import { UserListComponent } from './Wall/UserList/userList.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +49,8 @@ import { HelpDeskComponent } from './Settings/HelpDesk/HelpDesk.component';
     EditComponent,
     MessagesComponent,
     HelpDeskComponent,
+    DownloadComponent,
+    UserListComponent,
     WallListComponent],
   imports: [ 
     BrowserModule,

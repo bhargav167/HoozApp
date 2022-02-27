@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
  @Component({
   selector: 'app-JobEdit',
   templateUrl: './JobEdit.component.html',
-  styleUrls: ['../JobPost/JobPost.component.css']
+  styleUrls: ['../JobPost/JobPost.component.scss']
 })
 export class JobEditComponent implements OnInit {
   public btnLoader: boolean;

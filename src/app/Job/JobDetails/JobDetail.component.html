@@ -22,10 +22,10 @@
             <div class="icon">
               <img class="rounded-circle img-fluid"
                 [src]="job?.IsAnonymous==false?job?.User?.UserImage:job?.AnonmousUserPic"/>
-
             </div>
             <div class="ms-2 c-details">
-              <h6 class="mt-2">{{job?.User?.Name}}<br> <span>{{job?.TimeAgo}}</span></h6>
+              <h6 *ngIf="job?.IsAnonymous==false" class="mt-2">{{job?.User?.Name}}<br> <span>{{job?.TimeAgo}}</span></h6>
+              <h6 *ngIf="job?.IsAnonymous==true" class="mt-2">Anonymous<br> <span>{{job?.TimeAgo}}</span></h6>
             </div>
           </div> 
         </div>
@@ -54,10 +54,9 @@
                         <option [selected]="job.JobStatus==='OPEN'" value="OPEN">OPEN&nbsp;</option>
                         <option [selected]="job.JobStatus==='ON HOLD'" value="ON HOLD">ONHOLD&nbsp;</option>
                         <option [selected]="job.JobStatus==='CLOSED'" value="CLOSED">CLOSED&nbsp;</option>
-                        <option [selected]="job.JobStatus==='DELETED'" value="DELETED">DELETED&nbsp;</option>
+                        <option [selected]="job.JobStatus==='DELETED'" value="DELETED">DELETE&nbsp;</option>
                     </select>
-                  </div>
-            
+                  </div> 
             </div>
            
           </div>  
@@ -66,8 +65,9 @@
           <div class="dropdown" style="float:left;"> 
               <img style="cursor: pointer;" class="img share" src="./../../../assets/Logo/shareDot.png" /> 
             <div class="dropdown-content mt-0"> 
-              <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId" style="cursor: pointer;" (click)="AddToJob()">Add To Job</a>
-            <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId" style="cursor: pointer;" (click)="Report()">Report</a>
+              <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && isJobAdded" style="cursor: pointer;" (click)="AddToJob()">Add To Job</a>
+              <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && !isJobAdded" style="cursor: pointer;"  ><i class="fa fa-check" aria-hidden="true"></i> &nbsp;Added</a>
+              <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId" style="cursor: pointer;" (click)="Report()">Report</a>
             <a style="cursor: pointer;">Share</a>
             </div>
           </div>
@@ -87,9 +87,6 @@
                 <div  *ngIf="job?.ImagesUrl!=null"  style="text-align: center; margin-top: 2px;">
                   <img class="img img-responsive img-fluid"  style="height: 183px; width: 560px;" [src]="job.JobDetailImage" alt="job image" />
               </div>
-              
-    
-                <input    id="real-file"  type="file" size="60" >
                 </label>
         </div> 
       </div>

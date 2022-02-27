@@ -16,17 +16,21 @@
                 style="background-image: url({{CoverImageUrl}});"
                 class="front__bkg-photo"> 
               </div>
-           
+        
                 <input #file  (change)="FileUploadCover(file.files)" type="file" size="60" >
                </label>
               
                <label>
                 <div style="background-image: url({{ImageUrl}});"
                 class="front__face-photo">
-                <span *ngIf="this.profileImgUploading"  class="spinner-border text-dark mt-5" role="status"></span>
+               
+                <span *ngIf="this.profileImgUploading"  class="spinner-border text-dark mt-5" role="status"></span> 
               </div>
-              <input #file1   (change)="FileUploadUser(file1.files)" type="file" size="60" >
+              <input #file1 (change)="FileUploadUser(file1.files)" type="file" size="60" >
                </label> 
+               <a type="button" class="btn btn-default btn-circle">
+                <i  (click)="RemoveProfilePhotos()" class="fa fa-2x fa-camera"></i>
+              </a>
              </div>
   
            </div>

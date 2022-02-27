@@ -13,7 +13,7 @@ function isValid(str){
 @Component({
   selector: 'app-JobPost',
   templateUrl: './JobPost.component.html',
-  styleUrls: ['./JobPost.component.css']
+  styleUrls: ['./JobPost.component.scss']
 })
 export class JobPostComponent implements OnInit {
   public btnLoader: boolean;
@@ -39,6 +39,7 @@ export class JobPostComponent implements OnInit {
     private _router:Router,
     private _sharedServices:SharedService,
     private _location: Location) {
+      window.scrollTo(0,0);
       this._sharedServices.checkInterNetConnection();
     if(localStorage.getItem('user')){
       let user= JSON.parse(localStorage.getItem('user'));
@@ -50,6 +51,7 @@ export class JobPostComponent implements OnInit {
    }
    
   ngOnInit() {
+ 
     this.createJobPostForm(); 
   }
   createJobPostForm() {

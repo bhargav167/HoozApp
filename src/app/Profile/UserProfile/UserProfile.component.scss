@@ -73,7 +73,7 @@
   overflow: hidden;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
- 
+  background-position: center;
 }
 
 .front__face-photo {
@@ -163,7 +163,7 @@
   overflow: hidden;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
- 
+  background-position: center;
 }
 
 .front__face-photo {
@@ -256,7 +256,7 @@
   overflow: hidden;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
- 
+  background-position: center;
 }
 
 .front__face-photo {
@@ -344,7 +344,7 @@
   overflow: hidden;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
- 
+  background-position: center;
 }
 .front__face-photo {
   position: relative;
@@ -370,7 +370,7 @@
 }
 } 
 
-@media only screen and (max-width:360px) and (min-width:100px) {
+@media only screen and (max-width:500px) and (min-width:100px) {
   .btn-EditHooz{
     background-color: black;
     color: white;

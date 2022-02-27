@@ -1,4 +1,19 @@
 @media only screen and (max-width: 1600px) and (min-width: 960px) {
+  
+.btn-circle {
+  width: 45px;
+  height: 45px;
+  padding: 9px 0px;
+  border-radius: 70px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+  position: fixed;
+  margin-left: -38px;
+  background-color: #fff;
+  z-index: 999;
+  margin-top: -61px;
+}
   .container-sm{
     width:710px; 
     margin-left: 285px;
@@ -153,6 +168,20 @@ margin-left: -50px;
 } 
 }
 @media only screen and (min-width:641px) and (max-width:961px) {
+  .btn-circle {
+    width: 45px;
+    height: 45px;
+    padding: 9px 0px;
+    border-radius: 70px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+    position: fixed;
+    margin-left: -35px;
+    background-color: #fff;
+    z-index: 999;
+    margin-top: -52px;
+  }
   .about{
     height: 40px; 
     width: 83%;
@@ -302,6 +331,20 @@ padding:2px;
 } 
 } 
 @media only screen and (max-width:640px) and (min-width:499px) {
+  .btn-circle {
+    width: 45px;
+    height: 45px;
+    padding: 9px 0px;
+    border-radius: 70px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+    position: fixed;
+    margin-left: -164px;
+    background-color: #fff;
+    z-index: 999;
+    margin-top: -52px;
+  }
   .about{
     height: 40px; 
     width: 83%;
@@ -437,7 +480,7 @@ padding:2px;
   width: 120px;
 
   margin: 0 auto;
-  margin-right: 260px;
+  margin-right: 133px;
   border-radius: 50%;
   border: 0px solid white;
   background: 
@@ -450,6 +493,20 @@ padding:2px;
 } 
 }
 @media only screen and (max-width:500px) and (min-width:100px) {
+  
+.btn-circle {
+  width: 45px;
+  height: 45px;
+  padding: 9px 0px;
+  border-radius: 70px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857; 
+  margin-left: -164px;
+  background-color: #fff;
+  z-index: 999;
+  margin-top: -52px;
+}
     .about{
   height: 40px; 
   width: 100%;
@@ -581,7 +638,7 @@ padding:2px;
     height: 94px;
     width: 94px;
     margin: 0 auto;
-    margin-right: 180px;
+    margin-right: 130px;
     border-radius: 50%;
     border: 0px solid white;
     background: no-repeat;
@@ -627,3 +684,5 @@ input[type="file"] {
   text-align:center;
   font-weight:bold; 
 } 
+
+

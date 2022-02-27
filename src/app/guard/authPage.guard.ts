@@ -5,6 +5,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, Router } from
 })
 export class authPageGaurd implements CanActivate {
     constructor(private _router: Router) {
+      
     }
     canActivate(
         next:  ActivatedRouteSnapshot,

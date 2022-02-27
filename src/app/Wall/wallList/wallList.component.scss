@@ -1,4 +1,7 @@
 @media only screen and (max-width:640px) and (min-width:480px) {
+  .container-sm{
+    width:100%; 
+  } 
   .hideInSmall{
     display: none;
   }
@@ -13,7 +16,79 @@
   .togs{
     display: none;
   }
+  .switch-button { 
+    background: rgb(239 242 245);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    width: 240px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: black; 
+    position: relative;
+    padding-right: 120px;
+    position: relative;
+    height: 2.5rem;
+    margin-left:  110px;
  
+    &:before {
+      content: "Profiles";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      font-weight: bold;
+      pointer-events: none;
+    } 
+    &-checkbox {
+      cursor: pointer; 
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 2; 
+      &:checked + .switch-button-label:before {
+       
+        transform: translateX(109px);
+        transition: transform 300ms linear;
+      }
+ 
+      & + .switch-button-label {
+        font-weight: bold;
+      
+        position: relative;
+        padding: 11px 0;
+        display: block;
+        user-select: none;
+        pointer-events: none; 
+        transform: translateX(1px);
+        &:before {
+          content: "";
+          background: #fff;
+          height: 2.1rem;
+          width: 100%;
+          position: absolute;
+          left: 0.3rem;
+          top:0.2rem;
+          border-radius: 0.3rem; 
+          transition: transform 300ms;
+        }
+ 
+        .switch-button-label-span {
+          position: relative;
+          top: -0.1rem;
+        }
+      }
+    }
+  } 
   .section-dropdown1 {
     position: absolute;
       background-color: #111;
@@ -25,7 +100,7 @@
       border-radius: 0.6rem;
       display: block;
       box-shadow: 0 14px 35px 0 rgb(9 9 12 / 40%);
-      z-index: 2;
+      z-index: 999;
       opacity: 0;
       pointer-events: none;
       /* transform: translateY(20px);
@@ -44,6 +119,9 @@
  }
 }  
 @media only screen and (min-width:641px) and (max-width:1099px) {
+  .container-sm{
+    width:710px;   
+  } 
   .hideInSmall{
     display: none;
   }
@@ -53,7 +131,79 @@
   .togs{
     display: none;
   }
-  
+  .switch-button { 
+    background: rgb(239 242 245);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    width: 240px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: black; 
+    position: relative;
+    padding-right: 120px;
+    position: relative;
+    height: 2.5rem;
+    margin-left: 190px;
+ 
+    &:before {
+      content: "Profiles";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      font-weight: bold;
+      pointer-events: none;
+    } 
+    &-checkbox {
+      cursor: pointer; 
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 2; 
+      &:checked + .switch-button-label:before {
+       
+        transform: translateX(109px);
+        transition: transform 300ms linear;
+      }
+ 
+      & + .switch-button-label {
+        font-weight: bold;
+      
+        position: relative;
+        padding: 11px 0;
+        display: block;
+        user-select: none;
+        pointer-events: none; 
+        transform: translateX(1px);
+        &:before {
+          content: "";
+          background: #fff;
+          height: 2.1rem;
+          width: 100%;
+          position: absolute;
+          left: 0.3rem;
+          top:0.2rem;
+          border-radius: 0.3rem; 
+          transition: transform 300ms;
+        }
+ 
+        .switch-button-label-span {
+          position: relative;
+          top: -0.1rem;
+        }
+      }
+    }
+  } 
   .card-text{ 
     font-size: 28px;
     font-weight: bolder;
@@ -84,12 +234,90 @@
 } 
 
 @media only screen and (max-width: 1600px) and (min-width: 1100px) { 
+  .container-sm{
+    width:710px; 
+    margin-left: 284px;
+  } 
 .form {
   width: 538px;
  }
  .hideInSmall{
   display:contents;
 }
+.switch-button { 
+  background: rgb(239 242 245);
+  border-radius: 0.6rem;
+  overflow: hidden;
+  width: 240px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: black; 
+  position: relative;
+  padding-right: 120px; 
+  height: 2.5rem;
+  margin-left: 190px;
+  
+  &:before {
+    content: "Profiles";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    font-weight: bold;
+    pointer-events: none;
+    
+  } 
+  &-checkbox {
+    cursor: pointer; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2; 
+    &:checked + .switch-button-label:before {
+     
+      transform: translateX(109px);
+      transition: transform 300ms linear;
+    }
+
+    & + .switch-button-label {
+      font-weight: bold;
+    
+      position: relative;
+      padding: 7px 0;
+      display: block;
+      user-select: none;
+      pointer-events: none; 
+      transform: translateX(1px);
+      &:before {
+        content: "";
+        background: #fff;
+        height: 2.1rem;
+        width: 100%;
+        position: absolute;
+        left: 0.3rem;
+        top:0.2rem;
+        border-radius: 0.3rem; 
+        transition: transform 300ms;
+        box-shadow: 0.05rem  0.05rem  0.05rem  0.05rem lightgray;
+      }
+
+      .switch-button-label-span {
+        position: relative;
+        top: -0.1rem;
+      }
+    }
+  }
+} 
 .tog{
   display: none;
 } 
@@ -103,6 +331,9 @@
    }
 } 
 @media only screen and (max-width:480px) and (min-width:359px) {
+  .container-sm{
+    width:100%; 
+  }
   .card-text{ 
     font-size: 22px;
     font-weight: bolder;
@@ -124,6 +355,7 @@
       box-shadow: 0 14px 35px 0 rgb(9 9 12 / 40%);
       z-index: 2;
       opacity: 0;
+      margin-top: 5px;
       pointer-events: none;
       /* transform: translateY(20px);
       transition: all 200ms linear; */
@@ -131,24 +363,97 @@
     height: 500px;
   }
   .form {
-    width:175px;  
+    width:185px;  
    }
- 
-
 }  
 
-@media only screen and (max-width:360px) and (min-width:100px) {
+@media only screen and (max-width:481px) and (min-width:100px) {
+  .container-sm{
+    width:100%; 
+  }
+  .switch-button { 
+    background: rgb(239 242 245);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    width: 240px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: black; 
+    position: relative;
+    padding-right: 120px;
+    position: relative;
+    height: 2.5rem;
+    margin-left: 55px;
+ 
+    &:before {
+      content: "Profiles";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      font-weight: bold;
+      pointer-events: none;
+    } 
+    &-checkbox {
+      cursor: pointer; 
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 2; 
+      &:checked + .switch-button-label:before {
+       
+        transform: translateX(109px);
+        transition: transform 300ms linear;
+      }
+ 
+      & + .switch-button-label {
+        font-weight: bold;
+      
+        position: relative;
+        padding: 11px 0;
+        display: block;
+        user-select: none;
+        pointer-events: none; 
+        transform: translateX(1px);
+        &:before {
+          content: "";
+          background: #fff;
+          height: 2.1rem;
+          width: 100%;
+          position: absolute;
+          left: 0.3rem;
+          top:0.2rem;
+          border-radius: 0.3rem; 
+          transition: transform 300ms;
+        }
+ 
+        .switch-button-label-span {
+          position: relative;
+          top: -0.1rem;
+        }
+      }
+    }
+  } 
   .card-text{ 
     font-size: 22px;
     font-weight: bolder;
     color: white;
      }
+     
   .togs{
     display: none;
   } 
-  .addIco{
-    margin-left: 7px;
-  }
+  
   .section-dropdown1 {
     position: absolute;
       background-color: #111;
@@ -173,32 +478,7 @@
    }
  
 
-} 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 30px;
-  right: 0;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 999;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  z-index: 999;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1;}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-  z-index: 999;
-}
+}  
 .form-input{
   height: 40px;
   text-indent: 0;
@@ -207,8 +487,6 @@
   color: #000;
 }
 .navbar-toggler {
-  padding: 0.25rem 0.75rem;
-  
     background-color: transparent;  
    border: 1px solid transparent;  
 }
@@ -404,11 +682,11 @@ body {
   background: #ffffff;
   overflow: hidden;
   border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 0 20px 8px #00000014;  
+  cursor: pointer;  
 	z-index: 999; 
   width:inherit;
   position:absolute; 
+  border: 1px solid #0000000d;
 } 
 .searchSuggetion ul li {
   font-weight: 600;
@@ -417,21 +695,20 @@ body {
   list-style-type: none;
   margin-left: -32px;
   line-height: 5ch;
-  border-bottom: 1px solid rgb(229, 232, 235); 
+  z-index: 999;
+  border-bottom: 0px solid rgb(229, 232, 235); 
   
 } 
 .searchSuggetion ul li:hover { 
-  color: black;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-weight: bold;
+  color: black; 
+  z-index: 999;
   box-shadow: 0 0 1px 1px lightgray; 
 }
 /* //Toggle css */ 
 
 [type="checkbox"]:checked,
 [type="checkbox"]:not(:checked){ 
-  opacity: 0;
-  pointer-events: none;
+  opacity: 0; 
 }  
 .dropdown:checked + label:before,
 .dropdown:not(:checked) + label:before{ 

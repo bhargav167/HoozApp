@@ -20,6 +20,8 @@ jobId:number=0;
 loggedUserId:number=0;
 loggeduser: SocialAuthentication;
 userJob:UserJobs; 
+
+isJobAdded:boolean=false;
   constructor(private _jobServices:JobPostService,
     private _reportServices:ReportJobService,
     private _sharedServices:SharedService,
@@ -34,13 +36,15 @@ userJob:UserJobs;
      
       this.jobId= this._router.snapshot.params['id'];
     this.LoadJobDetailsById(this.jobId); 
+    
   }
 
   ngOnInit() { 
   }
   LoadJobDetailsById(id:number){
     this._jobServices.GetJobById(id).subscribe((data:JobModel)=>{
-      this.job=data[0];   
+      this.job=data[0]; 
+      this.IsAddedJob(this.loggedUserId,this.jobId);
     }) 
   }
 
@@ -60,13 +64,22 @@ userJob:UserJobs;
         },err=>{
           console.log(err);
         }) 
-      } else if (result.isDenied) {
-        swal.fire('Changes are not saved', '', 'info')
+      } else if (result.isDenied) { 
+        this._navigaterouter.navigateByUrl('/jobDetails/'+this.jobId);
       }
     })
   }
   
-
+//Check is this job added already
+  IsAddedJob(userId: number, jobId: number) {
+    this._jobServices.IsAddedJob(userId,jobId).subscribe((data:any)=>{ 
+      if(data.Status==200){
+       this.isJobAdded=false;
+      }else{
+        this.isJobAdded=true;
+      }
+    })
+  }
   // Job Added
   AddToJob(){
     swal.fire({
@@ -89,12 +102,17 @@ userJob:UserJobs;
           icon:'info'
         })
         this._jobServices.AddJobToUser(userJob).subscribe((data:any)=>{ 
-          swal.fire(`Job ${this.job.Id} Added successfully!`, '', 'success')
+          if(data._responce.Status==422){
+            swal.fire(`This Job ${this.jobId} is already Added!`, '', 'info')
+          }else{
+            swal.fire(`Job ${this.jobId} Added successfully!`, '', 'success')
+            this.IsAddedJob(this.loggedUserId,this.jobId);
+          }
         },err=>{
           console.log(err);
         }) 
       } else if (result.isDenied) {
-        swal.fire('Changes are not saved', '', 'info')
+         
       }
     })
   }

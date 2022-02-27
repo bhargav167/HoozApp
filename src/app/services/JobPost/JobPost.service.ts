@@ -85,4 +85,8 @@ export class JobPostService {
     AddJobToUser(userJobs:UserJobs){
     return  this._http.post(this.baseURL + 'User/AddUserJobs',userJobs);
   }
+   //Check is job add to logged user
+   IsAddedJob(userId:number,jobId:number){
+    return  this._http.get(this.baseURL + 'User/IsAddedJob/'+userId+'/'+jobId);
+  }
 }

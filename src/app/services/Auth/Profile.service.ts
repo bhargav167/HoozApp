@@ -18,6 +18,9 @@ export class ProfileService {
   UpdateUserPhoto(userId: number, file: any) {
     return this._http.post(this.baseURL + 'AuthLogin/AddAuthUserImage/' + userId, file);
   }
+  RemoveUserPhoto(userId: number) {
+    return this._http.post(this.baseURL + 'AuthLogin/RemoveAuthUserImage/' + userId, {});
+  }
   AddAuthUserCoverImage(userId: number, file: any) {
     return this._http.post(this.baseURL + 'AuthLogin/AddAuthUserCoverImage/' + userId, file);
   }

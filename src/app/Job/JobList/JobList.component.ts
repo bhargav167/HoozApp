@@ -3,10 +3,11 @@ import { JobResponces } from '../../Model/Job/JobResponces';
 import { Pagination } from '../../Model/Pagination';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { JobPostService } from '../../services/JobPost/JobPost.service';
-import { HotToastService } from '@ngneat/hot-toast';
+import swal from 'sweetalert2';
 import {Location} from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../../services/SharedServices/Shared.service';
+import { ReportJobService } from '../../services/JobPost/ReportJob.service';
 @Component({
   selector: 'app-JobList',
   templateUrl: './JobList.component.html',
@@ -30,6 +31,7 @@ export class JobListComponent implements OnInit {
   // TabToggleTrackVariable
   IsOnJob: boolean = true;
   constructor(private _jobServices: JobPostService,
+    private _reportServices:ReportJobService,
     private activatedRoute: ActivatedRoute, 
     private _sharedServices:SharedService,
     private _location: Location) { 
@@ -48,6 +50,7 @@ export class JobListComponent implements OnInit {
       this.jobModels = res.result.data;
       this.pagination = res.pagination;
       this.isLoading = false; 
+      console.log(this.jobModels);
     })
   }
   //Load Post Tab
@@ -96,7 +99,74 @@ export class JobListComponent implements OnInit {
       this.notScrollY = false; 
       this.LoadNextPost();
     }
+  
   }
+
+    // Job Added
+    AddToJob(jobId){
+      swal.fire({
+        text: `Confirm to add Job Post Id: ${jobId}`,
+        showDenyButton: true, 
+        confirmButtonText: 'Yes',
+        confirmButtonColor:'#00fa9a', 
+        denyButtonText: `No`,
+        denyButtonColor:'black'
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          let userJob={
+            jobModelId:jobId,
+            socialAuthenticationId:this.userId
+          };  
+          swal.fire({
+            text:'Please wait.. Adding job',
+            showConfirmButton:false,
+            icon:'info'
+          })
+          this._jobServices.AddJobToUser(userJob).subscribe((data:any)=>{ 
+            swal.fire(`Job ${jobId} Added successfully!`, '', 'success')
+          },err=>{
+            console.log(err);
+          }) 
+        } else if (result.isDenied) {
+          
+        }
+      })
+    }
+
+    //Report Job
+    Report(jobId){
+      swal.fire({
+        title: `Report`,
+        input: 'textarea',
+        showDenyButton: true, 
+        confirmButtonText: 'Report',
+        confirmButtonColor:'#00fa9a', 
+        denyButtonText: `Cancel`,
+        denyButtonColor:'black'
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          let reportJob={
+            jobModelId:jobId,
+            socialAuthenticationId:this.userId,
+            Isusue:result.value
+          };   
+          swal.fire({
+            text:'Please wait... Reporting',
+            showConfirmButton:false,
+            icon:'info'
+          })
+          this._reportServices.ReportJob(reportJob).subscribe((data:any)=>{ 
+            swal.fire(`Job ${jobId} Reported!`, '', 'success')
+          },err=>{
+            console.log(err);
+          }) 
+        } else if (result.isDenied) {
+          
+        }
+      })
+    }
 
   //Checkbox toggle method
   checkValue(event: any) {  
@@ -114,6 +184,7 @@ export class JobListComponent implements OnInit {
       this.LoadAllPost(this.user.Id, this.currentPage, this.itemsPerPage); 
     }
   } 
+
 
    //Back loacation History
    backClicked() {

@@ -1,0 +1,101 @@
+@media only screen and (max-width: 1600px) and (min-width: 960px) {
+    .back{
+        padding-left: 50px;
+        cursor: pointer;
+    } 
+    .ContentSection{
+        margin-left: 303px; 
+    }
+    
+  .ContentSection p{
+    font-size: xx-large;
+    font-weight: inherit;
+}
+.desktopImg{
+  display: block;
+  margin-top: 80px;
+}
+ 
+.mobileImg{
+  display: none;
+}
+  }
+  
+@media only screen and (max-width:640px) and (min-width:499px) { 
+  .back {
+    padding-left: 6px;
+    cursor: pointer;
+  } 
+  
+  .ContentSection p{
+    font-size: xx-large;
+    font-weight: inherit;
+} 
+.desktopImg{
+  display: none;
+   
+}
+ 
+.mobileImg{
+  display: block;
+}
+}
+  
+  @media only screen and (min-width:641px) and (max-width:961px) {
+    .ContentSection{
+        margin-left: 146px; 
+    }  
+    .back{
+        padding-left: 50px;
+        cursor: pointer;
+    } 
+    .desktopImg{
+      display: none;
+      
+    }
+     
+    .mobileImg{
+      display: block;
+    }
+  .ContentSection p{
+    font-size: xx-large;
+    font-weight: inherit;
+}
+  }
+  
+  @media only screen and (max-width:500px)   {  
+    .ContentSection{
+        margin-left: 68px; 
+    }  
+    .back{
+        padding-left: 32px;
+        cursor: pointer;
+    } 
+    
+  .ContentSection p{
+    font-size: xx-large;
+    font-weight: inherit;
+}
+.desktopImg{
+  display: none;
+}
+.mobileImg{
+  display: block;
+}
+  }
+  @media only screen and (max-width:499px) and (min-width:100px){
+    .ContentSection p{
+        font-size: large;
+        font-weight: inherit;
+    }
+    .desktopImg{
+      display: none;
+    }
+    .mobileImg{
+      display: block;
+    }
+  }
+
+  body{
+    height: 100%;
+  }

@@ -19,6 +19,7 @@ export interface JobModel {
     CreatedBy:Date;
     JobStatus:string;
     TimeAgo:string;
+    IsAdded:boolean;
     Tags:JobTags[];
     User:SocialAuthentication;
 } 
