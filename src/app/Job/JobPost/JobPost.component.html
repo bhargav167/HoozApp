@@ -1,13 +1,15 @@
-<app-TopNavBar></app-TopNavBar>
- 
-  <i  (click)="backClicked()"   style="padding-left: 10px; cursor: pointer; color: black;" class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+<app-TopNavBar [someProperty]="isShowingMenu"></app-TopNavBar>
+<div  class="d-flex justify-content-start mb-4">
+  <i  (click)="backClicked()"   style="padding-left: 50px; cursor: pointer; color: black;" class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
 
+  <h3 class="hc1">Job Post</h3> 
+</div>
+  <div (click)="hideEvent()">
   <div class="container-sm">
     <div class="row mb-4">
       <div class="col-sm-10 col-md-11">
         <!-- //Form Section -->
-        <p class="small-font">POST YOUR REQUIREMENT  </p>
-        
+        <p class="small-font">POST YOUR REQUIREMENT </p> 
         <p class="medium-font">Create your post</p>
         </div>
        
@@ -146,6 +148,8 @@
         </div>
       </div>
   </div> 
+</div>
+
   <br>
   <br> 
 

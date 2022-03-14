@@ -1,14 +1,24 @@
 <app-TopNavBar></app-TopNavBar> 
-
-<i  (click)="backClicked()"   style="padding-left: 10px; cursor: pointer;" class="fa fa-2x fa-arrow-left" aria-hidden="true"></i>
- <!--  Tab Toggle -->  
+<div  class="d-flex justify-content-start mb-4">
+  <i  (click)="backClicked()"     class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+  <h3 class="hc1">Job Detail</h3> 
+</div>
+<!--  Tab Toggle -->  
  <div *ngIf="loggedUserId==job?.User?.Id" class="container-sm mt-0">
   <div class="row col-sm-12"> 
       <div class="d-flex">
         <div class="d-flex flex-row justify-content-between">
           <div   class="switch-button">
             <input  class="switch-button-checkbox" type="checkbox" />
-            <label  class="switch-button-label" for=""><span class="switch-button-label-span">Post</span></label>
+            <label  class="switch-button-label" for=""><span class="switch-button-label-span">Post</span>            
+            </label>
+            <label  class="ll" for=""><span >&nbsp;Responce 
+              <span  class="badge rounded-pill bg-Responce">
+                {{totalResponces}}
+              </span> 
+             </span> 
+            </label>
+           
           </div> 
         </div>
       </div>
@@ -43,30 +53,42 @@
 
       <!-- Section-2 Job Status -->
       <div class="row col-sm-12 mt-4"> 
-        <div *ngIf="loggedUserId==job?.User?.Id" class="d-flex">
-          <div class="d-flex flex-row justify-content-start">
+        <div  class="d-flex"> 
+          <!-- If Other Job Details -->
+          <div *ngIf="loggedUserId!=job?.User?.Id" class="d-flex flex-row justify-content-start">
             <div class="mt-2">
-               <p style="font-weight: bold;">Job status</p>
+              <p class="px-2" style="font-weight: bold;">Job status &nbsp;&nbsp;<span
+                  class="badge bg-dark">{{job.JobStatus}}</span>
+
+              </p>
             </div>
-            <div class="ms-2 c-details">
-                <div class="select">
-                    <select (change)="UpdateStatus($event)" name="nameValueSelect" class="select__field" required>
-                        <option [selected]="job.JobStatus==='OPEN'" value="OPEN">OPEN&nbsp;</option>
-                        <option [selected]="job.JobStatus==='ON HOLD'" value="ON HOLD">ONHOLD&nbsp;</option>
-                        <option [selected]="job.JobStatus==='CLOSED'" value="CLOSED">CLOSED&nbsp;</option>
-                        <option [selected]="job.JobStatus==='DELETED'" value="DELETED">DELETE&nbsp;</option>
-                    </select>
-                  </div> 
-            </div>
-           
-          </div>  
+
+
+          </div>
+
+           <!-- If Other Job Details -->
+           <div *ngIf="loggedUserId==job?.User?.Id" class="d-flex flex-row justify-content-start">
+            <div class="mt-2">
+              <p style="font-weight: bold;">Job status</p>
+           </div>
+           <div class="ms-2 c-details">
+               <div class="select">
+                   <select (change)="UpdateStatus($event)" name="nameValueSelect" class="select__field" required>
+                       <option [selected]="job.JobStatus==='OPEN'" value="OPEN">OPEN&nbsp;</option>
+                       <option [selected]="job.JobStatus==='ON HOLD'" value="ON HOLD">ONHOLD&nbsp;</option>
+                       <option [selected]="job.JobStatus==='CLOSED'" value="CLOSED">CLOSED&nbsp;</option>
+                       <option [selected]="job.JobStatus==='DELETED'" value="DELETED">DELETE&nbsp;</option>
+                   </select>
+                 </div> 
+           </div>
+          </div>
         </div>
         <div class="d-flex justify-content-end mt-2">
           <div class="dropdown" style="float:left;"> 
-              <img style="cursor: pointer;" class="img share" src="./../../../assets/Logo/shareDot.png" /> 
-            <div class="dropdown-content mt-0"> 
+              <img style="cursor: pointer;" class="img share" src="./../../../assets/Logo/ThreeDotForJobDetailsPage.png" /> 
+            <div class="dropdown-content JobdetailDroupdown mt-0"> 
               <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && isJobAdded" style="cursor: pointer;" (click)="AddToJob()">Add To Job</a>
-              <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && !isJobAdded" style="cursor: pointer;"  ><i class="fa fa-check" aria-hidden="true"></i> &nbsp;Added</a>
+              <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && !isJobAdded" style="cursor: pointer;" (click)="RemoveToJob()"> &nbsp;Remove Job</a>
               <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId" style="cursor: pointer;" (click)="Report()">Report</a>
             <a style="cursor: pointer;">Share</a>
             </div>

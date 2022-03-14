@@ -1,13 +1,5 @@
 @media only screen and (max-width: 1600px) and (min-width: 960px) {
-    .hc{  
-        margin-left: 356px;
-        font-size: x-large;
-        font-weight: 700;
-    }
-    .back{
-        padding-left: 50px;
-        cursor: pointer;
-    }
+   
     .NavSection {
         margin-left: 147px;
     }
@@ -20,16 +12,7 @@
   }
   
 @media only screen and (max-width:640px) and (min-width:499px) {
-  .hc {
-    margin-left: 60px;
-    font-size: x-large;
-    font-weight: 700;
-  }
-
-  .back {
-    padding-left: 6px;
-    cursor: pointer;
-  } 
+  
   .InDestop {
     display: none;
   }
@@ -78,15 +61,7 @@
 }
   
   @media only screen and (min-width:641px) and (max-width:961px) { 
-    .hc{  
-        margin-left: 76px;
-        font-size: x-large;
-        font-weight: 700;
-    }
-    .back{
-        padding-left: 50px;
-        cursor: pointer;
-    }
+   
     .InMobile{
       display: none;
     }
@@ -94,15 +69,7 @@
   }
   
   @media only screen and (max-width:500px)   { 
-    .hc{  
-        margin-left: 36px;
-        font-size: x-large;
-        font-weight: 700;
-    }
-    .back{
-        padding-left: 32px;
-        cursor: pointer;
-    }
+   
     .InDestop{
         display: none;
     }

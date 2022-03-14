@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators }  from '@angular/forms';
 import { JobModel } from '../../Model/Job/JobModel';
 import { JobTags } from '../../Model/Job/JobTags';
+import { TagMaster } from '../../Model/TagMaster';
 import { JobPostService } from '../../services/JobPost/JobPost.service'; 
 import { HotToastService } from '@ngneat/hot-toast';
 import {Location} from '@angular/common';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/SharedServices/Shared.service';
+import { TagService } from '../../services/Tags/Tag.service';
 function isValid(str){
   return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(str);
  }
@@ -19,7 +21,8 @@ export class JobPostComponent implements OnInit {
   public btnLoader: boolean;
   jobPostForm:FormGroup;
   Tags:JobTags[]=[]; 
-  jobTag:JobTags; 
+  jobTag:JobTags;  
+  tagMaster:TagMaster;
   jobModel:JobModel;
   public imagePath;
   imgURL: any;
@@ -28,13 +31,13 @@ export class JobPostComponent implements OnInit {
   public Tagmessage: string;
   ischeckedAnonymously:boolean=false;
   ischeckedPublic:boolean=true;
-  userId:number;
-
-  
+  userId:number; 
+  @Output() isShowingMenu = new EventEmitter<boolean>();
   latitude: number;
   longitude: number;
   constructor(private fb:FormBuilder,
     private _jobServices:JobPostService,
+    private _tagService:TagService,
     private toast: HotToastService,
     private _router:Router,
     private _sharedServices:SharedService,
@@ -46,12 +49,10 @@ export class JobPostComponent implements OnInit {
     this.userId=user.Id;
     }else{
       window.location.href='/login';
-    } 
-  
+    }  
    }
    
   ngOnInit() {
- 
     this.createJobPostForm(); 
   }
   createJobPostForm() {
@@ -149,9 +150,19 @@ export class JobPostComponent implements OnInit {
       TagName: this.jobPostForm.controls['Tags'].value.trim(),
       TagMasterId: 0
     };
-    this.Tags.push(this.jobTag);
-    this.jobPostForm.controls['Tags'].setValue(null);
+    this.Tags.push(this.jobTag); 
     this.Tagmessage = '';
+
+    // Add Tag To TagMaster for Later show suggetions
+    this.tagMaster = {
+      Id:0,
+      TagName: this.jobPostForm.controls['Tags'].value.trim()
+    };
+    this.jobPostForm.controls['Tags'].setValue(null);
+    this._tagService.AddTag(this.tagMaster).subscribe((data)=>{
+    },err=>{
+      console.log("Tag Adding to master Failed");
+    });
   }
 
   RemoveTagging(item) {
@@ -179,10 +190,12 @@ export class JobPostComponent implements OnInit {
       this.message = "";
     }
   }
-
-  
    //Back loacation History
    backClicked() {
     this._location.back();
   }
+
+  hideEvent(){  
+    this.isShowingMenu.emit(false);
+ }
 }

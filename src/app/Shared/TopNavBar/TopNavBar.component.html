@@ -1,119 +1,126 @@
-<nav class="mb-5 navbar sticky-top navbar-light bg-light1 mb-5">
-  <div class="container-fluid"> 
-        <img [routerLink]="['/']" routerLinkActive="router-link-active"  class="img-responsive" style="height: 3.2rem; width: 4.5rem; cursor: pointer;" src="../../../assets/Logo/hoozlogo.png"/>
-        
-  <form class="d-flex justify-content-start">
-      <div class="input-group">                    
-        <div class="form "> <input  id="searchTag" type="text" class="form-control form-input" placeholder="Search here..">  
-          <span style="cursor: pointer;"  class="left-pan"> 
-          <img class="justify-content-end  img-responsive" style="margin-top: -4px; height: 20px; width: 20px;" src="../../../assets/Logo/searchIco.png"/>
-          </span>
-         </div>
-      </div>
-  </form> 
-
-  <img [routerLink]="['/jobpost']" routerLinkActive="router-link-active"  *ngIf="isLogedIn" style="padding: 0px; height: 1.9rem; width: 2rem; cursor: pointer;" class="addIco img img-responsive img-fluid tog" src="../../../assets/HoozIcon/HoozAdd.png"/>
-  
-    <div type="button" class="navbar-toggler justify-content-end tog"  >
-      <label class="for-dropdown" for="dropdown1">
-        <img style="height: 0.7rem; width: 1.9rem; cursor: pointer;" class=" img img-responsive img-fluid"
-          src="../../../assets/Logo//Toggle.png" />
-      </label> 
-      </div> 
-      <input class="dropdown tog" type="checkbox" id="dropdown1" name="dropdown1" />
-      
-      <div class="section-dropdown1 tog">
-        <a id="b" href="#"><i class="far fa-user-circle"></i>&nbsp;&nbsp; MY PROFILE </a><br><br>
-        <a id="b"[routerLink]="['/joblist']"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;Job Listing </a><br><br>
-        <a id="b" [routerLink]="['/settings/download']"> <i class="fa fa-download"></i>&nbsp;&nbsp;Download </a><br><br>
-         
-         <a id="b"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br><br> 
-        <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
-
-        <div class="section-dropdown-sub"> 
-        </div>
-        <a id="s" href="#">About Us <i class="uil uil-arrow-right"></i></a><br><br>
-        <a id="s"  [routerLink]="['/settings/helpDesk']">Help & Support<i class="uil uil-arrow-right"></i></a><br><br>
-        <!-- <a id="s" href="#">Share<i class="uil uil-arrow-right"></i></a><br><br> -->
-        <a id="s" href="#">Terms & Conditions<i class="uil uil-arrow-right"></i></a><br><br>
-        <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a><br><br>
-           <a id="s" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a><br><br>
-      </div> 
-
-    <div class="collapse navbar-collapse tog justify-content-end" id="navbarCollapse">
+ 
+  <nav class="mb-5 navbar sticky-top navbar-light bg-light1 mb-5">
+    <div class="container-fluid"> 
+          <img [routerLink]="['/']" routerLinkActive="router-link-active"  class="img-responsive" style="height: 3.2rem; width: 4.5rem; cursor: pointer;" src="../../../assets/Logo/hoozlogo.png"/>
           
-          <div class="navbar-nav mr-auto mt-2 mt-md-0">
-            <form class="d-flex">
-              <ul class="navbar-nav ">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" [routerLink]="['/settings/download']">Download App</a>
-                </li>
-                <li *ngIf="isLogedIn"  class="nav-item">
-                  <a class="nav-link active" [routerLink]="['/joblist']">Job Posts</a>
-                </li>  
-                 <li *ngIf="isLogedIn"  class="nav-item">
-                  <a class="nav-link active" [routerLink]="['/jobpost']">Create Posts</a>
-                </li>  
-                <li *ngIf="!isLogedIn"  class="nav-item">
-                  <a class="nav-link active" [routerLink]="['/login']">Login</a>
-                </li>  
-               
-              
-                  <li *ngIf="isLogedIn" [routerLink]="['/routePath']" [routerLink]="['/profile',user.Id]" class="nav-item dropdown profileimg">
-                  <img
-                  src="{{user?.ImageUrl=='https://res.cloudinary.com/livsolution/image/upload/v1640110201/imgs_pg46ar.png'?'../../../assets/DummyProfileImg/DefaultUser.png':user?.ImageUrl}}"
+    <form class="d-flex justify-content-start">
+        <div class="input-group">                    
+          <div class="form "> <input  (click)="hide()" id="searchTag" type="search" class="form-control form-input" placeholder="Search here..">  
+            <span style="cursor: pointer;"  class="left-pan"> 
+            <img class="justify-content-end  img-responsive" style="margin-top: -4px; height: 20px; width: 20px;" src="../../../assets/Logo/searchIco.png"/>
+            </span>
+           </div>
+        </div>
+    </form> 
   
-                  class="nav-link dropdown-toggle img-circle" style="width: 64px; height: 64px;" href="#"
-                    id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
-      
-                   
-                </li>
-     
-              </ul>
-            </form>
-          </div>
-      </div>  
-
-      <div class="justify-content-end togs">
-        <a [routerLink]="['/settings/download']" routerLinkActive="router-link-active"  class="links">Download App &nbsp;&nbsp;</a>
-        <a class="links" *ngIf="isLogedIn" [routerLink]="['/joblist']">Job Posts &nbsp;&nbsp;&nbsp;&nbsp;</a>
-        <a class="links" *ngIf="isLogedIn" [routerLink]="['/jobpost']">Create Posts &nbsp;&nbsp;&nbsp;&nbsp;</a>
-        <a class="links" *ngIf="!isLogedIn" [routerLink]="['/login']">Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        <a *ngIf="isLogedIn" [routerLink]="['/profile',user.Id]" class="nav-item dropdown profileimg">
-          <img
-            src="{{navbarUserPic}}"
-            class="rounded-circle img-fluid" style="margin-top: -8px; width: 38px; height: 38px;" href="#"
-            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" /> 
-        </a>
-        &nbsp;&nbsp; 
-        <label *ngIf="isLogedIn" class="for-dropdown" for="dropdown">
+    <img [routerLink]="['/jobpost']" routerLinkActive="router-link-active"  *ngIf="isLogedIn"  style="height: 2.5rem; width: 2.5rem; cursor: pointer;" class="addIco img img-responsive img-fluid tog" src="../../../assets/HoozIcon/HoozAdd.png"/>
+    
+      <div type="button" class="navbar-toggler justify-content-end tog"  >
+        <label class="for-dropdown" for="dropdown1">
           <img style="height: 0.7rem; width: 1.9rem; cursor: pointer;" class=" img img-responsive img-fluid"
             src="../../../assets/Logo//Toggle.png" />
-        </label>
-        <input *ngIf="isLogedIn" class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
-        <div *ngIf="isLogedIn" class="section-dropdown">
-          <div *ngIf="isLogedIn">
-            <a id="b" [routerLink]="['/profile',user.Id]"><i class="far fa-user-circle"></i>&nbsp;&nbsp; MY PROFILE
-            </a><br><br>
-            <a [routerLink]="['/joblist']" routerLinkActive="router-link-active"  id="b"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;Job Listing </a><br><br>
-            </div>
-          <a id="b"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br> 
-          <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;Login </a><br><br> 
-         
-          <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
-    
-          <div class="section-dropdown-sub"> 
-          </div>
-          <a id="s" href="#">About Us <i class="uil uil-arrow-right"></i></a><br><br>
-          <a id="s"  [routerLink]="['/settings/helpDesk']">Help & Support<i class="uil uil-arrow-right"></i></a><br><br> 
-          <a id="s" href="#">Terms & Conditions<i class="uil uil-arrow-right"></i></a><br><br>
-          <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a><br><br>
-          <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a><br><br>
-         
-        </div>  
-     
+        </label> 
+        </div> 
+        <input  (click)="ShowMenu()" class="dropdown tog" type="checkbox" id="dropdown1" name="dropdown1" />
+        
+         <!-- DropDown Toggle1 -->
+     <div *ngIf="isShowingMenu" class="section-dropdown1 tog">
+      <div *ngIf="isLogedIn">
+        <a id="b" [routerLink]="['/profile',user.Id]"><i class="far fa-user-circle"></i>&nbsp;&nbsp; MY PROFILE
+        </a><br><br>
+        <a id="b" [routerLink]="['/joblist']"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;Job Listing </a><br><br>
+        <a id="b" [routerLink]="['/settings/download']"> <i class="fa fa-download"></i>&nbsp;&nbsp;Download
+        </a><br><br>
       </div>
+      <a id="b"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br>
+      <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;Login </a><br>
+
+      <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" /> 
+      <div class="section-dropdown-sub">
+      </div>
+      <a id="s" href="#">About Us <i class="uil uil-arrow-right"></i></a><br><br>
+      <a id="s" [routerLink]="['/settings/helpDesk']">Help & Support<i class="uil uil-arrow-right"></i></a><br><br>
+      <a id="s" href="#">Terms & Conditions<i class="uil uil-arrow-right"></i></a><br><br>
+      <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a><br><br>
+      <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a><br><br>
+    </div>
+ <!--End DropDown Toggle1 -->
+  
+  
+      <div class="collapse navbar-collapse tog justify-content-end" id="navbarCollapse">
+            
+            <div class="navbar-nav mr-auto mt-2 mt-md-0">
+              <form class="d-flex">
+                <ul class="navbar-nav ">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/settings/download']">Download App</a>
+                  </li>
+                  <li *ngIf="isLogedIn"  class="nav-item">
+                    <a class="nav-link active" [routerLink]="['/joblist']">Job Posts</a>
+                  </li>  
+                   <li *ngIf="isLogedIn"  class="nav-item">
+                    <a class="nav-link active" [routerLink]="['/jobpost']">Create Posts</a>
+                  </li>  
+                  <li *ngIf="!isLogedIn"  class="nav-item">
+                    <a class="nav-link active" [routerLink]="['/login']">Login</a>
+                  </li>  
+                 
+                
+                    <li *ngIf="isLogedIn" [routerLink]="['/routePath']" [routerLink]="['/profile',user.Id]" class="nav-item dropdown profileimg">
+                    <img
+                    src="{{user?.ImageUrl=='https://res.cloudinary.com/livsolution/image/upload/v1640110201/imgs_pg46ar.png'?'../../../assets/DummyProfileImg/DefaultUser.png':user?.ImageUrl}}"
+    
+                    class="nav-link dropdown-toggle img-circle" style="width: 64px; height: 64px;" href="#"
+                      id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
+        
+                     
+                  </li>
+       
+                </ul>
+              </form>
+            </div>
+        </div>  
+  
+        <div class="justify-content-end togs">
+          <a [routerLink]="['/settings/download']" routerLinkActive="router-link-active"  class="links">Download App &nbsp;&nbsp;</a>
+          <a class="links" *ngIf="isLogedIn" [routerLink]="['/joblist']">Job Posts &nbsp;&nbsp;&nbsp;&nbsp;</a>
+          <a class="links" *ngIf="isLogedIn" [routerLink]="['/jobpost']">Create Posts &nbsp;&nbsp;&nbsp;&nbsp;</a>
+          <a class="links" *ngIf="!isLogedIn" [routerLink]="['/login']">Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
+          <a *ngIf="isLogedIn" [routerLink]="['/profile',user.Id]" class="nav-item dropdown profileimg">
+            <img
+              src="{{navbarUserPic}}"
+              class="rounded-circle img-fluid" style="margin-top: -8px; width: 38px; height: 38px;" href="#"
+              id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" /> 
+          </a>
+          &nbsp;&nbsp; 
+          <label *ngIf="isLogedIn" class="for-dropdown" for="dropdown">
+            <img style="height: 0.7rem; width: 1.9rem; cursor: pointer;" class=" img img-responsive img-fluid"
+              src="../../../assets/Logo//Toggle.png" />
+          </label>
+          <input  (click)="ShowMenu()" *ngIf="isLogedIn" class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
+          <div *ngIf="isLogedIn && isShowingMenu" class="section-dropdown">
+            <div *ngIf="isLogedIn">
+              <a id="b" [routerLink]="['/profile',user.Id]"><i class="far fa-user-circle"></i>&nbsp;&nbsp; MY PROFILE
+              </a><br><br>
+              <a [routerLink]="['/joblist']" routerLinkActive="router-link-active"  id="b"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;Job Listing </a><br><br>
+              </div>
+            <a id="b"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br> 
+            <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;Login </a><br><br> 
+           
+            <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
       
-      
-</div> 
-</nav>
+            <div class="section-dropdown-sub"> 
+            </div>
+            <a id="s" href="#">About Us <i class="uil uil-arrow-right"></i></a><br><br>
+            <a id="s"  [routerLink]="['/settings/helpDesk']">Help & Support<i class="uil uil-arrow-right"></i></a><br><br> 
+            <a id="s" href="#">Terms & Conditions<i class="uil uil-arrow-right"></i></a><br><br>
+            <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a><br><br>
+            <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a><br><br>
+           
+          </div>  
+       
+        </div>
+        
+        
+  </div> 
+  </nav> 

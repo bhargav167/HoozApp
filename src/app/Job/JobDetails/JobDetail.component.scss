@@ -13,7 +13,7 @@
     margin-left: -178px;
   }
   .share{ 
-    height: 1.3rem;
+    height: 2rem;
     width: auto;
     margin-left:-140px;
     margin-top: -95px;
@@ -42,21 +42,7 @@
     height: 2.5rem;
     margin-left: 190px;
     
-    &:before {
-      content: "Responces";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      width: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3;
-      font-weight: bold;
-      pointer-events: none;
-      
-    } 
+  
     &-checkbox {
       cursor: pointer; 
       position: absolute;
@@ -102,6 +88,20 @@
       }
     }
   } 
+  .ll{ 
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      font-weight: bold;
+      pointer-events: none;
+       
+  }
   } 
  
 @media only screen and  (max-width:640px) { 
@@ -123,20 +123,7 @@
     height: 2.5rem;
     margin-left:  110px;
  
-    &:before {
-      content: "Responces";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      width: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3;
-      font-weight: bold;
-      pointer-events: none;
-    } 
+    
     &-checkbox {
       cursor: pointer; 
       position: absolute;
@@ -181,6 +168,20 @@
       }
     }
   } 
+  .ll{ 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    font-weight: bold;
+    pointer-events: none;
+     
+}
     .btn-EditHooz{
       background-color:  #00fa9a;
       color: black;
@@ -233,7 +234,21 @@
       border-radius: 0.5rem;
     } 
 }
-@media only screen and (max-width:481px) and (min-width:100px){
+@media only screen and (max-width:481px) and (min-width:100px){   
+  .ll{ 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    font-weight: bold;
+    pointer-events: none;
+     
+}
   .switch-button { 
     background: rgb(239 242 245);
     border-radius: 0.6rem;
@@ -249,20 +264,7 @@
     height: 2.5rem;
     margin-left: 55px;
  
-    &:before {
-      content: "Responces";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      width: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3;
-      font-weight: bold;
-      pointer-events: none;
-    } 
+    
     &-checkbox {
       cursor: pointer; 
       position: absolute;
@@ -314,47 +316,7 @@
   align-items: center;
   justify-content: center; 
   font-family: sans-serif;
-} 
- .select {
-  height: 40px;
-  width: 6.6rem;
-  overflow: hidden;
-  position: relative;
-  border-radius: 3px;
-  margin-bottom: 1em;
 }
-
-.select:after {
-  content: "▼";
-  padding: 8px 8px 8px;
-  position: absolute;
-  color: #00fa9a;
-  right: 13px;
-  top: 0;
-  z-index: 1;
-  text-align: center;
-  width: 10%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.select__field {
-  height: 40px;
-  width: 100%;
-  padding: 5px 15px; 
-  background-color: white;
-  border: 0.2rem solid  #e3e3e3;
-  border-radius: 0.5rem;
-  outline: none;
-  font-size: 16px;
-  -webkit-appearance: none;
-  /* for webkit browsers */
-  -moz-appearance: none;
-  /* for firefox */
-  appearance: none;
-  /* for modern browsers */
-}
- 
 
 input[type="file"] {
   display: none;

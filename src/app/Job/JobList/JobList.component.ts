@@ -30,6 +30,7 @@ export class JobListComponent implements OnInit {
 
   // TabToggleTrackVariable
   IsOnJob: boolean = true;
+  JobStatus:string='OPEN';
   constructor(private _jobServices: JobPostService,
     private _reportServices:ReportJobService,
     private activatedRoute: ActivatedRoute, 
@@ -40,12 +41,11 @@ export class JobListComponent implements OnInit {
     }
 
   ngOnInit() {
-   
   }
   //Load Jobs Post Tab
-  LoadAllWithAddedJob(currentPage: number, itemsPerPage: number) {
+  LoadAllWithAddedJob(currentPage: number, itemsPerPage: number,Jobstatus:string) {
    
-    this._jobServices.GetAllWithAddedJob(this.userId, currentPage, itemsPerPage).subscribe((res: any) => {
+    this._jobServices.GetAllWithAddedJob(this.userId, currentPage, itemsPerPage,Jobstatus).subscribe((res: any) => {
       this.jobModel = res.result;
       this.jobModels = res.result.data;
       this.pagination = res.pagination;
@@ -58,7 +58,8 @@ export class JobListComponent implements OnInit {
     this._jobServices.GetPostJob(userId, currentPage, itemsPerPage).subscribe((res: any) => {
       this.jobModel = res.result;
       this.jobModels = res.result.data;
-      this.pagination = res.pagination;  
+      this.pagination = res.pagination; 
+      console.log(this.jobModels) 
     })
   }
 
@@ -66,7 +67,7 @@ export class JobListComponent implements OnInit {
     this.currentPage = this.currentPage + 1; 
     if (this.IsOnJob == true) { 
       
-      this._jobServices.GetAllWithAddedJob(this.userId, this.currentPage, this.itemsPerPage).subscribe((res: any) => {
+      this._jobServices.GetAllWithAddedJob(this.userId, this.currentPage, this.itemsPerPage,this.JobStatus).subscribe((res: any) => {
         const newData = res.result.data;
         this.isLoading = false;
         if (newData.length === 0) {
@@ -179,12 +180,16 @@ export class JobListComponent implements OnInit {
     this.jobModels = [];
     this.jobModel = null;
     if (this.IsOnJob == true) {  
-      this.LoadAllWithAddedJob(this.currentPage, this.itemsPerPage); 
+      this.LoadAllWithAddedJob(this.currentPage, this.itemsPerPage,this.JobStatus); 
     } else {   
       this.LoadAllPost(this.user.Id, this.currentPage, this.itemsPerPage); 
     }
   } 
-
+  //Job status dropdown
+  JobStatusChange($event){ 
+    this.JobStatus=$event.target.value.trim();
+    this.LoadAllWithAddedJob(this.currentPage, this.itemsPerPage,this.JobStatus);
+  }
 
    //Back loacation History
    backClicked() {
@@ -203,7 +208,7 @@ export class JobListComponent implements OnInit {
        if(paramVal=='MyPost'){  
        this.checkValue(false);
        }else{  
-        this.LoadAllWithAddedJob(this.currentPage, this.itemsPerPage); 
+        this.LoadAllWithAddedJob(this.currentPage, this.itemsPerPage,this.JobStatus); 
        }
       });
     } else {

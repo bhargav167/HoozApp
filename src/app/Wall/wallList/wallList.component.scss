@@ -233,7 +233,7 @@
  }
 } 
 
-@media only screen and (max-width: 1600px) and (min-width: 1100px) { 
+@media only screen and (max-width: 1920px) and (min-width: 1100px) { 
   .container-sm{
     width:710px; 
     margin-left: 284px;
@@ -686,6 +686,7 @@ body {
 	z-index: 999; 
   width:inherit;
   position:absolute; 
+  box-shadow: rgb(0 0 0 / 16%) 0px 4px 16px;
   border: 1px solid #0000000d;
 } 
 .searchSuggetion ul li {

@@ -31,13 +31,18 @@ export class JobPostService {
     GetJobById(id:number){ 
       return this._http.get(this.baseURL+'Job/WebSingleJobByJobId/'+id);
     } 
+
+    GetResponceCount(jobId:number){
+      return  this._http.get(this.baseURL + 'WebPost/ResponceCount/'+jobId);
+    }
    
-    GetAllWithAddedJob(userId:number, page?, itemsPerPage?): Observable<PaginatedResult<JobResponces>>{
+    GetAllWithAddedJob(userId:number, page?, itemsPerPage?,Jobstatus?): Observable<PaginatedResult<JobResponces>>{
       const paginatedResult: PaginatedResult<JobResponces> = new PaginatedResult<JobResponces>();
       let params = new HttpParams();
       if (page != null && itemsPerPage != null) {
         params = params.append('pageNumber', page);
         params = params.append('pageSize', itemsPerPage);
+        params = params.append('JobStatus', Jobstatus);
         
       }
      //  params = params.append('searchTag', searchTerm);

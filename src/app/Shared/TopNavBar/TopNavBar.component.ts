@@ -1,6 +1,7 @@
 import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { ProfileService } from '../../services/Auth/Profile.service';
+import { SharedService } from '../../services/SharedServices/Shared.service';
 
 @Component({
   selector: 'app-TopNavBar',
@@ -10,9 +11,11 @@ import { ProfileService } from '../../services/Auth/Profile.service';
 export class TopNavBarComponent implements OnInit {
 user:SocialAuthentication; 
 navbarUserPic:string='http://res.cloudinary.com/livsolution/image/upload/c_fill,f_auto,g_faces,h_128,q_auto,w_128/DefaultUser_ktw7ga.png';
-
+ 
 isLogedIn:boolean=false;
 @Input() searchTerm:string;
+@Input() someProperty: boolean;
+isShowingMenu:boolean=false;
   constructor(private _profileServices:ProfileService) {
     if(localStorage.getItem('user')){
       this.user= JSON.parse(localStorage.getItem('user'));
@@ -32,6 +35,14 @@ isLogedIn:boolean=false;
   Search(val){ 
     this.searchTerm=val;
   }
+    // Suggetion list focous out
+   
+    hide(){ 
+      this.isShowingMenu=false; 
+   }
+   ShowMenu(){
+     this.isShowingMenu=true;
+   }
   LogOut(){
     localStorage.clear();
     location.href='/';

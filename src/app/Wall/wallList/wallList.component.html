@@ -3,14 +3,14 @@
      <img (click)="LogoClick()" class="img-responsive" style="height: 3.2rem; width: 4.5rem; cursor: pointer;"
        src="../../../assets/Logo/hoozlogo.png" />
 
-     <form class="d-flex justify-content-between">
+     <div class="d-flex justify-content-between">
        <div class="input-group">
-         <div class="form ">
-           <input autocomplete="off" (keyup.enter)="Search(searchval)" [(ngModel)]="searchval" #movieSearchInput id="searchTag" type="text"
+         <form class="form">
+           <input type="search" (click)="hide()" (keyup.enter)="SearchByEnter()"  #movieSearchInput id="searchTag" 
              class="form-control form-input" placeholder="Search here..">
            <div class="searchSuggetion" *ngIf="hidesearchlist">
              <ul>
-               <li *ngFor="let item of tag.data" (click)="Search(item.TagName)">
+               <li *ngFor="let item of tag.data" (click)="SearchByClick(item.TagName)">
                  <div>&nbsp;&nbsp;&nbsp;&nbsp;{{item.TagName}}</div>
                </li>
              </ul>
@@ -21,24 +21,24 @@
            </span>
            <span style="cursor: pointer;" (click)="ClearSearch()" *ngIf="showClose" class="left-pan"> <i
                class="fa fa-times-circle"></i></span>
-         </div>
+         </form>
        </div>
-     </form>
+     </div>
 
      <img [routerLink]="['/jobpost']" class="addIco img img-responsive img-fluid tog"
        routerLinkActive="router-link-active" *ngIf="isLogedIn"
        style="height: 2.5rem; width: 2.5rem; cursor: pointer;" src="../../../assets/HoozIcon/HoozAdd.png" />
 
-     <div type="button" class="navbar-toggler   tog">
+     <div type="button" class="navbar-toggler tog">
        <label class="for-dropdown" for="dropdown1">
          <img style="height: 0.7rem; width: 1.7rem; cursor: pointer;" class="img-responsive img-fluid"
            src="../../../assets/Logo//Toggle.png" />
        </label>
      </div>
-     <input class="dropdown tog" type="checkbox" id="dropdown1" name="dropdown1" />
+     <input (click)="ShowMenu()" class="dropdown tog" type="checkbox" id="dropdown1" name="dropdown1" />
 
      <!-- DropDown Toggle1 -->
-     <div class="section-dropdown1 tog">
+     <div *ngIf="isShowingMenu" class="section-dropdown1 tog">
        <div *ngIf="isLogedIn">
          <a id="b" [routerLink]="['/profile',user.Id]"><i class="far fa-user-circle"></i>&nbsp;&nbsp; MY PROFILE
          </a><br><br>
@@ -49,8 +49,7 @@
        <a id="b"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br>
        <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;Login </a><br>
 
-       <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
-
+       <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" /> 
        <div class="section-dropdown-sub">
        </div>
        <a id="s" href="#">About Us <i class="uil uil-arrow-right"></i></a><br><br>
@@ -60,8 +59,8 @@
        <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a><br><br>
      </div>
   <!--End DropDown Toggle1 -->
-     <div class="collapse navbar-collapse tog justify-content-end" id="navbarCollapse">
-
+   
+  <div class="collapse navbar-collapse tog justify-content-end" id="navbarCollapse">
        <div class="navbar-nav mr-auto mt-2 mt-md-0">
          <form class="d-flex">
            <ul class="navbar-nav ">
@@ -183,8 +182,7 @@
                  <div class="dropdown-content mt-0">
                    <a *ngIf="userId!=item.Job?.User?.Id && userId && !item.Job?.IsAdded" style="cursor: pointer;"
                      (click)="AddToJob(item?.Job?.Id)">Add To Job</a>
-                   <a *ngIf="userId!=item.Job?.User?.Id && userId && item.Job?.IsAdded"><i class="fa fa-check"
-                       aria-hidden="true"></i> &nbsp;Added</a>
+                   <a *ngIf="userId!=item.Job?.User?.Id && userId && item.Job?.IsAdded" (click)="RemoveToJob(item?.Job?.Id)">Remove Job</a>
                    <a *ngIf="userId!=item.Job?.User?.Id && userId" style="cursor: pointer;"
                      (click)="Report(item?.Job?.Id)">Report</a>
                    <a style="cursor: pointer;">Share</a>
@@ -193,7 +191,7 @@
              </div>
 
            </div>
-           <div [routerLink]="['/jobDetails',item.Job.Id]" routerLinkActive="router-link-active" class="mt-1">
+           <div [routerLink]="['/jobDetails',item.Job.Id]" class="mt-1">
              <p class="heading">
                {{item?.Job.Descriptions | slice:0:50}}{{ item?.Job.Descriptions.length > 40 ? '...' : '' }} </p>
              <div class=" ">
@@ -235,7 +233,7 @@
        <div *ngIf="!NotEmptPost">
          <br><br> <br>
          <div class="col-md-12 d-flex justify-content-center">
-           <div class="text-muted h6 alert alert-secondary p-2">Explore more with different keyword</div>
+           <div class="text-muted h6 alert alert-secondary p-2">{{noResultText}}</div>
          </div>
        </div>
      </div>

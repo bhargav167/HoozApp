@@ -1,8 +1,12 @@
-@media only screen and (max-width: 1600px) and (min-width: 960px) { 
+@media only screen and (max-width: 1920px) and (min-width: 960px) { 
   .container-sm{
-    width:710px; 
-    margin-left: 284px;
+    width:410px; 
+    margin-left: 265px;
   }  
+  .content{
+    width: 352px;
+    margin-left: 133px;
+  }
   .switch-button { 
     background: rgb(239 242 245);
     border-radius: 0.6rem;
@@ -88,21 +92,24 @@
     margin-top: -108px;
    }
    .two{
-    height: 200px;
-    background-color: #eff2f5;
-    font-weight: 300;
-   color: #d1d1d1;
+    height:95px;
+    background-color: white;
+    font-weight: 300; 
     border-width: 0;
     width: 100%;
     border-radius: 0.5rem;
-  } 
-
+    padding: 0;
+  }
   } 
  
 @media only screen and  (max-width:640px) and (min-width:480px) { 
   .container-sm{
     width:100%; 
   } 
+  .content{
+    width: 335px;
+    margin-left: 59px;
+  }
   .switch-button { 
     background: rgb(239 242 245);
     border-radius: 0.6rem;
@@ -186,20 +193,24 @@
     margin-top: -108px;
    }
    .two{
-    height: 200px;
-    background-color: #eff2f5;
-    font-weight: 300;
-   color: #d1d1d1;
+    height:95px;
+    background-color: white;
+    font-weight: 300; 
     border-width: 0;
     width: 100%;
     border-radius: 0.5rem;
+    padding: 0;
   } 
   }  
 
 @media (min-width:641px) and (max-width:961px) { 
   .container-sm{
-    width:710px;   
+    width:510px;   
   } 
+  .content{
+    width: 355px;
+    margin-left: 131px;
+  }
   .switch-button { 
     background: rgb(239 242 245);
     border-radius: 0.6rem;
@@ -281,18 +292,22 @@
     margin-top: -108px;
    }
    .two{
-    height: 200px;
-    background-color: #eff2f5;
-    font-weight: 300;
-   color: #d1d1d1;
+    height:95px;
+    background-color: white;
+    font-weight: 300; 
     border-width: 0;
     width: 100%;
     border-radius: 0.5rem;
+    padding: 0;
   } 
 }
 @media only screen and (max-width:481px) and (min-width:100px){
   .container-sm{
     width:100%; 
+  }
+  .content{
+    width:100%; 
+    margin-left: 0px;
   }
   .switch-button { 
     background: rgb(239 242 245);
@@ -373,13 +388,13 @@
     margin-top: -108px;
    }
    .two{
-    height: 200px;
-    background-color: #eff2f5;
-    font-weight: 300;
-   color: #d1d1d1;
+    height:95px;
+    background-color: white;
+    font-weight: 300; 
     border-width: 0;
     width: 100%;
     border-radius: 0.5rem;
+    padding: 0;
   } 
 }
    /* //Loader */
@@ -445,4 +460,21 @@
   justify-content: center;
 }
 
+.ResponceBadge{
+  font-size: small;
+   font-weight:lighter;
+   color: black;
+   margin-left: 150px;
+   margin-top: -32px;
+}
+.timeago{
+  margin-top: 44px;
+  font-size: small;
+  font-weight:lighter;
+}
+.timeago1{
+  margin-top: 30px;
+  font-size: small;
+  font-weight:lighter;
+}
 

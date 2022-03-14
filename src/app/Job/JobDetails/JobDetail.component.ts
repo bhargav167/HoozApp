@@ -8,6 +8,7 @@ import swal from 'sweetalert2';
 import { UserJobs } from '../../Model/Job/UserJobs'; 
 import { ReportJobService } from '../../services/JobPost/ReportJob.service';
 import { SharedService } from '../../services/SharedServices/Shared.service';
+import { JobResponces } from '../../Model/Job/JobResponces';
 
 @Component({
   selector: 'app-JobDetail',
@@ -20,8 +21,9 @@ jobId:number=0;
 loggedUserId:number=0;
 loggeduser: SocialAuthentication;
 userJob:UserJobs; 
-
 isJobAdded:boolean=false;
+totalResponces:number=0;
+jobResponces:JobResponces[];
   constructor(private _jobServices:JobPostService,
     private _reportServices:ReportJobService,
     private _sharedServices:SharedService,
@@ -32,10 +34,12 @@ isJobAdded:boolean=false;
       if(localStorage.getItem('user')){
         this.loggeduser= JSON.parse(localStorage.getItem('user')); 
         this.loggedUserId=this.loggeduser.Id;
+         
       }
      
       this.jobId= this._router.snapshot.params['id'];
     this.LoadJobDetailsById(this.jobId); 
+    this.loadResponcesData(this.jobId);
     
   }
 
@@ -45,6 +49,12 @@ isJobAdded:boolean=false;
     this._jobServices.GetJobById(id).subscribe((data:JobModel)=>{
       this.job=data[0]; 
       this.IsAddedJob(this.loggedUserId,this.jobId);
+    }) 
+  }
+
+  loadResponcesData(jobId:number){
+    this._jobServices.GetResponceCount(jobId).subscribe((data:number)=>{
+      this.totalResponces=data; 
     }) 
   }
 
@@ -82,39 +92,64 @@ isJobAdded:boolean=false;
   }
   // Job Added
   AddToJob(){
+    let userJob={
+      jobModelId:this.jobId,
+      socialAuthenticationId:this.loggedUserId
+    };  
     swal.fire({
-      text: `Confirm to add Job Post Id: ${this.job.Id}`,
-      showDenyButton: true, 
-      confirmButtonText: 'Yes',
-      confirmButtonColor:'#00fa9a', 
-      denyButtonText: `No`,
-      denyButtonColor:'black'
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        let userJob={
-          jobModelId:this.jobId,
-          socialAuthenticationId:this.loggedUserId
-        };  
-        swal.fire({
-          text:'Please wait.. Adding job',
-          showConfirmButton:false,
-          icon:'info'
-        })
-        this._jobServices.AddJobToUser(userJob).subscribe((data:any)=>{ 
-          if(data._responce.Status==422){
-            swal.fire(`This Job ${this.jobId} is already Added!`, '', 'info')
-          }else{
-            swal.fire(`Job ${this.jobId} Added successfully!`, '', 'success')
-            this.IsAddedJob(this.loggedUserId,this.jobId);
-          }
-        },err=>{
-          console.log(err);
-        }) 
-      } else if (result.isDenied) {
+      text:'Please wait.. Adding job',
+      showConfirmButton:false,
+      icon:'info'
+    })
+    this._jobServices.AddJobToUser(userJob).subscribe((data:any)=>{ 
+      if(data._responce.Status==422){
+        swal.fire(`Job ${this.jobId} removed successfully!`, '', 'info')
+        this.IsAddedJob(this.loggedUserId,this.jobId);
+      }else{
+        swal.fire(`Job ${this.jobId} Added successfully!`, '', 'success')
+        this.IsAddedJob(this.loggedUserId,this.jobId);
+      }
+    },err=>{
+      console.log(err);
+    }) 
+    // swal.fire({
+    //   text: `Confirm to add Job Post Id: ${this.job.Id}`,
+    //   showDenyButton: true, 
+    //   confirmButtonText: 'Yes',
+    //   confirmButtonColor:'#00fa9a', 
+    //   denyButtonText: `No`,
+    //   denyButtonColor:'black'
+    // }).then((result) => {
+    //   /* Read more about isConfirmed, isDenied below */
+    //   if (result.isConfirmed) {
+      
+    //   } else if (result.isDenied) {
+         
+    //   }
+    // })
+  }
+
+  // Job Removed
+  RemoveToJob(){
+    let userJob={
+      jobModelId:this.jobId,
+      socialAuthenticationId:this.loggedUserId
+    };  
+    swal.fire({
+      text:'Please wait.. Removing job',
+      showConfirmButton:false,
+      icon:'info'
+    })
+    this._jobServices.AddJobToUser(userJob).subscribe((data:any)=>{ 
+      if(data._responce.Status==422){
+        swal.fire(`Job ${this.jobId} removed successfully!`, '', 'info')
+        this.IsAddedJob(this.loggedUserId,this.jobId);
+      }else{
          
       }
-    })
+    },err=>{
+      console.log(err);
+    }) 
   }
 
   //Edit Job

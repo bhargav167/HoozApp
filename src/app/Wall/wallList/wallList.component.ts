@@ -37,6 +37,7 @@ export class WallListComponent implements OnInit {
   isLoading: boolean = true; 
   tag:TagMaster;
   searchval:string; 
+  noResultText:string='Explore more with different keyword';
 user:SocialAuthentication;
 userId:number=0;
 //Scroll Variable
@@ -76,32 +77,30 @@ isJobAdded:boolean=false;
     this.fireSearchlist();
     this.LoadWallData(this.currentPage, this.itemsPerPage, this.userParams,this.userId); 
   }
- //Check is this job added already
- IsAddedJob(userId: number, jobId: number) {
-  this._jobServices.IsAddedJob(userId,jobId).subscribe((data:any)=>{ 
-    if(data.Status==200){
-     this.isJobAdded=false;
-    }else{
-      this.isJobAdded=true;
-    }
-  })
-}
+ 
   //For Nav
   LogOut(){
     localStorage.clear();
     location.href='/';
   }
 
-  //Search wall
-  Search(searchTerm){  
+  //Search wall by click
+  SearchByClick(searchTerm){  
     this.currentPage=1;
     this.hidesearchlist=false;
     (document.getElementById("searchTag") as HTMLInputElement).value= searchTerm;
-    this.userParams=(document.getElementById("searchTag") as HTMLInputElement).value; 
-    this.searchval=searchTerm; 
+    this.userParams=searchTerm;
     this.LoadWallData(this.currentPage, this.itemsPerPage, searchTerm,this.userId); 
-   
   }
+    //Search wall by enter
+    SearchByEnter(){  
+       this.searchval=(document.getElementById("searchTag") as HTMLInputElement).value;
+       this.userParams=this.searchval;
+      this.currentPage=1;
+      this.hidesearchlist=false;
+      this.LoadWallData(this.currentPage, this.itemsPerPage, this.searchval,this.userId);
+    }
+
   ClearSearch(){ 
     (document.getElementById("searchTag") as HTMLInputElement).value= '';
     this.showClose=false;
@@ -161,68 +160,89 @@ isJobAdded:boolean=false;
       this.walldata = res.result; 
       this.walldatas=res.result;
       this.pagination = res.pagination;  
-    this.isLoading=false;  
+    this.isLoading=false; 
+    this.noResultText='Explore more with different keyword';
+    },err=>{ 
+        this.isLoading=false;
+        this.walldatas=[];
+        this.NotEmptPost=false;
+        this.notScrollY=false;
+        this.noResultText=`Sorry, we couldn't find any Post with ${userParams} tag.`
+      
     })
   } 
-  LoadNextPost(){ 
-    this.currentPage=this.currentPage+1;
-     this._wallServices.GetWall(this.currentPage, this.itemsPerPage, this.userParams,this.userId).subscribe((res:any) => { 
-       const newData=res.result;
-       this.isLoading=false;
-       if(newData.length===0){
-         this.NotEmptPost=false;
-       }
-      
-      this.walldatas=this.walldatas.concat(newData);
-      this.notScrollY=true;
-      this.pagination = res.pagination;  
+  LoadNextPost() {
+    this.currentPage = this.currentPage + 1;
+    this._wallServices.GetWall(this.currentPage, this.itemsPerPage, this.userParams, this.userId).subscribe((res: any) => {
+      const newData = res.result;
+      this.isLoading = false;
+      if (newData.length === 0) {
+        this.NotEmptPost = false;
+      }
+
+      this.walldatas = this.walldatas.concat(newData);
+      this.notScrollY = true;
+      this.pagination = res.pagination;
     })
   }
-  onScroll(){ 
-    if(this.notScrollY && this.NotEmptPost){ 
-      this.isLoading=true;
-      this.notScrollY=false;
+  onScroll() {
+    if (this.notScrollY && this.NotEmptPost) {
+      this.noResultText = 'Explore more with different keyword';
+      this.isLoading = true;
+      this.notScrollY = false;
       this.LoadNextPost();
-    }
-  } 
 
+    }
+  }
 
   // Job Added
   AddToJob(jobId){
+    let userJob={
+      jobModelId:jobId,
+      socialAuthenticationId:this.userId
+    };  
     swal.fire({
-      text: `Confirm to add Job Post Id: ${jobId}`,
-      showDenyButton: true, 
-      confirmButtonText: 'Yes',
-      confirmButtonColor:'#00fa9a', 
-      denyButtonText: `No`,
-      denyButtonColor:'black'
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        let userJob={
-          jobModelId:jobId,
-          socialAuthenticationId:this.userId
-        };  
-        swal.fire({
-          text:'Please wait.. Adding job',
-          showConfirmButton:false,
-          icon:'info'
-        })
-        this._jobServices.AddJobToUser(userJob).subscribe((data:any)=>{ 
-          if(data._responce.Status==422){
-            swal.fire(`This Job ${jobId} is already Added!`, '', 'info')
-          }else{
-            swal.fire(`Job ${jobId} Added successfully!`, '', 'success')
-          }
-         
-        },err=>{
-          console.log(err);
-        }) 
-      } else if (result.isDenied) {
-        
-      }
+      text:'Please wait.. Adding job',
+      showConfirmButton:false,
+      icon:'info'
     })
+    this._jobServices.AddJobToUser(userJob).subscribe((data:any)=>{ 
+      if(data._responce.Status==422){
+        swal.fire(`This Job ${jobId} is already Added!`, '', 'info')
+       
+      }else{
+        swal.fire(`Job ${jobId} Added successfully!`, '', 'success')
+        this.LoadWallData(this.currentPage, this.itemsPerPage, this.userParams,this.userId); 
+      }
+     
+    },err=>{
+      console.log(err);
+    }) 
   }
+    // Job Removed
+    RemoveToJob(jobId){
+      let userJob={
+        jobModelId:jobId,
+        socialAuthenticationId:this.userId
+      };  
+      swal.fire({
+        text:'Please wait.. Removing job',
+        showConfirmButton:false,
+        icon:'info'
+      })
+      this._jobServices.AddJobToUser(userJob).subscribe((data:any)=>{ 
+        if(data._responce.Status==422){
+          swal.fire(`Job ${jobId} Removed successfully!`, '', 'success')
+          this.LoadWallData(this.currentPage, this.itemsPerPage, this.userParams,this.userId); 
+        }else{
+         
+        }
+       
+      },err=>{
+        console.log(err);
+      }) 
+    }
+
   Report(jobId){
     swal.fire({
       title: `Report`,
