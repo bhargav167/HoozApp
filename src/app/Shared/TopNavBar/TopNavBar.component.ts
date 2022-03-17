@@ -1,7 +1,6 @@
-import { Component, Input, NgModule, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
-import { ProfileService } from '../../services/Auth/Profile.service';
-import { SharedService } from '../../services/SharedServices/Shared.service';
+import { ProfileService } from '../../services/Auth/Profile.service'; 
 
 @Component({
   selector: 'app-TopNavBar',
@@ -11,7 +10,6 @@ import { SharedService } from '../../services/SharedServices/Shared.service';
 export class TopNavBarComponent implements OnInit {
 user:SocialAuthentication; 
 navbarUserPic:string='http://res.cloudinary.com/livsolution/image/upload/c_fill,f_auto,g_faces,h_128,q_auto,w_128/DefaultUser_ktw7ga.png';
- 
 isLogedIn:boolean=false;
 @Input() searchTerm:string;
 @Input() someProperty: boolean;
