@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { JobModel } from '../../Model/Job/JobModel'; 
+import { JobModel } from '../../Model/Job/JobModel';
 import { HotToastService } from '@ngneat/hot-toast';
-import { Location } from '@angular/common'; 
+import { Location } from '@angular/common';
 import { SharedService } from '../../services/SharedServices/Shared.service';
 import { JobPostService } from '../../services/JobPost/JobPost.service';
 import { Router } from '@angular/router';
+import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
  @Component({
   selector: 'app-JobEdit',
   templateUrl: './JobEdit.component.html',
@@ -13,23 +14,24 @@ import { Router } from '@angular/router';
 })
 export class JobEditComponent implements OnInit {
   public btnLoader: boolean;
-  jobPostForm:FormGroup; 
+  jobPostForm:FormGroup;
   jobModel:JobModel;
   public imagePath;
   imgURL: any;
-  filetoPost:any; 
+  filetoPost:any;
   public message: string;
   public Tagmessage: string;
   ischeckedAnonymously:boolean=false;
   ischeckedPublic:boolean=true;
-  userId:number; 
+  userId:number;
   editJobId:number=0;
   latitude: number;
   longitude: number;
-  constructor(private fb:FormBuilder, 
+  constructor(private fb:FormBuilder,
     private _jobServices:JobPostService,
+    private navServices:NavbarCommunicationService,
     private _router:Router,
-    private toast: HotToastService, 
+    private toast: HotToastService,
     private _sharedServices:SharedService,
     private _location: Location) {
     this._sharedServices.checkInterNetConnection();
@@ -37,22 +39,22 @@ export class JobEditComponent implements OnInit {
     this.userId=user.Id;
    this.editJobId = parseInt(sessionStorage.getItem('EditJobId'));
    }
-   
+
   ngOnInit() {
-    this.createJobPostForm(); 
+    this.createJobPostForm();
     this.loadJobEditDetails(this.editJobId);
   }
   createJobPostForm() {
-    this.jobPostForm = this.fb.group({  
-      Descriptions: ['',Validators.required], 
+    this.jobPostForm = this.fb.group({
+      Descriptions: ['',Validators.required],
       ImagesUrl:[''],
       Address:['Sector 112, Noida Extension, Noida'],
       Latitude:[''],
       Longitude:[''],
-      IsAnonymous:[false], 
+      IsAnonymous:[false],
       IsPublic:[true]
-    }) 
-  } 
+    })
+  }
 
 
    loadJobEditDetails(jobId) {
@@ -69,21 +71,21 @@ export class JobEditComponent implements OnInit {
    }
 
    public uploadFile = (jobId,files) => {
-    if (files.length === 0) 
+    if (files.length === 0)
     return;
- 
+
     let fileToUpload = <File>files[0];
     const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name); 
-   this._jobServices.AddPostImages(jobId,formData).subscribe(()=>{ 
-    this.btnLoader=false; 
+    formData.append('file', fileToUpload, fileToUpload.name);
+   this._jobServices.AddPostImages(jobId,formData).subscribe(()=>{
+    this.btnLoader=false;
     this.showToast();
     this._router.navigate(['/joblist'], { queryParams: {target: 'MyPost'}});
    },error=>{
      console.log(error);
    })
-  } 
-  
+  }
+
   FileUpload(files): void {
     if (files.length === 0)
       return;
@@ -104,37 +106,40 @@ export class JobEditComponent implements OnInit {
 
     }
   }
- 
 
-  changePostAnonymously() {  
-    this.ischeckedAnonymously=!this.ischeckedAnonymously; 
+
+  changePostAnonymously() {
+    this.ischeckedAnonymously=!this.ischeckedAnonymously;
     this.jobPostForm.controls['IsAnonymous'].setValue(this.ischeckedAnonymously);
-  } 
+  }
   changePostPublic(){
     this.ischeckedPublic=!this.ischeckedPublic;
     this.jobPostForm.controls['IsPublic'].setValue(this.ischeckedPublic);
-  } 
+  }
 
   showToast() {
-    this.toast.success('Job update Successfully', { 
-      position: 'top-center', 
-    }); 
+    this.toast.success('Job update Successfully', {
+      position: 'top-center',
+    });
   }
-  AddJobPost() {  
-    this.btnLoader=true;  
+  AddJobPost() {
+    this.btnLoader=true;
     this.jobModel = Object.assign({}, this.jobPostForm.value);
-    this._jobServices.UpdateJobPost(this.editJobId,this.jobModel).subscribe((data:any)=>{  
+    this._jobServices.UpdateJobPost(this.editJobId,this.jobModel).subscribe((data:any)=>{
       if(this.filetoPost==undefined){
         this.btnLoader = false;
         this._router.navigate(['/joblist'], { queryParams: {target: 'MyPost'}});
-        return this.showToast(); 
-      } 
+        return this.showToast();
+      }
       this.uploadFile(this.editJobId, this.filetoPost);
     })
-  } 
-  
+  }
+
    //Back loacation History
    backClicked() {
     this._location.back();
   }
+  hideEvent(){
+    this.navServices.Toggle();
+ }
 }

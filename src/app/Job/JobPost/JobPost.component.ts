@@ -3,12 +3,13 @@ import { FormGroup, FormBuilder, Validators }  from '@angular/forms';
 import { JobModel } from '../../Model/Job/JobModel';
 import { JobTags } from '../../Model/Job/JobTags';
 import { TagMaster } from '../../Model/TagMaster';
-import { JobPostService } from '../../services/JobPost/JobPost.service'; 
+import { JobPostService } from '../../services/JobPost/JobPost.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import {Location} from '@angular/common';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/SharedServices/Shared.service';
 import { TagService } from '../../services/Tags/Tag.service';
+import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
 function isValid(str){
   return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(str);
  }
@@ -20,22 +21,22 @@ function isValid(str){
 export class JobPostComponent implements OnInit {
   public btnLoader: boolean;
   jobPostForm:FormGroup;
-  Tags:JobTags[]=[]; 
-  jobTag:JobTags;  
+  Tags:JobTags[]=[];
+  jobTag:JobTags;
   tagMaster:TagMaster;
   jobModel:JobModel;
   public imagePath;
   imgURL: any;
-  filetoPost:any; 
+  filetoPost:any;
   public message: string;
   public Tagmessage: string;
   ischeckedAnonymously:boolean=false;
   ischeckedPublic:boolean=true;
-  userId:number; 
-  @Output() isShowingMenu = new EventEmitter<boolean>();
+  userId:number;
   latitude: number;
   longitude: number;
   constructor(private fb:FormBuilder,
+    private navServices:NavbarCommunicationService,
     private _jobServices:JobPostService,
     private _tagService:TagService,
     private toast: HotToastService,
@@ -49,14 +50,14 @@ export class JobPostComponent implements OnInit {
     this.userId=user.Id;
     }else{
       window.location.href='/login';
-    }  
+    }
    }
-   
+
   ngOnInit() {
-    this.createJobPostForm(); 
+    this.createJobPostForm();
   }
   createJobPostForm() {
-    this.jobPostForm = this.fb.group({ 
+    this.jobPostForm = this.fb.group({
       UserId:[],
       Descriptions: ['',Validators.required],
       Tags:[''],
@@ -64,38 +65,38 @@ export class JobPostComponent implements OnInit {
       Address:['Sector 112, Noida Extension, Noida'],
       Latitude:[''],
       Longitude:[''],
-      IsAnonymous:[false], 
+      IsAnonymous:[false],
       IsPublic:[true]
     })
-  } 
+  }
 
-  changePostAnonymously() {  
-    this.ischeckedAnonymously=!this.ischeckedAnonymously; 
+  changePostAnonymously() {
+    this.ischeckedAnonymously=!this.ischeckedAnonymously;
     this.jobPostForm.controls['IsAnonymous'].setValue(this.ischeckedAnonymously);
-  } 
+  }
   changePostPublic(){
     this.ischeckedPublic=!this.ischeckedPublic;
     this.jobPostForm.controls['IsPublic'].setValue(this.ischeckedPublic);
-  } 
+  }
 
   showToast() {
-    this.toast.success('Job created Successfully', { 
-      position: 'top-center', 
-    }); 
+    this.toast.success('Job created Successfully', {
+      position: 'top-center',
+    });
   }
   AddJobPost() {
-    if(this.Tags.length==0){ 
-      this.toast.warning('Tag is required!', { 
-        position: 'top-center', 
-      }); 
+    if(this.Tags.length==0){
+      this.toast.warning('Tag is required!', {
+        position: 'top-center',
+      });
       return;
-    } 
-    this.btnLoader=true;  
+    }
+    this.btnLoader=true;
         this.jobPostForm.controls['UserId'].setValue(this.userId);
         this.jobPostForm.controls['Tags'].setValue(this.Tags);
         this.jobPostForm.controls['IsAnonymous'].setValue(this.ischeckedAnonymously);
         this.jobPostForm.controls['IsPublic'].setValue(this.ischeckedPublic);
-        this.jobModel = Object.assign({}, this.jobPostForm.value); 
+        this.jobModel = Object.assign({}, this.jobPostForm.value);
         this._jobServices.AddJobPost(this.jobModel).subscribe((data: any) => {
           if (this.filetoPost == undefined) {
             this._jobServices.AddPostImages(data.CreatedJob.Id, null).subscribe(() => {
@@ -116,41 +117,41 @@ export class JobPostComponent implements OnInit {
 
         }, error => {
           console.log(error);
-        }) 
+        })
   }
 
   public uploadFile = (jobId,files) => {
-    if (files.length === 0) 
+    if (files.length === 0)
     return;
- 
+
     let fileToUpload = <File>files[0];
     const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name); 
+    formData.append('file', fileToUpload, fileToUpload.name);
    this._jobServices.AddPostImages(jobId,formData).subscribe(()=>{
-    this.jobPostForm.controls['Tags'].setValue(''); 
+    this.jobPostForm.controls['Tags'].setValue('');
     this.Tags=[];
     this.Tagmessage='';
     this.btnLoader=false;
     this.imgURL=null;
-    this.jobPostForm.reset();  
+    this.jobPostForm.reset();
     this._router.navigate(['/joblist'], { queryParams: {target: 'MyPost'}});
    },error=>{
      console.log(error);
    })
-  } 
+  }
 
-  AddTagging() {  
-    if(this.jobPostForm.controls['Tags'].value == ''){ 
-      this.toast.warning('Tag is required!', { 
-        position: 'top-center', 
-      }); 
+  AddTagging() {
+    if(this.jobPostForm.controls['Tags'].value == ''){
+      this.toast.warning('Tag is required!', {
+        position: 'top-center',
+      });
       return;
-    }  
+    }
     this.jobTag = {
       TagName: this.jobPostForm.controls['Tags'].value.trim(),
       TagMasterId: 0
     };
-    this.Tags.push(this.jobTag); 
+    this.Tags.push(this.jobTag);
     this.Tagmessage = '';
 
     // Add Tag To TagMaster for Later show suggetions
@@ -195,7 +196,7 @@ export class JobPostComponent implements OnInit {
     this._location.back();
   }
 
-  hideEvent(){  
-    this.isShowingMenu.emit(false);
+  hideEvent(){
+    this.navServices.Toggle();
  }
 }

@@ -1,17 +1,18 @@
 <app-TopNavBar></app-TopNavBar>
+<div (click)="hideEvent()">
 <div  class="d-flex justify-content-start mb-4">
   <i  (click)="backClicked()"   style="padding-left: 50px; cursor: pointer; color: black;" class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
-  <h3 class="hc1">Job Post</h3> 
+  <h3 class="hc1">Job Post</h3>
 </div>
-  <div (click)="hideEvent()">
+
   <div class="container-sm">
     <div class="row mb-4">
       <div class="col-sm-10 col-md-11">
         <!-- //Form Section -->
-        <p class="small-font">POST YOUR REQUIREMENT </p> 
+        <p class="small-font">POST YOUR REQUIREMENT </p>
         <p class="medium-font">Create your post</p>
         </div>
-       
+
       <div class="col-sm-2 col-md-1">
         <button type="submit"   form="postForm" id="post" [disabled]="!jobPostForm.valid || btnLoader"  class="btn btn-hoozGreen">
           <p class="button-content">
@@ -22,7 +23,7 @@
           </p>
         </button>
       </div>
-    
+
     </div>
 
     <div class="row">
@@ -36,12 +37,12 @@
             formControlName="Descriptions"
             class="form-control one" placeholder="What are you looking for?" id="exampleInputEmail1" aria-describedby="emailHelp">
             </textarea>
-         
-            <small 
+
+            <small
             *ngIf="jobPostForm.get('Descriptions').hasError('required') && jobPostForm.get('Descriptions').touched"
             id="emailHelp" class="form-text text text-danger">Description is requires.</small>
           </div>
-  
+
           <div class="mb-4">
             <label for="exampleInputPassword1" class="form-label">Add Image</label>
             <label id="custom-button" class="form-control two">
@@ -51,33 +52,33 @@
               </div>
               <div *ngIf="imgURL" style="text-align: center; margin-top: 0px;">
                 <img  style="height: 138px; width: 200px;" [src]="imgURL" alt="your image" />
-                
+
               </div>
-  
+
               <input  formControlName="ImagesUrl" #file id="real-file" (change)="FileUpload(file.files)" type="file" size="60" >
               </label>
               <small class="text text-danger">{{message}}</small>
           </div>
-  
+
           <div class="mb-4">
             <label for="exampleInputPassword1" class="form-label form-label1">Tags* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
           <div class="buttonInside">
             <input (keyup.enter)="AddTagging()" formControlName="Tags" placeholder=" add tags to your post"  class="form-control taginput"  type="text">
-            <button type="button" (click)="AddTagging()" class="tagbutton" id="showPassword">Add</button> 
+            <button type="button" (click)="AddTagging()" class="tagbutton" id="showPassword">Add</button>
           </div>
-          </div>  
+          </div>
         </form>
       </div>
-    </div> 
+    </div>
     <br>
   </div>
 
-  <div class="container-fluid mb-4"> 
+  <div class="container-fluid mb-4">
       <div *ngFor="let item of Tags" class="badgeTag" >
         <span   class="badge bg-badge text-dark">
           <p class="text text-center" style="color: white; margin-top: 4px;">{{item.TagName}} &nbsp;<i (click)="RemoveTagging(item.TagName)" class="fa fa-times" aria-hidden="true"></i></p>
            </span>
-      </div>  
+      </div>
   </div>
 
   <div class="container-sm">
@@ -90,7 +91,7 @@
           </label>
           <p class="parapost">This post will be shown as posted by anonymous user<br>Creator's information will not be shown</p>
         </div>
-    
+
       </div>
       <div class="col-md-6">
         <div class="form-check">
@@ -102,16 +103,16 @@
         </div>
       </div>
     </div>
-    
+
     <div class="row">
     <div class="col-md-12">
-      <div class="mt-4"> 
+      <div class="mt-4">
         <label for="exampleInputPassword1"  class="form-label">Location* &nbsp; </label>
         <button class="EditBtn"><i class="fas fa-pencil-alt"></i></button>
       <p style="font-size: 12px; font-weight: bold;">Sector 112, Noida Extension, Noida</p>
       </div>
     </div>
-    </div> 
+    </div>
       <div class="row">
         <div class="col-md-6">
           <p class="headingparapost">Local or Global decides the reach of your post</p>
@@ -132,23 +133,23 @@
               </label></div>
             </div>
           </div>
-    
-    
+
+
         </div>
-    
+
         <div class="col-md-6 col-sm-6">
-    
-    
+
+
           <div class="form-check">
             <p class="headingparapost1">Set local post reach   <span id="rangeValue">0&nbsp;kms</span></p>
             <input class="range" type="range"   value="0" min="0" max="1000" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"/>
           </div>
-    
+
         </div>
       </div>
-  </div> 
-</div>
+  </div>
 
+</div>
   <br>
-  <br> 
+  <br>
 

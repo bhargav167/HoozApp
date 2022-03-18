@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
+import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
 
 @Component({
   selector: 'app-Download',
@@ -8,12 +9,15 @@ import {Location} from '@angular/common';
 })
 export class DownloadComponent implements OnInit {
 
-  constructor(private _location: Location) { }
+  constructor(private _location: Location,private navServices:NavbarCommunicationService) { }
 
   ngOnInit() {
   }
  //Back loacation History
  backClicked() {
   this._location.back();
+}
+hideEvent(){
+  this.navServices.Toggle();
 }
 }

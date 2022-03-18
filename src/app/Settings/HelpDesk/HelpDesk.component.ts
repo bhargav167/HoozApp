@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
+import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
 @Component({
   selector: 'app-HelpDesk',
   templateUrl: './HelpDesk.component.html',
@@ -11,7 +12,7 @@ isEX:boolean=false;
 isSP:boolean=false;
 isCU:boolean=false;
 isGetServices:boolean=false;
-  constructor(private _location: Location) { }
+  constructor(private _location: Location,private navServices:NavbarCommunicationService) { }
   ngOnInit() {
   }
   GS() {
@@ -21,7 +22,7 @@ isGetServices:boolean=false;
     this.isCU=false;
     this.isGetServices=false;
   }
-  EX() { 
+  EX() {
     this.isGS=false;
     this.isEX=true;
     this.isSP=false;
@@ -58,7 +59,7 @@ isGetServices:boolean=false;
       this.EX();
     }
     if(e.target.value==3){
-      this.GetServices(); 
+      this.GetServices();
     }
     if(e.target.value==4){
       this.SP();
@@ -70,5 +71,9 @@ isGetServices:boolean=false;
  //Back loacation History
  backClicked() {
   this._location.back();
+}
+
+hideEvent(){
+  this.navServices.Toggle();
 }
 }

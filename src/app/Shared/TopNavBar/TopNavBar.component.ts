@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
-import { ProfileService } from '../../services/Auth/Profile.service'; 
+import { ProfileService } from '../../services/Auth/Profile.service';
+import { NavbarCommunicationService } from '../services/NavbarCommunication.service';
 
 @Component({
   selector: 'app-TopNavBar',
@@ -8,38 +9,36 @@ import { ProfileService } from '../../services/Auth/Profile.service';
   styleUrls: ['./TopNavBar.component.css']
 })
 export class TopNavBarComponent implements OnInit {
-user:SocialAuthentication; 
+user:SocialAuthentication;
 navbarUserPic:string='http://res.cloudinary.com/livsolution/image/upload/c_fill,f_auto,g_faces,h_128,q_auto,w_128/DefaultUser_ktw7ga.png';
 isLogedIn:boolean=false;
 @Input() searchTerm:string;
-@Input() someProperty: boolean;
-isShowingMenu:boolean=false;
-  constructor(private _profileServices:ProfileService) {
+  constructor(private _profileServices:ProfileService, public navServices:NavbarCommunicationService,) {
     if(localStorage.getItem('user')){
       this.user= JSON.parse(localStorage.getItem('user'));
       this._profileServices.GetUserProfile(this.user.Id).subscribe((data:SocialAuthentication)=>{
-        this.navbarUserPic=data.UserImage; 
+        this.navbarUserPic=data.UserImage;
       },err=>{
         console.log("Something wen wrong"+err);
       })
-      this.isLogedIn=true; 
+      this.isLogedIn=true;
     }else{
       this.isLogedIn=false;
-    } 
+    }
    }
 
-  ngOnInit() { 
+  ngOnInit() {
   }
-  Search(val){ 
+  Search(val){
     this.searchTerm=val;
   }
     // Suggetion list focous out
-   
-    hide(){ 
-      this.isShowingMenu=false; 
+
+    hide(){
+      this.navServices.isShowingMenu=false;
    }
    ShowMenu(){
-     this.isShowingMenu=true;
+    this.navServices.isShowingMenu=true;
    }
   LogOut(){
     localStorage.clear();

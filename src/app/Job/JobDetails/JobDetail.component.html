@@ -1,32 +1,33 @@
-<app-TopNavBar></app-TopNavBar> 
+<app-TopNavBar></app-TopNavBar>
+<div (click)="hideEvent()">
 <div  class="d-flex justify-content-start mb-4">
   <i  (click)="backClicked()"     class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
-  <h3 class="hc1">Job Detail</h3> 
+  <h3 class="hc1">Job Detail</h3>
 </div>
-<!--  Tab Toggle -->  
+<!--  Tab Toggle -->
  <div *ngIf="loggedUserId==job?.User?.Id" class="container-sm mt-0">
-  <div class="row col-sm-12"> 
+  <div class="row col-sm-12">
       <div class="d-flex">
         <div class="d-flex flex-row justify-content-between">
           <div   class="switch-button">
             <input  class="switch-button-checkbox" type="checkbox" />
-            <label  class="switch-button-label" for=""><span class="switch-button-label-span">Post</span>            
+            <label  class="switch-button-label" for=""><span class="switch-button-label-span">Post</span>
             </label>
-            <label  class="ll" for=""><span >&nbsp;Responce 
+            <label  class="ll" for=""><span >&nbsp;Responce
               <span  class="badge rounded-pill bg-Responce">
                 {{totalResponces}}
-              </span> 
-             </span> 
+              </span>
+             </span>
             </label>
-           
-          </div> 
+
+          </div>
         </div>
       </div>
-  </div> 
-</div> 
-<div class="container-sm mt-4"> 
+  </div>
+</div>
+<div class="container-sm mt-4">
     <!-- User Sections -->
-      <div class="row col-sm-12"> 
+      <div class="row col-sm-12">
         <div class="d-flex">
           <div class="d-flex flex-row justify-content-start">
             <div class="icon">
@@ -37,7 +38,7 @@
               <h6 *ngIf="job?.IsAnonymous==false" class="mt-2">{{job?.User?.Name}}<br> <span>{{job?.TimeAgo}}</span></h6>
               <h6 *ngIf="job?.IsAnonymous==true" class="mt-2">Anonymous<br> <span>{{job?.TimeAgo}}</span></h6>
             </div>
-          </div> 
+          </div>
         </div>
         <div *ngIf="loggedUserId!=job?.User?.Id"  class="d-flex justify-content-end"> <span>
             <button type="button" class="btn btn-EditHooz">Chat</button>
@@ -46,14 +47,14 @@
 
         <div *ngIf="loggedUserId==job?.User?.Id" class="d-flex justify-content-end"> <span>
           <button  style="color: white; background-color: black;" (click)="Edit(job.Id)" type="button" class="btn btn-EditHooz">Edit</button>
-        
+
         </span>
       </div>
       </div>
 
       <!-- Section-2 Job Status -->
-      <div class="row col-sm-12 mt-4"> 
-        <div  class="d-flex"> 
+      <div class="row col-sm-12 mt-4">
+        <div  class="d-flex">
           <!-- If Other Job Details -->
           <div *ngIf="loggedUserId!=job?.User?.Id" class="d-flex flex-row justify-content-start">
             <div class="mt-2">
@@ -79,28 +80,28 @@
                        <option [selected]="job.JobStatus==='CLOSED'" value="CLOSED">CLOSED&nbsp;</option>
                        <option [selected]="job.JobStatus==='DELETED'" value="DELETED">DELETE&nbsp;</option>
                    </select>
-                 </div> 
+                 </div>
            </div>
           </div>
         </div>
         <div class="d-flex justify-content-end mt-2">
-          <div class="dropdown" style="float:left;"> 
-              <img style="cursor: pointer;" class="img share" src="./../../../assets/Logo/ThreeDotForJobDetailsPage.png" /> 
-            <div class="dropdown-content JobdetailDroupdown mt-0"> 
+          <div class="dropdown" style="float:left;">
+              <img style="cursor: pointer;" class="img share" src="./../../../assets/Logo/ThreeDotForJobDetailsPage.png" />
+            <div class="dropdown-content JobdetailDroupdown mt-0">
               <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && isJobAdded" style="cursor: pointer;" (click)="AddToJob()">Add To Job</a>
               <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && !isJobAdded" style="cursor: pointer;" (click)="RemoveToJob()"> &nbsp;Remove Job</a>
               <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId" style="cursor: pointer;" (click)="Report()">Report</a>
             <a style="cursor: pointer;">Share</a>
             </div>
           </div>
-       
+
         </div>
-        
-      
+
+
         </div>
-     
-      <!-- Image Section-2 --> 
-       <div class="row col-sm-12 mt-0"> 
+
+      <!-- Image Section-2 -->
+       <div class="row col-sm-12 mt-0">
         <div class="d-flex">
             <label id="custom-button" class="form-control two">
                 <div  *ngIf="job?.ImagesUrl==null"  style="text-align: center; margin-top: 60px;">
@@ -110,35 +111,36 @@
                   <img class="img img-responsive img-fluid"  style="height: 183px; width: 560px;" [src]="job.JobDetailImage" alt="job image" />
               </div>
                 </label>
-        </div> 
+        </div>
       </div>
 
-         <!-- Job Descriptions --> 
-         <div class="row col-md-10 mt-2"> 
+         <!-- Job Descriptions -->
+         <div class="row col-md-10 mt-2">
             <div class="d-flex">
               <p style="font-family: roboto;">{{job?.Descriptions}}</p>
-            </div> 
+            </div>
           </div>
 
-           <!-- Tags --> 
-         <div class="row col-md-11 mt-2"> 
+           <!-- Tags -->
+         <div class="row col-md-11 mt-2">
             <div class="d-flex">
                 <div *ngFor="let item of job?.Tags" class="badgeTag" >
                     <span class="badge bg-badge text-dark"><p class="text text-center" style="color: white; margin-top: 4px;">{{item.TagName}}</p>   </span>
-                    &nbsp; 
+                    &nbsp;
                    </div>
-            </div> 
+            </div>
           </div>
 
-              <!-- Locations --> 
-         <div class="row col-md-11 mt-2"> 
+              <!-- Locations -->
+         <div class="row col-md-11 mt-2">
             <div class="d-flex">
                 <div class="mb-4">
-           
+
                     <label for="exampleInputPassword1"  class="form-label">Location  </label>
-                   
+
                   <p style="font-size: 12px; font-weight: bold;">{{job?.Address}}</p>
                   </div>
           </div>
      </div>
+</div>
 </div>

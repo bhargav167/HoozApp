@@ -8,6 +8,7 @@ import swal from 'sweetalert2';
 import {Location} from '@angular/common';
 import { SharedService } from '../../services/SharedServices/Shared.service';
 import { Router } from '@angular/router';
+import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
 @Component({
   selector: 'app-Edit',
   templateUrl: './Edit.component.html',
@@ -15,10 +16,10 @@ import { Router } from '@angular/router';
 })
 export class EditComponent implements OnInit {
   authUser: SocialAuthentication;
-  userId:number; 
+  userId:number;
   userForm:FormGroup;
-  Tags:Tags[]=[]; 
-  userTag:Tags; 
+  Tags:Tags[]=[];
+  userTag:Tags;
   tagname:string;
   public imagePath;
   imgURL: any;
@@ -28,15 +29,16 @@ export class EditComponent implements OnInit {
   showAlert:boolean=false;
   profileImgUploading:boolean=false;
   coverImgUploading:boolean=false;
-  
+
   public message: string;
   public Tagmessage: string;
 
   ImageUrl:string;
-  CoverImageUrl:string; 
+  CoverImageUrl:string;
   constructor(private _profileServices: ProfileService,
     private _sharedServices:SharedService,
     private fb:FormBuilder,private toast: HotToastService,
+    private navServices:NavbarCommunicationService,
     private _router:Router,
     private _location: Location) {
       this._sharedServices.checkInterNetConnection();
@@ -44,16 +46,16 @@ export class EditComponent implements OnInit {
   this.userId=user.Id;
   }
 
-  ngOnInit() {  
+  ngOnInit() {
     this.createUserForm();
-    this.loadUserDetais(this.userId); 
-  
+    this.loadUserDetais(this.userId);
+
   }
 
   showToast() {
-    this.toast.success('Profile Updated Successfully', { 
-      position: 'top-center', 
-    }); 
+    this.toast.success('Profile Updated Successfully', {
+      position: 'top-center',
+    });
   }
 
   createUserForm() {
@@ -76,7 +78,7 @@ export class EditComponent implements OnInit {
 
   loadUserDetais(userId: number) {
     this._profileServices.GetUserProfile(userId).subscribe((data: SocialAuthentication) => {
-      this.authUser = data; 
+      this.authUser = data;
       this.userForm.controls['ImageUrl'].setValue(this.authUser.ImageUrl);
       this.userForm.controls['Email'].setValue(this.authUser.Email);
       this.userForm.controls['CoverImageUrl'].setValue(this.authUser.CoverImageUrl);
@@ -92,7 +94,7 @@ export class EditComponent implements OnInit {
       this.ImageUrl=this.authUser.ImageUrl;
       this.CoverImageUrl=this.authUser.CoverImageUrl;
       this.Tags=this.authUser.tags;
-      this.authUser = Object.assign({}, this.userForm.value); 
+      this.authUser = Object.assign({}, this.userForm.value);
     })
   }
   // File Upload Cover
@@ -118,13 +120,13 @@ export class EditComponent implements OnInit {
 
     let fileToUpload = <File>files[0];
     const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name); 
+    formData.append('file', fileToUpload, fileToUpload.name);
     this._profileServices.AddAuthUserCoverImage(this.userId,formData).subscribe((data)=>{
       console.log(data);
     })
   }
   //File Upload User
-  FileUploadUser(files): void { 
+  FileUploadUser(files): void {
     if (files.length === 0)
       return;
 
@@ -139,7 +141,7 @@ export class EditComponent implements OnInit {
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
-      this.imgURL = reader.result; 
+      this.imgURL = reader.result;
       this.ImageUrl=this.imgURL;
       this.filetoPost=files;
       this.message = "";
@@ -147,38 +149,38 @@ export class EditComponent implements OnInit {
 
     let fileToUpload = <File>files[0];
     const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name); 
-    this._profileServices.UpdateUserPhoto(this.userId,formData).subscribe((data)=>{ 
+    formData.append('file', fileToUpload, fileToUpload.name);
+    this._profileServices.UpdateUserPhoto(this.userId,formData).subscribe((data)=>{
       this.profileImgUploading=false;
     })
   }
 
-  UpdateProfile() { 
+  UpdateProfile() {
     this.btnLoader=true;
-    this.authUser=this.userForm.value; 
+    this.authUser=this.userForm.value;
     this._profileServices.UpdateUser(this.userId, this.authUser).subscribe((data: SocialAuthentication) => {
       this.btnLoader=false;
       this.showAlert=true;
       this.showToast();
       this._router.navigate(['/profile/',this.userId]);
     })
-  } 
+  }
 
-  AddTagging() { 
-    if(this.userForm.controls['stringTags'].value==''){ 
-        this.toast.warning('Tag is required!', { 
-          position: 'top-center', 
-        });  
+  AddTagging() {
+    if(this.userForm.controls['stringTags'].value==''){
+        this.toast.warning('Tag is required!', {
+          position: 'top-center',
+        });
       return;
     }
     this.userTag = {
       TagName:   this.userForm.controls['stringTags'].value,
        UserId:this.userId,
-    }; 
+    };
     this.Tags.push(this.userTag);
     this.userForm.controls['tags'].setValue(this.Tags);
     this.Tagmessage = '';
-    this.userForm.controls['stringTags'].setValue(''); 
+    this.userForm.controls['stringTags'].setValue('');
   }
   RemoveTagging(item) {
     this.Tags = this.Tags.filter(function (obj) {
@@ -191,9 +193,9 @@ export class EditComponent implements OnInit {
   Reset(){
     swal.fire({
       text: `Are you sure to reset`,
-      showDenyButton: true, 
+      showDenyButton: true,
       confirmButtonText: 'Yes',
-      confirmButtonColor:'#00fa9a', 
+      confirmButtonColor:'#00fa9a',
       denyButtonText: `No`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
@@ -203,29 +205,33 @@ export class EditComponent implements OnInit {
         swal.fire('Reset Abort', '', 'info')
       }
     })
-   
+
   }
-  
+
   //Remove Profile Photo
   RemoveProfilePhotos(){
     swal.fire({
       text: `Are you sure to Delete you photo`,
-      showDenyButton: true, 
+      showDenyButton: true,
       confirmButtonText: 'Yes',
-      confirmButtonColor:'#00fa9a', 
+      confirmButtonColor:'#00fa9a',
       denyButtonText: `No`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this._profileServices.RemoveUserPhoto(this.userId).subscribe((data:any)=>{
           this.loadUserDetais(this.userId);
-        }) 
-      } else if (result.isDenied) { 
+        })
+      } else if (result.isDenied) {
       }
-    }) 
+    })
   }
   //Back loacation History
   backClicked() {
     this._location.back();
   }
+
+  hideEvent(){
+    this.navServices.Toggle();
+ }
 }
