@@ -29,13 +29,13 @@
     <!-- User Sections -->
       <div class="row col-sm-12">
         <div class="d-flex">
-          <div class="d-flex flex-row justify-content-start">
+          <div style="cursor: pointer;" [routerLink]="['/profile',job.User.Id]" class="d-flex flex-row justify-content-start">
             <div class="icon">
               <img class="rounded-circle img-fluid"
                 [src]="job?.IsAnonymous==false?job?.User?.UserImage:job?.AnonmousUserPic"/>
             </div>
             <div class="ms-2 c-details">
-              <h6 *ngIf="job?.IsAnonymous==false" class="mt-2">{{job?.User?.Name}}<br> <span>{{job?.TimeAgo}}</span></h6>
+              <h6  *ngIf="job?.IsAnonymous==false" class="mt-2">{{job?.User?.Name}}<br> <span>{{job?.TimeAgo}}</span></h6>
               <h6 *ngIf="job?.IsAnonymous==true" class="mt-2">Anonymous<br> <span>{{job?.TimeAgo}}</span></h6>
             </div>
           </div>
@@ -91,7 +91,7 @@
               <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && isJobAdded" style="cursor: pointer;" (click)="AddToJob()">Add To Job</a>
               <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && !isJobAdded" style="cursor: pointer;" (click)="RemoveToJob()"> &nbsp;Remove Job</a>
               <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId" style="cursor: pointer;" (click)="Report()">Report</a>
-            <a style="cursor: pointer;">Share</a>
+            <a  data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">Share</a>
             </div>
           </div>
 
@@ -143,4 +143,38 @@
           </div>
      </div>
 </div>
+</div>
+
+
+ <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+    <div class="modal-content ShareModel">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Share with</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="social-buttons">
+            <a (click)="shareFB()" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a (click)="shareTwitter()" class="social-buttons__button social-button social-button--twitter" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a (click)="GetSharedLink()" class="social-buttons__button social-button social-button--snapchat" aria-label="SnapChat">
+              <i class="fa fa-link"></i>
+            </a>
+            <a  (click)="shareWhatsApp()" class="social-buttons__button social-button social-button--steam" aria-label="Whatsapp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

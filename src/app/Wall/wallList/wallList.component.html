@@ -6,7 +6,7 @@
      <div class="d-flex justify-content-between">
        <div class="input-group">
          <form class="form">
-           <input type="search" (click)="hide()" (keyup.enter)="SearchByEnter()"  #movieSearchInput id="searchTag" 
+           <input type="search" (click)="hide()" (keyup.enter)="SearchByEnter()"  #movieSearchInput id="searchTag"
              class="form-control form-input" placeholder="Search here..">
            <div class="searchSuggetion" *ngIf="hidesearchlist">
              <ul>
@@ -26,7 +26,7 @@
      </div>
 
      <img [routerLink]="['/jobpost']" class="addIco img img-responsive img-fluid tog"
-       routerLinkActive="router-link-active" *ngIf="isLogedIn"
+       routerLinkActive="router-link-active"
        style="height: 2.5rem; width: 2.5rem; cursor: pointer;" src="../../../assets/HoozIcon/HoozAdd.png" />
 
      <div type="button" class="navbar-toggler tog">
@@ -49,7 +49,7 @@
        <a id="b"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br>
        <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;Login </a><br>
 
-       <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" /> 
+       <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
        <div class="section-dropdown-sub">
        </div>
        <a id="s" href="#">About Us <i class="uil uil-arrow-right"></i></a><br><br>
@@ -59,7 +59,7 @@
        <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a><br><br>
      </div>
   <!--End DropDown Toggle1 -->
-   
+
   <div class="collapse navbar-collapse tog justify-content-end" id="navbarCollapse">
        <div class="navbar-nav mr-auto mt-2 mt-md-0">
          <form class="d-flex">
@@ -112,7 +112,7 @@
        <input (click)="ShowMenu()" *ngIf="isLogedIn" class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
 
        <!-- DropDown Toggle2 -->
-        
+
          <div *ngIf="isLogedIn && isShowingMenu" class="section-dropdown">
            <div *ngIf="isLogedIn">
              <a id="b" [routerLink]="['/profile',user.Id]"><i class="far fa-user-circle"></i>&nbsp;&nbsp; MY PROFILE
@@ -133,7 +133,7 @@
            <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a><br><br>
            <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a><br><br>
 
-         </div> 
+         </div>
        <!--End DropDown Toggle2 -->
 
      </div>
@@ -185,7 +185,7 @@
                    <a *ngIf="userId!=item.Job?.User?.Id && userId && item.Job?.IsAdded" (click)="RemoveToJob(item?.Job?.Id)">Remove Job</a>
                    <a *ngIf="userId!=item.Job?.User?.Id && userId" style="cursor: pointer;"
                      (click)="Report(item?.Job?.Id)">Report</a>
-                   <a style="cursor: pointer;">Share</a>
+                   <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getJobId(item?.Job?.Id)" style="cursor: pointer;">Share</a>
                  </div>
                </div>
              </div>
@@ -247,4 +247,38 @@
 
    </div>
  </div>
+
+ <!-- //Share Model -->
+ <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+    <div class="modal-content ShareModel">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Share with</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="social-buttons">
+            <a (click)="shareFB(shareJobId)" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a (click)="shareTwitter(shareJobId)" class="social-buttons__button social-button social-button--twitter" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a (click)="GetSharedLink(shareJobId)" class="social-buttons__button social-button social-button--snapchat" aria-label="SnapChat">
+              <i class="fa fa-link"></i>
+            </a>
+            <a (click)="shareWhatsApp(shareJobId)" class="social-buttons__button social-button social-button--steam" aria-label="Whatsapp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 

@@ -1,6 +1,6 @@
-/* You can add global styles to this file, and also import other style files */ 
+/* You can add global styles to this file, and also import other style files */
 @media only screen and (max-width: 1600px) and (min-width: 960px) {
-  .hc{  
+  .hc{
       margin-left: 356px;
       font-size: x-large;
       font-weight: 700;
@@ -13,7 +13,7 @@
   .back{
       padding-left: 50px;
       cursor: pointer;
-  } 
+  }
 }
 
 @media only screen and (max-width:640px) and (min-width:499px) {
@@ -26,11 +26,11 @@
 .back {
   padding-left: 6px;
   cursor: pointer;
-}  
+}
 }
 
-@media only screen and (min-width:641px) and (max-width:961px) { 
-  .hc{  
+@media only screen and (min-width:641px) and (max-width:961px) {
+  .hc{
       margin-left: 76px;
       font-size: x-large;
       font-weight: 700;
@@ -44,12 +44,12 @@
       padding-left: 50px;
       cursor: pointer;
   }
- 
+
 
 }
 
-@media only screen and (max-width:500px)   { 
-  .hc{  
+@media only screen and (max-width:500px)   {
+  .hc{
       margin-left: 36px;
       font-size: x-large;
       font-weight: 700;
@@ -62,10 +62,10 @@
   .back{
       padding-left: 32px;
       cursor: pointer;
-  } 
-} 
+  }
+}
 @media only screen and (max-width:499px) and (min-width:100px){
-  .hc{  
+  .hc{
     margin-left: 36px;
     font-size: x-large;
     font-weight: 700;
@@ -78,14 +78,14 @@
 .back{
     padding-left: 32px;
     cursor: pointer;
-} 
+}
 }
 
 
 .bg-Responce{
   background-color: #00fa9a;
   color: black !important;
-} 
+}
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance:none;
 }
@@ -115,7 +115,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .select__field {
   height: 40px;
   width: 100%;
-  padding: 5px 15px; 
+  padding: 5px 15px;
   background-color: white;
   border: 0.2rem solid  #e3e3e3;
   border-radius: 0.5rem;
@@ -128,7 +128,7 @@ input[type="search"]::-webkit-search-cancel-button {
   appearance: none;
   /* for modern browsers */
 }
- 
+
 .btn-hoozGreen{
     border-radius: 0.5rem;
 }
@@ -148,7 +148,7 @@ input[type="search"]::-webkit-search-cancel-button {
   .JobdetailDroupdown{
     top: -22px;
   }
-  
+
   .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -156,10 +156,126 @@ input[type="search"]::-webkit-search-cancel-button {
     display: block;
     border-radius: 0.5rem;
   }
-  
+
   .dropdown-content a:hover {background-color: rgb(239 239 239);}
-  
+
   .dropdown:hover .dropdown-content {
     display: block;
   }
-  
+  .ShareModel{
+    border-radius: 1.5rem;
+  }
+  .social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: -10px;
+ }
+  .social-buttons__button {
+    margin: 10px 5px 0;
+ }
+  .social-button {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    width: 70px;
+    height: 70px;
+    text-decoration: none;
+    border-radius: 100%;
+    background: #fff;
+    text-align: center;
+ }
+  .social-button::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    display: block;
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    transition: 0.3s;
+ }
+  .social-button:focus, .social-button:hover {
+    color: #fff;
+ }
+  .social-button:focus::after, .social-button:hover::after {
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    margin-left: calc(-50% - 1px);
+ }
+  .social-button i, .social-button svg {
+    position: relative;
+    z-index: 1;
+    transition: 0.3s;
+ }
+  .social-button i {
+    font-size: 28px;
+ }
+  .social-button svg {
+    height: 40%;
+    width: 40%;
+ }
+  .social-button--mail {
+    color: #0072c6;
+ }
+  .social-button--mail::after {
+    background: #0072c6;
+ }
+  .social-button--facebook {
+    color: #3b5999;
+ }
+  .social-button--facebook::after {
+    background: #3b5999;
+ }
+  .social-button--linkedin {
+    color: #0077b5;
+ }
+  .social-button--linkedin::after {
+    background: #0077b5;
+ }
+  .social-button--github {
+    color: #6e5494;
+ }
+  .social-button--github::after {
+    background: #6e5494;
+ }
+  .social-button--codepen {
+    color: #212121;
+ }
+  .social-button--codepen::after {
+    background: #212121;
+ }
+  .social-button--steam {
+    color: #7da10e;
+ }
+  .social-button--steam::after {
+    background: #7da10e;
+ }
+  .social-button--snapchat {
+    color: #eec900;
+ }
+  .social-button--snapchat::after {
+    background: #eec900;
+ }
+  .social-button--twitter {
+    color: #55acee;
+ }
+  .social-button--twitter::after {
+    background: #55acee;
+ }
+  .social-button--instagram {
+    color: #e4405f;
+ }
+  .social-button--instagram::after {
+    background: #e4405f;
+ }
+  .social-button--npmjs {
+    color: #c12127;
+ }
+  .social-button--npmjs::after {
+    background: #c12127;
+ }

@@ -1,5 +1,5 @@
-@media only screen and (max-width: 1600px) and (min-width: 960px) {
-  
+@media only screen and (max-width: 1920px) and (min-width: 960px) {
+
 .btn-circle {
   width: 45px;
   height: 45px;
@@ -15,16 +15,16 @@
   margin-top: -61px;
 }
   .container-sm{
-    width:710px; 
+    width:710px;
     margin-left: 285px;
-  } 
+  }
   .container-fluid {
     width: 615px;
     display: flow-root;
     margin-left: -13px;
-} 
+}
 .about{
-  height: 40px; 
+  height: 40px;
   width: 83%;
   background-color: #f7f7f9;
   font-weight: 300;
@@ -33,7 +33,7 @@
   border-radius: 0.5rem;
 }
 .one{
-  height: 40px; 
+  height: 40px;
   width: 80%;
   background-color: #f7f7f9;
   font-weight: 300;
@@ -42,7 +42,7 @@
   border-radius: 0.5rem;
 }
 .two{
-height: 40px; 
+height: 40px;
 width: 80%;
 background-color: #f7f7f9;
 font-weight: 300;
@@ -57,15 +57,15 @@ position:relative;
 margin-bottom:10px;
 }
 .taginput{
-height: 67px; 
+height: 67px;
 width: 83%;
 background-color: #f7f7f9;
 font-weight: 300;
 color: black;
-border-width: 0; 
+border-width: 0;
 padding-left:10px;
 border-radius: 0.5rem;
-border:none;outline:none; 
+border:none;outline:none;
 }
 .tagbutton{
 position:absolute;
@@ -80,12 +80,12 @@ border-radius:8px;
 outline:none;
 text-align:center;
 font-weight:bold;
-padding:2px; 
+padding:2px;
 }
 .form-label1{
 margin-left: -50px;
 }
-  
+
   .btn-ChatHooz{
   background-color: #00fa9a;
   color: black;
@@ -93,12 +93,12 @@ margin-left: -50px;
   width: 4.6rem;
   font-weight: bold;
   margin-top: -80px;
-  margin-left: -178px; 
+  margin-left: -178px;
 }
 .btn-EditHooz{
   background-color: black;
   color: white;
-  border-radius: 0.5rem; 
+  border-radius: 0.5rem;
   width: 4.6rem;
   font-weight: bold;
   margin-top: -80px;
@@ -128,26 +128,26 @@ margin-left: -50px;
   text-align: center;
   transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
   transform-style: preserve-3d;
-} 
+}
 .front,
 .back {
   position: relative;
   top: 0;
   left: 0;
   backface-visibility: hidden;
-} 
+}
 .front__bkg-photo {
   position: relative;
   height: 180px;
   width: 35rem;
-  background:  
+  background:
     no-repeat;
   background-size: cover;
   backface-visibility: hidden;
   overflow: hidden;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-  
+
 }
 
 .front__face-photo {
@@ -158,14 +158,14 @@ margin-left: -50px;
   margin: 0 auto;
   border-radius: 50%;
   border: 0px solid white;
-  background: 
+  background:
     no-repeat;
   background-size: cover;
   overflow: hidden;
   /* backface-visibility: hidden;
   transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
   z-index: 3;*/
-} 
+}
 }
 @media only screen and (min-width:641px) and (max-width:961px) {
   .btn-circle {
@@ -183,7 +183,7 @@ margin-left: -50px;
     margin-top: -52px;
   }
   .about{
-    height: 40px; 
+    height: 40px;
     width: 83%;
     background-color: #f7f7f9;
     font-weight: 300;
@@ -192,7 +192,7 @@ margin-left: -50px;
     border-radius: 0.5rem;
 }
   .one{
-    height: 40px; 
+    height: 40px;
     width: 80%;
     background-color: #f7f7f9;
     font-weight: 300;
@@ -201,28 +201,28 @@ margin-left: -50px;
     border-radius: 0.5rem;
 }
 .two{
-  height: 40px; 
+  height: 40px;
   width: 80%;
   background-color: #f7f7f9;
   font-weight: 300;
   color: black;
-  border-width: 0; 
+  border-width: 0;
   border-radius: 0.5rem;
-} 
+}
 .buttonInside{
   position:relative;
   margin-bottom:10px;
 }
 .taginput{
-  height: 67px; 
+  height: 67px;
   width: 80%;
   background-color: #f7f7f9;
   font-weight: 300;
   color: black;
-  border-width: 0; 
+  border-width: 0;
 padding-left:10px;
 border-radius: 0.5rem;
-border:none;outline:none; 
+border:none;outline:none;
 }
 .tagbutton{
 position:absolute;
@@ -237,16 +237,16 @@ border-radius:8px;
 outline:none;
 text-align:center;
 font-weight:bold;
-padding:2px; 
+padding:2px;
 }
   .container-sm {
     width: 710px;
-  }  
+  }
   .container-fluid {
     width: 475px;
     display: flow-root;
     margin-left: -13px;
-} 
+}
 .btn-ChatHooz{
   background-color: #00fa9a;
   color: black;
@@ -254,12 +254,12 @@ padding:2px;
   width: 4.6rem;
   font-weight: bold;
   margin-top: -80px;
-  margin-left: -178px; 
+  margin-left: -178px;
 }
 .btn-EditHooz{
   background-color: black;
   color: white;
-  border-radius: 0.5rem; 
+  border-radius: 0.5rem;
   width: 4.6rem;
   font-weight: bold;
   margin-top: -80px;
@@ -289,7 +289,7 @@ padding:2px;
   text-align: center;
   transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
   transform-style: preserve-3d;
-} 
+}
 .front,
 .back {
   position: relative;
@@ -303,7 +303,7 @@ padding:2px;
   position: relative;
   height: 180px;
   width: 35rem;
-  background:  
+  background:
     no-repeat;
   background-size: cover;
   backface-visibility: hidden;
@@ -321,15 +321,15 @@ padding:2px;
   margin: 0 auto;
   border-radius: 50%;
   border: 0px solid white;
-  background: 
+  background:
     no-repeat;
   background-size: cover;
   overflow: hidden;
 /* backface-visibility: hidden;
   transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
   z-index: 3;*/
-} 
-} 
+}
+}
 @media only screen and (max-width:640px) and (min-width:499px) {
   .btn-circle {
     width: 45px;
@@ -346,7 +346,7 @@ padding:2px;
     margin-top: -52px;
   }
   .about{
-    height: 40px; 
+    height: 40px;
     width: 83%;
     background-color: #f7f7f9;
     font-weight: 300;
@@ -355,7 +355,7 @@ padding:2px;
     border-radius: 0.5rem;
 }
   .one{
-    height: 40px; 
+    height: 40px;
     width: 80%;
     background-color: #f7f7f9;
     font-weight: 300;
@@ -364,28 +364,28 @@ padding:2px;
     border-radius: 0.5rem;
 }
 .two{
-  height: 40px; 
+  height: 40px;
   width: 80%;
   background-color: #f7f7f9;
   font-weight: 300;
   color: black;
-  border-width: 0; 
+  border-width: 0;
   border-radius: 0.5rem;
-} 
+}
 .buttonInside{
   position:relative;
   margin-bottom:10px;
 }
 .taginput{
-  height: 67px; 
+  height: 67px;
   width: 80%;
   background-color: #f7f7f9;
   font-weight: 300;
   color: black;
-  border-width: 0; 
+  border-width: 0;
 padding-left:10px;
 border-radius: 0.5rem;
-border:none;outline:none; 
+border:none;outline:none;
 }
 .tagbutton{
 position:absolute;
@@ -400,12 +400,12 @@ border-radius:8px;
 outline:none;
 text-align:center;
 font-weight:bold;
-padding:2px; 
+padding:2px;
 }
   .container-sm {
     width: 100%;
   }
-  
+
 
   .btn-ChatHooz{
   background-color: #00fa9a;
@@ -414,12 +414,12 @@ padding:2px;
   width: 4.6rem;
   font-weight: bold;
   margin-top: -80px;
-  margin-left: -65px; 
+  margin-left: -65px;
 }
 .btn-EditHooz{
   background-color: black;
   color: white;
-  border-radius: 0.5rem; 
+  border-radius: 0.5rem;
   width: 4.6rem;
   font-weight: bold;
   margin-top: -80px;
@@ -449,7 +449,7 @@ padding:2px;
   text-align: center;
   transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
   transform-style: preserve-3d;
-} 
+}
 .front,
 .back {
   position: relative;
@@ -457,20 +457,20 @@ padding:2px;
   left: 0;
   backface-visibility: hidden;
 }
-  
+
 
 .front__bkg-photo {
   position: relative;
   height: 180px;
   width: 30rem;
-  background:  
+  background:
     no-repeat;
   background-size: cover;
   backface-visibility: hidden;
   overflow: hidden;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-  
+
 }
 
 .front__face-photo {
@@ -483,17 +483,17 @@ padding:2px;
   margin-right: 133px;
   border-radius: 50%;
   border: 0px solid white;
-  background: 
+  background:
     no-repeat;
   background-size: cover;
   overflow: hidden;
   /* backface-visibility: hidden;
   transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
   z-index: 3;*/
-} 
+}
 }
 @media only screen and (max-width:500px) and (min-width:100px) {
-  
+
 .btn-circle {
   width: 45px;
   height: 45px;
@@ -501,14 +501,14 @@ padding:2px;
   border-radius: 70px;
   text-align: center;
   font-size: 12px;
-  line-height: 1.42857; 
+  line-height: 1.42857;
   margin-left: -164px;
   background-color: #fff;
   z-index: 999;
   margin-top: -52px;
 }
     .about{
-  height: 40px; 
+  height: 40px;
   width: 100%;
   background-color: #f7f7f9;
   font-weight: 300;
@@ -517,7 +517,7 @@ padding:2px;
   border-radius: 0.5rem;
 }
   .one{
-    height: 40px; 
+    height: 40px;
     width: 100%;
     background-color: #f7f7f9;
     font-weight: 300;
@@ -526,12 +526,12 @@ padding:2px;
     border-width: 0;
 }
 .two{
-  height: 40px; 
+  height: 40px;
   width: 100%;
   background-color: #f7f7f9;
   font-weight: 300;
   color: black;
-  border-width: 0; 
+  border-width: 0;
   border-radius: 0.5rem;
 }
 .buttonInside{
@@ -539,15 +539,15 @@ padding:2px;
   margin-bottom:10px;
 }
 .taginput{
-  height: 67px; 
+  height: 67px;
   width: 100%;
   background-color: #f7f7f9;
   font-weight: 300;
   color: black;
-  border-width: 0; 
+  border-width: 0;
 padding-left:10px;
 border-radius: 0.5rem;
-border:none;outline:none; 
+border:none;outline:none;
 }
 .tagbutton{
 position:absolute;
@@ -562,16 +562,16 @@ border-radius:8px;
 outline:none;
 text-align:center;
 font-weight:bold;
-padding:2px; 
-} 
+padding:2px;
+}
   .container-sm {
-    width: 100%; 
-  } 
+    width: 100%;
+  }
   .container-fluid {
     width: 375px;
     display: flow-root;
     margin-left: -13px;
-} 
+}
   .btn-ChatHooz{
   background-color:  #00fa9a;
   color: black;
@@ -613,7 +613,7 @@ padding:2px;
   text-align: center;
   transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
   transform-style: preserve-3d;
-} 
+}
 .front,
 .back {
   position: relative;
@@ -621,7 +621,7 @@ padding:2px;
   left: 0;
   backface-visibility: hidden;
 }
-  
+
 .front__bkg-photo  {
   position: relative;
   height: 180px;
@@ -629,7 +629,7 @@ padding:2px;
   background: no-repeat;
   background-size: cover;
   -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;  
+  backface-visibility: hidden;
   border-radius: 0.5rem;
 }
 .front__face-photo {
@@ -645,18 +645,18 @@ padding:2px;
     background-size: cover;
     overflow: hidden;
 }
-}  
+}
 input[type="file"] {
   display: none;
 }
 
   .badgeTag{
     display: inline-block;
-       padding: 3px;  
+       padding: 3px;
    }
    .bg-badge {
-    background-color: #b4b4b4; 
-  } 
+    background-color: #b4b4b4;
+  }
   #footer {
     background:#c7cfd8;
     color: #fff;
@@ -665,24 +665,24 @@ input[type="file"] {
     font-weight: 600;
     z-index: 1;
     transition: all .5s;
-} 
-.btn-save{   
-  border:none; 
+}
+.btn-save{
+  border:none;
   background-color: black;
   color: white;
   border-radius:0.5rem;
   outline:none;
   text-align:center;
-  font-weight:bold; 
+  font-weight:bold;
 }
 .btn-reset{
-  border:none; 
+  border:none;
   background-color: white;
   color: black;
   border-radius:0.5rem;
   outline:none;
   text-align:center;
-  font-weight:bold; 
-} 
+  font-weight:bold;
+}
 
 

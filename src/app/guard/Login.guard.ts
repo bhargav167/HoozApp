@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, Router } from '@angular/router';  
+import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate, Router } from '@angular/router';
 @Injectable({
     providedIn: 'root'
 })
@@ -13,7 +13,7 @@ export class LoginGaurd implements CanActivate {
             return true;
         }
         else {
-            window.location.href='/';
+            window.location.href='/login';
             return false;
         }
     }

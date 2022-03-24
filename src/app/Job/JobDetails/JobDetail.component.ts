@@ -10,7 +10,8 @@ import { ReportJobService } from '../../services/JobPost/ReportJob.service';
 import { SharedService } from '../../services/SharedServices/Shared.service';
 import { JobResponces } from '../../Model/Job/JobResponces';
 import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
-
+import { ClipboardService } from 'ngx-clipboard'
+import { HotToastService } from '@ngneat/hot-toast';
 @Component({
   selector: 'app-JobDetail',
   templateUrl: './JobDetail.component.html',
@@ -25,9 +26,12 @@ userJob:UserJobs;
 isJobAdded:boolean=false;
 totalResponces:number=0;
 jobResponces:JobResponces[];
+sharedLink: string;
   constructor(private _jobServices:JobPostService,
     private navServices:NavbarCommunicationService,
     private _reportServices:ReportJobService,
+    private _clipboardService: ClipboardService,
+    private toast: HotToastService,
     private _sharedServices:SharedService,
     private _navigaterouter:Router,
     private _router:ActivatedRoute,private _location: Location) {
@@ -46,6 +50,11 @@ jobResponces:JobResponces[];
   }
 
   ngOnInit() {
+  }
+  showToast() {
+    this.toast.success('Link copied!', {
+      position: 'top-center',
+    });
   }
   LoadJobDetailsById(id:number){
     this._jobServices.GetJobById(id).subscribe((data:JobModel)=>{
@@ -187,7 +196,7 @@ jobResponces:JobResponces[];
           console.log(err);
         })
       } else if (result.isDenied) {
-        swal.fire('Changes are not saved', '', 'info')
+       // swal.fire('Changes are not saved', '', 'info')
       }
     })
   }
@@ -198,4 +207,25 @@ jobResponces:JobResponces[];
   hideEvent(){
     this.navServices.Toggle();
  }
+ public shareFB() {
+  return window.open('https://www.facebook.com/sharer/sharer.php?'+'u=http://hoozonline.com/jobDetails/'+this.jobId, "_blank");
+}
+
+public shareTwitter() {
+  return window.open('http://twitter.com/share?'+'url=http://hoozonline.com/jobDetails/'+this.jobId, "_blank");
+}
+public shareWhatsApp() {
+  return window.open(
+    "https://api.whatsapp.com/send?text=http://hoozonline.com/jobDetails/" +
+    this.jobId,
+    "_blank"
+  );
+}
+
+//Shared Link
+GetSharedLink() {
+  this.sharedLink="http://hoozonline.com/jobDetails/"+this.jobId;
+  this._clipboardService.copy(this.sharedLink);
+  this.showToast();
+}
 }
