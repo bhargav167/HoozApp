@@ -2,18 +2,16 @@
 <div (click)="hideEvent()">
    <!--  Tab Toggle -->
    <div class="container-sm mt-0">
-     <div class="row col-sm-12">
-       <div class="d-flex">
-         <div class="d-flex flex-row justify-content-between">
-           <div class="switch-button">
-             <input [(ngModel)]="!IsOnJob" (change)="checkValue(IsOnJob?false:true)" class="switch-button-checkbox"
-               type="checkbox" />
-             <label class="switch-button-label" for=""><span class="switch-button-label-span">Posts</span></label>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
+    <div class="row col-sm-12">
+      <div class="d-flex switch_button_wrap">
+          <div class="switch-button">
+            <input [(ngModel)]="!IsOnJob" (change)="checkValue(IsOnJob?false:true)" class="switch-button-checkbox"
+              type="checkbox" />
+            <label class="switch-button-label" for=""><span class="switch-button-label-span">Posts</span></label>
+          </div>
+      </div>
+    </div>
+  </div>
 
    <!-- MAIN CONTENT -->
    <div infiniteScroll [infiniteScrollDistance]="7" (scrolled)="onScroll()" class="search-results mt-5">
