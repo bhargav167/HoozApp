@@ -29,7 +29,6 @@
     padding-right: 120px;
     position: relative;
     height: 2.5rem;
-    margin-left:  110px;
 
     &:before {
       content: "Profiles";
@@ -119,9 +118,6 @@
  }
 }
 @media only screen and (min-width:641px) and (max-width:1099px) {
-  .container-sm{
-    width:710px;
-  }
   .hideInSmall{
     display: none;
   }
@@ -144,7 +140,6 @@
     padding-right: 120px;
     position: relative;
     height: 2.5rem;
-    margin-left: 190px;
 
     &:before {
       content: "Profiles";
@@ -234,10 +229,6 @@
 }
 
 @media only screen and (max-width: 1920px) and (min-width: 1100px) {
-  .container-sm{
-    width:710px;
-    margin-left: 284px;
-  }
 .form {
   width: 538px;
  }
@@ -256,7 +247,6 @@
   position: relative;
   padding-right: 120px;
   height: 2.5rem;
-  margin-left: 190px;
 
   &:before {
     content: "Profiles";
@@ -384,7 +374,6 @@
     padding-right: 120px;
     position: relative;
     height: 2.5rem;
-    margin-left: 55px;
 
     &:before {
       content: "Profiles";
@@ -889,5 +878,9 @@ body {
 }
 .section-dropdown-sub a {
   font-size: 14px;
+}
+.switch_button_wrap {
+  align-items: center;
+  justify-content: center;
 }
 /* Other */
