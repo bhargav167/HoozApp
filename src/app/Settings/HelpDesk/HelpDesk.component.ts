@@ -12,9 +12,11 @@ isEX:boolean=false;
 isSP:boolean=false;
 isCU:boolean=false;
 isGetServices:boolean=false;
-  constructor(private _location: Location,private navServices:NavbarCommunicationService) { }
+  constructor(private _location: Location,
+    private navServices:NavbarCommunicationService) { }
   ngOnInit() {
   }
+
   GS() {
     this.isGS=true;
     this.isEX=false;

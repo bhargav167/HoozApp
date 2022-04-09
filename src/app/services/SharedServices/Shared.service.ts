@@ -4,6 +4,7 @@ import { HotToastService } from '@ngneat/hot-toast';
   providedIn: 'root'
 })
 export class SharedService {
+  public IslogingPage:boolean=false;
 constructor(private toast: HotToastService,) { }
 
   checkInterNetConnection() {
@@ -14,9 +15,13 @@ constructor(private toast: HotToastService,) { }
   }
   LoggedUserData(){
     if(localStorage.getItem('user')){
-      let user= JSON.parse(localStorage.getItem('user')); 
+      let user= JSON.parse(localStorage.getItem('user'));
+      this.IslogingPage=false;
     }else{
       window.location.href='/login';
-    } 
+    }
+  }
+  IsUserIsOnLogInPage(){
+    this.IslogingPage=true;
   }
 }

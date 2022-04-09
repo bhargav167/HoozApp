@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { ProfileService } from '../../services/Auth/Profile.service';
 import {Location} from '@angular/common';
@@ -36,7 +36,6 @@ export class UserProfileComponent implements OnInit {
       this.user = data;
     })
   }
-
   //Back loacation History
   backClicked() {
     this._location.back();

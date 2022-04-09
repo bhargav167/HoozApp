@@ -56,7 +56,6 @@ export class JobEditComponent implements OnInit {
     })
   }
 
-
    loadJobEditDetails(jobId) {
      this._jobServices.GetJobById(jobId).subscribe((data: JobModel) => {
      this.jobModel=data[0];

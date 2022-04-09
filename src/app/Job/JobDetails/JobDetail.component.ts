@@ -36,17 +36,18 @@ sharedLink: string;
     private _navigaterouter:Router,
     private _router:ActivatedRoute,private _location: Location) {
       this._sharedServices.checkInterNetConnection();
-
-      if(localStorage.getItem('user')){
-        this.loggeduser= JSON.parse(localStorage.getItem('user'));
-        this.loggedUserId=this.loggeduser.Id;
-
-      }
-
+      this.loadUserData();
       this.jobId= this._router.snapshot.params['id'];
-    this.LoadJobDetailsById(this.jobId);
-    this.loadResponcesData(this.jobId);
+      this.LoadJobDetailsById(this.jobId);
+      this.loadResponcesData(this.jobId);
+  }
+  //Load Basic User Data
+  loadUserData(){
+    if (localStorage.getItem('user')) {
+      this.loggeduser = JSON.parse(localStorage.getItem('user'));
+      this.loggedUserId = this.loggeduser.Id;
 
+    }
   }
 
   ngOnInit() {
@@ -208,11 +209,16 @@ sharedLink: string;
     this.navServices.Toggle();
  }
  public shareFB() {
-  return window.open('https://www.facebook.com/sharer/sharer.php?'+'u=http://hoozonline.com/jobDetails/'+this.jobId, "_blank");
+  return window.open('https://www.facebook.com/sharer/sharer.php?'+'u=http://hoozonline.com/jobDetails/'+this.jobId,"Hooz",
+  `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+        width=600,height=300,left=100,top=100`
+  );
 }
 
 public shareTwitter() {
-  return window.open('http://twitter.com/share?'+'url=http://hoozonline.com/jobDetails/'+this.jobId, "_blank");
+  return window.open('http://twitter.com/share?'+'url=http://hoozonline.com/jobDetails/'+this.jobId, "Hooz",
+  `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+        width=600,height=300,left=100,top=100`);
 }
 public shareWhatsApp() {
   return window.open(

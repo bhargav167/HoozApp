@@ -4,7 +4,7 @@ import { LoginComponent } from './Auth/Login/Login.component';
 import { AuthModalComponent } from './Auth/LoginModal/AuthModal/AuthModal.component';
 import { authPageGaurd } from './guard/authPage.guard';
 import { LoginGaurd } from './guard/Login.guard';
-import { JobDetailComponent } from './Job/JobDetails/JobDetail.component'; 
+import { JobDetailComponent } from './Job/JobDetails/JobDetail.component';
 import { JobEditComponent } from './Job/JobEdit/JobEdit.component';
 import { JobListComponent } from './Job/JobList/JobList.component';
 import { JobPostComponent } from './Job/JobPost/JobPost.component';
@@ -13,7 +13,6 @@ import { UserProfileComponent } from './Profile/UserProfile/UserProfile.componen
 import { DownloadComponent } from './Settings/Download/Download.component';
 import { HelpDeskComponent } from './Settings/HelpDesk/HelpDesk.component';
 import { MessagesComponent } from './Shared/messages/messages.component';
-import { UserListComponent } from './Wall/UserList/userList.component';
 import { WallListComponent } from './Wall/wallList/wallList.component';
 
 const routes: Routes = [
@@ -66,7 +65,7 @@ const routes: Routes = [
     path: '',
     component:WallListComponent
   },
-   
+
   {
     path: 'settings/helpDesk',
     component:HelpDeskComponent

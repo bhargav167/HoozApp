@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-import { SharedModule } from './Shared/Shared.module';
 import { TopNavBarComponent } from './Shared/TopNavBar/TopNavBar.component';
 import { JobPostComponent } from './Job/JobPost/JobPost.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -58,7 +57,6 @@ import { ClipboardModule } from 'ngx-clipboard';
     FormsModule,
     ReactiveFormsModule,
     CoreModule,
-    SharedModule,
     AppRoutingModule,
     SocialLoginModule,
     ClipboardModule,

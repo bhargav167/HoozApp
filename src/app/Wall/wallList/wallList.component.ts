@@ -1,9 +1,5 @@
-import { DOCUMENT } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
-import { fromEvent, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
 import { Pagination } from '../../Model/Pagination';
 import { TagMaster } from '../../Model/TagMaster';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
@@ -16,6 +12,8 @@ import { JobPostService } from '../../services/JobPost/JobPost.service';
 import { ReportJobService } from '../../services/JobPost/ReportJob.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { ClipboardService } from 'ngx-clipboard'
+import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-wallList",
@@ -23,21 +21,16 @@ import { ClipboardService } from 'ngx-clipboard'
   styleUrls: ["./wallList.component.scss"],
 })
 export class WallListComponent implements OnInit {
-  @ViewChild("movieSearchInput", { static: true }) movieSearchInput: ElementRef;
   currentPosition = window.pageYOffset;
   public flag: boolean = true;
   userParams: string = "";
   pagination: Pagination;
   currentPage: number = 1;
   itemsPerPage: number = 8;
-  searchTerm: string;
-  hidesearchlist: boolean = false;
-  showClose: boolean = false;
   walldata: WallResponce;
   walldatas: WallResponce[];
   isLoading: boolean = true;
   tag: TagMaster;
-  searchval: string;
   noResultText: string = "Explore more with different keyword";
   user: SocialAuthentication;
   userId: number = 0;
@@ -45,52 +38,49 @@ export class WallListComponent implements OnInit {
   NotEmptPost: boolean = true;
   notScrollY: boolean = true;
   isLogedIn: boolean = false;
-  isShowingMenu: boolean = true;
-  navbarUserPic: string =
-    "http://res.cloudinary.com/livsolution/image/upload/c_fill,f_auto,g_faces,h_128,q_auto,w_128/DefaultUser_ktw7ga.png";
 
   isOnline: boolean;
   isJobAdded: boolean = false;
   shareJobId: number = 0;
   sharedLink: string;
-
+   params :`scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+   width=600,height=300,left=100,top=100`;
   // TabToggleTrackVariable
   IsOnJob: boolean = true;
   constructor(
     private _clipboardService: ClipboardService,
+    private navServices:NavbarCommunicationService,
     private _wallServices: WallService,
+    private activatedRoute: ActivatedRoute,
     private _reportServices: ReportJobService,
-    private _profileServices: ProfileService,
     private _jobServices: JobPostService,
-    private _sharedServices: SharedService,
-    private _http: HttpClient,
+    public _sharedServices: SharedService,
     private toast: HotToastService
   ) {
-    if (localStorage.getItem("user")) {
-      this.user = JSON.parse(localStorage.getItem("user"));
-      this.userId = this.user.Id;
-      this._profileServices.GetUserProfile(this.user.Id).subscribe(
-        (data: SocialAuthentication) => {
-          this.navbarUserPic = data.UserImage;
-        },
-        (err) => {
-          console.log("Something wen wrong" + err);
-        }
-      );
-      this.isLogedIn = true;
-    } else {
-      this.isLogedIn = false;
-    }
+
   }
   ngOnInit() {
     this._sharedServices.checkInterNetConnection();
-    this.fireSearchlist();
-    this.LoadWallData(
-      this.currentPage,
-      this.itemsPerPage,
-      this.userParams,
-      this.userId
-    );
+    this.activatedRoute.queryParams.subscribe(params => {
+      const paramVal = params['searchTerm'];
+       if (paramVal==undefined) {
+        this.LoadWallData(
+          this.currentPage,
+          this.itemsPerPage,
+          this.userParams,
+          this.userId
+        );
+       }else{
+         this.userParams=paramVal;
+        this.LoadWallData(
+          this.currentPage,
+          this.itemsPerPage,
+          paramVal,
+          this.userId
+        );
+       }
+    });
+
   }
 
   //For Nav
@@ -103,96 +93,7 @@ export class WallListComponent implements OnInit {
       position: 'top-center',
     });
   }
-  //Search wall by click
-  SearchByClick(searchTerm) {
-    this.currentPage = 1;
-    this.hidesearchlist = false;
-    (document.getElementById("searchTag") as HTMLInputElement).value =
-      searchTerm;
-    this.userParams = searchTerm;
-    this.LoadWallData(
-      this.currentPage,
-      this.itemsPerPage,
-      searchTerm,
-      this.userId
-    );
-  }
-  //Search wall by enter
-  SearchByEnter() {
-    this.searchval = (
-      document.getElementById("searchTag") as HTMLInputElement
-    ).value;
-    this.userParams = this.searchval;
-    this.currentPage = 1;
-    this.hidesearchlist = false;
-    this.LoadWallData(
-      this.currentPage,
-      this.itemsPerPage,
-      this.searchval,
-      this.userId
-    );
-  }
 
-  ClearSearch() {
-    (document.getElementById("searchTag") as HTMLInputElement).value = "";
-    this.showClose = false;
-    this.hidesearchlist = false;
-    this.searchval = "";
-    this.userParams = "";
-    this.NotEmptPost = true;
-    this.LoadWallData(
-      this.currentPage,
-      this.itemsPerPage,
-      this.userParams,
-      this.userId
-    );
-  }
-  fireSearchlist() {
-    fromEvent(this.movieSearchInput.nativeElement, "keyup")
-      .pipe(
-        map((event: any) => {
-          return event.target.value;
-        }),
-        // if character length greater then 2
-        filter((res) => res.length > -1),
-
-        // Time in milliseconds between key events
-        debounceTime(0),
-
-        // If previous query is diffent from current
-        distinctUntilChanged()
-
-        // subscription for response
-      )
-      .subscribe((text: string) => {
-        //Search api call
-        if (text == "") {
-          this.hidesearchlist = false;
-        }
-        this.searchGetCall(text).subscribe(
-          (res: any) => {
-            if (res.data.length == 0) {
-              this.hidesearchlist = false;
-              return;
-            }
-            this.tag = res;
-            this.hidesearchlist = true;
-            this.showClose = true;
-          },
-          (err) => {
-            console.log("error", err);
-          }
-        );
-      });
-  }
-
-  searchGetCall(term: string) {
-    if (term === "") {
-      return of([]);
-    }
-    return this._http.get(environment.api_url + "Tag/TagSuggestion/" + term);
-  }
-  //End Search
 
   LoadWallData(currentPage: number, itemsPerPage: number, userParams, userId) {
     this.isLoading = true;
@@ -344,13 +245,9 @@ export class WallListComponent implements OnInit {
   }
 
   // Suggetion list focous out
-  hide() {
-    this.hidesearchlist = false;
-    this.isShowingMenu = false;
-  }
-  ShowMenu() {
-    this.isShowingMenu = true;
-  }
+  hideEvent(){
+    this.navServices.Toggle();
+ }
 
   //Share Button
   getJobId(jobId) {
@@ -360,8 +257,8 @@ export class WallListComponent implements OnInit {
     return window.open(
       "https://www.facebook.com/sharer/sharer.php?" +
         "u=http://hoozonline.com/jobDetails/" +
-        jobId,
-      "_blank"
+        jobId,"Hooz",`scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+        width=600,height=300,left=100,top=100`
     );
   }
 
@@ -370,7 +267,8 @@ export class WallListComponent implements OnInit {
       "http://twitter.com/share?" +
         "url=http://hoozonline.com/jobDetails/" +
         jobId,
-      "_blank"
+       "Hooz",`scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+       width=600,height=300,left=100,top=100`
     );
   }
   public shareWhatsApp(jobId) {

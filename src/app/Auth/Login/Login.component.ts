@@ -1,9 +1,9 @@
 import { Component, NgZone, OnInit, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators }  from '@angular/forms'; 
+import { FormGroup, FormBuilder, Validators }  from '@angular/forms';
 import { SocialAuthService } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
-import { ProfileService } from '../../services/Auth/Profile.service'; 
+import { ProfileService } from '../../services/Auth/Profile.service';
 import { SharedService } from '../../services/SharedServices/Shared.service';
 
 
@@ -20,26 +20,26 @@ export class LoginComponent implements OnInit {
   latitude: number;
   longitude: number;
   zoom: number;
-  address: string; 
+  address: string;
 
-  constructor(private fb:FormBuilder, 
+  constructor(private fb:FormBuilder,
     private _profileServices:ProfileService,
     private _sharedServices:SharedService,
-    private authService: SocialAuthService) { 
+    private authService: SocialAuthService) {
       this._sharedServices.checkInterNetConnection();
-       
+       _sharedServices.IsUserIsOnLogInPage();
     }
 
   ngOnInit() {
-    // this.mapsAPILoader.load().then(() => { 
+    // this.mapsAPILoader.load().then(() => {
     //   this.geoCoder = new google.maps.Geocoder;
     //  // this.getAddress(25.5538059,84.6583643);
     // });
-    this.createLoginForm(); 
-   
+    this.createLoginForm();
+
   }
   createLoginForm() {
-    this.loginForm = this.fb.group({ 
+    this.loginForm = this.fb.group({
       UserName:[''],
       Email:[''],
       LoginProvider: [''],
@@ -48,13 +48,13 @@ export class LoginComponent implements OnInit {
       Name:[''],
       MobileNumber:[''],
       Password:[''],
-      WebSiteUrl:[''], 
+      WebSiteUrl:[''],
       Latitude:[''],
       Longitude:[''],
       UserAddress:[''],
       AboutUs:['']
     })
-  } 
+  }
   // Google Login
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
@@ -63,16 +63,16 @@ export class LoginComponent implements OnInit {
         this.loginForm.controls['Name'].setValue(data.name);
         this.loginForm.controls['ImageUrl'].setValue(data.photoUrl);
         this.loginForm.controls['LoginProvider'].setValue(data.provider);
-        this.loginForm.controls['UserName'].setValue(data.name); 
+        this.loginForm.controls['UserName'].setValue(data.name);
         this.loginUser = Object.assign({}, this.loginForm.value);
         this._profileServices.Login(this.loginUser).subscribe((data: SocialAuthService) => {
           localStorage.setItem('user', JSON.stringify(data));
           location.href = '/';
         })
       });
-  } 
+  }
 
- 
+
   // getAddress(latitude, longitude) {
   //   this.geoCoder.geocode( { 'location': { lat: latitude, lng: longitude } }, (results, status) => {
   //     if (status === 'OK') {
@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
   //     } else {
   //       window.alert('Geocoder failed due to: ' + status);
   //     }
-    
+
   //   });
   // }
 }

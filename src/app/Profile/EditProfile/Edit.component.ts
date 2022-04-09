@@ -51,7 +51,6 @@ export class EditComponent implements OnInit {
     this.loadUserDetais(this.userId);
 
   }
-
   showToast() {
     this.toast.success('Profile Updated Successfully', {
       position: 'top-center',

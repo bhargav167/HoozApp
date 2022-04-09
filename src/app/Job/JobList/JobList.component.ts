@@ -5,7 +5,7 @@ import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { JobPostService } from '../../services/JobPost/JobPost.service';
 import swal from 'sweetalert2';
 import {Location} from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SharedService } from '../../services/SharedServices/Shared.service';
 import { ReportJobService } from '../../services/JobPost/ReportJob.service';
 import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
@@ -44,6 +44,7 @@ export class JobListComponent implements OnInit {
 
   ngOnInit() {
   }
+
   //Load Jobs Post Tab
   LoadAllWithAddedJob(currentPage: number, itemsPerPage: number,Jobstatus:string) {
     this._jobServices.GetAllWithAddedJob(this.userId, currentPage, itemsPerPage,Jobstatus).subscribe((res: any) => {
@@ -51,7 +52,6 @@ export class JobListComponent implements OnInit {
       this.jobModels = res.result.data;
       this.pagination = res.pagination;
       this.isLoading = false;
-      console.log(this.jobModels);
     })
   }
   //Load Post Tab
