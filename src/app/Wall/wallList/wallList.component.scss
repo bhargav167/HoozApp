@@ -1,123 +1,102 @@
-@media only screen and (max-width:640px) and (min-width:480px) {
-  .container-sm{
-    width:100%;
-  }
-  .hideInSmall{
-    display: none;
-  }
-  .card-text{
-    font-size: 22px;
-    font-weight: bolder;
-    color: white;
-     }
-  .img-responsive{
-    margin-bottom: 2px;
-  }
-  .togs{
-    display: none;
-  }
-  .switch-button {
-    background: rgb(239 242 245);
-    border-radius: 0.6rem;
-    overflow: hidden;
-    width: 240px;
-    text-align: center;
-    font-size: 18px;
-    letter-spacing: 1px;
-    color: black;
-    position: relative;
-    padding-right: 120px;
-    position: relative;
-    height: 2.5rem;
-
-    &:before {
-      content: "Profiles";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      width: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3;
-      font-weight: bold;
-      pointer-events: none;
-    }
-    &-checkbox {
-      cursor: pointer;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      z-index: 2;
-      &:checked + .switch-button-label:before {
-
-        transform: translateX(109px);
-        transition: transform 300ms linear;
-      }
-
-      & + .switch-button-label {
-        font-weight: bold;
-
-        position: relative;
-        padding: 11px 0;
-        display: block;
-        user-select: none;
-        pointer-events: none;
-        transform: translateX(1px);
-        &:before {
-          content: "";
-          background: #fff;
-          height: 2.1rem;
-          width: 100%;
-          position: absolute;
-          left: 0.3rem;
-          top:0.2rem;
-          border-radius: 0.3rem;
-          transition: transform 300ms;
-        }
-
-        .switch-button-label-span {
-          position: relative;
-          top: -0.1rem;
-        }
-      }
-    }
-  }
-  .section-dropdown1 {
+.switch-button {
+  background: #eff2f5;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 268px;
+  text-align: center;
+  font-size: 20px;
+  color: black;
+  position: relative;
+  padding-right: 120px;
+  height: 48px;
+  &:before {
+    content: "Profiles";
     position: absolute;
-      background-color: #111;
-      color: #fff !important;
-      padding: 2px;
-      top: 70px;
-      margin-left: 270px;
-      width: 16%;
-      border-radius: 0.6rem;
-      display: block;
-      box-shadow: 0 14px 35px 0 rgb(9 9 12 / 40%);
-      z-index: 999;
-      opacity: 0;
-      pointer-events: none;
-      /* transform: translateY(20px);
-      transition: all 200ms linear; */
-
-    height: 500px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 136px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    font-weight: normal;
+    pointer-events: none;
   }
-
-  .card-text{
+  &-checkbox {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+    &:checked + .switch-button-label:before {
+      transform: translateX(125px);
+      transition: transform 300ms linear;
+    }
+    & + .switch-button-label {
+      font-weight: bold;
+      position: relative;
+      padding: 7px 0;
+      display: block;
+      user-select: none;
+      pointer-events: none;
+      transform: translateX(1px);
+      &:before {
+        content: "";
+        position: absolute;
+        width: 133px;
+        height: 40px;
+        left: 5px;
+        top: 4px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        transition: transform 300ms;
+      }
+      .switch-button-label-span {
+        position: relative;
+        top: 1px;
+      }
+    }
+  }
+}
+.row.post_list_row {
+  justify-content: center;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.post_list {
+  width: 350px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+@media only screen and (min-width: 768px) {
+ .form {
+    width: 538px;
+ }
+ .hideInSmall {
+    display:contents;
+ }
+ .tog {
+    display: none;
+ }
+ .togs {
+   display: block;
+ }
+ .card-text {
     font-size: 28px;
     font-weight: bolder;
     color: white;
-     }
-.form {
-  width: 290px;
- }
+  }
 }
-@media only screen and (min-width:641px) and (max-width:1099px) {
+
+@media only screen and (max-width:767px) {
   .hideInSmall{
     display: none;
   }
@@ -127,78 +106,78 @@
   .togs{
     display: none;
   }
-  .switch-button {
-    background: rgb(239 242 245);
-    border-radius: 0.6rem;
-    overflow: hidden;
-    width: 240px;
-    text-align: center;
-    font-size: 18px;
-    letter-spacing: 1px;
-    color: black;
-    position: relative;
-    padding-right: 120px;
-    position: relative;
-    height: 2.5rem;
+  // .switch-button {
+  //   background: rgb(239 242 245);
+  //   border-radius: 0.6rem;
+  //   overflow: hidden;
+  //   width: 240px;
+  //   text-align: center;
+  //   font-size: 18px;
+  //   letter-spacing: 1px;
+  //   color: black;
+  //   position: relative;
+  //   padding-right: 120px;
+  //   position: relative;
+  //   height: 2.5rem;
 
-    &:before {
-      content: "Profiles";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      width: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3;
-      font-weight: bold;
-      pointer-events: none;
-    }
-    &-checkbox {
-      cursor: pointer;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      z-index: 2;
-      &:checked + .switch-button-label:before {
+  //   &:before {
+  //     content: "Profiles";
+  //     position: absolute;
+  //     top: 0;
+  //     bottom: 0;
+  //     right: 0;
+  //     width: 120px;
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     z-index: 3;
+  //     font-weight: bold;
+  //     pointer-events: none;
+  //   }
+  //   &-checkbox {
+  //     cursor: pointer;
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     bottom: 0;
+  //     width: 100%;
+  //     height: 100%;
+  //     opacity: 0;
+  //     z-index: 2;
+  //     &:checked + .switch-button-label:before {
 
-        transform: translateX(109px);
-        transition: transform 300ms linear;
-      }
+  //       transform: translateX(109px);
+  //       transition: transform 300ms linear;
+  //     }
 
-      & + .switch-button-label {
-        font-weight: bold;
+  //     & + .switch-button-label {
+  //       font-weight: bold;
 
-        position: relative;
-        padding: 11px 0;
-        display: block;
-        user-select: none;
-        pointer-events: none;
-        transform: translateX(1px);
-        &:before {
-          content: "";
-          background: #fff;
-          height: 2.1rem;
-          width: 100%;
-          position: absolute;
-          left: 0.3rem;
-          top:0.2rem;
-          border-radius: 0.3rem;
-          transition: transform 300ms;
-        }
+  //       position: relative;
+  //       padding: 11px 0;
+  //       display: block;
+  //       user-select: none;
+  //       pointer-events: none;
+  //       transform: translateX(1px);
+  //       &:before {
+  //         content: "";
+  //         background: #fff;
+  //         height: 2.1rem;
+  //         width: 100%;
+  //         position: absolute;
+  //         left: 0.3rem;
+  //         top:0.2rem;
+  //         border-radius: 0.3rem;
+  //         transition: transform 300ms;
+  //       }
 
-        .switch-button-label-span {
-          position: relative;
-          top: -0.1rem;
-        }
-      }
-    }
-  }
+  //       .switch-button-label-span {
+  //         position: relative;
+  //         top: -0.1rem;
+  //       }
+  //     }
+  //   }
+  // }
   .card-text{
     font-size: 28px;
     font-weight: bolder;
@@ -228,246 +207,6 @@
  }
 }
 
-@media only screen and (max-width: 1920px) and (min-width: 1100px) {
-.form {
-  width: 538px;
- }
- .hideInSmall{
-  display:contents;
-}
-.switch-button {
-  background: rgb(239 242 245);
-  border-radius: 0.6rem;
-  overflow: hidden;
-  width: 240px;
-  text-align: center;
-  font-size: 18px;
-  letter-spacing: 1px;
-  color: black;
-  position: relative;
-  padding-right: 120px;
-  height: 2.5rem;
-
-  &:before {
-    content: "Profiles";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    font-weight: bold;
-    pointer-events: none;
-
-  }
-  &-checkbox {
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: 2;
-    &:checked + .switch-button-label:before {
-
-      transform: translateX(109px);
-      transition: transform 300ms linear;
-    }
-
-    & + .switch-button-label {
-      font-weight: bold;
-
-      position: relative;
-      padding: 7px 0;
-      display: block;
-      user-select: none;
-      pointer-events: none;
-      transform: translateX(1px);
-      &:before {
-        content: "";
-        background: #fff;
-        height: 2.1rem;
-        width: 100%;
-        position: absolute;
-        left: 0.3rem;
-        top:0.2rem;
-        border-radius: 0.3rem;
-        transition: transform 300ms;
-        box-shadow: 0.05rem  0.05rem  0.05rem  0.05rem lightgray;
-      }
-
-      .switch-button-label-span {
-        position: relative;
-        top: -0.1rem;
-      }
-    }
-  }
-}
-.tog{
-  display: none;
-}
-.togs{
- display: block;
-}
-.card-text{
-  font-size: 28px;
-  font-weight: bolder;
-  color: white;
-   }
-}
-@media only screen and (max-width:480px) and (min-width:359px) {
-  .container-sm{
-    width:100%;
-  }
-  .card-text{
-    font-size: 22px;
-    font-weight: bolder;
-    color: white;
-     }
-  .togs{
-    display: none;
-  }
-  .section-dropdown1 {
-    position: absolute;
-      background-color: #111;
-      color: #fff !important;
-      padding: 2px;
-      top: 70px;
-      margin-left: 172px;
-      width: 16%;
-      border-radius: 0.6rem;
-      display: block;
-      box-shadow: 0 14px 35px 0 rgb(9 9 12 / 40%);
-      z-index: 2;
-      opacity: 0;
-      margin-top: 5px;
-      pointer-events: none;
-      /* transform: translateY(20px);
-      transition: all 200ms linear; */
-
-    height: 500px;
-  }
-  .form {
-    width:185px;
-   }
-}
-
-@media only screen and (max-width:481px) and (min-width:100px) {
-  .container-sm{
-    width:100%;
-  }
-  .switch-button {
-    background: rgb(239 242 245);
-    border-radius: 0.6rem;
-    overflow: hidden;
-    width: 240px;
-    text-align: center;
-    font-size: 18px;
-    letter-spacing: 1px;
-    color: black;
-    position: relative;
-    padding-right: 120px;
-    position: relative;
-    height: 2.5rem;
-
-    &:before {
-      content: "Profiles";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      width: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3;
-      font-weight: bold;
-      pointer-events: none;
-    }
-    &-checkbox {
-      cursor: pointer;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      z-index: 2;
-      &:checked + .switch-button-label:before {
-
-        transform: translateX(109px);
-        transition: transform 300ms linear;
-      }
-
-      & + .switch-button-label {
-        font-weight: bold;
-
-        position: relative;
-        padding: 11px 0;
-        display: block;
-        user-select: none;
-        pointer-events: none;
-        transform: translateX(1px);
-        &:before {
-          content: "";
-          background: #fff;
-          height: 2.1rem;
-          width: 100%;
-          position: absolute;
-          left: 0.3rem;
-          top:0.2rem;
-          border-radius: 0.3rem;
-          transition: transform 300ms;
-        }
-
-        .switch-button-label-span {
-          position: relative;
-          top: -0.1rem;
-        }
-      }
-    }
-  }
-  .card-text{
-    font-size: 22px;
-    font-weight: bolder;
-    color: white;
-     }
-
-  .togs{
-    display: none;
-  }
-
-  .section-dropdown1 {
-    position: absolute;
-      background-color: #111;
-      color: #fff !important;
-      padding: 2px;
-      top: 70px;
-      margin-left: 172px;
-      width: 16%;
-      border-radius: 0.6rem;
-      display: block;
-      box-shadow: 0 14px 35px 0 rgb(9 9 12 / 40%);
-      z-index: 2;
-      opacity: 0;
-      pointer-events: none;
-      /* transform: translateY(20px);
-      transition: all 200ms linear; */
-
-    height: 500px;
-  }
-  .form {
-    width:170px;
-   }
-
-
-}
 .form-input{
   height: 40px;
   text-indent: 0;
@@ -537,24 +276,17 @@
   top: 4px;
   padding: 2px;
 }
-
-
-.nav-item{
+.nav-item {
   font-weight: bold;
 }
 .navbar-expand-lg .navbar-nav .nav-link  {
   padding: 0.8rem;
 }
-element.style {
-  width: 52px;
-  height: 52px;
-}
-.profileimg{
+.profileimg {
   margin-top: -8px;
-  }
-  .dropdown-menu{
-    float: left;
-    margin-left: -94px;
+}
+.dropdown-menu{
+  float: left;
 }
 .heading{
   margin-top: 5px;
@@ -572,26 +304,20 @@ element.style {
   height: auto;
 }
 /* Nav Over */
-
-.search-results{
+.search-results {
   overflow-x: hidden;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 body {
     background-color: #eee;
     width: 100%;
     overflow-x: hidden;
 }
-
-.card {
-    border: none;
-    border-radius: 10px
-}
-
 .c-details span {
     font-weight: 300;
     font-size: 13px;
 }
-
 .icon {
     width: 50px;
     height: 50px;
@@ -602,7 +328,6 @@ body {
     justify-content: center;
     font-size: 39px
 }
-
 .badge span {
     background-color: #fffbec;
     width: 60px;
@@ -624,9 +349,6 @@ body {
     color: #a5aec0
 }
 
-.card{
-  cursor: pointer;
-}
 /* //Loader */
 
 .lds-ring {
