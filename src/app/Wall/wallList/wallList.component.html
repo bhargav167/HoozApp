@@ -5,8 +5,7 @@
     <div class="row col-sm-12">
       <div class="d-flex switch_button_wrap">
           <div class="switch-button">
-            <input [(ngModel)]="!IsOnJob" (change)="checkValue(IsOnJob?false:true)" class="switch-button-checkbox"
-              type="checkbox" />
+            <input [(ngModel)]="!IsOnJob" (change)="checkValue(IsOnJob?false:true)" class="switch-button-checkbox" type="checkbox" />
             <label class="switch-button-label" for=""><span class="switch-button-label-span">Posts</span></label>
           </div>
       </div>
@@ -15,9 +14,9 @@
 
    <!-- MAIN CONTENT -->
    <div infiniteScroll [infiniteScrollDistance]="7" (scrolled)="onScroll()" class="search-results mt-5">
-     <div *ngIf="IsOnJob" class="row">
-       <div *ngFor="let item of walldatas; let i = index" class="col-lg-3 col-md-4">
-         <div class="card p-3  ">
+     <div *ngIf="IsOnJob" class="row post_list_row">
+       <div *ngFor="let item of walldatas; let i = index" class="post_list">
+         <div class="post_card">
            <div class="d-flex justify-content-between">
              <div class="d-flex flex-row align-items-center">
                <div class="icon">

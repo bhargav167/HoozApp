@@ -1,9 +1,8 @@
 <nav class="mb-5 navbar sticky-top navbar-light bg-light1 mb-5">
   <div class="container-fluid">
-    <img (click)="LogoClick()" class="img-responsive logo"
-      src="../../../assets/Logo/hoozon.png" />
-
-    <div class="d-flex justify-content-between">
+    <img (click)="LogoClick()" class="img-responsive logo" src="../../../assets/Logo/hoozon.png" />
+    <img (click)="LogoClick()" class="img-responsive logo_mb" src="../../../assets/Logo/hoozon_mb.png" />
+    <div class="d-flex justify-content-between search_wrap">
       <div class="input-group">
         <form class="form">
           <input type="search" (click)="hide()" autocomplete="off" (keyup.enter)="SearchByEnter()"  #movieSearchInput id="searchTag"
@@ -24,30 +23,31 @@
       </div>
     </div>
 
-    <img [routerLink]="['/jobpost']" class="addIco img img-responsive img-fluid tog"
-      routerLinkActive="router-link-active"
-      style="height: 2.5rem; width: 2.5rem; cursor: pointer;" src="../../../assets/HoozIcon/HoozAdd.png" />
-
-    <div type="button" class="navbar-toggler tog">
-      <label class="for-dropdown" for="dropdown1">
-        <img style="height: 0.7rem; width: 1.7rem; cursor: pointer;" class="img-responsive img-fluid"
-          src="../../../assets/Logo//Toggle.png" />
-      </label>
-    </div>
-    <input (click)="ShowMenu()" class="dropdown tog" type="checkbox" id="dropdown1" name="dropdown1" />
+      <!-- <img [routerLink]="['/jobpost']" class="addIco img img-responsive img-fluid tog" routerLinkActive="router-link-active"
+        style="height: 2.5rem; width: 2.5rem; cursor: pointer;" src="../../../assets/HoozIcon/HoozAdd.png" /> -->
+      <a *ngIf="isLogedIn" [routerLink]="['/profile',user.Id]" class="nav-item dropdown_mb profileimg">
+        <img src="../../../assets/HoozIcon/profile.png" class="rounded-circle img-fluid"
+          href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
+      </a>
+      <div type="button" class="navbar-toggler tog mb_menu">
+        <label class="for-dropdown" for="dropdown1">
+          <img class="img-responsive img-fluid"
+            src="../../../assets/Logo/Menu.png" />
+        </label>
+      </div>
+      <input (click)="ShowMenu()" class="dropdown tog" type="checkbox" id="dropdown1" name="dropdown1" />
 
     <!-- DropDown Toggle1 -->
     <div *ngIf="this.navServices.isShowingMenu" class="section-dropdown1 tog">
       <div *ngIf="isLogedIn">
-        <a id="b" [routerLink]="['/profile',user.Id]"><i class="far fa-user-circle"></i>&nbsp;&nbsp; MY PROFILE
+        <a id="b" [routerLink]="['/profile',user.Id]"><i class="far fa-user-circle"></i>MY PROFILE
         </a><br><br>
-        <a id="b" [routerLink]="['/joblist']"> <i class="far fa-newspaper"></i>&nbsp;&nbsp;Job Listing </a><br><br>
-        <a id="b" [routerLink]="['/settings/download']"> <i class="fa fa-download"></i>&nbsp;&nbsp;Download
+        <a id="b" [routerLink]="['/joblist']"> <i class="far fa-newspaper"></i>Job Listing </a><br><br>
+        <a id="b" [routerLink]="['/settings/download']"> <i class="fa fa-download"></i>Download
         </a><br><br>
       </div>
-      <a id="b"> <i class="fas fa-cog"></i>&nbsp;&nbsp;SETTINGS </a><br><br>
-      <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>&nbsp;&nbsp;Login </a><br>
-
+      <a id="b"> <i class="fas fa-cog"></i>SETTINGS </a><br><br>
+      <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>Login </a><br>
       <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
       <div class="section-dropdown-sub">
       </div>
@@ -57,7 +57,7 @@
       <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a><br><br>
       <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a><br><br>
     </div>
- <!--End DropDown Toggle1 -->
+  <!--End DropDown Toggle1 -->
 
  <div class="collapse navbar-collapse tog justify-content-end" id="navbarCollapse">
       <div class="navbar-nav mr-auto mt-2 mt-md-0">
@@ -75,23 +75,22 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" [routerLink]="['/']">Wall</a>
             </li>
-
-
             <li [routerLink]="['/profile',user.Id]" *ngIf="isLogedIn" class="nav-item dropdown profileimg">
               <img src="{{user?.ImageUrl}}" class="nav-link dropdown-toggle img-circle"
                 href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false" />
             </li>
-
           </ul>
         </form>
       </div>
     </div>
 
     <div class="justify-content-end togs">
-      <a [routerLink]="['/settings/download']" class="links">Download App</a>
-      <a class="links" *ngIf="isLogedIn" [routerLink]="['/joblist']">Job Posts</a>
-      <a class="links" *ngIf="isLogedIn" [routerLink]="['/jobpost']">Create Post</a>
+      <!-- <a [routerLink]="['/settings/download']" class="links">Download App</a>
+      <a class="links" *ngIf="isLogedIn" [routerLink]="['/joblist']">Job Posts</a> -->
+      <a class="links add_post" *ngIf="isLogedIn" [routerLink]="['/jobpost']">     
+        <i class="fa fa-plus"></i>
+      </a>
       <a class="links" *ngIf="!isLogedIn" [routerLink]="['/login']">Login</a>
 
       <!-- <a  class="links" aria-current="page" [routerLink]="['/']">Wall</a> &nbsp;&nbsp; -->
@@ -100,9 +99,9 @@
           href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
       </a>
 
-      <label *ngIf="isLogedIn" class="for-dropdown" for="dropdown">
-        <img style="height: 0.7rem; width: 1.9rem; cursor: pointer;" class=" img img-responsive img-fluid"
-          src="../../../assets/Logo//Toggle.png" />
+      <label *ngIf="isLogedIn" class="for-dropdown menu" for="dropdown">
+        <img class=" img img-responsive img-fluid"
+          src="../../../assets/Logo/Menu.png" />
       </label>
       <input (click)="ShowMenu()" *ngIf="isLogedIn" class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
 
@@ -133,4 +132,21 @@
 
     </div>
   </div>
+</nav>
+<nav class="footer">
+  <a class="nav-item" href="#">
+    <i class="fa fa-home" aria-hidden="true"></i>
+  </a>  
+  <a class="nav-item" href="#">
+    <i class="fa fa-search" aria-hidden="true"></i>
+  </a>  
+  <a class="nav-item add_post" *ngIf="isLogedIn" [routerLink]="['/jobpost']">     
+    <i class="fa fa-plus"></i>
+  </a>
+  <a class="nav-item jobs"  href="#">
+    <img src="../../../assets/Logo/jobs.png" class="img-fluid" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
+  </a>
+  <a class="nav-item chat"  href="#">
+    <img src="../../../assets/Logo/chat.png" class="img-fluid" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
+  </a>
 </nav>
