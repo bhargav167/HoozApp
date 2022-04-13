@@ -267,7 +267,8 @@ nav.navbar .container-fluid {
     float: left;
     margin-left: -94px;
 }
-.links{
+.links {
+  font-size: 20px;
    font-weight:bold;
    color: black;
    padding: 1px;
