@@ -73,9 +73,28 @@
   width: 350px;
   padding-left: 15px;
   padding-right: 15px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   cursor: pointer;
+  .top_sec {
+    margin-bottom: 20px;
+  }
+  .c-details {
+    h6 {
+      font-size: 20px;
+      font-weight: 700;
+      span {
+          font-weight: 400;
+          font-size: 15px;
+      }
+    }
+  }
+  .heading {
+    font-size: 20px;
+    margin: 10px 0 0;
+    line-height: 25px;
+  }
 }
+
 @media only screen and (min-width: 768px) {
  .form {
     width: 538px;
@@ -95,119 +114,7 @@
     color: white;
   }
 }
-
-@media only screen and (max-width:767px) {
-  .hideInSmall{
-    display: none;
-  }
-  .img-responsive{
-    margin-bottom: 2px;
-  }
-  .togs{
-    display: none;
-  }
-  // .switch-button {
-  //   background: rgb(239 242 245);
-  //   border-radius: 0.6rem;
-  //   overflow: hidden;
-  //   width: 240px;
-  //   text-align: center;
-  //   font-size: 18px;
-  //   letter-spacing: 1px;
-  //   color: black;
-  //   position: relative;
-  //   padding-right: 120px;
-  //   position: relative;
-  //   height: 2.5rem;
-
-  //   &:before {
-  //     content: "Profiles";
-  //     position: absolute;
-  //     top: 0;
-  //     bottom: 0;
-  //     right: 0;
-  //     width: 120px;
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //     z-index: 3;
-  //     font-weight: bold;
-  //     pointer-events: none;
-  //   }
-  //   &-checkbox {
-  //     cursor: pointer;
-  //     position: absolute;
-  //     top: 0;
-  //     left: 0;
-  //     bottom: 0;
-  //     width: 100%;
-  //     height: 100%;
-  //     opacity: 0;
-  //     z-index: 2;
-  //     &:checked + .switch-button-label:before {
-
-  //       transform: translateX(109px);
-  //       transition: transform 300ms linear;
-  //     }
-
-  //     & + .switch-button-label {
-  //       font-weight: bold;
-
-  //       position: relative;
-  //       padding: 11px 0;
-  //       display: block;
-  //       user-select: none;
-  //       pointer-events: none;
-  //       transform: translateX(1px);
-  //       &:before {
-  //         content: "";
-  //         background: #fff;
-  //         height: 2.1rem;
-  //         width: 100%;
-  //         position: absolute;
-  //         left: 0.3rem;
-  //         top:0.2rem;
-  //         border-radius: 0.3rem;
-  //         transition: transform 300ms;
-  //       }
-
-  //       .switch-button-label-span {
-  //         position: relative;
-  //         top: -0.1rem;
-  //       }
-  //     }
-  //   }
-  // }
-  .card-text{
-    font-size: 28px;
-    font-weight: bolder;
-    color: white;
-     }
-     .section-dropdown1 {
-      position: absolute;
-        background-color: #111;
-        color: #fff !important;
-        padding: 2px;
-        top: 70px;
-        margin-left: 517px;
-        width: 16%;
-        border-radius: 0.6rem;
-        display: block;
-        box-shadow: 0 14px 35px 0 rgb(9 9 12 / 40%);
-        z-index: 2;
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(20px);
-        transition: all 200ms linear;
-
-      height: 500px;
-    }
-.form {
-  width: 500px;
- }
-}
-
-.form-input{
+.form-input {
   height: 40px;
   text-indent: 0;
   border-radius: 10px;
@@ -218,7 +125,7 @@
     background-color: transparent;
    border: 1px solid transparent;
 }
- .links{
+ .links {
   font-weight:bold;
    color: black;
    padding: 1px;
@@ -288,9 +195,6 @@
 .dropdown-menu{
   float: left;
 }
-.heading{
-  margin-top: 5px;
-}
 .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: black;
   content: "ds";
@@ -313,10 +217,6 @@ body {
     background-color: #eee;
     width: 100%;
     overflow-x: hidden;
-}
-.c-details span {
-    font-weight: 300;
-    font-size: 13px;
 }
 .icon {
     width: 50px;
@@ -605,4 +505,54 @@ body {
   align-items: center;
   justify-content: center;
 }
-/* Other */
+
+@media only screen and (max-width:767px) {
+  .hideInSmall {
+    display: none;
+  }
+  .img-responsive {
+    margin-bottom: 2px;
+  }
+  .togs {
+    display: none;
+  }
+  .card-text {
+    font-size: 28px;
+    font-weight: bolder;
+    color: white;
+  }
+  .section-dropdown1 {
+      position: absolute;
+      background-color: #111;
+      color: #fff !important;
+      padding: 2px;
+      top: 70px;
+      margin-left: 517px;
+      width: 16%;
+      border-radius: 0.6rem;
+      display: block;
+      box-shadow: 0 14px 35px 0 rgb(9 9 12 / 40%);
+      z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: all 200ms linear;
+      height: 500px;
+  }
+  .form {
+     width: 500px;
+  }
+  .search-results {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+@media only screen and (max-width:720px) {
+  .post_list {
+    width: 100%;
+    img.img-thumbnail.img-responsive {
+      margin: 0 auto;
+      display: block;
+    }
+  }
+}

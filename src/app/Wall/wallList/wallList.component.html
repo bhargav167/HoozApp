@@ -17,7 +17,7 @@
      <div *ngIf="IsOnJob" class="row post_list_row">
        <div *ngFor="let item of walldatas; let i = index" class="post_list">
          <div class="post_card">
-           <div class="d-flex justify-content-between">
+           <div class="d-flex justify-content-between top_sec">
              <div class="d-flex flex-row align-items-center">
                <div class="icon">
                  <img [routerLink]="['/profile',item.Job.User.Id]" *ngIf="item.Job.IsAnonymous===false"
@@ -34,7 +34,7 @@
              </div>
              <div class="d-flex justify-content-end">
                <div class="dropdown">
-                 <span><img class="img img-responsive share" src="./../../../assets/Logo/shareDot.png" /></span>
+                 <span><img class="img img-responsive share" src="./../../../assets/Logo/3dots.svg" /></span>
                  <div class="dropdown-content mt-0">
                    <a *ngIf="userId!=item.Job?.User?.Id && userId && !item.Job?.IsAdded" style="cursor: pointer;"
                      (click)="AddToJob(item?.Job?.Id)">Add To Job</a>
@@ -48,11 +48,9 @@
 
            </div>
            <div [routerLink]="['/jobDetails',item.Job.Id]" class="mt-1">
-             <p class="heading">
-               {{item?.Job.Descriptions | slice:0:50}}{{ item?.Job.Descriptions.length > 40 ? '...' : '' }} </p>
              <div class=" ">
 
-               <div style="margin-top: -8px;" class="col-md-12 bg-white">
+               <div class="col-md-12 bg-white">
                  <!-- If Job Image Avalable -->
                  <img *ngIf="item?.Job.ImagesUrl!=null" class="img-thumbnail img-responsive img-fluid"
                    src="{{item?.Job.ThumbNailImage}}">
@@ -74,6 +72,9 @@
                  </div>
                </div>
              </div>
+             <p class="heading">
+              {{item?.Job.Descriptions | slice:0:50}}{{ item?.Job.Descriptions.length > 40 ? '...' : '' }} 
+            </p>
            </div>
          </div>
        </div>
