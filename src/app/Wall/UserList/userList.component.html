@@ -1,18 +1,15 @@
  
  <div class="user_list">
   <div *ngFor="let item of walldatas">
-      <div [routerLink]="['/profile',item.User.Id]" style="cursor: pointer;" routerLinkActive="router-link-active"  class="d-flex">
-        <div  class="d-flex">
+      <div [routerLink]="['/profile',item.User.Id]" routerLinkActive="router-link-active"  class="user_list_item">
           <div class="icon">
             <img class="rounded-circle img-fluid" [src]="item.User?.UserImage"/>
           </div>
           <div class="c-details">
-            <h6 class="mt-2">{{item?.User?.Name}} </h6>              
+            <h6>{{item?.User?.Name}} </h6>    
+            <div class="img share">0.0</div>          
           </div>
-        </div>
-      </div>
-      <div class="">
-          <div class="img share">0.0</div>
-      </div>        
+          <i class="fa fa-angle-right"></i>
+      </div>       
   </div> 
  </div> 

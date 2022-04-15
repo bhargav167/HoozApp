@@ -30,6 +30,7 @@ sharedLink: string;
   constructor(private _jobServices:JobPostService,
     private navServices:NavbarCommunicationService,
     private _reportServices:ReportJobService,
+    private activatedRoute: ActivatedRoute,
     private _clipboardService: ClipboardService,
     private toast: HotToastService,
     private _sharedServices:SharedService,
@@ -37,9 +38,12 @@ sharedLink: string;
     private _router:ActivatedRoute,private _location: Location) {
       this._sharedServices.checkInterNetConnection();
       this.loadUserData();
-      this.jobId= this._router.snapshot.params['id'];
-      this.LoadJobDetailsById(this.jobId);
+      this.activatedRoute.queryParams.subscribe(params => {
+       this.jobId = params['target'];
+        this.LoadJobDetailsById(this.jobId);
       this.loadResponcesData(this.jobId);
+      });
+
   }
   //Load Basic User Data
   loadUserData(){
@@ -233,5 +237,8 @@ GetSharedLink() {
   this.sharedLink="http://hoozonline.com/jobDetails/"+this.jobId;
   this._clipboardService.copy(this.sharedLink);
   this.showToast();
+}
+RedirectToUser(userId){
+  this._navigaterouter.navigate(['/profile'], { queryParams: {target: userId}});
 }
 }

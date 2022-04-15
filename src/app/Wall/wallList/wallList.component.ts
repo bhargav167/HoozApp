@@ -13,7 +13,7 @@ import { ReportJobService } from '../../services/JobPost/ReportJob.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { ClipboardService } from 'ngx-clipboard'
 import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: "app-wallList",
@@ -55,7 +55,8 @@ export class WallListComponent implements OnInit {
     private _reportServices: ReportJobService,
     private _jobServices: JobPostService,
     public _sharedServices: SharedService,
-    private toast: HotToastService
+    private toast: HotToastService,
+    private _router:Router
   ) {
 
   }
@@ -291,5 +292,11 @@ export class WallListComponent implements OnInit {
   }
   LogoClick() {
     window.location.href = "/";
+  }
+  RedirectToJob(jobId){
+    this._router.navigate(['/jobDetails'], { queryParams: {target: jobId}});
+  }
+  RedirectToUser(userId){
+    this._router.navigate(['/profile'], { queryParams: {target: userId}});
   }
 }

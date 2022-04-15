@@ -20,13 +20,13 @@
            <div class="d-flex justify-content-between top_sec">
              <div class="d-flex flex-row align-items-center">
                <div class="icon">
-                 <img [routerLink]="['/profile',item.Job.User.Id]" *ngIf="item.Job.IsAnonymous===false"
+                 <img (click)="RedirectToUser(item.Job.User.Id)"  *ngIf="item.Job.IsAnonymous===false"
                    class="rounded-circle img-fluid" src="{{item.Job.User?.UserImage}}">
                  <img *ngIf="item.Job.IsAnonymous===true" class="rounded-circle img-fluid"
                    src="{{item.Job?.AnonmousUserPic}}">
                </div>
                <div class="ms-2 c-details">
-                 <h6 [routerLink]="['/profile',item.Job.User.Id]" *ngIf="item.Job.IsAnonymous===false" class="mb-0">
+                 <h6 (click)="RedirectToUser(item.Job.User.Id)" *ngIf="item.Job.IsAnonymous===false" class="mb-0">
                    {{item?.Job.User.Name}}<br> <span>{{item?.Job.TimeAgo}}</span></h6>
                  <h6 *ngIf="item.Job.IsAnonymous===true" class="mb-0">Anonymous<br> <span>{{item?.Job.TimeAgo}}</span>
                  </h6>
@@ -47,13 +47,13 @@
              </div>
 
            </div>
-           <div [routerLink]="['/jobDetails',item.Job.Id]" class="mt-1">
+           <div (click)="RedirectToJob(item.Job.Id)" class="mt-1">
              <div class=" ">
 
                <div class="col-md-12 bg-white">
                  <!-- If Job Image Avalable -->
                  <img *ngIf="item?.Job.ImagesUrl!=null" class="img-thumbnail img-responsive img-fluid"
-                   src="{{item?.Job.ThumbNailImage}}">
+                   src="{{item?.Job.ImagesUrl}}">
 
                  <!-- If No Job Image Avalable -->
                  <div *ngIf="item?.Job.ImagesUrl==null" [ngStyle]="{background: item?.Job?.ColorCode}" class="card cd">
@@ -72,7 +72,7 @@
                </div>
              </div>
              <p class="heading">
-              {{item?.Job.Descriptions | slice:0:50}}{{ item?.Job.Descriptions.length > 40 ? '...' : '' }} 
+              {{item?.Job.Descriptions | slice:0:50}}{{ item?.Job.Descriptions.length > 40 ? '...' : '' }}
             </p>
            </div>
          </div>

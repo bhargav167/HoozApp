@@ -37,6 +37,7 @@ export class JobListComponent implements OnInit {
     private navServices:NavbarCommunicationService,
     private activatedRoute: ActivatedRoute,
     private _sharedServices:SharedService,
+    private _router:Router,
     private _location: Location) {
       this._sharedServices.checkInterNetConnection();
      this.loadUserData();
@@ -221,4 +222,7 @@ export class JobListComponent implements OnInit {
   hideEvent(){
     this.navServices.Toggle();
  }
+ RedirectToJob(jobId){
+  this._router.navigate(['/jobDetails'], { queryParams: {target: jobId}});
+}
 }

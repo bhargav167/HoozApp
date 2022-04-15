@@ -36,8 +36,9 @@ import { HelpDeskComponent } from './Settings/HelpDesk/HelpDesk.component';
 import { DownloadComponent } from './Settings/Download/Download.component';
 import { UserListComponent } from './Wall/UserList/userList.component';
 import { ClipboardModule } from 'ngx-clipboard';
+import { ChatsComponent } from './Chats/Chats.component';
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     TopNavBarComponent,
     JobPostComponent,
@@ -51,7 +52,9 @@ import { ClipboardModule } from 'ngx-clipboard';
     HelpDeskComponent,
     DownloadComponent,
     UserListComponent,
-    WallListComponent],
+    WallListComponent,
+      ChatsComponent
+   ],
   imports: [
     BrowserModule,
     FormsModule,

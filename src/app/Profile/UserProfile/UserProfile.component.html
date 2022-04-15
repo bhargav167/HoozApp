@@ -33,7 +33,7 @@
       </div>
 
       <div style="z-index: 1;" class="d-flex justify-content-end"> <span>
-          <button type="button" *ngIf="userId!=loggedUserId" class="btn btn-ChatHooz">Chat</button>
+          <button type="button" *ngIf="userId!=loggedUserId" routerLink="/chat" class="btn btn-ChatHooz">Chat</button>
           <button type="button" *ngIf="userId==loggedUserId"  [routerLink]="['/editProfile']" routerLinkActive="router-link-active" class="btn btn-EditHooz">Edit</button>
         </span>
       </div>

@@ -19,9 +19,12 @@ export class UserProfileComponent implements OnInit {
     ,private _location: Location,
     private navServices:NavbarCommunicationService,
     private _sharedServices:SharedService,
+    private activatedRoute: ActivatedRoute,
     private _router: ActivatedRoute) {
       this._sharedServices.checkInterNetConnection();
-    this.userId = this._router.snapshot.params['id'];
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.userId = params['target'];
+     });
     if(localStorage.getItem('user')){
       this.loggeduser= JSON.parse(localStorage.getItem('user'));
       this.loggedUserId=this.loggeduser.Id;
