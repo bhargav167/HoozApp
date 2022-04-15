@@ -1,87 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@media only screen and (max-width: 1600px) and (min-width: 960px) {
-  .hc{
-      margin-left: 356px;
-      font-size: x-large;
-      font-weight: 700;
-  }
-  .hc1{
-    margin-left: 238px;
-    font-size: x-large;
-    font-weight: 700;
-  }
-  .back{
-      padding-left: 50px;
-      cursor: pointer;
-  }
-}
-
-@media only screen and (max-width:640px) and (min-width:499px) {
-.hc {
-  margin-left: 60px;
-  font-size: x-large;
-  font-weight: 700;
-}
-
-.back {
-  padding-left: 6px;
-  cursor: pointer;
-}
-}
-
-@media only screen and (min-width:641px) and (max-width:961px) {
-  .hc{
-      margin-left: 76px;
-      font-size: x-large;
-      font-weight: 700;
-  }
-  .hc1{
-    margin-left: 58px;
-    font-size: x-large;
-    font-weight: 700;
-  }
-  .back{
-      padding-left: 50px;
-      cursor: pointer;
-  }
-
-
-}
-
-@media only screen and (max-width:500px)   {
-  .hc{
-      margin-left: 36px;
-      font-size: x-large;
-      font-weight: 700;
-  }
-  .hc1{
-    margin-left: 24px;
-    font-size: x-large;
-    font-weight: 700;
-  }
-  .back{
-      padding-left: 32px;
-      cursor: pointer;
-  }
-}
-@media only screen and (max-width:499px) and (min-width:100px){
-  .hc{
-    margin-left: 36px;
-    font-size: x-large;
-    font-weight: 700;
-}
-.hc1{
-  margin-left: 24px;
-  font-size: x-large;
-  font-weight: 700;
-}
-.back{
-    padding-left: 32px;
-    cursor: pointer;
-}
-}
-
-
 .bg-Responce{
   background-color: #00fa9a;
   color: black !important;
@@ -97,8 +14,7 @@ input[type="search"]::-webkit-search-cancel-button {
   border-radius: 3px;
   margin-bottom: 1em;
 }
-
-.select:after {
+/* .select:after {
   content: "▼";
   padding: 8px 8px 8px;
   position: absolute;
@@ -110,8 +26,13 @@ input[type="search"]::-webkit-search-cancel-button {
   width: 10%;
   height: 100%;
   pointer-events: none;
+} */
+.select i.fa.fa-caret-down {
+  position: absolute;
+  right: 16px;
+  color: #00FFD1;
+  font-size: 26px;
 }
-
 .select__field {
   height: 40px;
   width: 100%;
@@ -128,11 +49,9 @@ input[type="search"]::-webkit-search-cancel-button {
   appearance: none;
   /* for modern browsers */
 }
-
 .btn-hoozGreen{
     border-radius: 0.5rem;
 }
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -144,37 +63,34 @@ input[type="search"]::-webkit-search-cancel-button {
     z-index: 1;
     border-radius: 0.8rem;
     padding: 8px;
-  }
-  .JobdetailDroupdown{
-    top: -22px;
-  }
-
-  .dropdown-content a {
+}
+.JobdetailDroupdown{
+  top: -22px;
+}
+.dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     border-radius: 0.5rem;
-  }
-
-  .dropdown-content a:hover {background-color: rgb(239 239 239);}
-
-  .dropdown:hover .dropdown-content {
+}
+.dropdown-content a:hover {background-color: rgb(239 239 239);}
+.dropdown:hover .dropdown-content {
     display: block;
-  }
-  .ShareModel{
+}
+.ShareModel{
     border-radius: 1.5rem;
-  }
-  .social-buttons {
+}
+.social-buttons {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: -10px;
- }
-  .social-buttons__button {
+}
+.social-buttons__button {
     margin: 10px 5px 0;
- }
-  .social-button {
+}
+.social-button {
     cursor: pointer;
     position: relative;
     display: flex;
@@ -187,8 +103,8 @@ input[type="search"]::-webkit-search-cancel-button {
     border-radius: 100%;
     background: #fff;
     text-align: center;
- }
-  .social-button::after {
+}
+.social-button::after {
     content: '';
     position: absolute;
     top: -1px;
@@ -198,27 +114,27 @@ input[type="search"]::-webkit-search-cancel-button {
     height: 0;
     border-radius: 100%;
     transition: 0.3s;
- }
-  .social-button:focus, .social-button:hover {
+}
+.social-button:focus, .social-button:hover {
     color: #fff;
- }
-  .social-button:focus::after, .social-button:hover::after {
+}
+.social-button:focus::after, .social-button:hover::after {
     width: calc(100% + 2px);
     height: calc(100% + 2px);
     margin-left: calc(-50% - 1px);
- }
-  .social-button i, .social-button svg {
+}
+.social-button i, .social-button svg {
     position: relative;
     z-index: 1;
     transition: 0.3s;
- }
-  .social-button i {
+}
+.social-button i {
     font-size: 28px;
- }
-  .social-button svg {
+}
+.social-button svg {
     height: 40%;
     width: 40%;
- }
+}
   .social-button--mail {
     color: #0072c6;
  }
@@ -279,3 +195,186 @@ input[type="search"]::-webkit-search-cancel-button {
   .social-button--npmjs::after {
     background: #c12127;
  }
+ .my_container {
+    max-width: 100%;
+    width: 630px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+ }
+ .img_wrap img.img-responsive {
+    border-radius: 16px;
+ }
+ .back_arrow {
+    margin-left: 30px;
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+ }
+ .c-details h6 {
+    font-size: 20px;
+    font-weight: 700;
+}
+.c-details h6 span {
+  font-weight: 400;
+  font-size: 15px;
+}
+.switch-button {
+  background: #eff2f5;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 268px;
+  text-align: center;
+  font-size: 20px;
+  color: black;
+  position: relative;
+  padding-right: 120px;
+  height: 48px;
+}
+/* .switch-button:before {
+  content: "Profiles";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 136px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  font-weight: normal;
+  pointer-events: none;
+} */
+.switch-button-checkbox {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 2;
+}
+.switch-button-checkbox:checked + .switch-button-label:before {
+  transform: translateX(125px);
+  transition: transform 300ms linear;
+}
+.switch-button-checkbox + .switch-button-label {
+  font-weight: bold;
+  position: relative;
+  padding: 7px 0;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  transform: translateX(1px);
+}
+.switch-button-checkbox + .switch-button-label:before {
+  content: "";
+  position: absolute;
+  width: 133px;
+  height: 40px;
+  left: 5px;
+  top: 4px;
+  background: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: transform 300ms;
+}
+.switch-button-checkbox + .switch-button-label .switch-button-label-span {
+  position: relative;
+  top: 1px;
+}
+.switch_button_wrap {
+  align-items: center;
+  justify-content: center;
+}
+.mob_view {
+  display: none;
+}
+.edit_sec button.btn {
+  background: #000000;
+  border-radius: 12px;
+  width: 78px;
+  height: 48px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+.edit_sec button.btn:hover {
+  background: #00FFE0;
+}
+.chat_sec .btn {
+  background: #00FFD1;
+  border: 1px solid #01ECD9;
+  box-sizing: border-box;
+  border-radius: 12px;
+  width: 78px;
+  height: 48px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+@media only screen and (min-width: 920px) {
+  .my_container {
+    width: 910px;
+    display: flex;
+  }
+  .left_sec {
+    width: 100%;
+    max-width: 338px;
+    margin-right: 45px;
+  }
+  .right_sec {
+    flex: 1;
+  }
+}
+@media only screen and (max-width: 919px) {
+  .desk_view {
+    display: none;
+  }
+  .mob_view {
+      display: block;
+  }
+  .img_wrap {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .hc {
+      margin-left: 356px;
+      font-size: x-large;
+      font-weight: 700;
+  }
+  .hc1 {
+    margin-left: 238px;
+    font-size: x-large;
+    font-weight: 700;
+  }
+}
+
+@media only screen and (max-width:767px) {
+  .hc {
+      margin-left: 36px;
+      font-size: x-large;
+      font-weight: 700;
+  }
+  .hc1 {
+    margin-left: 24px;
+    font-size: x-large;
+    font-weight: 700;
+  }
+  body {
+    padding-bottom: 68px;
+  }
+  .back_arrow {
+    margin-left: 15px;
+    margin-top: 15px;
+  }
+  .back_arrow .fa-arrow-left {
+    font-size: 20px;
+  }
+}

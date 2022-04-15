@@ -380,6 +380,12 @@ nav.footer .nav-item {
     left: unset;
     right: 25px;
   }
+  .mb_menu {
+    margin-left: auto;
+  }
+  .profileimg ~ .mb_menu {
+    margin-left: 0;
+  }
 }
 @media only screen and (min-width: 768px) {
   .hideInSmall {

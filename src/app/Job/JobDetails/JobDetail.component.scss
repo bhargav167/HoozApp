@@ -1,317 +1,23 @@
-@media only screen and (max-width: 1600px) and (min-width: 960px) {
-  .container-sm{
-    width:710px;
-    margin-left: 288px;
-  }
-  .btn-EditHooz{
-    background-color: #00fa9a;
-    color: black;
-    border-radius: 0.5rem;
-    width: 4.6rem;
-    font-weight: bold;
-    margin-top: -80px;
-    margin-left: -178px;
-  }
-  .share{
-    height: 2rem;
-    width: auto;
-    margin-left:-140px;
-    margin-top: -95px;
-   }
-   .two{
-    height: 200px;
-    background-color: #eff2f5;
-    font-weight: 300;
-   color: #d1d1d1;
-    border-width: 0;
-    width: 85%;
-    border-radius: 0.5rem;
-  }
-  .switch-button {
-    background: rgb(239 242 245);
-    border-radius: 0.6rem;
-    overflow: hidden;
-    width: 240px;
-    text-align: center;
-    font-size: 15px;
-    letter-spacing: 1px;
-    color: black;
-    position: relative;
-    padding-right: 120px;
-    position: relative;
-    height: 2.5rem;
-    margin-left: 190px;
-
-
-    &-checkbox {
-      cursor: pointer;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      z-index: 2;
-      &:checked + .switch-button-label:before {
-
-        transform: translateX(109px);
-        transition: transform 300ms linear;
-      }
-
-      & + .switch-button-label {
-        font-weight: bold;
-
-        position: relative;
-        padding: 10px 0;
-        display: block;
-        user-select: none;
-        pointer-events: none;
-        transform: translateX(1px);
-        &:before {
-          content: "";
-          background: #fff;
-          height: 2.1rem;
-          width: 100%;
-          position: absolute;
-          left: 0.3rem;
-          top:0.2rem;
-          border-radius: 0.3rem;
-          transition: transform 300ms;
-          box-shadow: 0.05rem  0.05rem  0.05rem  0.05rem lightgray;
-        }
-
-        .switch-button-label-span {
-          position: relative;
-          top: -0.1rem;
-        }
-      }
-    }
-  }
-  .ll{
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      width: 120px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3;
-      font-weight: bold;
-      pointer-events: none;
-
-  }
-  }
-
-@media only screen and  (max-width:640px) {
-  .container-sm{
-    width:100%;
-  }
-  .switch-button {
-    background: rgb(239 242 245);
-    border-radius: 0.6rem;
-    overflow: hidden;
-    width: 240px;
-    text-align: center;
-    font-size: 15px;
-    letter-spacing: 1px;
-    color: black;
-    position: relative;
-    padding-right: 120px;
-    position: relative;
-    height: 2.5rem;
-    margin-left:  110px;
-
-
-    &-checkbox {
-      cursor: pointer;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      z-index: 2;
-      &:checked + .switch-button-label:before {
-
-        transform: translateX(109px);
-        transition: transform 300ms linear;
-      }
-
-      & + .switch-button-label {
-        font-weight: bold;
-
-        position: relative;
-        padding: 11px 0;
-        display: block;
-        user-select: none;
-        pointer-events: none;
-        transform: translateX(1px);
-        &:before {
-          content: "";
-          background: #fff;
-          height: 2.1rem;
-          width: 100%;
-          position: absolute;
-          left: 0.3rem;
-          top:0.2rem;
-          border-radius: 0.3rem;
-          transition: transform 300ms;
-        }
-
-        .switch-button-label-span {
-          position: relative;
-          top: -0.1rem;
-        }
-      }
-    }
-  }
-  .ll{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    font-weight: bold;
-    pointer-events: none;
-
+.switch-button {
+  width: 290px;
+  padding-right: 145px;
 }
-    .btn-EditHooz{
-      background-color:  #00fa9a;
-      color: black;
-      border-radius: 0.5rem;
-      width: 4.6rem;
-      font-weight: bold;
-      margin-top: -80px;
-    }
-     .share{
-      height: 1.3rem;
-      width: auto;
-      margin-left:-50px;
-      margin-top: -95px;
-     }
-     .two{
-      height: 200px;
-      background-color: #eff2f5;
-      font-weight: 300;
-     color: #d1d1d1;
-      border-width: 0;
-      width: 100%;
-      border-radius: 0.5rem;
-    }
-  }
-@media only screen and (min-width:641px) and (max-width:961px) {
-  .container-sm{
-    width:710px;
-  }
-    .btn-EditHooz{
-      background-color:  #00fa9a;
-      color: black;
-      border-radius: 0.5rem;
-      width: 4.6rem;
-      font-weight: bold;
-      margin-top: -80px;
-    }
-     .share{
-      height: 1.3rem;
-      width: auto;
-      margin-left:-50px;
-      margin-top: -95px;
-     }
-     .two{
-      height: 200px;
-      background-color: #eff2f5;
-      font-weight: 300;
-     color: #d1d1d1;
-      border-width: 0;
-      width: 100%;
-      border-radius: 0.5rem;
-    }
+.switch-button-checkbox:checked + .switch-button-label:before {
+  transform: translateX(146px);
 }
-@media only screen and (max-width:481px) and (min-width:100px){
-  .ll{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    font-weight: bold;
-    pointer-events: none;
-
-}
-  .switch-button {
-    background: rgb(239 242 245);
-    border-radius: 0.6rem;
-    overflow: hidden;
-    width: 240px;
-    text-align: center;
-    font-size: 15px;
-    letter-spacing: 1px;
-    color: black;
-    position: relative;
-    padding-right: 120px;
-    position: relative;
-    height: 2.5rem;
-    margin-left: 55px;
-
-
-    &-checkbox {
-      cursor: pointer;
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      z-index: 2;
-      &:checked + .switch-button-label:before {
-
-        transform: translateX(109px);
-        transition: transform 300ms linear;
-      }
-
-      & + .switch-button-label {
-        font-weight: bold;
-
-        position: relative;
-        padding: 11px 0;
-        display: block;
-        user-select: none;
-        pointer-events: none;
-        transform: translateX(1px);
-        &:before {
-          content: "";
-          background: #fff;
-          height: 2.1rem;
-          width: 100%;
-          position: absolute;
-          left: 0.3rem;
-          top:0.2rem;
-          border-radius: 0.3rem;
-          transition: transform 300ms;
-        }
-
-        .switch-button-label-span {
-          position: relative;
-          top: -0.1rem;
-        }
-      }
-    }
-  }
+.ll {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 136px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  pointer-events: none;
 }
 .container-fluid {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -321,28 +27,102 @@
 input[type="file"] {
   display: none;
 }
-
-.badgeTag{
-  display: inline-block;
-     padding: 3px;
- }
  .bg-badge {
   background-color: #b4b4b4;
   height: 1.8rem;
 }
   // userSections
 .icon {
-  width: 3.8rem;
-  height: 3.8rem;
-  background-color: white;
-  border-radius: 15px;
+  width: 48px;
+  margin-right: 10px;
+}
+.user_details {
+  display: flex;
+  cursor: pointer;
+}
+.c-details h6 {
+  margin: 0;
+  span {
+    display: block;
+    margin-top: 3px;
+  }
+}
+.job_details {
+  align-items: center;
+  margin-bottom: 35px;
+}
+.share_sec {
+  margin-left: auto;
+}
+.job_status {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 39px
+  margin-bottom: 35px;
+  p {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: 25px;
+  }
+  .edit_sec,
+  .chat_sec {
+    margin-left: auto;
+  }
+  .job_opt .select {
+    margin: 0;
+    width: 142px;
+    height: 48px;
+    background: #EFF2F5;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .select__field {
+      height: 40px;
+      width: 133px;
+      box-shadow: 0px 4px 4px rgb(0 0 0 / 10%);
+      border-radius: 10px;
+      border: none;
+      font-size: 20px;
+      font-weight: 700;    }
+  }
 }
-.c-details span {
-  font-weight: 300;
-  font-size: 13px;
-  justify-content: center;
+.job_des {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+.locations {
+  display: flex;
+  font-size: 20px;
+  font-weight: 700;
+}
+.badgeTagWrap {
+  margin-bottom: 20px;
+  .badgeTag {
+    background: #828E9B;
+    border-radius: 12px;
+    padding: 5px 12px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: top;
+    &:nth-child(2) {
+      background: #2D3E50;
+    }
+    &:nth-child(3) {
+      background: #4B6D8F;
+    }
+  }
+}
+
+@media only screen and (max-width:767px) {
+  .job_des {
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.4;
+  }
 }
