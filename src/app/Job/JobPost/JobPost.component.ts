@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { SharedService } from '../../services/SharedServices/Shared.service';
 import { TagService } from '../../services/Tags/Tag.service';
 import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
+import { MapsAPILoader } from '@agm/core';
 function isValid(str){
   return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(str);
  }
@@ -39,6 +40,7 @@ export class JobPostComponent implements OnInit {
     private navServices:NavbarCommunicationService,
     private _jobServices:JobPostService,
     private _tagService:TagService,
+    private apiloader: MapsAPILoader,
     private toast: HotToastService,
     private _router:Router,
     private _sharedServices:SharedService,
@@ -91,33 +93,52 @@ export class JobPostComponent implements OnInit {
       });
       return;
     }
-    this.btnLoader=true;
-        this.jobPostForm.controls['UserId'].setValue(this.userId);
-        this.jobPostForm.controls['Tags'].setValue(this.Tags);
-        this.jobPostForm.controls['IsAnonymous'].setValue(this.ischeckedAnonymously);
-        this.jobPostForm.controls['IsPublic'].setValue(this.ischeckedPublic);
-        this.jobModel = Object.assign({}, this.jobPostForm.value);
-        this._jobServices.AddJobPost(this.jobModel).subscribe((data: any) => {
-          if (this.filetoPost == undefined) {
-            this._jobServices.AddPostImages(data.CreatedJob.Id, null).subscribe(() => {
-            }, error => {
-              console.log(error);
-            })
-            this.jobPostForm.controls['Tags'].setValue('');
-            this.Tags = [];
-            this.Tagmessage = '';
-            this.btnLoader = false;
-            this.imgURL = null;
-            this.showToast();
-            this.jobPostForm.reset();
-            this._router.navigate(['/joblist'], { queryParams: {target: 'MyPost'}});
-          } else {
-            this.uploadFile(data.CreatedJob.Id, this.filetoPost);
-          }
 
-        }, error => {
-          console.log(error);
-        })
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position: any) => {
+          if (position) {
+              this.latitude = position.coords.latitude;
+              this.longitude = position.coords.longitude;
+              this.btnLoader=true;
+              this.jobPostForm.controls['UserId'].setValue(this.userId);
+              this.jobPostForm.controls['Tags'].setValue(this.Tags);
+              this.jobPostForm.controls["Latitude"].setValue(this.latitude);
+              this.jobPostForm.controls["Longitude"].setValue(this.longitude);
+              this.jobPostForm.controls['IsAnonymous'].setValue(this.ischeckedAnonymously);
+              this.jobPostForm.controls['IsPublic'].setValue(this.ischeckedPublic);
+              this.jobModel = Object.assign({}, this.jobPostForm.value);
+              this._jobServices.AddJobPost(this.jobModel).subscribe((data: any) => {
+                if (this.filetoPost == undefined) {
+                  this._jobServices.AddPostImages(data.CreatedJob.Id, null).subscribe(() => {
+                  }, error => {
+                    console.log(error);
+                  })
+                  this.jobPostForm.controls['Tags'].setValue('');
+                  this.Tags = [];
+                  this.Tagmessage = '';
+                  this.btnLoader = false;
+                  this.imgURL = null;
+                  this.showToast();
+                  this.jobPostForm.reset();
+                  this._router.navigate(['/joblist'], { queryParams: {target: 'MyPost'}});
+                } else {
+                  this.uploadFile(data.CreatedJob.Id, this.filetoPost);
+                }
+
+              }, error => {
+                console.log(error);
+              })
+          }else{
+            this.showToast();
+            return;
+          }
+      })
+  }else{
+    this.toast.info('location not supported by this browser', {
+      position: 'top-center',
+    });
+  }
+
   }
 
   public uploadFile = (jobId,files) => {

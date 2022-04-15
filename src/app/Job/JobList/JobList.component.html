@@ -46,7 +46,7 @@
     <div *ngFor="let item of jobModels; let i = index">
       <div class="wrapper">
         <!-- post Sections -->
-        <div [routerLink]="['/jobDetails',item.Id]" class="row mb-4">
+        <div (click)="RedirectToJob(item.Id)" class="row mb-4">
           <div class="d-flex">
             <div class="d-flex flex-row">
               <label id="custom-button" class="form-control two">

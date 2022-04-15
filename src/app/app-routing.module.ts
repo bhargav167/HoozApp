@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LoginComponent } from './Auth/Login/Login.component';
 import { AuthModalComponent } from './Auth/LoginModal/AuthModal/AuthModal.component';
+import { ChatsComponent } from './Chats/Chats.component';
 import { authPageGaurd } from './guard/authPage.guard';
 import { LoginGaurd } from './guard/Login.guard';
 import { JobDetailComponent } from './Job/JobDetails/JobDetail.component';
@@ -36,7 +37,7 @@ const routes: Routes = [
     canActivate: [LoginGaurd]
   },
   {
-    path: 'jobDetails/:id',
+    path: 'jobDetails',
     component:JobDetailComponent
   },
   {
@@ -44,7 +45,7 @@ const routes: Routes = [
     component:JobEditComponent
   },
   {
-    path: 'profile/:id',
+    path: 'profile',
     component:UserProfileComponent
   },
   {
@@ -61,6 +62,11 @@ const routes: Routes = [
     path:'message',
     component:MessagesComponent
   },
+  {
+    path:'chat',
+    component:ChatsComponent
+  },
+
   {
     path: '',
     component:WallListComponent

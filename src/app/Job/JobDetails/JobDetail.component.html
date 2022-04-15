@@ -29,7 +29,7 @@
     <!-- User Sections -->
       <div class="row col-sm-12">
         <div class="d-flex">
-          <div style="cursor: pointer;" [routerLink]="['/profile',job.User.Id]" class="d-flex flex-row justify-content-start">
+          <div style="cursor: pointer;" (click)="RedirectToUser(job.User.Id)"   class="d-flex flex-row justify-content-start">
             <div class="icon">
               <img class="rounded-circle img-fluid"
                 [src]="job?.IsAnonymous==false?job?.User?.UserImage:job?.AnonmousUserPic"/>
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div *ngIf="loggedUserId!=job?.User?.Id"  class="d-flex justify-content-end"> <span>
-            <button type="button" class="btn btn-EditHooz">Chat</button>
+            <button type="button" routerLink="/chat"  class="btn btn-EditHooz">Chat</button>
               </span>
         </div>
 
