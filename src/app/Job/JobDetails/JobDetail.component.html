@@ -1,33 +1,32 @@
-
 <div (click)="hideEvent()">
-<div  class="back_arrow">
-  <i  (click)="backClicked()"     class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
-  <!-- <h3 class="hc1">Job Detail</h3> -->
-</div>
-<!--  Tab Toggle -->
- <div *ngIf="loggedUserId==job?.User?.Id" class="container-sm mt-0">
-  <div class="row col-sm-12">
-      <div class="d-flex switch_button_wrap">
-        <div class="d-flex flex-row justify-content-between">
-          <div   class="switch-button">
-            <input  class="switch-button-checkbox" type="checkbox" />
-            <label  class="switch-button-label" for=""><span class="switch-button-label-span">Post</span>
-            </label>
-            <label  class="ll" for="">
-              <span>
-                Responce
-                <!-- <span  class="badge rounded-pill bg-Responce">
-                  {{totalResponces}}
-                </span> -->
-             </span>
-            </label>
+  <div  class="back_arrow">
+    <i  (click)="backClicked()"     class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+    <!-- <h3 class="hc1">Job Detail</h3> -->
+  </div>
+  <!--  Tab Toggle -->
+  <div *ngIf="loggedUserId==job?.User?.Id" class="container-sm mt-0">
+    <div class="row col-sm-12">
+        <div class="d-flex switch_button_wrap">
+          <div class="d-flex flex-row justify-content-between">
+            <div   class="switch-button">
+              <input  class="switch-button-checkbox" type="checkbox" />
+              <label  class="switch-button-label" for=""><span class="switch-button-label-span">Post</span>
+              </label>
+              <label  class="ll" for="">
+                <span>
+                  Responce
+                  <!-- <span  class="badge rounded-pill bg-Responce">
+                    {{totalResponces}}
+                  </span> -->
+              </span>
+              </label>
 
+            </div>
           </div>
         </div>
-      </div>
+    </div>
   </div>
-</div>
-<div class="my_container mt-4">
+  <div class="my_container mt-5">
     <div id="custom-button" class="img_wrap desk_view left_sec">
         <div  *ngIf="job?.ImagesUrl==null">
             <img  src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
@@ -38,18 +37,18 @@
     </div>
     <!-- User Sections -->    
       <div class="right_sec">
-        <div class="d-flex">
-          <div style="cursor: pointer;" (click)="RedirectToUser(job.User.Id)"   class="d-flex flex-row justify-content-start">
+        <div class="d-flex job_details">
+          <div (click)="RedirectToUser(job.User.Id)" class="user_details">
             <div class="icon">
               <img class="rounded-circle img-fluid"
                 [src]="job?.IsAnonymous==false?job?.User?.UserImage:job?.AnonmousUserPic"/>
             </div>
-            <div class="ms-2 c-details">
-              <h6  *ngIf="job?.IsAnonymous==false" class="mt-2">{{job?.User?.Name}}<br> <span>{{job?.TimeAgo}}</span></h6>
-              <h6 *ngIf="job?.IsAnonymous==true" class="mt-2">Anonymous<br> <span>{{job?.TimeAgo}}</span></h6>
+            <div class="c-details">
+              <h6  *ngIf="job?.IsAnonymous==false">{{job?.User?.Name}} <span>{{job?.TimeAgo}}</span></h6>
+              <h6 *ngIf="job?.IsAnonymous==true">Anonymous <span>{{job?.TimeAgo}}</span></h6>
             </div>
           </div>
-          <div class="d-flex">
+          <div class="share_sec">
             <div class="dropdown">
                 <img class="img share" src="./../../../assets/Logo/3dots.svg" />
                 <div class="dropdown-content JobdetailDroupdown mt-0">
@@ -61,59 +60,47 @@
             </div>
           </div>
         </div>
-        <div *ngIf="loggedUserId!=job?.User?.Id"  class="d-flex justify-content-end"> <span>
-            <button type="button" routerLink="/chat"  class="btn btn-EditHooz">Chat</button>
-              </span>
-        </div>
 
-        <div *ngIf="loggedUserId==job?.User?.Id" class="d-flex justify-content-end"> <span>
-          <button  style="color: white; background-color: black;" (click)="Edit(job.Id)" type="button" class="btn btn-EditHooz">Edit</button>
-
-        </span>
-      </div>
-      </div>
-
-      <!-- Section-2 Job Status -->
-      <div class="">
-        <div  class="d-flex">
-          <!-- If Other Job Details -->
-          <div *ngIf="loggedUserId!=job?.User?.Id" class="d-flex flex-row justify-content-start">
-            <div class="mt-2">
-              <p class="px-2">
-                Job Status
-                <span class="badge bg-dark">{{job.JobStatus}}</span>
-              </p>
+          <!-- Section-2 Job Status -->
+          <div class="">
+            <!-- If Other Job Details -->
+            <div *ngIf="loggedUserId!=job?.User?.Id" class="job_status">
+              <div class="title">
+                <p>Job Status</p>
+              </div>
+              <div class="job_opt">
+                <div class="select">
+                  <div class="select__field">
+                    {{job.JobStatus}}
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+             <!-- If Other Job Details -->
+             <div *ngIf="loggedUserId==job?.User?.Id" class="job_status">
+              <div class="title">
+                <p>Job status</p>
+              </div>
+              <div class="job_opt">
+                 <div class="select">
+                  <i class="fa fa-caret-down"></i>
+                     <select (change)="UpdateStatus($event)" name="nameValueSelect" class="select__field" required>
+                         <option [selected]="job.JobStatus==='OPEN'" value="OPEN">Open</option>
+                         <option [selected]="job.JobStatus==='ON HOLD'" value="ON HOLD">On hold</option>
+                         <option [selected]="job.JobStatus==='CLOSED'" value="CLOSED">Closed</option>
+                         <option [selected]="job.JobStatus==='DELETED'" value="DELETED">Delete</option>
+                     </select>
+                   </div>
+              </div>
+              <div *ngIf="loggedUserId!=job?.User?.Id"  class="chat_sec"> 
+                  <button type="button" routerLink="/chat" class="btn">Chat</button>
+              </div>
+              <div *ngIf="loggedUserId==job?.User?.Id" class="edit_sec"> 
+                  <button (click)="Edit(job.Id)" type="button" class="btn">Edit</button>
+              </div>
             </div>
           </div>
-
-           <!-- If Other Job Details -->
-           <div *ngIf="loggedUserId==job?.User?.Id" class="d-flex flex-row justify-content-start">
-            <div class="mt-2">
-              <p>Job status</p>
-           </div>
-           <div class="ms-2 c-details">
-               <div class="select">
-                   <select (change)="UpdateStatus($event)" name="nameValueSelect" class="select__field" required>
-                       <option [selected]="job.JobStatus==='OPEN'" value="OPEN">OPEN&nbsp;</option>
-                       <option [selected]="job.JobStatus==='ON HOLD'" value="ON HOLD">ONHOLD&nbsp;</option>
-                       <option [selected]="job.JobStatus==='CLOSED'" value="CLOSED">CLOSED&nbsp;</option>
-                       <option [selected]="job.JobStatus==='DELETED'" value="DELETED">DELETE&nbsp;</option>
-                   </select>
-                 </div>
-           </div>
-           <div *ngIf="loggedUserId!=job?.User?.Id"  class="d-flex justify-content-end"> 
-                <span>
-                  <button type="button" class="btn btn-EditHooz">Chat</button>
-                </span>
-            </div>
-            <div *ngIf="loggedUserId==job?.User?.Id" class="d-flex justify-content-end"> 
-                <span>
-                  <button  style="color: white; background-color: black;" (click)="Edit(job.Id)" type="button" class="btn btn-EditHooz">Edit</button>
-                </span>
-            </div>
-          </div>
-        </div>
-        </div>
 
       <!-- Image Section-2 -->
        <div class="">
@@ -130,33 +117,25 @@
       </div>
 
       <!-- Job Descriptions -->
-      <div class="mt-2">
-        <div class="d-flex">
-          <p style="font-family: roboto;">{{job?.Descriptions}}</p>
-        </div>
-      </div>
-
-      <!-- Tags -->
-      <div class="mt-2">
-        <div class="d-flex">
-            <div *ngFor="let item of job?.Tags" class="badgeTag" >
-                <span class="badge bg-badge text-dark"><p class="text text-center" style="color: white; margin-top: 4px;">{{item.TagName}}</p>   </span>
-                &nbsp;
-                </div>
-        </div>
+      <div class="job_des">
+          <p>{{job?.Descriptions}}</p>
       </div>
 
       <!-- Locations -->
-      <div class="mt-2">
-        <div class="d-flex">
-            <div class="mb-4">
-                <label for="exampleInputPassword1"  class="form-label">Location  </label>
-                 <p style="font-size: 12px; font-weight: bold;">{{job?.Address}}</p>
-              </div>
+      <div class="locations">
+        <!-- <label for="exampleInputPassword1"  class="form-label">Location</label> -->
+        <p>{{job?.Address}}</p>
+    </div>
+
+      <!-- Tags -->
+      <div class="badgeTagWrap" >
+        <div *ngFor="let item of job?.Tags" class="badgeTag" >
+          {{item.TagName}}
         </div>
       </div>
+
     </div>
-</div>
+  </div>
 </div>
 
 

@@ -1,10 +1,9 @@
- <div (click)="hideEvent()">
-<body>
-  <div  class="d-flex justify-content-start mb-4">
-    <i  (click)="backClicked()"     class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
-    <h3 class="hc1">User Profile</h3>
+<div (click)="hideEvent()">
+  <div  class="back_arrow">
+    <i  (click)="backClicked()" class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
   </div>
-<div class="container-sm mt-4">
+  <div class="user_profile mt-5">
+    <h3 class="hc1">User Profile</h3>
   <!-- User Card Section-1 -->
     <div class="row col-sm-12">
       <div class="d-flex flex-row justify-content-start">
@@ -19,57 +18,50 @@
                 style="background-image: url({{user?.UserImage}});"
                 class="front__face-photo">
               </div>
-
             </div>
-
           </div>
         </div>
       </div>
 
-      <div style="margin-top:  110px;" class="ms-0 d-flex flex-row justify-content-start">
-        <h5 style="font-weight: bold;">{{user?.Name}}  <br>
-           <span  style="font-weight:lighter; font-size: small;">{{user?.UserAddress}}</span></h5>
-
+      <div class="ms-0 d-flex flex-row justify-content-start">
+        <h5 >{{user?.Name}}</h5>
+        <div>{{user?.UserAddress}}</div>
       </div>
 
-      <div style="z-index: 1;" class="d-flex justify-content-end"> <span>
+      <div class="d-flex justify-content-end"> 
           <button type="button" *ngIf="userId!=loggedUserId" routerLink="/chat" class="btn btn-ChatHooz">Chat</button>
           <button type="button" *ngIf="userId==loggedUserId"  [routerLink]="['/editProfile']" routerLinkActive="router-link-active" class="btn btn-EditHooz">Edit</button>
-        </span>
       </div>
-</div>
+  </div>
 
   <!-- Tag Section-2 -->
   <div class="row col-md-11 mt-2">
-    <h5 style="font-weight: bold;">Tags</h5>
+    <h5>Tags</h5>
     <div class="">
-
         <div *ngFor="let item of user?.tags" class="badgeTag" >
-            <span class="badge bg-badge text-dark"><p class="text text-center" style="color: white; margin-top: 4px;">{{item.TagName}}</p>   </span>
-            &nbsp;
-           </div>
+          <span class="badge bg-badge text-dark"><p class="text text-center">{{item.TagName}}</p></span>
+        </div>
     </div>
   </div>
 
-    <!-- AboutMe Section-3 -->
-    <div class="row col-md-10 mt-2">
-      <h5 style="font-weight: bold;">About me</h5>
-      <div>
-        <p>
+  <!-- AboutMe Section-3 -->
+  <div class="row col-md-10 mt-2">
+    <h5>About me</h5>
+    <div>
+      <p>
         {{user?.AboutUs}}
-        </p>
-      </div>
+      </p>
     </div>
+  </div>
 
-     <!-- Link Section-3 -->
-     <div class="row col-md-10 mt-2">
-      <h5 style="font-weight: bold;">Link</h5>
+    <!-- Link Section-3 -->
+    <div class="row col-md-10 mt-2">
+      <h5>Link</h5>
       <div class="d-flex">
         <p>
-         <a href="{{user?.WebSiteUrl}}">{{user?.WebSiteUrl}}</a>
+          <a href="{{user?.WebSiteUrl}}">{{user?.WebSiteUrl}}</a>
         </p>
       </div>
-    </div>
-</div>
-</body>
+  </div>
+  </div>
 </div>

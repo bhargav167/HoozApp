@@ -211,7 +211,7 @@ input[type="search"]::-webkit-search-cancel-button {
     margin-left: 30px;
     position: absolute;
     left: 0;
-    top: 0;
+    cursor: pointer;
  }
  .c-details h6 {
     font-size: 20px;
@@ -306,6 +306,16 @@ input[type="search"]::-webkit-search-cancel-button {
 .edit_sec button.btn:hover {
   background: #00FFE0;
 }
+.chat_sec .btn {
+  background: #00FFD1;
+  border: 1px solid #01ECD9;
+  box-sizing: border-box;
+  border-radius: 12px;
+  width: 78px;
+  height: 48px;
+  font-size: 20px;
+  font-weight: 700;
+}
 
 @media only screen and (min-width: 920px) {
   .my_container {
@@ -346,7 +356,7 @@ input[type="search"]::-webkit-search-cancel-button {
   }
 }
 
-@media only screen and (max-width:767px)   {
+@media only screen and (max-width:767px) {
   .hc {
       margin-left: 36px;
       font-size: x-large;
@@ -356,5 +366,15 @@ input[type="search"]::-webkit-search-cancel-button {
     margin-left: 24px;
     font-size: x-large;
     font-weight: 700;
+  }
+  body {
+    padding-bottom: 68px;
+  }
+  .back_arrow {
+    margin-left: 15px;
+    margin-top: 15px;
+  }
+  .back_arrow .fa-arrow-left {
+    font-size: 20px;
   }
 }
