@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
     private authService: SocialAuthService) {
       this._sharedServices.checkInterNetConnection();
        _sharedServices.IsUserIsOnLogInPage();
+       this.AskForLocation();
+
     }
 
   ngOnInit() {
@@ -52,51 +54,34 @@ export class LoginComponent implements OnInit {
       AboutUs:['']
     })
   }
-  // Google Login
-  signInWithGoogle(): void {
+  AskForLocation(){
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position: any) => {
           if (position) {
               this.latitude = position.coords.latitude;
               this.longitude = position.coords.longitude;
-              this.authService
-                .signIn(GoogleLoginProvider.PROVIDER_ID)
-                .then((data: any) => {
-                  this.loginForm.controls["Email"].setValue(data.email);
-                  this.loginForm.controls["Name"].setValue(data.name);
-                  this.loginForm.controls["ImageUrl"].setValue(data.photoUrl);
-                  this.loginForm.controls["LoginProvider"].setValue(
-                    data.provider
-                  );
-                  this.loginForm.controls["UserName"].setValue(data.name);
-                  this.loginForm.controls["Latitude"].setValue(this.latitude);
-                  this.loginForm.controls["Longitude"].setValue(this.longitude);
-                  this.loginUser = Object.assign({}, this.loginForm.value);
-                  this._profileServices
-                    .Login(this.loginUser)
-                    .subscribe((data: SocialAuthService) => {
-                      localStorage.setItem("user", JSON.stringify(data));
-                      location.href = "/";
-                    });
-                });
-
-              this.apiloader.load().then(() => {
+                 this.apiloader.load().then(() => {
                   let geocoder = new google.maps.Geocoder;
                   let latlng = {
                       lat: this.latitude,
                       lng: this.longitude
                   };
+
                   geocoder.geocode({
                       'location': latlng
-                  }, function(results) {
-                      if (results[0]) {
-                          this.currentLocation = results[0].formatted_address;
-                          console.log(this.assgin);
-                      } else {
+                  }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                      if (results[1]) {
+                          alert("Location: " + results[1].formatted_address);
+                      }
+                  }
+                    else {
                           console.log('Not found');
                       }
                   });
               });
+
+
           }else{
             this.showToast();
             return;
@@ -107,6 +92,35 @@ export class LoginComponent implements OnInit {
       position: 'top-center',
     });
   }
+  }
+  // Google Login
+  signInWithGoogle(): void {
+    if(this.latitude && this.longitude){
+      this.authService
+      .signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then((data: any) => {
+        this.loginForm.controls["Email"].setValue(data.email);
+        this.loginForm.controls["Name"].setValue(data.name);
+        this.loginForm.controls["ImageUrl"].setValue(data.photoUrl);
+        this.loginForm.controls["LoginProvider"].setValue(
+          data.provider
+        );
+        this.loginForm.controls["UserName"].setValue(data.name);
+        this.loginForm.controls["Latitude"].setValue(this.latitude);
+        this.loginForm.controls["Longitude"].setValue(this.longitude);
+        this.loginUser = Object.assign({}, this.loginForm.value);
+        this._profileServices
+          .Login(this.loginUser)
+          .subscribe((data: SocialAuthService) => {
+             localStorage.setItem("user", JSON.stringify(data));
+             location.href = "/";
+          });
+      });
+    }else{
+      this.toast.info('Reload page to allow location!', {
+        position: 'top-center',
+      });
+    }
   }
   showToast() {
     this.toast.info('Allow location to use this application', {

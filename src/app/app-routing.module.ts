@@ -1,8 +1,9 @@
+import { ChatboxComponent } from './ChatModule/Chatbox/Chatbox.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LoginComponent } from './Auth/Login/Login.component';
 import { AuthModalComponent } from './Auth/LoginModal/AuthModal/AuthModal.component';
-import { ChatsComponent } from './Chats/Chats.component';
+import { ChatsComponent } from './ChatModule/Chats/Chats.component';
 import { authPageGaurd } from './guard/authPage.guard';
 import { LoginGaurd } from './guard/Login.guard';
 import { JobDetailComponent } from './Job/JobDetails/JobDetail.component';
@@ -66,7 +67,10 @@ const routes: Routes = [
     path:'chat',
     component:ChatsComponent
   },
-
+  {
+    path:'chatbox',
+    component:ChatboxComponent
+  },
   {
     path: '',
     component:WallListComponent

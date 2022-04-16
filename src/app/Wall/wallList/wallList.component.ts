@@ -42,6 +42,7 @@ export class WallListComponent implements OnInit {
   isOnline: boolean;
   isJobAdded: boolean = false;
   shareJobId: number = 0;
+  shareimgUrl:string;
   sharedLink: string;
    params :`scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
    width=600,height=300,left=100,top=100`;
@@ -251,13 +252,16 @@ export class WallListComponent implements OnInit {
  }
 
   //Share Button
-  getJobId(jobId) {
+  getJobId(jobId,imgUrl) {
+    this.shareimgUrl=imgUrl;
     this.shareJobId = jobId;
+    window.document.querySelector('meta[property="og:image"]').setAttribute("content", imgUrl);
   }
   public shareFB(jobId) {
+
     return window.open(
       "https://www.facebook.com/sharer/sharer.php?" +
-        "u=http://hoozonline.com/jobDetails/" +
+        "u=https://hoozonline.com/jobDetails?target=" +
         jobId,"Hooz",`scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
         width=600,height=300,left=100,top=100`
     );
@@ -266,7 +270,7 @@ export class WallListComponent implements OnInit {
   public shareTwitter(jobId) {
     return window.open(
       "http://twitter.com/share?" +
-        "url=http://hoozonline.com/jobDetails/" +
+        "url=https://hoozonline.com/jobDetails?target=" +
         jobId,
        "Hooz",`scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
        width=600,height=300,left=100,top=100`
@@ -274,7 +278,7 @@ export class WallListComponent implements OnInit {
   }
   public shareWhatsApp(jobId) {
     return window.open(
-      "https://api.whatsapp.com/send?text=http://hoozonline.com/jobDetails/" +
+      "https://api.whatsapp.com/send?text=https://hoozonline.com/jobDetails?target=" +
         jobId,
       "_blank"
     );
@@ -282,7 +286,7 @@ export class WallListComponent implements OnInit {
 
   //Shared Link
   GetSharedLink(jobId) {
-    this.sharedLink = "http://hoozonline.com/jobDetails/"+jobId;
+    this.sharedLink = "https://hoozonline.com/jobDetails?target="+jobId;
     this._clipboardService.copy(this.sharedLink);
     this.showToast();
   }

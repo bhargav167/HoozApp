@@ -41,7 +41,7 @@
                    <a *ngIf="userId!=item.Job?.User?.Id && userId && item.Job?.IsAdded" (click)="RemoveToJob(item?.Job?.Id)">Remove Job</a>
                    <a *ngIf="userId!=item.Job?.User?.Id && userId" style="cursor: pointer;"
                      (click)="Report(item?.Job?.Id)">Report</a>
-                   <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getJobId(item?.Job?.Id)" style="cursor: pointer;">Share</a>
+                   <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getJobId(item?.Job?.Id,item?.Job?.ThumbNailImage)" style="cursor: pointer;">Share</a>
                  </div>
                </div>
              </div>

@@ -25,7 +25,7 @@
 
       <!-- <img [routerLink]="['/jobpost']" class="addIco img img-responsive img-fluid tog" routerLinkActive="router-link-active"
         style="height: 2.5rem; width: 2.5rem; cursor: pointer;" src="../../../assets/HoozIcon/HoozAdd.png" /> -->
-      <a *ngIf="isLogedIn" [routerLink]="['/profile',user.Id]" class="nav-item dropdown_mb profileimg">
+      <a *ngIf="isLogedIn" (click)="RedirectToUser(user.Id)"class="nav-item dropdown_mb profileimg">
         <img src="../../../assets/HoozIcon/profile.png" class="rounded-circle img-fluid"
           href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
       </a>
@@ -40,14 +40,14 @@
     <!-- DropDown Toggle1 -->
     <div *ngIf="this.navServices.isShowingMenu" class="section-dropdown1 tog">
       <div *ngIf="isLogedIn">
-        <a id="b" [routerLink]="['/profile',user.Id]"><i class="far fa-user-circle"></i>MY PROFILE
+        <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE
         </a><br><br>
         <a id="b" [routerLink]="['/joblist']"> <i class="far fa-newspaper"></i>Job Listing </a><br><br>
         <a id="b" [routerLink]="['/settings/download']"> <i class="fa fa-download"></i>Download
         </a><br><br>
       </div>
       <a id="b"> <i class="fas fa-cog"></i>SETTINGS </a><br><br>
-      <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>Login </a><br>
+      <a id="b" *ngIf="!isLogedIn" href="/login"> <i class="fas fa-cog"></i>Login </a><br>
       <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
       <div class="section-dropdown-sub">
       </div>
@@ -70,7 +70,7 @@
               <a class="nav-link active" [routerLink]="['/jobpost']">Create Posts</a>
             </li>
             <li *ngIf="!isLogedIn" class="nav-item">
-              <a class="nav-link active" [routerLink]="['/login']">Login</a>
+              <a class="nav-link active" href="/login">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" [routerLink]="['/']">Wall</a>
@@ -88,13 +88,13 @@
     <div class="justify-content-end togs">
       <!-- <a [routerLink]="['/settings/download']" class="links">Download App</a>
       <a class="links" *ngIf="isLogedIn" [routerLink]="['/joblist']">Job Posts</a> -->
-      <a class="links add_post" *ngIf="isLogedIn" [routerLink]="['/jobpost']">     
+      <a class="links add_post" *ngIf="isLogedIn" [routerLink]="['/jobpost']">
         <i class="fa fa-plus"></i>
       </a>
-      <a class="links" *ngIf="!isLogedIn" [routerLink]="['/login']">Login</a>
+      <a class="links" *ngIf="!isLogedIn" href="/login" >Login</a>
 
       <!-- <a  class="links" aria-current="page" [routerLink]="['/']">Wall</a> &nbsp;&nbsp; -->
-      <a *ngIf="isLogedIn" [routerLink]="['/profile',user.Id]" class="nav-item dropdown profileimg">
+      <a *ngIf="isLogedIn" (click)="RedirectToUser(user.Id)" class="nav-item dropdown profileimg">
         <img src="../../../assets/HoozIcon/profile.png" class="rounded-circle img-fluid"
           href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
       </a>
@@ -109,12 +109,12 @@
 
         <div *ngIf="isLogedIn && this.navServices.isShowingMenu" class="section-dropdown">
           <div *ngIf="isLogedIn">
-            <a id="b" [routerLink]="['/profile',user.Id]"><i class="far fa-user-circle"></i>MY PROFILE
+            <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE
             </a><br><br>
             <a [routerLink]="['/joblist']" id="b"> <i class="far fa-newspaper"></i>Job Listing </a><br><br>
           </div>
           <a id="b"> <i class="fas fa-cog"></i>SETTINGS </a><br><br>
-          <a id="b" *ngIf="!isLogedIn" [routerLink]="['/login']"> <i class="fas fa-cog"></i>Login
+          <a id="b" *ngIf="!isLogedIn" href="/login"> <i class="fas fa-cog"></i>Login
           </a><br><br>
 
           <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
@@ -136,11 +136,11 @@
 <nav class="footer">
   <a class="nav-item" href="#">
     <i class="fa fa-home" aria-hidden="true"></i>
-  </a>  
+  </a>
   <a class="nav-item" href="#">
     <i class="fa fa-search" aria-hidden="true"></i>
-  </a>  
-  <a class="nav-item add_post" *ngIf="isLogedIn" [routerLink]="['/jobpost']">     
+  </a>
+  <a class="nav-item add_post" *ngIf="isLogedIn" [routerLink]="['/jobpost']">
     <i class="fa fa-plus"></i>
   </a>
   <a class="nav-item jobs"  href="#">

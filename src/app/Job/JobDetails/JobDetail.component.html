@@ -32,10 +32,10 @@
             <img  src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
         </div>
         <div  *ngIf="job?.ImagesUrl!=null">
-          <img class="img img-responsive img-fluid" [src]="job.JobDetailImage" alt="job image" />
+          <img class="img img-responsive img-fluid" [src]="job.ImagesUrl" alt="job image" />
         </div>
     </div>
-    <!-- User Sections -->    
+    <!-- User Sections -->
       <div class="right_sec">
         <div class="d-flex job_details">
           <div (click)="RedirectToUser(job.User.Id)" class="user_details">
@@ -76,7 +76,7 @@
                 </div>
               </div>
             </div>
-  
+
              <!-- If Other Job Details -->
              <div *ngIf="loggedUserId==job?.User?.Id" class="job_status">
               <div class="title">
@@ -93,10 +93,10 @@
                      </select>
                    </div>
               </div>
-              <div *ngIf="loggedUserId!=job?.User?.Id"  class="chat_sec"> 
+              <div *ngIf="loggedUserId!=job?.User?.Id"  class="chat_sec">
                   <button type="button" routerLink="/chat" class="btn">Chat</button>
               </div>
-              <div *ngIf="loggedUserId==job?.User?.Id" class="edit_sec"> 
+              <div *ngIf="loggedUserId==job?.User?.Id" class="edit_sec">
                   <button (click)="Edit(job.Id)" type="button" class="btn">Edit</button>
               </div>
             </div>
@@ -110,7 +110,7 @@
                   <img  src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
               </div>
               <div  *ngIf="job?.ImagesUrl!=null">
-                <img class="img img-responsive img-fluid" [src]="job.JobDetailImage" alt="job image" />
+                <img class="img img-responsive img-fluid" [src]="job.ImagesUrl" alt="job image" />
               </div>
           </label>
         </div>
