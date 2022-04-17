@@ -213,20 +213,20 @@ sharedLink: string;
     this.navServices.Toggle();
  }
  public shareFB() {
-  return window.open('https://www.facebook.com/sharer/sharer.php?'+'u=http://hoozonline.com/jobDetails/'+this.jobId,"Hooz",
+  return window.open('https://www.facebook.com/sharer/sharer.php?'+'u=http://hoozonline.com/jobDetails?target='+this.jobId,"Hooz",
   `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
         width=600,height=300,left=100,top=100`
   );
 }
 
 public shareTwitter() {
-  return window.open('http://twitter.com/share?'+'url=http://hoozonline.com/jobDetails/'+this.jobId, "Hooz",
+  return window.open('http://twitter.com/share?'+'url=http://hoozonline.com/jobDetails?target='+this.jobId, "Hooz",
   `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
         width=600,height=300,left=100,top=100`);
 }
 public shareWhatsApp() {
   return window.open(
-    "https://api.whatsapp.com/send?text=http://hoozonline.com/jobDetails/" +
+    "https://api.whatsapp.com/send?text=http://hoozonline.com/jobDetails?target=" +
     this.jobId,
     "_blank"
   );
@@ -234,7 +234,7 @@ public shareWhatsApp() {
 
 //Shared Link
 GetSharedLink() {
-  this.sharedLink="http://hoozonline.com/jobDetails/"+this.jobId;
+  this.sharedLink="http://hoozonline.com/jobDetails?target="+this.jobId;
   this._clipboardService.copy(this.sharedLink);
   this.showToast();
 }

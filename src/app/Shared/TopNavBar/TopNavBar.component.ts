@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { fromEvent, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
@@ -25,7 +26,7 @@ tag: TagMaster;
 searchval: any;
 isShowingMenu: boolean = true;
 @Output() notifyParent: EventEmitter<any> = new EventEmitter();
-  constructor(private _profileServices:ProfileService, public navServices:NavbarCommunicationService,private _http: HttpClient) {
+  constructor(private _profileServices:ProfileService,private _router:Router, public navServices:NavbarCommunicationService,private _http: HttpClient) {
     if(localStorage.getItem('user')){
       this.user= JSON.parse(localStorage.getItem('user'));
       this._profileServices.GetUserProfile(this.user.Id).subscribe((data:SocialAuthentication)=>{
@@ -120,6 +121,9 @@ isShowingMenu: boolean = true;
 
   LogoClick() {
     window.location.href = "/";
+  }
+  RedirectToUser(userId){
+    this._router.navigate(['/profile'], { queryParams: {target: userId}});
   }
   LogOut(){
     localStorage.clear();
