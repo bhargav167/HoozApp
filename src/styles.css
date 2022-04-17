@@ -364,11 +364,14 @@ input[type="search"]::-webkit-search-cancel-button {
     background: #4B6D8F;
 }
 h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
-.about_sec {margin-bottom: 20px;}
-.links {margin-bottom: 20px;}
-.links a {color: inherit;text-decoration: none;}
-.links a:hover {color: #00FFE0;}
-.user_name_wrap {margin-bottom: 20px;}
+.about_sec {margin-bottom: 20px; word-break: break-word; word-wrap: break-word;}
+.links_url {margin-bottom: 20px;}
+.links_url h5.title {text-transform: none;}
+.links_url a {color: inherit;text-decoration: none;}
+.links_url a:hover {color: #00FFE0;}
+.user_name_wrap {margin: 30px 0; text-align: center;}
+.user_name_wrap h5 {font-size: 24px;font-weight: 700;}
+.user_name {margin-bottom: 18px;}
 @media only screen and (min-width: 920px) {
   .my_container {
     width: 910px;

@@ -1,50 +1,36 @@
  <div (click)="hideEvent()">
 <!-- Main Content -->
- <body>
-  <div  class="d-flex justify-content-start mb-4">
-    <i  (click)="backClicked()"     class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
-    <h3 class="hc1">Edit Profile</h3>
+  <div  class="back_arrow">
+    <i  (click)="backClicked()" class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+    <!-- <h3 class="hc1">Edit Profile</h3> -->
   </div>
-  <div class="container-sm ">
+  <div class="edit_profile mt-5">
      <!-- User Card Section-1 -->
-     <div class="row col-md-12 mb-5">
-       <div class="d-flex  justify-content-start">
+     <div class="edit_profile_top">
+       <div class="">
          <div class="outer-div">
            <div class="inner-div">
              <div class="front">
-               <label>
                 <div
-                style="background-image: url({{CoverImageUrl}});"
-                class="front__bkg-photo">
-              </div>
-
+                  style="background-image: url({{CoverImageUrl}});"
+                  class="front__bkg-photo">
+                </div>
                 <input #file  (change)="FileUploadCover(file.files)" type="file" size="60" >
-               </label>
-
                <label>
                 <div style="background-image: url({{ImageUrl}});"
-                class="front__face-photo">
-
-                <span *ngIf="this.profileImgUploading"  class="spinner-border text-dark mt-5" role="status"></span>
-              </div>
-              <input #file1 (change)="FileUploadUser(file1.files)" type="file" size="60" >
-               </label>
-               <a type="button" class="btn btn-default btn-circle">
-                <i  (click)="RemoveProfilePhotos()" class="fa fa-2x fa-camera"></i>
-              </a>
+                  class="front__face-photo">
+                  <span *ngIf="this.profileImgUploading"  class="spinner-border text-dark mt-5" role="status"></span>
+                </div>
+                <input #file1 (change)="FileUploadUser(file1.files)" type="file" size="60" >
+                </label>
+                <a type="button" class="btn btn-default btn-circle">
+                  <i  (click)="RemoveProfilePhotos()" class="fa fa-2x fa-camera"></i>
+                </a>
              </div>
-
            </div>
          </div>
        </div>
-
-
      </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
     <form (keydown.enter)="$event.preventDefault()" id="postForm" [formGroup]="userForm"  (ngSubmit)="UpdateProfile()">
   <!-- Name Section -->
@@ -66,7 +52,7 @@
         <div class="">
           <label for="exampleInputEmail1" class="form-label form-label1">UserName &nbsp; </label>
           <input type="text" formControlName="UserName"
-          class="form-control two"  id="exampleInputEmail1" aria-describedby="emailHelp">
+          class="form-control one"  id="exampleInputEmail1" aria-describedby="emailHelp">
           <small
           *ngIf="userForm.get('UserName').hasError('required') && userForm.get('UserName').touched"
           id="emailHelp" class="form-text text text-danger">UserName is requires.</small>
@@ -126,22 +112,16 @@
      </div>
 
   </div>
-
-</form>
-  </div>
-  <br><br><br> <br><br>
+  </form>
+</div>
   <footer id="footer" class="d-flex fixed-bottom">
     <div class="container d-flex align-items-center justify-content-center   text-center">
-      <button (click)="Reset()"  role="button" class="btn btn-lg btn-reset">Reset</button>&nbsp;&nbsp;
+      <button (click)="Reset()"  role="button" class="btn btn-lg btn-reset">Reset</button>
       <button  type="submit" form="postForm" [disabled]="!userForm.valid || btnLoader" class="btn btn-lg btn-save">
           <span *ngIf="this.btnLoader"  class="spinner-border spinner-border-sm" role="status"></span>
           <span *ngIf="this.btnLoader"  class="load-text"> Saving...</span>
           <span *ngIf="!this.btnLoader" class="btn-text">  Save  </span>
-
-
       </button>
     </div>
   </footer>
- </body>
-
 </div>
