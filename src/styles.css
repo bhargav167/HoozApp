@@ -1,8 +1,24 @@
 
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --body-font-size: 20px;
+  --font-size-sm: 15px;
+}
+body {
+  font-size: var(--body-font-size);
+  line-height: 1.25;
+}
 .bg-Responce{
-  background-color: #00fa9a;
   color: black !important;
+  background: #00FFD1;
+  border: 1px solid #01ECD9;
+  font-size: 20px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance:none;
@@ -15,19 +31,6 @@ input[type="search"]::-webkit-search-cancel-button {
   border-radius: 3px;
   margin-bottom: 1em;
 }
-/* .select:after {
-  content: "▼";
-  padding: 8px 8px 8px;
-  position: absolute;
-  color: #00fa9a;
-  right: 13px;
-  top: 0;
-  z-index: 1;
-  text-align: center;
-  width: 10%;
-  height: 100%;
-  pointer-events: none;
-} */
 .select i.fa.fa-caret-down {
   position: absolute;
   right: 16px;
@@ -44,13 +47,31 @@ input[type="search"]::-webkit-search-cancel-button {
   outline: none;
   font-size: 16px;
   -webkit-appearance: none;
-  /* for webkit browsers */
   -moz-appearance: none;
   /* for firefox */
   appearance: none;
   /* for modern browsers */
 }
-.btn-hoozGreen{
+.job_opt .select {
+  margin: 0;
+  width: 142px;
+  height: 48px;
+  background: #EFF2F5;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.job_opt .select .select__field {
+  height: 40px;
+  width: 133px;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 10%);
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;    
+}
+.btn-hoozGreen {
     border-radius: 0.5rem;
 }
 .dropdown-content {
@@ -65,7 +86,7 @@ input[type="search"]::-webkit-search-cancel-button {
     border-radius: 0.8rem;
     padding: 8px;
 }
-.JobdetailDroupdown{
+.JobdetailDroupdown {
   top: -22px;
 }
 .dropdown-content a {
@@ -266,7 +287,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .switch-button-checkbox + .switch-button-label {
   font-weight: bold;
   position: relative;
-  padding: 7px 0;
+  padding: 10px 0;
   display: block;
   user-select: none;
   pointer-events: none;
@@ -317,7 +338,41 @@ input[type="search"]::-webkit-search-cancel-button {
   font-size: 20px;
   font-weight: 700;
 }
-
+.chat_sec .btn:hover {
+  border: 1px solid #000;
+  background: #000000;
+  color: #fff;
+}
+.badgeTagWrap {
+  margin-bottom: 20px;
+}
+.badgeTagWrap .badgeTag {
+  background: #828E9B;
+  border-radius: 12px;
+  padding: 5px 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-right: 8px;
+  margin-bottom: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+.badgeTagWrap .badgeTag:nth-child(3n+2) {
+    background: #2D3E50;
+}
+.badgeTagWrap .badgeTag:nth-child(3n) {
+    background: #4B6D8F;
+}
+h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
+.about_sec {margin-bottom: 20px; word-break: break-word; word-wrap: break-word;}
+.links_url {margin-bottom: 20px;}
+.links_url h5.title {text-transform: none;}
+.links_url a {color: inherit;text-decoration: none;}
+.links_url a:hover {color: #00FFE0;}
+.user_name_wrap {margin: 30px 0; text-align: center;}
+.user_name_wrap h5 {font-size: 24px;font-weight: 700;}
+.user_name {margin-bottom: 18px;}
 @media only screen and (min-width: 920px) {
   .my_container {
     width: 910px;

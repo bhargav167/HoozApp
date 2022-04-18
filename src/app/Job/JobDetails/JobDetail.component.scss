@@ -98,26 +98,6 @@ input[type="file"] {
   font-size: 20px;
   font-weight: 700;
 }
-.badgeTagWrap {
-  margin-bottom: 20px;
-  .badgeTag {
-    background: #828E9B;
-    border-radius: 12px;
-    padding: 5px 12px;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    margin-right: 8px;
-    display: inline-block;
-    vertical-align: top;
-    &:nth-child(2) {
-      background: #2D3E50;
-    }
-    &:nth-child(3) {
-      background: #4B6D8F;
-    }
-  }
-}
 
 @media only screen and (max-width:767px) {
   .job_des {

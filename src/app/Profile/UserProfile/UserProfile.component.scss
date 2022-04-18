@@ -6,32 +6,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-.btn-ChatHooz {
-  background-color: #00fa9a;
-  color: black;
-  border-radius: 0.5rem;
-  width: 4.6rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-.btn-EditHooz {
-  background-color: black;
-  color: white;
-  border-radius: 0.5rem;
-  width: 4.6rem;
-  font-weight: bold;
-}
-.outer-div,
-.inner-div {
-  height: 200px;
-  margin: 0 0;
-  position: relative;
-
-}
-.outer-div {
-  perspective: 900px;
-  perspective-origin: 50% calc(50% - 18em);
-}
 .inner-div {
   margin: 0 auto;
   border-radius: 5px;
@@ -42,42 +16,24 @@
   transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
   transform-style: preserve-3d;
 }
-.front,
-.back {
-  position: relative;
-  top: 0;
-  left: 0;
-  backface-visibility: hidden;
-}
 .front__bkg-photo {
-  position: relative;
-  height: 180px;
-  width: 35rem;
+  height: 192px;
   background:no-repeat;
   background-size: cover;
-  backface-visibility: hidden;
-  overflow: hidden;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   background-position: center;
 }
 .front__face-photo {
   position: relative;
-  top: -60px;
-  height: 120px;
-  width: 120px;
+  height: 134px;
+  width: 134px;
   margin: 0 auto;
+  margin-top: -67px;
   border-radius: 50%;
-  border: 0px solid white;
-  background:
-    no-repeat;
-  background-size: cover;
-  overflow: hidden;
+  background: no-repeat;
+  background-size: 100%;
 }
-.badgeTag {
-  display: inline-block;
-     padding: 3px;
- }
  .bg-badge {
   background-color: #b4b4b4;
   height: 1.8rem;
