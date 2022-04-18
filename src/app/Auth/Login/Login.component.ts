@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
   }
   AskForLocation(){
     if (navigator.geolocation) {
+      let addressLocation=
       navigator.geolocation.getCurrentPosition((position: any) => {
           if (position) {
               this.latitude = position.coords.latitude;
@@ -117,7 +118,7 @@ export class LoginComponent implements OnInit {
           });
       });
     }else{
-      this.toast.info('Reload page to allow location!', {
+      this.toast.info('Allow location of you device!', {
         position: 'top-center',
       });
     }

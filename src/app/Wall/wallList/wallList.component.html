@@ -1,140 +1,141 @@
 
 <div (click)="hideEvent()">
-   <!--  Tab Toggle -->
-   <div class="container-sm mt-0">
-    <div class="row col-sm-12">
-      <div class="d-flex switch_button_wrap">
-          <div class="switch-button">
-            <input [(ngModel)]="!IsOnJob" (change)="checkValue(IsOnJob?false:true)" class="switch-button-checkbox" type="checkbox" />
-            <label class="switch-button-label" for=""><span class="switch-button-label-span">Posts</span></label>
-          </div>
-      </div>
-    </div>
-  </div>
-
-   <!-- MAIN CONTENT -->
-   <div infiniteScroll [infiniteScrollDistance]="7" (scrolled)="onScroll()" class="search-results mt-5">
-     <div *ngIf="IsOnJob" class="row post_list_row">
-       <div *ngFor="let item of walldatas; let i = index" class="post_list">
-         <div class="post_card">
-           <div class="d-flex justify-content-between top_sec">
-             <div class="d-flex flex-row align-items-center">
-               <div class="icon">
-                 <img (click)="RedirectToUser(item.Job.User.Id)"  *ngIf="item.Job.IsAnonymous===false"
-                   class="rounded-circle img-fluid" src="{{item.Job.User?.UserImage}}">
-                 <img *ngIf="item.Job.IsAnonymous===true" class="rounded-circle img-fluid"
-                   src="{{item.Job?.AnonmousUserPic}}">
-               </div>
-               <div class="ms-2 c-details">
-                 <h6 (click)="RedirectToUser(item.Job.User.Id)" *ngIf="item.Job.IsAnonymous===false" class="mb-0">
-                   {{item?.Job.User.Name}}<br> <span>{{item?.Job.TimeAgo}}</span></h6>
-                 <h6 *ngIf="item.Job.IsAnonymous===true" class="mb-0">Anonymous<br> <span>{{item?.Job.TimeAgo}}</span>
-                 </h6>
-               </div>
-             </div>
-             <div class="d-flex justify-content-end share_sec">
-               <div class="dropdown">
-                 <span><img class="img img-responsive share" src="./../../../assets/Logo/3dots.svg" /></span>
-                 <div class="dropdown-content mt-0">
-                   <a *ngIf="userId!=item.Job?.User?.Id && userId && !item.Job?.IsAdded" style="cursor: pointer;"
-                     (click)="AddToJob(item?.Job?.Id)">Add To Job</a>
-                   <a *ngIf="userId!=item.Job?.User?.Id && userId && item.Job?.IsAdded" (click)="RemoveToJob(item?.Job?.Id)">Remove Job</a>
-                   <a *ngIf="userId!=item.Job?.User?.Id && userId" style="cursor: pointer;"
-                     (click)="Report(item?.Job?.Id)">Report</a>
-                   <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getJobId(item?.Job?.Id,item?.Job?.ThumbNailImage)" style="cursor: pointer;">Share</a>
-                 </div>
-               </div>
-             </div>
-
-           </div>
-           <div (click)="RedirectToJob(item.Job.Id)" class="mt-1">
-             <div class=" ">
-
-               <div class="col-md-12 bg-white">
-                 <!-- If Job Image Avalable -->
-                 <img *ngIf="item?.Job.ImagesUrl!=null" class="img-thumbnail img-responsive img-fluid"
-                   src="{{item?.Job.ImagesUrl}}">
-
-                 <!-- If No Job Image Avalable -->
-                 <div *ngIf="item?.Job.ImagesUrl==null" [ngStyle]="{background: item?.Job?.ColorCode}" class="card cd">
-                   <div class="content">
-                     <div class="card-body">
-                       <p *ngIf="item?.Job.Descriptions.length>=1 && item?.Job.Descriptions.length<=20"
-                         class="card-text text-center mt-5"> {{item?.Job.Descriptions | slice:0:20}}</p>
-                       <p *ngIf="item?.Job.Descriptions.length>20 && item?.Job.Descriptions.length<=35"
-                         class="card-text text-center mt-2"> {{item?.Job.Descriptions | slice:0:45}}</p>
-                       <p *ngIf="item?.Job.Descriptions.length>35" class="card-text text-center mt-0">
-                         {{item?.Job.Descriptions | slice:0:45}}{{ item?.Job.Descriptions.length > 50 ? '...' : '' }}
-                       </p>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             </div>
-             <p class="heading">
-              {{item?.Job.Descriptions | slice:0:50}}{{ item?.Job.Descriptions.length > 40 ? '...' : '' }}
-            </p>
-           </div>
+  <!--  Tab Toggle -->
+  <div class="container-sm mt-0">
+   <div class="row col-sm-12">
+     <div class="d-flex switch_button_wrap">
+         <div class="switch-button">
+           <input [(ngModel)]="!IsOnJob" (change)="checkValue(IsOnJob?false:true)" class="switch-button-checkbox" type="checkbox" />
+           <label class="switch-button-label" for=""><span class="switch-button-label-span">Posts</span></label>
          </div>
-       </div>
-
-       <div *ngIf="isLoading" class="lds-ring">
-         <div></div>
-         <div></div>
-         <div></div>
-         <div></div>
-         <br><br>
-       </div>
-
-       <div *ngIf="!NotEmptPost">
-         <br><br> <br>
-         <div class="col-md-12 d-flex justify-content-center">
-           <div class="text-muted h6 alert alert-secondary p-2">{{noResultText}}</div>
-         </div>
-       </div>
      </div>
-
-     <div *ngIf="!IsOnJob">
-       <app-userList></app-userList>
-     </div>
-     <br>
-     <br>
-     <br>
-
    </div>
  </div>
 
- <!-- //Share Model -->
- <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
-    <div class="modal-content ShareModel">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Share with</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="social-buttons">
-            <a (click)="shareFB(shareJobId)" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a (click)="shareTwitter(shareJobId)" class="social-buttons__button social-button social-button--twitter" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a (click)="GetSharedLink(shareJobId)" class="social-buttons__button social-button social-button--snapchat" aria-label="SnapChat">
-              <i class="fa fa-link"></i>
-            </a>
-            <a (click)="shareWhatsApp(shareJobId)" class="social-buttons__button social-button social-button--steam" aria-label="Whatsapp">
-              <i class="fab fa-whatsapp"></i>
-            </a>
+  <!-- MAIN CONTENT -->
+  <div infiniteScroll [infiniteScrollDistance]="7" (scrolled)="onScroll()" class="search-results mt-5">
+    <div *ngIf="IsOnJob" class="row post_list_row">
+      <div *ngFor="let item of walldatas; let i = index" class="post_list">
+        <div class="post_card">
+          <div class="d-flex justify-content-between top_sec">
+            <div class="d-flex flex-row align-items-center">
+              <div class="icon">
+                <img (click)="RedirectToUser(item.Job.User.Id)"  *ngIf="item.Job.IsAnonymous===false"
+                  class="rounded-circle img-fluid" src="{{item.Job.User?.UserImage}}">
+                <img *ngIf="item.Job.IsAnonymous===true" class="rounded-circle img-fluid"
+                  src="{{item.Job?.AnonmousUserPic}}">
+              </div>
+              <div class="ms-2 c-details">
+                <h6 (click)="RedirectToUser(item.Job.User.Id)" *ngIf="item.Job.IsAnonymous===false" class="mb-0">
+                  {{item?.Job.User.Name}}<br> <span>{{item?.Job.TimeAgo}}</span></h6>
+                <h6 *ngIf="item.Job.IsAnonymous===true" class="mb-0">Anonymous<br> <span>{{item?.Job.TimeAgo}}</span>
+                </h6>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end share_sec">
+              <div class="dropdown">
+                <span><img class="img img-responsive share" src="./../../../assets/Logo/3dots.svg" /></span>
+                <div class="dropdown-content mt-0">
+                  <a *ngIf="userId!=item.Job?.User?.Id && userId && !item.Job?.IsAdded" style="cursor: pointer;"
+                    (click)="AddToJob(item?.Job?.Id)">Add To Job</a>
+                  <a *ngIf="userId!=item.Job?.User?.Id && userId && item.Job?.IsAdded" (click)="RemoveToJob(item?.Job?.Id)">Remove Job</a>
+                  <a *ngIf="userId!=item.Job?.User?.Id && userId" style="cursor: pointer;"
+                    (click)="Report(item?.Job?.Id)">Report</a>
+                  <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getJobId(item?.Job?.Id,item?.Job?.ThumbNailImage)" style="cursor: pointer;">Share</a>
+                </div>
+              </div>
+            </div>
 
           </div>
+          <div (click)="RedirectToJob(item.Job.Id)" class="mt-1">
+            <div class=" ">
 
+              <div class="col-md-12 bg-white">
+                <!-- If Job Image Avalable -->
+                <img *ngIf="item?.Job.ImagesUrl!=null" class="img-thumbnail img-responsive img-fluid"
+                  src="{{item?.Job.ImagesUrl}}">
 
+                <!-- If No Job Image Avalable -->
+                <div *ngIf="item?.Job.ImagesUrl==null" [ngStyle]="{background: item?.Job?.ColorCode}" class="card cd">
+                  <div class="content">
+                    <div class="card-body">
+                      <p *ngIf="item?.Job.Descriptions.length>=1 && item?.Job.Descriptions.length<=20"
+                        class="card-text text-center mt-5"> {{item?.Job.Descriptions | slice:0:20}}</p>
+                      <p *ngIf="item?.Job.Descriptions.length>20 && item?.Job.Descriptions.length<=35"
+                        class="card-text text-center mt-2"> {{item?.Job.Descriptions | slice:0:45}}</p>
+                      <p *ngIf="item?.Job.Descriptions.length>35" class="card-text text-center mt-0">
+                        {{item?.Job.Descriptions | slice:0:45}}{{ item?.Job.Descriptions.length > 50 ? '...' : '' }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="heading">
+             {{item?.Job.Descriptions | slice:0:50}}{{ item?.Job.Descriptions.length > 40 ? '...' : '' }}
+           </p>
+          </div>
         </div>
       </div>
 
+      <div *ngIf="isLoading" class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <br><br>
+      </div>
+
+      <div *ngIf="!NotEmptPost">
+        <br><br> <br>
+        <div class="col-md-12 d-flex justify-content-center">
+          <div class="text-muted h6 alert alert-secondary p-2">{{noResultText}}</div>
+        </div>
+      </div>
     </div>
+
+    <div *ngIf="!IsOnJob">
+      <app-userList></app-userList>
+    </div>
+    <br>
+    <br>
+    <br>
+
   </div>
 </div>
+
+<!-- //Share Model -->
+<div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+   <div class="modal-content ShareModel">
+     <div class="modal-header">
+       <h5 class="modal-title" id="staticBackdropLabel">Share with</h5>
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+     </div>
+     <div class="modal-body">
+       <div class="row">
+         <div class="social-buttons">
+           <a (click)="shareFB(shareJobId)" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
+             <i class="fab fa-facebook-f"></i>
+           </a>
+           <a (click)="shareTwitter(shareJobId)" class="social-buttons__button social-button social-button--twitter" aria-label="Twitter">
+             <i class="fab fa-twitter"></i>
+           </a>
+           <a (click)="GetSharedLink(shareJobId)" class="social-buttons__button social-button social-button--snapchat" aria-label="SnapChat">
+             <i class="fa fa-link"></i>
+           </a>
+           <a (click)="shareWhatsApp(shareJobId)" class="social-buttons__button social-button social-button--steam" aria-label="Whatsapp">
+             <i class="fab fa-whatsapp"></i>
+           </a>
+
+         </div>
+
+
+       </div>
+     </div>
+
+   </div>
+ </div>
+</div>
+
 

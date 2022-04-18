@@ -14,7 +14,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { ClipboardService } from 'ngx-clipboard'
 import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { Meta, Title } from '@angular/platform-browser';
 @Component({
   selector: "app-wallList",
   templateUrl: "./wallList.component.html",
@@ -49,6 +49,7 @@ export class WallListComponent implements OnInit {
   // TabToggleTrackVariable
   IsOnJob: boolean = true;
   constructor(
+    private meta: Meta,
     private _clipboardService: ClipboardService,
     private navServices:NavbarCommunicationService,
     private _wallServices: WallService,
@@ -255,10 +256,10 @@ export class WallListComponent implements OnInit {
   getJobId(jobId,imgUrl) {
     this.shareimgUrl=imgUrl;
     this.shareJobId = jobId;
-    window.document.querySelector('meta[property="og:image"]').setAttribute("content", imgUrl);
+    this.meta.updateTag({ property: 'og:image:type', content: imgUrl });
+   // window.document.querySelector('meta[property="og:image:type"]').setAttribute("content", imgUrl);
   }
   public shareFB(jobId) {
-
     return window.open(
       "https://www.facebook.com/sharer/sharer.php?" +
         "u=https://hoozonline.com/jobDetails?target=" +
