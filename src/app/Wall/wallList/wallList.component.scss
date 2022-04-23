@@ -260,7 +260,7 @@ body {
 
 }
 .searchSuggetion ul li:hover {
-  color: black;
+  color: var(--hover-color);
   z-index: 999;
   box-shadow: 0 0 1px 1px lightgray;
 }
