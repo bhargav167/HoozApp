@@ -127,10 +127,6 @@ label.form-label {font-weight: 600;margin-bottom: 12px;}
 input[type="file"] {
   display: none;
 }
-.badgeTag {
-    display: inline-block;
-    padding: 3px;
-}
 .bg-badge {
   background-color: #b4b4b4;
 }
@@ -145,14 +141,18 @@ input[type="file"] {
 }
 .btn-save {
   border: none;
-  background-color: black;
+  background-color: var(--btn-color);
   color: white;
   border-radius: 12px;
   outline: none;
   text-align: center;
   font-weight: bold;
-  width: 85px;
   height: 48px;
+  display: flex;
+  align-items: center;
+}
+.spinner-border-sm {
+  margin-right: 6px;
 }
 .btn-reset {
   border:none;
@@ -165,4 +165,9 @@ input[type="file"] {
   width: 85px;
   height: 48px;
   margin-right: 20px;
+}
+@media (max-width:767px) {
+  .col-lg-6:first-child {
+    margin-bottom: 25px;
+  }
 }
