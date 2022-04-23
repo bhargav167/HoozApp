@@ -26,7 +26,7 @@
       <!-- <img [routerLink]="['/jobpost']" class="addIco img img-responsive img-fluid tog" routerLinkActive="router-link-active"
         style="height: 2.5rem; width: 2.5rem; cursor: pointer;" src="../../../assets/HoozIcon/HoozAdd.png" /> -->
       <a *ngIf="isLogedIn" (click)="RedirectToUser(user.Id)"class="nav-item dropdown_mb profileimg">
-        <img src="../../../assets/HoozIcon/profile.png" class="rounded-circle img-fluid"
+        <img src="{{navbarUserPic}}" class="rounded-circle img-fluid"
           href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
       </a>
       <div type="button" class="navbar-toggler tog mb_menu">
@@ -95,7 +95,7 @@
 
       <!-- <a  class="links" aria-current="page" [routerLink]="['/']">Wall</a> &nbsp;&nbsp; -->
       <a *ngIf="isLogedIn" (click)="RedirectToUser(user.Id)" class="nav-item dropdown profileimg">
-        <img src="../../../assets/HoozIcon/profile.png" class="rounded-circle img-fluid"
+        <img src="{{navbarUserPic}}" class="rounded-circle img-fluid"
           href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
       </a>
 
@@ -147,6 +147,6 @@
     <img src="../../../assets/Logo/jobs.png" class="img-fluid" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
   </a>
   <a class="nav-item chat"  href="#">
-    <img src="../../../assets/Logo/chat.png" class="img-fluid" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
+    <img routerLink="/chat" src="../../../assets/Logo/chat.png" class="img-fluid" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
   </a>
 </nav>

@@ -7,6 +7,7 @@ import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { ProfileService } from '../../services/Auth/Profile.service';
 import { SharedService } from '../../services/SharedServices/Shared.service';
 import { HotToastService } from '@ngneat/hot-toast';
+var addressLocation;
 @Component({
   selector: 'app-Login',
   templateUrl: './Login.component.html',
@@ -56,7 +57,6 @@ export class LoginComponent implements OnInit {
   }
   AskForLocation(){
     if (navigator.geolocation) {
-      let addressLocation=
       navigator.geolocation.getCurrentPosition((position: any) => {
           if (position) {
               this.latitude = position.coords.latitude;
@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
                   }, function(results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                       if (results[1]) {
-                          alert("Location: " + results[1].formatted_address);
+                        addressLocation= results[1].formatted_address;
                       }
                   }
                     else {
@@ -109,6 +109,7 @@ export class LoginComponent implements OnInit {
         this.loginForm.controls["UserName"].setValue(data.name);
         this.loginForm.controls["Latitude"].setValue(this.latitude);
         this.loginForm.controls["Longitude"].setValue(this.longitude);
+        this.loginForm.controls["UserAddress"].setValue(addressLocation);
         this.loginUser = Object.assign({}, this.loginForm.value);
         this._profileServices
           .Login(this.loginUser)

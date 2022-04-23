@@ -87,6 +87,8 @@
 
 .chat .chat-history {
   padding: 20px;
+  overflow: scroll;
+  height: 30%;
 }
 
 .chat .chat-history ul {
@@ -181,6 +183,9 @@
 }
 .md_chat .message-data-time {
   padding: 0;
+}
+.md_chat .message-sending{
+
 }
 .input-group-prepend {margin-right: 20px; cursor: pointer;}
 .send_wrap {margin-left: 15px; cursor: pointer;}

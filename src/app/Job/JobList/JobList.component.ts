@@ -61,7 +61,6 @@ export class JobListComponent implements OnInit {
       this.jobModel = res.result;
       this.jobModels = res.result.data;
       this.pagination = res.pagination;
-      console.log(this.jobModels)
     })
   }
 

@@ -25,8 +25,8 @@
           <h5 >{{user?.Name}}</h5>
           <div>{{user?.UserAddress}}</div>
         </div>
-        <div class="chat_sec"> 
-            <button type="button" *ngIf="userId!=loggedUserId" routerLink="/chat" class="btn">Chat</button>
+        <div class="chat_sec">
+            <button type="button" *ngIf="userId!=loggedUserId" [routerLink]="['/chatbox']" [queryParams]="{uid: user.Id}" class="btn">Chat</button>
         </div>
         <div class="edit_sec">
           <button type="button" *ngIf="userId==loggedUserId"  [routerLink]="['/editProfile']" routerLinkActive="router-link-active" class="btn">Edit</button>

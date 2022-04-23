@@ -14,6 +14,7 @@ import { MapsAPILoader } from '@agm/core';
 function isValid(str){
   return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(str);
  }
+ var addressLocation;
 @Component({
   selector: 'app-JobPost',
   templateUrl: './JobPost.component.html',
@@ -40,11 +41,12 @@ export class JobPostComponent implements OnInit {
     private navServices:NavbarCommunicationService,
     private _jobServices:JobPostService,
     private _tagService:TagService,
-    private apiloader: MapsAPILoader,
     private toast: HotToastService,
     private _router:Router,
+    private apiloader: MapsAPILoader,
     private _sharedServices:SharedService,
     private _location: Location) {
+      this.AskForLocation();
       window.scrollTo(0,0);
       this._sharedServices.checkInterNetConnection();
     if(localStorage.getItem('user')){
@@ -57,6 +59,7 @@ export class JobPostComponent implements OnInit {
 
   ngOnInit() {
     this.createJobPostForm();
+
   }
   createJobPostForm() {
     this.jobPostForm = this.fb.group({
@@ -64,7 +67,7 @@ export class JobPostComponent implements OnInit {
       Descriptions: ['',Validators.required],
       Tags:[''],
       ImagesUrl:[''],
-      Address:['Sector 112, Noida Extension, Noida'],
+      Address:[''],
       Latitude:[''],
       Longitude:[''],
       IsAnonymous:[false],
@@ -86,6 +89,47 @@ export class JobPostComponent implements OnInit {
       position: 'top-center',
     });
   }
+
+  AskForLocation(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position: any) => {
+          if (position) {
+              this.latitude = position.coords.latitude;
+              this.longitude = position.coords.longitude;
+                 this.apiloader.load().then(() => {
+                  let geocoder = new google.maps.Geocoder;
+                  let latlng = {
+                      lat: this.latitude,
+                      lng: this.longitude
+                  };
+
+                  geocoder.geocode({
+                      'location': latlng
+                  }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                      if (results[1]) {
+                        addressLocation= results[1].formatted_address;
+                        window.document.getElementById('location').innerHTML=addressLocation;
+                      }
+                  }
+                    else {
+                          console.log('Not found');
+                      }
+                  });
+              });
+
+
+          }else{
+            this.showToast();
+            return;
+          }
+      })
+  }else{
+    this.toast.info('location not supported by this browser', {
+      position: 'top-center',
+    });
+  }
+  }
   AddJobPost() {
     if(this.Tags.length==0){
       this.toast.warning('Tag is required!', {
@@ -94,11 +138,6 @@ export class JobPostComponent implements OnInit {
       return;
     }
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position: any) => {
-          if (position) {
-              this.latitude = position.coords.latitude;
-              this.longitude = position.coords.longitude;
               this.btnLoader=true;
               this.jobPostForm.controls['UserId'].setValue(this.userId);
               this.jobPostForm.controls['Tags'].setValue(this.Tags);
@@ -106,7 +145,9 @@ export class JobPostComponent implements OnInit {
               this.jobPostForm.controls["Longitude"].setValue(this.longitude);
               this.jobPostForm.controls['IsAnonymous'].setValue(this.ischeckedAnonymously);
               this.jobPostForm.controls['IsPublic'].setValue(this.ischeckedPublic);
+              this.jobPostForm.controls['Address'].setValue(addressLocation);
               this.jobModel = Object.assign({}, this.jobPostForm.value);
+
               this._jobServices.AddJobPost(this.jobModel).subscribe((data: any) => {
                 if (this.filetoPost == undefined) {
                   this._jobServices.AddPostImages(data.CreatedJob.Id, null).subscribe(() => {
@@ -128,16 +169,7 @@ export class JobPostComponent implements OnInit {
               }, error => {
                 console.log(error);
               })
-          }else{
-            this.showToast();
-            return;
-          }
-      })
-  }else{
-    this.toast.info('location not supported by this browser', {
-      position: 'top-center',
-    });
-  }
+
 
   }
 

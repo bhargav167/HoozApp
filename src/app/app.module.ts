@@ -37,6 +37,7 @@ import { DownloadComponent } from './Settings/Download/Download.component';
 import { UserListComponent } from './Wall/UserList/userList.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import { ChatsComponent } from './ChatModule/Chats/Chats.component';
+import { ChatboxComponent } from './ChatModule/Chatbox/Chatbox.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { ChatsComponent } from './ChatModule/Chats/Chats.component';
     DownloadComponent,
     UserListComponent,
     WallListComponent,
-      ChatsComponent
+      ChatsComponent,
+      ChatboxComponent
    ],
   imports: [
     BrowserModule,
@@ -75,7 +77,7 @@ import { ChatsComponent } from './ChatModule/Chats/Chats.component';
       LoadingBarModule,
     HotToastModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCQUre6wTSYWzorWYhozBfVtTEBgIzfQgg',
+      apiKey: 'AIzaSyC2FrT93DXiG5u9Ow2LCAie6wIxoQzv5qQ',
       libraries: ['places']
     })
   ],
