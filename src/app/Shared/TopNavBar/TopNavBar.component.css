@@ -315,7 +315,7 @@ nav.footer .nav-item {
   .hideInSmall {
     display: contents;
   }
-  .tog, .dropdown_mb.profileimg, .logo_mb {  
+  .tog, .dropdown_mb.profileimg, .logo_mb, .mb_menu {  
     display: none;
   }
   nav.footer {
