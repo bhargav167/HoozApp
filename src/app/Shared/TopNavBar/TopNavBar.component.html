@@ -29,12 +29,13 @@
         <img src="../../../assets/HoozIcon/profile.png" class="rounded-circle img-fluid"
           href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
       </a>
-      <div type="button" class="navbar-toggler tog mb_menu">
+      <div *ngIf="isLogedIn" type="button" class="navbar-toggler tog mb_menu">
         <label class="for-dropdown" for="dropdown1">
           <img class="img-responsive img-fluid"
             src="../../../assets/Logo/Menu.png" />
         </label>
       </div>
+      <a class="links mb_menu" *ngIf="!isLogedIn" href="/login" >Login</a>
       <input (click)="ShowMenu()" class="dropdown tog" type="checkbox" id="dropdown1" name="dropdown1" />
 
     <!-- DropDown Toggle1 -->

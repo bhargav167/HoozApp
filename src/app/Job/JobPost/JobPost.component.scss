@@ -81,6 +81,7 @@
           font-weight: 700;
           padding: 0 10px;
       }
+      .form-text {font-size: var(--font-size-sm);padding-left: 10px;}
       textarea.form-control,
       .form-control.taginput,
       .location_sec {
@@ -114,6 +115,7 @@
         align-items: center;
         span {
           margin-right: 15px;
+          flex: 1;
         }
       }
       .form-check {
