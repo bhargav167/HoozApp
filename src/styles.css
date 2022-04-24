@@ -3,16 +3,23 @@
 :root {
   --body-font-size: 20px;
   --font-size-sm: 15px;
+  --font-size-xl: 24px;
+  --body-font-color: #000000;
+  --btn-color: #000000;
+  --btn-bg-color: #000000;
+  --btn-text-color: #fff;
+  --green: #00FFE0;
+  --hover-color: #000000;
 }
 body {
   font-size: var(--body-font-size);
+  color: var(--body-font-color);
   line-height: 1.25;
 }
 .bg-Responce{
   color: black !important;
-  background: #00FFD1;
-  border: 1px solid #01ECD9;
-  font-size: 20px;
+  background: var(--green);
+  border: 1px solid var(--green);
   padding: 0;
   width: 30px;
   height: 30px;
@@ -68,8 +75,8 @@ input[type="search"]::-webkit-search-cancel-button {
   box-shadow: 0px 4px 4px rgb(0 0 0 / 10%);
   border-radius: 10px;
   border: none;
-  font-size: 20px;
-  font-weight: 700;    
+  font-weight: 700;  
+  line-height: 1.5;  
 }
 .btn-hoozGreen {
     border-radius: 0.5rem;
@@ -249,7 +256,6 @@ input[type="search"]::-webkit-search-cancel-button {
   overflow: hidden;
   width: 268px;
   text-align: center;
-  font-size: 20px;
   color: black;
   position: relative;
   padding-right: 120px;
@@ -322,25 +328,25 @@ input[type="search"]::-webkit-search-cancel-button {
   width: 78px;
   height: 48px;
   color: #fff;
-  font-size: 20px;
+  font-size: var(--body-font-size);
   font-weight: 700;
 }
 .edit_sec button.btn:hover {
-  background: #00FFE0;
+  background: var(--green);
 }
 .chat_sec .btn {
-  background: #00FFD1;
-  border: 1px solid #01ECD9;
+  background: var(--green);
+  border: 1px solid var(--green);
   box-sizing: border-box;
+  font-size: var(--body-font-size);
   border-radius: 12px;
   width: 78px;
   height: 48px;
-  font-size: 20px;
   font-weight: 700;
 }
 .chat_sec .btn:hover {
-  border: 1px solid #000;
-  background: #000000;
+  border: 1px solid var(--hover-color);
+  background: var(--hover-color);
   color: #fff;
 }
 .badgeTagWrap {
@@ -358,6 +364,11 @@ input[type="search"]::-webkit-search-cancel-button {
   display: inline-block;
   vertical-align: top;
 }
+.badgeTag i.fa {
+  padding-left: 5px;
+  cursor: pointer;
+  font-size: var(--font-size-sm)
+}
 .badgeTagWrap .badgeTag:nth-child(3n+2) {
     background: #2D3E50;
 }
@@ -369,11 +380,39 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
 .links_url {margin-bottom: 20px;}
 .links_url h5.title {text-transform: none;}
 .links_url a {color: inherit;text-decoration: none;}
-.links_url a:hover {color: #00FFE0;}
+.links_url a:hover {color: var(--green);}
 .user_name_wrap {margin: 30px 0; text-align: center;}
-.user_name_wrap h5 {font-size: 24px;font-weight: 700;}
+.user_name_wrap h5 {font-size: var(--font-size-xl) ;font-weight: 700;}
 .user_name {margin-bottom: 18px;}
-@media only screen and (min-width: 920px) {
+.btn-hoozOn,
+.btn-hoozOn-2 {
+  background: var(--green);
+  border: none;
+  box-sizing: border-box;
+  font-size: var(--body-font-size);
+  border-radius: 12px;
+  min-width: 78px;
+  height: 48px;
+  font-weight: 700;
+  padding: 6px 15px;
+}
+.btn-hoozOn-2 {
+  background: var(--btn-bg-color);
+  color: var(--btn-text-color);
+}
+.btn-hoozOn:hover {
+  background: var(--btn-color);
+  color: var(--btn-text-color);
+}
+.btn-hoozOn-2:hover {
+  background: var(--green);
+}
+.mb-20 {margin-bottom: 28px;}
+.form-control:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+@media (min-width: 920px) {
   .my_container {
     width: 910px;
     display: flex;
@@ -387,7 +426,7 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
     flex: 1;
   }
 }
-@media only screen and (max-width: 919px) {
+@media (max-width: 919px) {
   .desk_view {
     display: none;
   }
@@ -399,30 +438,7 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
   }
 }
 
-@media only screen and (min-width: 768px) {
-  .hc {
-      margin-left: 356px;
-      font-size: x-large;
-      font-weight: 700;
-  }
-  .hc1 {
-    margin-left: 238px;
-    font-size: x-large;
-    font-weight: 700;
-  }
-}
-
-@media only screen and (max-width:767px) {
-  .hc {
-      margin-left: 36px;
-      font-size: x-large;
-      font-weight: 700;
-  }
-  .hc1 {
-    margin-left: 24px;
-    font-size: x-large;
-    font-weight: 700;
-  }
+@media (max-width:767px) {
   body {
     padding-bottom: 68px;
   }
@@ -432,6 +448,13 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
   }
   .back_arrow .fa-arrow-left {
     font-size: 20px;
+  }
+  .main_cnt_wrap {
+    position: relative;
+    padding-top: 20px;
+  }
+  .main_cnt_wrap .back_arrow {
+    top: -36px;
   }
 }
 

@@ -14,9 +14,9 @@ export class MessagesComponent implements OnInit {
     this.signalRService.connect();
   }
   sendMessage(): void {
-    this.signalRService.sendMessageToApi(this.text).subscribe({
-      next: _ => this.text = '',
-      error: (err) => console.error(err)
-    });
+    // this.signalRService.sendMessageToApi(this.text).subscribe({
+    //   next: _ => this.text = '',
+    //   error: (err) => console.error(err)
+    // });
   }
 }

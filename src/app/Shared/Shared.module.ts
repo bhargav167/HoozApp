@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { TopNavBarComponent } from './TopNavBar/TopNavBar.component';
 import { FormGroup } from '@angular/forms';
 
- 
+
 
 @NgModule({
   imports: [
@@ -11,7 +11,7 @@ import { FormGroup } from '@angular/forms';
   ],
   providers: [
     TopNavBarComponent
-   
+
   ],
   declarations: []
 })

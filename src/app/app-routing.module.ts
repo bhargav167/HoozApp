@@ -65,11 +65,13 @@ const routes: Routes = [
   },
   {
     path:'chat',
-    component:ChatsComponent
+    component:ChatsComponent,
+    canActivate: [LoginGaurd]
   },
   {
     path:'chatbox',
-    component:ChatboxComponent
+    component:ChatboxComponent,
+    canActivate: [LoginGaurd]
   },
   {
     path: '',

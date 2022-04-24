@@ -38,6 +38,10 @@ import { UserListComponent } from './Wall/UserList/userList.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import { ChatsComponent } from './ChatModule/Chats/Chats.component';
 import { ChatboxComponent } from './ChatModule/Chatbox/Chatbox.component';
+import { TimeagoCustomFormatter, TimeagoFormatter, TimeagoIntl, TimeagoModule } from 'ngx-timeago';
+export class MyIntl extends TimeagoIntl {
+  // do extra stuff here...
+  }
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +59,9 @@ import { ChatboxComponent } from './ChatModule/Chatbox/Chatbox.component';
     UserListComponent,
     WallListComponent,
       ChatsComponent,
-      ChatboxComponent
+      ChatboxComponent,
+
+
    ],
   imports: [
     BrowserModule,
@@ -67,6 +73,10 @@ import { ChatboxComponent } from './ChatModule/Chatbox/Chatbox.component';
     ClipboardModule,
     HttpClientModule,
     InfiniteScrollModule,
+    TimeagoModule.forRoot({
+      intl: { provide: TimeagoIntl, useClass: MyIntl },
+      formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
+    }),
       // for HttpClient use:
       LoadingBarHttpClientModule,
 

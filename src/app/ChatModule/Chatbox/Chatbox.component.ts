@@ -4,6 +4,10 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../services/Auth/Profile.service';
 import { UserChatService } from '../../services/Chat/User/UserChat.service';
+import { SignalrService } from '../../services/signalr.service';
+import {Location} from '@angular/common';
+import { TimeagoIntl } from 'ngx-timeago';
+import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
 
 @Component({
   selector: "app-Chatbox",
@@ -17,10 +21,15 @@ export class ChatboxComponent implements OnInit {
   messages: Array<any>;
   isSending:boolean=false;
   constructor(
+    intl: TimeagoIntl,
     private _profileDetails: ProfileService,
     private _chatServices: UserChatService,
-    private route: ActivatedRoute
+    public _signalR:SignalrService,
+    private route: ActivatedRoute,
+    private _location: Location
   ) {
+    intl.strings = englishStrings;
+    intl.changes.next();
     let user = JSON.parse(localStorage.getItem("user"));
     this.recipientId = user.Id;
     this.route.queryParams.subscribe((params) => {
@@ -29,6 +38,7 @@ export class ChatboxComponent implements OnInit {
   }
 
   ngOnInit() {
+   // this._signalR.connect();
     this.loadUserData();
     this.loadUserChat();
   }
@@ -55,16 +65,21 @@ export class ChatboxComponent implements OnInit {
       RecipientId: this.recipientId,
       Content: message,
       RecipientContent:null,
-      SenderContent:message
+      SenderContent:message,
+      MessageSent:new Date()
     };
     this.messages.push(messageObj);
     (document.getElementById("msg") as HTMLInputElement).value="";
-    this._chatServices.SendMessage(this.senderId,messageObj).subscribe((data:MessageForCreationDto)=>{
+    this._signalR.sendMessageToApi(this.senderId,messageObj).subscribe((data:MessageForCreationDto)=>{
       this.isSending=false;
 
     },err=>{
       this.isSending=false;
 
     })
+  }
+   //Back loacation History
+   backClicked() {
+    this._location.back();
   }
 }

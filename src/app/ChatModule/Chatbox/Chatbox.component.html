@@ -2,7 +2,7 @@
 <div class="chat-app">
     <div class="chat_top_sec">
         <div class="back_arrow_chat">
-            <i aria-hidden="true" class="back fa fa-2x fa fa-angle-left"></i>
+            <i (click)="backClicked()" aria-hidden="true" class="back fa fa-2x fa fa-angle-left"></i>
         </div>
         <h2>{{user?.Name}}</h2>
     </div>
@@ -28,14 +28,13 @@
                         <img src="{{user?.ImageUrl}}" alt="avatar">
                         <div class="message other-message"> {{item.Content}}</div>
                     </div>
-                    <div class="message-data-time">{{item.TimeAgo}}</div>
-
+                    <div class="message-data-time" timeago [date]="item.MessageSent"></div>
                 </li>
                 <li *ngIf="item.SenderContent!=null" class="clearfix">
                     <div class="md_chat">
                         <div class="message my-message">{{item.Content}}</div>
-                        <div class="message-data-time">{{item.TimeAgo}}</div>
 
+                        <div class="message-data-time" timeago [date]="item.MessageSent"></div>
                     </div>
                 </li>
 

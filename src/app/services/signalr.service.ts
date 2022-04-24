@@ -1,19 +1,20 @@
+import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
 import { from } from 'rxjs';
-import { tap } from 'rxjs/operators'; 
+import { tap } from 'rxjs/operators';
 import { MessagePackHubProtocol } from '@microsoft/signalr-protocol-msgpack'
 import { chatMesage } from '../Model/chatMesage';
+import { MessageForCreationDto } from '../Model/Message/MessageForCreationDto';
 @Injectable({
   providedIn: 'root'
 })
 export class SignalrService {
 
   private hubConnection: HubConnection
-  public messages: chatMesage[] = [];
-  private connectionUrl = 'http://hoozonlive-001-site1.btempurl.com/signalr';
-  private apiUrl = 'http://hoozonlive-001-site1.btempurl.com/api/Message/Send/'+8;
+  public messages: MessageForCreationDto[] = [];
+  private connectionUrl = 'https://hoozonline.com/signalr';
 
   constructor(private http: HttpClient) { }
 
@@ -22,12 +23,12 @@ export class SignalrService {
     this.addListeners();
   }
 
-  public sendMessageToApi(message: string) {
-    return this.http.post(this.apiUrl, this.buildChatMessage(message))
+  public sendMessageToApi(userid:number, message:MessageForCreationDto) {
+    return this.http.post(environment.api_url+'Message/Send/'+userid, this.buildChatMessage(message))
       .pipe(tap(_ => console.log(this.messages)));
   }
 
-  public sendMessageToHub(message: string) {
+  public sendMessageToHub(message: MessageForCreationDto) {
     var promise = this.hubConnection.invoke("BroadcastAsync", this.buildChatMessage(message))
       .then(() => { console.log('message sent successfully to hub'); })
       .catch((err) => console.log('error while sending a message to hub: ' + err));
@@ -43,11 +44,13 @@ export class SignalrService {
       .build();
   }
 
-  private buildChatMessage(message: string): chatMesage {
+  private buildChatMessage(message: MessageForCreationDto): MessageForCreationDto {
     return {
-      Content: message,
-      RecipientId: 7,
-      SenderId: 8
+      SenderId: message.SenderId,
+      RecipientId:message.RecipientId,
+      Content: message.Content,
+      RecipientContent:null,
+      SenderContent:message.Content
     };
   }
 
@@ -60,11 +63,13 @@ export class SignalrService {
   }
 
   private addListeners() {
-    this.hubConnection.on("messageReceivedFromApi", (data: chatMesage) => {
-      console.log(data)
-      this.messages.push(data); 
-    })
-    this.hubConnection.on("messageReceivedFromHub", (data: chatMesage) => {
+    this.hubConnection.on(
+      "messageReceivedFromApi",
+      (data: MessageForCreationDto) => {
+
+      }
+    );
+    this.hubConnection.on("messageReceivedFromHub", (data: MessageForCreationDto) => {
       console.log("message received from Hub")
       this.messages.push(data);
     })

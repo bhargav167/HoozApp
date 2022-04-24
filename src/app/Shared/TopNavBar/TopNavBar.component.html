@@ -38,7 +38,7 @@
       <input (click)="ShowMenu()" class="dropdown tog" type="checkbox" id="dropdown1" name="dropdown1" />
 
     <!-- DropDown Toggle1 -->
-    <div *ngIf="this.navServices.isShowingMenu" class="section-dropdown1 tog">
+    <!-- <div *ngIf="this.navServices.isShowingMenu" class="section-dropdown1 tog">
       <div *ngIf="isLogedIn">
         <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE
         </a><br><br>
@@ -56,6 +56,26 @@
       <a id="s" href="#">Terms & Conditions<i class="uil uil-arrow-right"></i></a><br><br>
       <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a><br><br>
       <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a><br><br>
+    </div> -->
+
+    <div *ngIf="isLogedIn && this.navServices.isShowingMenu" class="section-dropdown tog">
+      <div class="dr_top">
+        <div *ngIf="isLogedIn">
+          <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE</a>
+          <a [routerLink]="['/joblist']" id="b"> <i class="far fa-newspaper"></i>Job Listing </a>
+          <a id="b" [routerLink]="['/settings/download']"> <i class="fa fa-download"></i>Download</a>
+        </div>
+        <a id="b"><i class="fas fa-cog"></i>SETTINGS </a>
+        <a id="b" *ngIf="!isLogedIn" href="/login"> <i class="fas fa-cog"></i>Login</a>
+      </div>
+      <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
+      <div class="section-dropdown-sub">
+        <a id="s" href="#">About Us <i class="uil uil-arrow-right"></i></a>
+        <a id="s" [routerLink]="['/settings/helpDesk']">Help & Support<i class="uil uil-arrow-right"></i></a>
+        <a id="s" href="#">Terms & Conditions<i class="uil uil-arrow-right"></i></a>
+        <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a>
+        <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a>
+      </div>
     </div>
   <!--End DropDown Toggle1 -->
 
@@ -108,25 +128,22 @@
       <!-- DropDown Toggle2 -->
 
         <div *ngIf="isLogedIn && this.navServices.isShowingMenu" class="section-dropdown">
-          <div *ngIf="isLogedIn">
-            <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE
-            </a><br><br>
-            <a [routerLink]="['/joblist']" id="b"> <i class="far fa-newspaper"></i>Job Listing </a><br><br>
+          <div class="dr_top">
+            <div *ngIf="isLogedIn">
+              <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE</a>
+              <a [routerLink]="['/joblist']" id="b"> <i class="far fa-newspaper"></i>Job Listing </a>
+            </div>
+            <a id="b"><i class="fas fa-cog"></i>SETTINGS </a>
+            <a id="b" *ngIf="!isLogedIn" href="/login"> <i class="fas fa-cog"></i>Login</a>
           </div>
-          <a id="b"> <i class="fas fa-cog"></i>SETTINGS </a><br><br>
-          <a id="b" *ngIf="!isLogedIn" href="/login"> <i class="fas fa-cog"></i>Login
-          </a><br><br>
-
           <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
-
           <div class="section-dropdown-sub">
+            <a id="s" href="#">About Us <i class="uil uil-arrow-right"></i></a>
+            <a id="s" [routerLink]="['/settings/helpDesk']">Help & Support<i class="uil uil-arrow-right"></i></a>
+            <a id="s" href="#">Terms & Conditions<i class="uil uil-arrow-right"></i></a>
+            <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a>
+            <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a>
           </div>
-          <a id="s" href="#">About Us <i class="uil uil-arrow-right"></i></a><br><br>
-          <a id="s" [routerLink]="['/settings/helpDesk']">Help & Support<i class="uil uil-arrow-right"></i></a><br><br>
-          <a id="s" href="#">Terms & Conditions<i class="uil uil-arrow-right"></i></a><br><br>
-          <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a><br><br>
-          <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a><br><br>
-
         </div>
       <!--End DropDown Toggle2 -->
 
