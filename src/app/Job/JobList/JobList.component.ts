@@ -56,8 +56,8 @@ export class JobListComponent implements OnInit {
     })
   }
   //Load Post Tab
-  LoadAllPost(userId: number, currentPage: number, itemsPerPage: number) {
-    this._jobServices.GetPostJob(userId, currentPage, itemsPerPage).subscribe((res: any) => {
+  LoadAllPost(userId: number, currentPage: number, itemsPerPage: number,Jobstatus:string) {
+    this._jobServices.GetPostJob(userId, currentPage, itemsPerPage,Jobstatus).subscribe((res: any) => {
       this.jobModel = res.result;
       this.jobModels = res.result.data;
       this.pagination = res.pagination;
@@ -183,13 +183,19 @@ export class JobListComponent implements OnInit {
     if (this.IsOnJob == true) {
       this.LoadAllWithAddedJob(this.currentPage, this.itemsPerPage,this.JobStatus);
     } else {
-      this.LoadAllPost(this.user.Id, this.currentPage, this.itemsPerPage);
+      this.LoadAllPost(this.user.Id, this.currentPage, this.itemsPerPage,this.JobStatus);
     }
   }
   //Job status dropdown
   JobStatusChange($event){
     this.JobStatus=$event.target.value.trim();
-    this.LoadAllWithAddedJob(this.currentPage, this.itemsPerPage,this.JobStatus);
+    this.currentPage=1;
+    this.itemsPerPage=4;
+    if(this.IsOnJob==true){
+      this.LoadAllWithAddedJob(this.currentPage, this.itemsPerPage,this.JobStatus);
+    }else{
+      this.LoadAllPost(this.user.Id,this.currentPage, this.itemsPerPage,this.JobStatus);
+    }
   }
 
    //Back loacation History

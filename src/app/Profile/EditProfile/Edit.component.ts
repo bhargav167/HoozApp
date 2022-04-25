@@ -161,7 +161,7 @@ export class EditComponent implements OnInit {
       this.btnLoader=false;
       this.showAlert=true;
       this.showToast();
-      this._router.navigate(['/profile/',this.userId]);
+      this._router.navigate(['/profile'], { queryParams: {target: this.userId}});
     })
   }
 

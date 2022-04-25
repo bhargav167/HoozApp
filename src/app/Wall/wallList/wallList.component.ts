@@ -60,7 +60,10 @@ export class WallListComponent implements OnInit {
     private toast: HotToastService,
     private _router:Router
   ) {
-
+    if(localStorage.getItem('user')){
+      this.user= JSON.parse(localStorage.getItem('user'));
+      this.userId=this.user.Id;
+    }
   }
   ngOnInit() {
     this._sharedServices.checkInterNetConnection();

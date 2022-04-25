@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
     private authService: SocialAuthService) {
       this._sharedServices.checkInterNetConnection();
        _sharedServices.IsUserIsOnLogInPage();
+
        this.AskForLocation();
 
     }
@@ -56,8 +57,10 @@ export class LoginComponent implements OnInit {
     })
   }
   AskForLocation(){
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position: any) => {
+
           if (position) {
               this.latitude = position.coords.latitude;
               this.longitude = position.coords.longitude;
@@ -119,7 +122,7 @@ export class LoginComponent implements OnInit {
           });
       });
     }else{
-      this.toast.info('Allow location of you device!', {
+      this.toast.info('Please wait! Fetching location', {
         position: 'top-center',
       });
     }

@@ -226,7 +226,7 @@ nav.navbar .container-fluid {
 .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: black;
 }
-.logo { 
+.logo {
   cursor: pointer;
 }
 .add_post {
@@ -315,7 +315,7 @@ nav.footer .nav-item {
   .hideInSmall {
     display: contents;
   }
-  .tog, .dropdown_mb.profileimg, .logo_mb, .mb_menu {  
+  .tog, .dropdown_mb.profileimg, .logo_mb, .mb_menu {
     display: none;
   }
   nav.footer {

@@ -87,12 +87,10 @@
 
 .chat .chat-history {
   padding: 20px;
-  overflow: scroll;
-  height: 30%;
 }
 
 .chat .chat-history ul {
-  padding: 0; 
+  padding: 0;
   max-height: 415px;
   overflow-y: auto;
   margin: 0;
@@ -186,9 +184,6 @@
 }
 .md_chat .message-data-time {
   padding: 0;
-}
-.md_chat .message-sending{
-
 }
 .input-group-prepend {margin-right: 20px; cursor: pointer;}
 .send_wrap {margin-left: 15px; cursor: pointer;}

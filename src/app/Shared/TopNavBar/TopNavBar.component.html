@@ -152,7 +152,7 @@
   </div>
 </nav>
 <nav class="footer">
-  <a class="nav-item" href="#">
+  <a class="nav-item" [routerLink]="['/']">
     <i class="fa fa-home" aria-hidden="true"></i>
   </a>
   <a class="nav-item" href="#">
@@ -161,10 +161,10 @@
   <a class="nav-item add_post" *ngIf="isLogedIn" [routerLink]="['/jobpost']">
     <i class="fa fa-plus"></i>
   </a>
-  <a class="nav-item jobs"  href="#">
+  <a class="nav-item jobs" [routerLink]="['/joblist']" >
     <img src="../../../assets/Logo/jobs.png" class="img-fluid" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
   </a>
-  <a class="nav-item chat"  href="#">
-    <img routerLink="/chat" src="../../../assets/Logo/chat.png" class="img-fluid" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
+  <a class="nav-item chat" [routerLink]="['/chat']">
+    <img src="../../../assets/Logo/chat.png" class="img-fluid" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
   </a>
 </nav>

@@ -16,11 +16,11 @@ export class JobPostService {
   constructor(private _http:HttpClient) {  }
   AddJobPost(job:JobModel){
     return  this._http.post(this.baseURL + 'Job/AddJob',job);
-    } 
+    }
 
   UpdateJobPost(jobId: number, job: JobModel) {
     return this._http.post(this.baseURL + 'Job/UpdateJob/' + jobId, job);
-  } 
+  }
 
     AddPostImages(jobId:number, file:any){
       return  this._http.post(this.baseURL + 'Job/AddJobImage/'+jobId,file);
@@ -28,14 +28,14 @@ export class JobPostService {
     GetAllJob(){
       return this._http.get(this.baseURL+'Job/AllJob');
     }
-    GetJobById(id:number){ 
+    GetJobById(id:number){
       return this._http.get(this.baseURL+'Job/WebSingleJobByJobId/'+id);
-    } 
+    }
 
     GetResponceCount(jobId:number){
       return  this._http.get(this.baseURL + 'WebPost/ResponceCount/'+jobId);
     }
-   
+
     GetAllWithAddedJob(userId:number, page?, itemsPerPage?,Jobstatus?): Observable<PaginatedResult<JobResponces>>{
       const paginatedResult: PaginatedResult<JobResponces> = new PaginatedResult<JobResponces>();
       let params = new HttpParams();
@@ -43,42 +43,42 @@ export class JobPostService {
         params = params.append('pageNumber', page);
         params = params.append('pageSize', itemsPerPage);
         params = params.append('JobStatus', Jobstatus);
-        
+
       }
      //  params = params.append('searchTag', searchTerm);
       return this._http.get<JobResponces>(this.baseURL+'Job/GetAllWithAddedJob/'+userId,{ observe: 'response', params })
       .pipe(
         map(response => {
           paginatedResult.result = response.body;
-  
+
           if (response.headers.get('Pagination') != null) {
             paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
           }
           return paginatedResult;
         })
-      ); 
+      );
     }
 
-    GetPostJob(userId:number, page?, itemsPerPage?): Observable<PaginatedResult<JobResponces>>{
+    GetPostJob(userId:number, page?, itemsPerPage?,Jobstatus?): Observable<PaginatedResult<JobResponces>>{
       const paginatedResult: PaginatedResult<JobResponces> = new PaginatedResult<JobResponces>();
       let params = new HttpParams();
       if (page != null && itemsPerPage != null) {
         params = params.append('pageNumber', page);
         params = params.append('pageSize', itemsPerPage);
-        
+        params = params.append('JobStatus', Jobstatus);
       }
      //  params = params.append('searchTag', searchTerm);
       return this._http.get<JobResponces>(this.baseURL+'Job/JobById/'+userId,{ observe: 'response', params })
       .pipe(
         map(response => {
           paginatedResult.result = response.body;
-  
+
           if (response.headers.get('Pagination') != null) {
             paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
           }
           return paginatedResult;
         })
-      ); 
+      );
     }
 
     //Update Job Status
