@@ -68,7 +68,7 @@ export class WallListComponent implements OnInit {
   ngOnInit() {
     this._sharedServices.checkInterNetConnection();
     this.activatedRoute.queryParams.subscribe(params => {
-      const paramVal = params['searchTerm'];
+      const paramVal = params['searchTag'];
        if (paramVal==undefined) {
         this.LoadWallData(
           this.currentPage,

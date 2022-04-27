@@ -2,7 +2,7 @@ import { MapsAPILoader } from '@agm/core';
 import { Component, NgZone, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators }  from '@angular/forms';
 import { SocialAuthService } from "angularx-social-login";
-import { GoogleLoginProvider } from "angularx-social-login";
+import { GoogleLoginProvider,FacebookLoginProvider } from "angularx-social-login";
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { ProfileService } from '../../services/Auth/Profile.service';
 import { SharedService } from '../../services/SharedServices/Shared.service';
@@ -127,7 +127,31 @@ export class LoginComponent implements OnInit {
       });
     }
   }
-  showToast() {
+signInWithFacebook():void{
+  this.authService.signIn(FacebookLoginProvider.PROVIDER_ID)
+  .then((data: any) => {
+    this.loginForm.controls["Email"].setValue(data.email);
+    this.loginForm.controls["Name"].setValue(data.name);
+    this.loginForm.controls["ImageUrl"].setValue(data.photoUrl);
+    this.loginForm.controls["LoginProvider"].setValue(
+      data.provider
+    );
+    this.loginForm.controls["UserName"].setValue(data.name);
+    this.loginForm.controls["Latitude"].setValue(this.latitude);
+    this.loginForm.controls["Longitude"].setValue(this.longitude);
+    this.loginForm.controls["UserAddress"].setValue(addressLocation);
+    this.loginUser = Object.assign({}, this.loginForm.value);
+    this._profileServices
+      .Login(this.loginUser)
+      .subscribe((data: SocialAuthService) => {
+         localStorage.setItem("user", JSON.stringify(data));
+         location.href = "/";
+      });
+  });
+}
+ // Facebook Login
+
+ showToast() {
     this.toast.info('Allow location to use this application', {
       position: 'top-center',
     });

@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   this.IsLogin();
   }
   Search(searchTerm) {
-    this._routers.navigate(['/'], { queryParams: {searchTerm:searchTerm }});
+    this._routers.navigate(['/'], { queryParams: {searchTag:searchTerm }});
 }
   IsLogin(){
     if (this.token) {

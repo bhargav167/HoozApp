@@ -18,9 +18,9 @@ export class WallService {
   GetWall(page?, itemsPerPage?,searchTerm?,userId?): Observable<PaginatedResult<WallResponce>>{
     const paginatedResult: PaginatedResult<WallResponce> = new PaginatedResult<WallResponce>();
     let params = new HttpParams();
-    if (page != null && itemsPerPage != null) { 
+    if (page != null && itemsPerPage != null) {
       params = params.append('pageNumber', page);
-      params = params.append('pageSize', itemsPerPage); 
+      params = params.append('pageSize', itemsPerPage);
     }
      params = params.append('searchTag', searchTerm);
      params = params.append('UserId', userId);
@@ -34,7 +34,7 @@ export class WallService {
         }
         return paginatedResult;
       })
-    ); 
+    );
   }
 
   GetUserWall(page?, itemsPerPage?, searchTerm?, userId?): Observable<PaginatedResult<UserResponce>> {
@@ -44,7 +44,7 @@ export class WallService {
       params = params.append('pageNumber', page);
       params = params.append('pageSize', itemsPerPage);
     }
-    params = params.append('searchTag', searchTerm);
+    params = params.append('searchTagTerm', searchTerm);
     params = params.append('UserId', userId);
     return this._http.get<UserResponce>(this.baseURL + 'Wall/WebGetUsersByMultiTags', { observe: 'response', params })
       .pipe(

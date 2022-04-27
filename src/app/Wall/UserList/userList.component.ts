@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Pagination } from '../../Model/Pagination';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { UserResponce } from '../../Model/Wall/UserResponce';
@@ -18,16 +19,26 @@ export class UserListComponent implements OnInit {
   itemsPerPage: number = 8;
   walldata: UserResponce;
   walldatas: UserResponce[];
-  isLoading: boolean = true; 
-  constructor(private _wallServices:WallService) {
+  isLoading: boolean = true;
+  constructor(private _wallServices:WallService,private activatedRoute: ActivatedRoute) {
     if(localStorage.getItem('user')){
       this.user= JSON.parse(localStorage.getItem('user'));
-      this.userId=this.user.Id; 
-    } 
+      this.userId=this.user.Id;
+    }
   }
 
   ngOnInit() {
-    this.loadUserList(this.currentPage, this.itemsPerPage, this.userParams,this.userId); 
+    this.activatedRoute.queryParams.subscribe(params => {
+      const paramVal = params['searchTag'];
+       if (paramVal==undefined) {
+
+        this.loadUserList(this.currentPage, this.itemsPerPage, this.userParams,this.userId);
+       }else{
+         this.userParams=paramVal;
+         this.loadUserList(this.currentPage, this.itemsPerPage, this.userParams,this.userId);
+       }
+    });
+
   }
   loadUserList(currentPage:number, itemsPerPage:number,userParams,userId){
     this.isLoading=true;
@@ -36,7 +47,6 @@ export class UserListComponent implements OnInit {
       this.walldatas = res.result;
       this.pagination = res.pagination;
       this.isLoading = false;
-      console.log(this.walldatas);
-    }) 
+    })
   }
 }
