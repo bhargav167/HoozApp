@@ -129,4 +129,10 @@ isShowingMenu: boolean = true;
     localStorage.clear();
     location.href='/';
   }
+  url(){
+    return window.location.pathname.replace('/','')
+  }
+  Search(){
+    this.navServices.Toggle();
+  }
 }
