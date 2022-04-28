@@ -6,11 +6,11 @@
       <div class="input-group">
         <form class="form">
           <input type="search" (click)="hide()" autocomplete="off" (keyup.enter)="SearchByEnter()"  #movieSearchInput id="searchTag"
-            class="form-control form-input" placeholder="Search">
+            class="form-control form-input" placeholder="Search" tabindex="-1" aria-activedescendant>
           <div class="searchSuggetion" *ngIf="hidesearchlist">
             <ul>
               <li *ngFor="let item of tag.data" (click)="SearchByClick(item.TagName)">
-                <div>{{item.TagName}}</div>
+                <div tabindex="-1">{{item.TagName}}</div>
               </li>
             </ul>
           </div>
@@ -151,11 +151,11 @@
     </div>
   </div>
 </nav>
-<nav class="footer">
+<nav class="footer {{url()}}">
   <a class="nav-item" [routerLink]="['/']">
     <i class="fa fa-home" aria-hidden="true"></i>
   </a>
-  <a class="nav-item" href="#">
+  <a class="nav-item" (click)="Search()">
     <i class="fa fa-search" aria-hidden="true"></i>
   </a>
   <a class="nav-item add_post" *ngIf="isLogedIn" [routerLink]="['/jobpost']">

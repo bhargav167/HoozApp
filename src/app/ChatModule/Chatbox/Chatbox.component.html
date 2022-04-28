@@ -4,22 +4,16 @@
         <div class="back_arrow_chat">
             <i (click)="backClicked()" aria-hidden="true" class="back fa fa-2x fa fa-angle-left"></i>
         </div>
-        <h2>{{user?.Name}}</h2>
+        <div class="tp_user">
+            <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                <img src="{{user?.ImageUrl}}" alt="avatar">
+            </a>
+            <h2>{{user?.Name}}</h2>
+        </div>
     </div>
     <div class="chat">
         <div class="chat-header clearfix">
-            <div class="row">
-                <div class="col-lg-6">
-                    <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-                        <img src="{{user?.ImageUrl}}" alt="avatar">
-                    </a>
-                    <div class="chat-about">
-                        <h6 class="m-b-0">{{user?.Name}}</h6>
-                        <small>Last seen: 2 hr ago</small>
-                    </div>
-                </div>
-
-            </div>
+                Last seen: 2 hr ago
         </div>
         <div  class="chat-history">
             <ul *ngFor="let item of messages" class="m-b-0">
