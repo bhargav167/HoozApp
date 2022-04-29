@@ -103,7 +103,7 @@
     }
   }
   &:hover {
-    background: #EFF2F5;
+    background: var(--light-gray-color);
     .fa-angle-right {
       opacity: 1;
     }

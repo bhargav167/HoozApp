@@ -25,7 +25,7 @@
         max-width: 100%;
       }
       .add_post {
-        background: #EFF2F5;
+        background: var(--light-gray-color);
         border-radius: 12px;
         height: 310px;
         width: 100%;
@@ -85,7 +85,7 @@
       textarea.form-control,
       .form-control.taginput,
       .location_sec {
-          background: #EFF2F5;
+          background: var(--light-gray-color);
           border-radius: 12px;
           height: 145px;
           border: none;
