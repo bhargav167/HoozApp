@@ -13,12 +13,12 @@
              <div class="front">
                 <div
                   style="background-image: url({{CoverImageUrl}});"
-                  class="front__bkg-photo">
+                  class="front__bkg-photo overlay_bg">
                 </div>
                 <input #file  (change)="FileUploadCover(file.files)" type="file" size="60" >
                <label>
                 <div style="background-image: url({{ImageUrl}});"
-                  class="front__face-photo">
+                  class="front__face-photo overlay_bg overlay_radius">
                   <span *ngIf="this.profileImgUploading"  class="spinner-border text-dark mt-5" role="status"></span>
                 </div>
                 <input #file1 (change)="FileUploadUser(file1.files)" type="file" size="60" >
@@ -67,7 +67,7 @@
         <label for="exampleInputEmail1" class="form-label">Tags &nbsp; </label>
         <div class="buttonInside">
           <input (keyup.enter)="AddTagging()" type="text" formControlName="stringTags" class="form-control taginput " id="exampleInputEmail1" aria-describedby="emailHelp">
-          <button type="button" (click)="AddTagging()" class="tagbutton" id="showPassword">Add</button>
+          <button type="button" (click)="AddTagging()" class="tagbutton btn-hoozOn-2" id="showPassword">Add</button>
         </div>
       </div>
      </div>
@@ -111,7 +111,7 @@
   <footer id="footer" class="d-flex fixed-bottom">
     <div class="container d-flex align-items-center justify-content-center   text-center">
       <button (click)="Reset()"  role="button" class="btn btn-lg btn-reset">Reset</button>
-      <button  type="submit" form="postForm" [disabled]="!userForm.valid || btnLoader" class="btn btn-lg btn-save">
+      <button  type="submit" form="postForm" [disabled]="!userForm.valid || btnLoader" class="btn-hoozOn-2">
           <span *ngIf="this.btnLoader"  class="spinner-border spinner-border-sm" role="status"></span>
           <span *ngIf="this.btnLoader"  class="load-text"> Saving...</span>
           <span *ngIf="!this.btnLoader" class="btn-text">  Save  </span>

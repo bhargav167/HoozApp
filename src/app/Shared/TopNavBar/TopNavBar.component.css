@@ -237,6 +237,8 @@ nav.navbar .container-fluid {
 }
 .logo {
   cursor: pointer;
+  position: relative;
+  top: -8px;
 }
 .add_post {
   width: 48px;
@@ -294,14 +296,15 @@ nav.chatbox.footer {display: none;}
   .hideInSmall {
     display: none;
   }
-  .img-responsive {
-    margin-bottom: 2px;
-  }
   .togs, .search_wrap {
     display: none !important;
   }
   .for-dropdown {
     margin-left: 15px;
+  }
+  .logo_mb {
+    position: relative;
+    top: -9px;
   }
   nav.navbar .container-fluid {
     padding-left: 23px;

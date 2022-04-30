@@ -45,12 +45,14 @@
                 </div>
               </div>
             </div>
-
           </div>
+          <p class="heading">
+            {{item?.Job.Descriptions | slice:0:50}}{{ item?.Job.Descriptions.length > 40 ? '...' : '' }}
+          </p>
           <div (click)="RedirectToJob(item.Job.Id)" class="mt-1">
             <div class=" ">
 
-              <div class="col-md-12 bg-white">
+              <div class="col-md-12 bg-white overlay_bg">
                 <!-- If Job Image Avalable -->
                 <img *ngIf="item?.Job.ImagesUrl!=null" class="img-thumbnail img-responsive img-fluid"
                   src="{{item?.Job.ImagesUrl}}">
@@ -71,9 +73,6 @@
                 </div>
               </div>
             </div>
-            <p class="heading">
-             {{item?.Job.Descriptions | slice:0:50}}{{ item?.Job.Descriptions.length > 40 ? '...' : '' }}
-           </p>
           </div>
         </div>
       </div>

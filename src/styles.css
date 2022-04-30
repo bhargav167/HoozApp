@@ -438,12 +438,26 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
 }
 .btn-hoozOn-2:hover {
   background: var(--green);
+  color: var(--btn-bg-color);
 }
 .mb-20 {margin-bottom: 28px;}
 .form-control:focus {
   box-shadow: none;
   border-color: transparent;
 }
+.overlay_bg {position: relative;}
+.overlay_bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(0 0 0 / 17%);
+  z-index: 1;
+  border-radius: 12px;
+}
+.overlay_radius::before {border-radius: 50%;}
 @media (min-width: 920px) {
   .my_container {
     width: 910px;
