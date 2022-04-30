@@ -251,7 +251,7 @@ nav.navbar .container-fluid {
 }
 .add_post:hover {
   background-color: var(--btn-bg-color);
-  color: var(--btn-text-color);
+  color: var(--btn-text-color) !important;
 }
 .tog_sm {
   display: flex;
