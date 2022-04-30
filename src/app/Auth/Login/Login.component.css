@@ -50,7 +50,7 @@ cursor: pointer;
     display: block;
     border: none;
     outline: none;
-    background: #eff2f5;
+    background: var(--light-gray-color);
     color: black;
     font-size: 1.0rem;
     padding: 10px 15px 10px 10px;

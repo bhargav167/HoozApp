@@ -24,7 +24,7 @@
   display: block;
 }
 .chat-list li:hover {
-  background: #EFF2F5;
+  background: var(--light-gray-color);
 }
 .chat-list li img {
   width: 48px;

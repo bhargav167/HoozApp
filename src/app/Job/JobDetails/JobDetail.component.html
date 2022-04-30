@@ -1,16 +1,16 @@
-<div (click)="hideEvent()">
+<div (click)="hideEvent()" class="main_cnt_wrap">
   <div  class="back_arrow">
     <i  (click)="backClicked()"  class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
     <!-- <h3 class="hc1">Job Detail</h3> -->
   </div>
   <!--  Tab Toggle -->
-  <div *ngIf="loggedUserId==job?.User?.Id" class="container-sm mt-0">
+  <div *ngIf="loggedUserId==job?.User?.Id" class="container-sm mt-0 mb-4">
     <div class="row col-sm-12">
         <div class="d-flex switch_button_wrap">
           <div class="d-flex flex-row justify-content-between">
-            <div   class="switch-button">
-              <input  class="switch-button-checkbox" type="checkbox" />
-              <label  class="switch-button-label" for=""><span class="switch-button-label-span">Post</span>
+            <div class="switch-button">
+              <input class="switch-button-checkbox" type="checkbox" />
+              <label class="switch-button-label" for=""><span class="switch-button-label-span">Post</span>
               </label>
               <label  class="ll" for="">
                 <span>
@@ -26,7 +26,7 @@
         </div>
     </div>
   </div>
-  <div class="my_container mt-5">
+  <div class="my_container">
     <div id="custom-button" class="img_wrap desk_view left_sec">
         <div  *ngIf="job?.ImagesUrl==null">
             <img  src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />

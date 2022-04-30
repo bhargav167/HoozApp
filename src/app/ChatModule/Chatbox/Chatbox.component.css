@@ -7,7 +7,7 @@
   margin-right: auto;
 }
 .chat-app .chat {
-  background: #EFF2F5;
+  background: var(--light-gray-color);
   box-shadow: inset 0px 8px 8px rgba(0, 0, 0, 0.02);
   border-radius: 15px;
 }

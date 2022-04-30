@@ -18,7 +18,7 @@
             display: none;
         }
         &:hover {
-            background: #EFF2F5;
+            background: var(--light-gray-color);
             i.fa {
                 display: block;
             }
