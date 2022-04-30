@@ -91,6 +91,7 @@
       display: flex;
       font-size: var(--font-size-sm);
       margin-bottom: 6px;
+      align-items: center;
       .ResponceBadge {
         margin-left: auto;
         margin-right: 16px;
@@ -114,6 +115,15 @@
     img {
       width: 100%;
       border-radius: 12px;
+    }
+  }
+}
+
+@media (max-width:767px) {
+  .job_list_text {
+    flex-direction: column;
+    .title {
+      margin: 0 0 10px;
     }
   }
 }

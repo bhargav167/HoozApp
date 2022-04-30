@@ -28,6 +28,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: var(--body-font-size);
 }
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance:none;
@@ -278,13 +279,19 @@ input[type="search"]::-webkit-search-cancel-button {
 .switch-button {
   background: var(--light-gray-color);
   border-radius: 12px;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 268px;
   text-align: center;
   color: black;
   position: relative;
   padding-right: 120px;
   height: 48px;
+}
+.switch-button .bg-Responce {
+  position: absolute;
+  top: -14px;
+  right: -10px;
+  z-index: 111;
 }
 /* .switch-button:before {
   content: "Profiles";
@@ -470,6 +477,8 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
   .back_arrow {
     margin-left: 15px;
     margin-top: 15px;
+    width: auto;
+    height: auto;
   }
   .back_arrow .fa-arrow-left {
     font-size: 20px;
