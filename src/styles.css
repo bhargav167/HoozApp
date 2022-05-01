@@ -12,6 +12,8 @@
   --green: #00FFE0;
   --hover-color: #000000;
   --light-gray-color: #eff2f5;
+  --toast-bg-color: #000000;
+  --toast-text-color: #ffffff;
 }
 body {
   font-size: var(--body-font-size);
@@ -458,6 +460,15 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
   border-radius: 12px;
 }
 .overlay_radius::before {border-radius: 50%;}
+.hot-toast-bar-base {
+  background: var(--toast-bg-color) !important;
+  color: var(--toast-text-color) !important;
+  border-radius: 12px !important;
+  min-height: 50px;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  font-weight: 600;
+}
 @media (min-width: 920px) {
   .my_container {
     width: 910px;
