@@ -197,7 +197,7 @@
 .chat_top_sec {display: flex;align-items: center;margin-bottom: 25px;}
 .back_arrow_chat {margin-left: 10px; cursor: pointer;}
 .chat_top_sec h2 {font-size: 22px; flex: 1; text-align: center; margin: 0; font-weight: 600;}
-.tp_user {display: flex; align-items: center; margin: 0 auto;}
+.tp_user {display: flex; align-items: center; margin-left: 20px;}
 .tp_user img {width: 48px; height: 48px; border-radius: 50%;}
 .tp_user a {margin-right: 20px;}
 @media (max-width:767px) {

@@ -11,11 +11,11 @@
           <div class="front">
             <div
               style="background-image: url({{user?.CoverImageUrl}});"
-              class="front__bkg-photo">
+              class="front__bkg-photo overlay_bg">
             </div>
             <div
               style="background-image: url({{user?.UserImage}});"
-              class="front__face-photo">
+              class="front__face-photo overlay_bg overlay_radius">
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@
             <button type="button" *ngIf="userId!=loggedUserId" [routerLink]="['/chatbox']" [queryParams]="{uid: user.Id}" class="btn">Chat</button>
         </div>
         <div class="edit_sec">
-          <button type="button" *ngIf="userId==loggedUserId"  [routerLink]="['/editProfile']" routerLinkActive="router-link-active" class="btn">Edit</button>
+          <button type="button" *ngIf="userId==loggedUserId"  [routerLink]="['/editProfile']" routerLinkActive="router-link-active" class="btn-hoozOn-2">Edit</button>
         </div>
       </div>
   </div>

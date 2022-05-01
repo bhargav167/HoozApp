@@ -18,7 +18,7 @@
   text-align: center;
   font-size: 12px;
   line-height: 1.42857;
-  position: fixed;
+  position: absolute;
   margin-left: -38px;
   background-color: #fff;
   z-index: 999;
@@ -63,16 +63,6 @@ label.form-label {font-weight: 600;margin-bottom: 12px;}
   position: absolute;
   right: 25px;
   top: 20px;
-  border: none;
-  background-color: black;
-  color: white;
-  border-radius: 12px;
-  outline: none;
-  text-align: center;
-  font-weight: bold;
-  padding: 2px;
-  width: 82px;
-  height: 45px;
 }
 .btn-ChatHooz {
   background-color: #00fa9a;
@@ -110,8 +100,7 @@ label.form-label {font-weight: 600;margin-bottom: 12px;}
   height: 192px;
   background:no-repeat;
   background-size: cover;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
+  border-radius: 12px;
   background-position: center;
 }
 .front__face-photo {
@@ -122,7 +111,8 @@ label.form-label {font-weight: 600;margin-bottom: 12px;}
   margin-top: -67px;
   border-radius: 50%;
   background: no-repeat;
-  background-size: 100%;
+  background-size: cover;
+  z-index: 1;
 }
 input[type="file"] {
   display: none;

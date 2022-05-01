@@ -28,10 +28,10 @@
   </div>
   <div class="my_container">
     <div id="custom-button" class="img_wrap desk_view left_sec">
-        <div  *ngIf="job?.ImagesUrl==null">
+        <div  *ngIf="job?.ImagesUrl==null" class="overlay_bg">
             <img  src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
         </div>
-        <div  *ngIf="job?.ImagesUrl!=null">
+        <div  *ngIf="job?.ImagesUrl!=null" class="overlay_bg">
           <img class="img img-responsive img-fluid" [src]="job.ImagesUrl" alt="job image" />
         </div>
     </div>
@@ -109,7 +109,7 @@
               <div  *ngIf="job?.ImagesUrl==null">
                   <img  src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
               </div>
-              <div  *ngIf="job?.ImagesUrl!=null">
+              <div  *ngIf="job?.ImagesUrl!=null" class="overlay_bg">
                 <img class="img img-responsive img-fluid" [src]="job.ImagesUrl" alt="job image" />
               </div>
           </label>
