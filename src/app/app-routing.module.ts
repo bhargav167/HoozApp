@@ -1,3 +1,4 @@
+import { JobChatComponent } from './ChatModule/JobChat/JobChat.component';
 import { ChatboxComponent } from './ChatModule/Chatbox/Chatbox.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
@@ -71,6 +72,11 @@ const routes: Routes = [
   {
     path:'chatbox',
     component:ChatboxComponent,
+    canActivate: [LoginGaurd]
+  },
+  {
+    path:'jobchatbox',
+    component:JobChatComponent,
     canActivate: [LoginGaurd]
   },
   {

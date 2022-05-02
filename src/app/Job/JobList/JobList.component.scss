@@ -1,119 +1,129 @@
 .switch-button:before {
-    content: "Posts";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 136px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    font-weight: normal;
-    pointer-events: none;
+  content: "Posts";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 136px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  font-weight: normal;
+  pointer-events: none;
 }
-.lds-ring { 
-  width: 65px;
-  height: 65px;
+.lds-ring {
+width: 65px;
+height: 65px;
 }
 .lds-ring div {
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  margin-left: 290px;
-  border: 8px solid black;
-  border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: black transparent transparent transparent;
+box-sizing: border-box;
+display: block;
+position: absolute;
+width: 64px;
+height: 64px;
+margin-left: 290px;
+border: 8px solid black;
+border-radius: 50%;
+animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+border-color: black transparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
+animation-delay: -0.45s;
 }
 .lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
+animation-delay: -0.3s;
 }
 .lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
+animation-delay: -0.15s;
 }
 @keyframes lds-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+0% {
+  transform: rotate(0deg);
+}
+100% {
+  transform: rotate(360deg);
+}
 }
 
 .job_list_wrap {
-  max-width: 100%;
-  width: 630px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-left: auto;
-  margin-right: auto;
+max-width: 100%;
+width: 630px;
+padding-left: 15px;
+padding-right: 15px;
+margin-left: auto;
+margin-right: auto;
 }
 .job_list_text {
-  align-items: center;
-  justify-content: center;
-  margin: 35px 0;
+align-items: center;
+justify-content: center;
+margin: 35px 0;
 }
 .job_list_text .title {
-  margin-right: 25px;
+margin-right: 25px;
 }
 .job_list_item {
+display: flex;
+padding: 5px;
+background: rgb(239 242 245 / 50%);
+border-radius: 12px;
+margin-bottom: 26px;
+cursor: pointer;
+.fa-angle-right {
+  font-size: 33px;
+  margin: 3px 10px 0 auto;
+  opacity: 0;
+}
+.right_sec {
+  flex: 1;
   display: flex;
-  padding: 5px;
-  background: rgb(239 242 245 / 50%);
-  border-radius: 12px;
-  margin-bottom: 26px;
-  cursor: pointer;
-  .fa-angle-right {
-    font-size: 33px;
-    margin: 3px 10px 0 auto;
-    opacity: 0;
-  }
-  .right_sec {
-    flex: 1;
+  flex-direction: column;
+  .title {
+    font-weight: 600;
+    margin: 10px 0 0;
     display: flex;
-    flex-direction: column;
-    .title {
-      font-weight: 600;
-      margin: 10px 0 0;
-      display: flex;
-      span {
-        padding-right: 30px;
-      }
+    span {
+      padding-right: 30px;
     }
-    .bt_sec {
-      margin-top: auto;
+  }
+  .bt_sec {
+    margin-top: auto;
+    display: flex;
+    font-size: var(--font-size-sm);
+    margin-bottom: 6px;
+    align-items: center;
+    .ResponceBadge {
+      margin-left: auto;
+      margin-right: 16px;
       display: flex;
-      font-size: var(--font-size-sm);
-      margin-bottom: 6px;
-      .ResponceBadge {
-        margin-left: auto;
-        margin-right: 16px;
-        display: flex;
-        align-items: center;
-        .bg-Responce {
-          margin-left: 5px;
-        }
+      align-items: center;
+      .bg-Responce {
+        margin-left: 5px;
       }
     }
   }
-  &:hover {
-    background: #EFF2F5;
-    .fa-angle-right {
-      opacity: 1;
-    }
+}
+&:hover {
+  background: var(--light-gray-color);
+  .fa-angle-right {
+    opacity: 1;
   }
-  .img_wrap {
-    width: 135px;
-    margin-right: 20px;
-    img {
-      width: 100%;
-      border-radius: 12px;
-    }
+}
+.img_wrap {
+  width: 135px;
+  margin-right: 20px;
+  img {
+    width: 100%;
+    border-radius: 12px;
   }
+}
+}
+
+@media (max-width:767px) {
+.job_list_text {
+  flex-direction: column;
+  .title {
+    margin: 0 0 10px;
+  }
+}
 }

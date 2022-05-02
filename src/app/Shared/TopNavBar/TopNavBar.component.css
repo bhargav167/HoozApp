@@ -25,7 +25,7 @@
   cursor: pointer;
 }
 .searchSuggetion ul li:hover {
-  background: #EFF2F5;
+  background: var(--light-gray-color);
 }
 
 /* //Toggle css */
@@ -177,7 +177,7 @@ nav.navbar .container-fluid {
 .form-input {
   width: 454px;
   height: 48px;
-  background: #EFF2F5;
+  background: var(--light-gray-color);
   border: none;
   border-radius: 12px;
   color: #000;
@@ -207,14 +207,23 @@ nav.navbar .container-fluid {
    margin-left: 15px;
 }
 .for-dropdown {
-  margin-left: 24px;
+  margin-left: 14px;
   cursor: pointer;
+  width: 65px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.for-dropdown:hover {
+  background-color: var(--light-gray-color);
 }
 .profileimg {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: #EFF2F5;
+  background-color: var(--light-gray-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -242,7 +251,7 @@ nav.navbar .container-fluid {
 }
 .add_post:hover {
   background-color: var(--btn-bg-color);
-  color: var(--btn-text-color);
+  color: var(--btn-text-color) !important;
 }
 .tog_sm {
   display: flex;
@@ -272,6 +281,7 @@ nav.footer .nav-item {
   text-decoration: none;
   font-size: 28px;
 }
+nav.chatbox.footer {display: none;}
 @media (max-width:1100px) {
   .form-input {
     width: 350px;

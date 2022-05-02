@@ -24,6 +24,7 @@ loggedUserId:number=0;
 loggeduser: SocialAuthentication;
 userJob:UserJobs;
 isJobAdded:boolean=false;
+IsOnResponces:boolean=false;
 totalResponces:number=0;
 jobResponces:JobResponces[];
 sharedLink: string;
@@ -35,13 +36,13 @@ sharedLink: string;
     private toast: HotToastService,
     private _sharedServices:SharedService,
     private _navigaterouter:Router,
-    private _router:ActivatedRoute,private _location: Location) {
+   private _location: Location) {
       this._sharedServices.checkInterNetConnection();
-      this.loadUserData();
+
       this.activatedRoute.queryParams.subscribe(params => {
        this.jobId = params['target'];
         this.LoadJobDetailsById(this.jobId);
-      this.loadResponcesData(this.jobId);
+        this.loadUserData();
       });
 
   }
@@ -50,7 +51,7 @@ sharedLink: string;
     if (localStorage.getItem('user')) {
       this.loggeduser = JSON.parse(localStorage.getItem('user'));
       this.loggedUserId = this.loggeduser.Id;
-
+      this.loadResponcesData(this.loggedUserId);
     }
   }
 
@@ -68,8 +69,8 @@ sharedLink: string;
     })
   }
 
-  loadResponcesData(jobId:number){
-    this._jobServices.GetResponceCount(jobId).subscribe((data:number)=>{
+  loadResponcesData(userId:number){
+    this._jobServices.GetResponceCount(this.jobId,userId).subscribe((data:number)=>{
       this.totalResponces=data;
     })
   }
@@ -172,6 +173,9 @@ sharedLink: string;
   Edit(jobId){
   sessionStorage.setItem("EditJobId",jobId);
   this._navigaterouter.navigate(['/jobEdit'])
+  }
+  ResponceTab(){
+    this.IsOnResponces=!this.IsOnResponces;
   }
   Report(){
     swal.fire({

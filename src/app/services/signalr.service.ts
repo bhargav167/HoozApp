@@ -7,6 +7,7 @@ import { tap } from 'rxjs/operators';
 import { MessagePackHubProtocol } from '@microsoft/signalr-protocol-msgpack'
 import { chatMesage } from '../Model/chatMesage';
 import { MessageForCreationDto } from '../Model/Message/MessageForCreationDto';
+import { JobMessages } from '../Model/Message/JobMessages';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,8 +24,15 @@ export class SignalrService {
     this.addListeners();
   }
 
+  // Message user to User
   public sendMessageToApi(userid:number, message:MessageForCreationDto) {
     return this.http.post(environment.api_url+'Message/Send/'+userid, this.buildChatMessage(message))
+      .pipe(tap(_ => console.log(this.messages)));
+  }
+
+  // Message to Job
+  public sendMessageToJobApi(jobId:number,recipientId:number,senderId:number, message:JobMessages) {
+    return this.http.post(environment.api_url+'Message/JobChat/'+jobId+'/'+recipientId+'/'+senderId, this.buildJobChatMessage(message))
       .pipe(tap(_ => console.log(this.messages)));
   }
 
@@ -51,6 +59,15 @@ export class SignalrService {
       Content: message.Content,
       RecipientContent:null,
       SenderContent:message.Content
+    };
+  }
+
+  private buildJobChatMessage(message: JobMessages): JobMessages {
+    return {
+      JobId:message.JobId,
+      SenderId: message.SenderId,
+      RecipientId: message.RecipientId,
+      Content: message.Content,
     };
   }
 
