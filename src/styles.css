@@ -11,6 +11,9 @@
   --btn-text-color: #fff;
   --green: #00FFE0;
   --hover-color: #000000;
+  --light-gray-color: #eff2f5;
+  --toast-bg-color: #000000;
+  --toast-text-color: #ffffff;
 }
 body {
   font-size: var(--body-font-size);
@@ -27,6 +30,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: var(--body-font-size);
 }
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance:none;
@@ -63,7 +67,7 @@ input[type="search"]::-webkit-search-cancel-button {
   margin: 0;
   width: 142px;
   height: 48px;
-  background: #EFF2F5;
+  background: var(--light-gray-color);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -84,24 +88,36 @@ input[type="search"]::-webkit-search-cancel-button {
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 25px;
+    top: 48px;
     right: 0;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 2;
     border-radius: 0.8rem;
     padding: 8px;
 }
 .JobdetailDroupdown {
   top: -22px;
 }
+.share_sec span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+.share_sec:hover span {
+  background-color: var(--light-gray-color);
+}
 .dropdown-content a {
     color: black;
-    padding: 12px 16px;
+    padding: 8px 16px;
     text-decoration: none;
     display: block;
     border-radius: 0.5rem;
+    font-size: var(--font-font-normal);
 }
 .dropdown-content a:hover {background-color: rgb(239 239 239);}
 .dropdown:hover .dropdown-content {
@@ -237,13 +253,22 @@ input[type="search"]::-webkit-search-cancel-button {
     border-radius: 16px;
  }
  .back_arrow {
-    margin-left: 30px;
-    position: absolute;
-    left: 0;
-    cursor: pointer;
+  margin-left: 30px;
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
  }
- .back_arrow i:hover {
-  color: var(--green);
+ .back_arrow i {
+   font-size: 35px;
+ }
+ .back_arrow:hover {
+  background-color: var(--light-gray-color);
  }
  .c-details h6 {
     font-size: 20px;
@@ -254,15 +279,21 @@ input[type="search"]::-webkit-search-cancel-button {
   font-size: 15px;
 }
 .switch-button {
-  background: #eff2f5;
+  background: var(--light-gray-color);
   border-radius: 12px;
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 268px;
   text-align: center;
   color: black;
   position: relative;
   padding-right: 120px;
   height: 48px;
+}
+.switch-button .bg-Responce {
+  position: absolute;
+  top: -14px;
+  right: -10px;
+  z-index: 111;
 }
 /* .switch-button:before {
   content: "Profiles";
@@ -409,11 +440,34 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
 }
 .btn-hoozOn-2:hover {
   background: var(--green);
+  color: var(--btn-bg-color);
 }
 .mb-20 {margin-bottom: 28px;}
 .form-control:focus {
   box-shadow: none;
   border-color: transparent;
+}
+.overlay_bg {position: relative;}
+.overlay_bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(0 0 0 / 17%);
+  z-index: 1;
+  border-radius: 12px;
+}
+.overlay_radius::before {border-radius: 50%;}
+.hot-toast-bar-base {
+  background: var(--toast-bg-color) !important;
+  color: var(--toast-text-color) !important;
+  border-radius: 12px !important;
+  min-height: 50px;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  font-weight: 600;
 }
 @media (min-width: 920px) {
   .my_container {
@@ -448,6 +502,8 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
   .back_arrow {
     margin-left: 15px;
     margin-top: 15px;
+    width: auto;
+    height: auto;
   }
   .back_arrow .fa-arrow-left {
     font-size: 20px;

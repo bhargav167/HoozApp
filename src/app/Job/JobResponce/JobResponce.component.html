@@ -8,7 +8,9 @@
       </div> -->
       <ul *ngFor="let item of userlist"  class="list-unstyled chat-list">
 
-          <li *ngIf="item.Sender.Id!==userId" [routerLink]="['/chatbox']" [queryParams]="{uid: item.Sender.Id}" class="clearfix">
+          <li *ngIf="item.Sender.Id!==userId"
+          [routerLink]="['/jobchatbox']" [queryParams]="{jobId: jobId,senderId:item.RecipientId,recipientId:item.SenderId}"
+          class="clearfix">
               <img src="{{item.Sender.ImageUrl}}" alt="avatar">
               <div class="about">
                   <div class="name">{{item.Sender.Name}}</div>

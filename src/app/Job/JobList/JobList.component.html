@@ -45,7 +45,7 @@
                 <div *ngIf="item.ImagesUrl==null">
                   <img src="../../../assets/thumbImg.png" alt="hooz image" />
                 </div>
-                <div *ngIf="item.ImagesUrl!=null">
+                <div *ngIf="item.ImagesUrl!=null" class="overlay_bg">
                   <img [src]="item.JobDetailImage" alt="hooz image" />
                 </div>
             </div>

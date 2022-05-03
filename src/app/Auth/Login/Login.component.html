@@ -1,12 +1,27 @@
 
-<div class="wrapper">
-    <div class="logo"> <img src="./../../../assets/Logo/LoginHooz.png" alt=""> </div>
-    <div class="text-center mt-2 name"> Login to your account with </div>
-    <div class="text-center mt-2 ">
-        <img class="img img-responsive socialBtn"  (click)="signInWithGoogle()"  src="./../../../assets/Logo/google.png" alt="">
-        <img class="img img-responsive socialBtn" (click)="signInWithFacebook()" src="./../../../assets/Logo/FB.png" alt="">
+<div class="login_wrapper">
+    <div class="lf_left_sec">
+        <div class="logo"> <img src="./../../../assets/Logo/hoozon_logo.svg" alt="" class="img-responsive"> </div>
     </div>
-    <div class="text-center mt-1" style="color: black; font-weight: bold; font-family: initial;"> Or</div>
+    <div class="lg_right_sec">
+        <h2> Login </h2>
+        <div class="social_login">
+            <div class="sc_lg" (click)="signInWithGoogle()" >
+                <img class="img img-responsive socialBtn" src="./../../../assets/Logo/google1.png" alt="">
+            </div>
+            <div class="sc_lg" (click)="signInWithFacebook()" >
+                <img class="img img-responsive socialBtn" src="./../../../assets/Logo/FB1.png" alt="">
+            </div>
+        </div>
+        <div class="login_des">
+            By continuing, you agree to HoozOnline Terms of Services and acknowledge that you've read our Privacy policy
+        </div>
+        <div class="login_bt">
+            <div class="text-1">hoozOnline</div>
+            <div class="text-2">BETA</div>
+        </div>
+    </div>
+    <!-- <div class="text-center mt-1" style="color: black; font-weight: bold; font-family: initial;"> Or</div>
     <form class="p-3 mt-3">
       <div class="form-field d-flex align-items-center"> <input type="text" name="userName" id="userName"
           placeholder="Email address"> </div>
@@ -18,7 +33,5 @@
         <div class="text-left fs-6 mt-2">
             <p style="font-size: 15px;">Already a member? <button type="button" class="btn-hoozGreen">Login</button> </p>
         </div>
-        </form>
-
-
+    </form> -->
 </div>

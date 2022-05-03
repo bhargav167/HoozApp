@@ -1,112 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif
-}
-
-body {
-    background: #ecf0f3
-}
-.socialBtn{
-width: 80px;
-padding: 8px;
-cursor: pointer;
-}
-.wrapper {
-    max-width: 350px;
-    min-height: 500px;
-    margin: 50px auto;
-    padding: 40px 30px 30px 30px;
-    background-color: #fff;
-    border-radius: 15px;
-}
-
-.logo {
-    width: 80px;
-}
-
-.logo img {
-    width: 300px;
-    height:100px;
-    object-fit: cover;
-
-}
-
-.wrapper .name {
-    font-weight: 300;
-    font-size: 1.0rem;
-    letter-spacing:0.5px;
-    font-weight: normal;
-    font-family: inherit;
-    padding-left: 10px;
-    color: black
-}
-
-.wrapper .form-field input {
+.login_wrapper {
+    max-width: 810px;
     width: 100%;
-    display: block;
-    border: none;
-    outline: none;
-    background: #eff2f5;
-    color: black;
-    font-size: 1.0rem;
-    padding: 10px 15px 10px 10px;
-    height: 43px;
-    border-radius: 7px;
+    padding: 0 15px;
+    display: flex;
+    margin: 0 auto;
 }
-::placeholder {
-    color: black;
-    opacity: 1; /* Firefox */
-  }
-.wrapper .form-field {
-    padding-left: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-
+.lf_left_sec {
+	margin-right: 30px;
 }
-
-
-.wrapper .btn {
-    box-shadow: none;
-    width: 100%;
-    height: 40px;
-    background-color: black;
-    color: #fff;
-    border-radius: 8px;
+.lg_right_sec {
+	padding-top: 100px;
 }
-
-.wrapper .btn:hover {
-    box-shadow: none;
-    width: 100%;
-    height: 40px;
-    background-color: var(--hover-color);
-    color: #fff;
-    border-radius: 8px;
+.lg_right_sec h2 {
+	font-weight: 600;
+	margin-bottom: 20px;
+    font-size: 32px;
 }
-
-.wrapper .condition {
-    text-decoration: none;
-    font-size: 0.8rem;
-    color: black;
+.login_des {
+	font-size: 12px;
+	font-weight: 300;
+	margin-bottom: 60px;
 }
-
-.wrapper a:hover {
-    color: #039BE5
+.login_bt .text-1 {
+	font-weight: 300;
+	margin-bottom: 3px;
 }
-.btn-hoozGreen {
-
-    background-color: white;
-    border-radius: 5px;
-    color: black;
-    height: 35px;
-    width: 80px;
-  }
-@media(max-width: 380px) {
-    .wrapper {
-        margin: 30px 20px;
-        padding: 40px 15px 15px 15px
+.login_bt .text-2 {
+	font-weight: 600;
+}
+.social_login {
+    display: flex;
+    margin-bottom: 35px;
+}
+.sc_lg {
+    background: var(--light-gray-color);
+    height: 72px;
+    width: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.sc_lg:hover {
+    background-color: #eee;
+}
+@media (max-width:992px) {
+    .logo img.img-responsive {
+        max-width: 100%;
+    }
+}
+@media (max-width:767px) {
+    .login_wrapper {
+        display: block;
+    }
+    .lf_left_sec {
+        display: none;
+    }
+    .lg_right_sec {
+        text-align: center;
+    }
+    .social_login {
+        justify-content: center;
+    }
+    .social_login .sc_lg:nth-child(2) {
+        margin: 0;
+    }
+    .lg_right_sec h2 {
+        margin-bottom: 27px;
+    }
+    .login_des {
+        line-height: 1.5;
+        max-width: 220px;
+        margin: 0 auto 55px;
+    }
+    .sc_lg {
+        width: 63px;
+        height: 63px;
+        border-radius: 50px;
     }
 }

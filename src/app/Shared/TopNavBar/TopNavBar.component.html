@@ -1,7 +1,18 @@
 <nav class="mb-5 navbar sticky-top navbar-light bg-light1 mb-5">
   <div class="container-fluid">
-    <img (click)="LogoClick()" class="img-responsive logo" src="../../../assets/Logo/hoozon.svg" />
-    <img (click)="LogoClick()" class="img-responsive logo_mb" src="../../../assets/Logo/hoozon_mb.png" />
+    <div class="logo_location">
+      <img (click)="LogoClick()" class="img-responsive logo" src="../../../assets/Logo/hoozon.svg" />
+      <img (click)="LogoClick()" class="img-responsive logo_mb" src="../../../assets/Logo/hoozon_mb.png" />
+      <!----------Location----------->
+      <div class="location">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="loc_des">
+          <div class="title">Noida <i class="fas fa-caret-down"></i></div>
+          <span>Sector 1, Bisrakh, Greater Noida, U.P.</span>
+        </div>
+      </div>
+      <!----------Location end----------->
+    </div>
     <div class="d-flex justify-content-between search_wrap">
       <div class="input-group">
         <form class="form">

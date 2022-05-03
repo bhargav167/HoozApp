@@ -18,7 +18,7 @@
           <ul *ngFor="let item of jobMessages" class="m-b-0">
               <li *ngIf="item.SenderContent==null" class="clearfix">
                   <div class="message-data">
-                      <img src="{{user?.ImageUrl}}" alt="avatar">
+                      <img src="{{item?.RecipientPhotoUrl}}" alt="avatar">
                       <div class="message other-message"> {{item.Content}}</div>
                   </div>
                   <div class="message-data-time" timeago [date]="item.MessageSent"></div>

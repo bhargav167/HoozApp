@@ -1,9 +1,6 @@
-import { MessageForCreationDto } from './../../Model/Message/MessageForCreationDto';
 import { SocialAuthentication } from './../../Model/User/SocialAuthentication';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProfileService } from '../../services/Auth/Profile.service';
-import { UserChatService } from '../../services/Chat/User/UserChat.service';
 import { SignalrService } from '../../services/signalr.service';
 import {Location} from '@angular/common';
 import { TimeagoIntl } from 'ngx-timeago';
@@ -38,7 +35,6 @@ export class JobChatComponent implements OnInit {
     intl.strings = englishStrings;
     intl.changes.next();
     let user = JSON.parse(localStorage.getItem("user"));
-    this.recipientId = user.Id;
     this.route.queryParams.subscribe((params) => {
       this.jobId = params["jobId"];
       this.senderId = params["senderId"];
@@ -46,6 +42,7 @@ export class JobChatComponent implements OnInit {
     });
     this.LoadJobDetailsById();
     this.getJobChat();
+    this.UpdateSeenResponces();
   }
   ngOnInit() {
    // this._signalR.connect();
@@ -53,28 +50,27 @@ export class JobChatComponent implements OnInit {
   getJobChat(){
     this._jobchatServices.getJobchatList(this.jobId,this.senderId,this.recipientId).subscribe((data:any[])=>{
       this.jobMessages=data;
-      console.log(this.jobMessages);
+
     })
   }
   LoadJobDetailsById(){
     this._jobServices.GetJobById(this.jobId).subscribe((data:JobModel)=>{
       this.job=data[0];
-
     })
   }
 
   SendMsg() {
     this.isSending=true;
-
     let message = (document.getElementById("msg") as HTMLInputElement).value;
     let messageObj = {
       JobId:this.jobId,
       SenderId: this.senderId,
+      SenderContent:message,
       RecipientId: this.recipientId,
       Content: message,
       MessageSent:new Date()
     };
-    this.messages.push(messageObj);
+    this.jobMessages.push(messageObj);
     (document.getElementById("msg") as HTMLInputElement).value="";
     this._signalR.sendMessageToJobApi(this.jobId,this.recipientId,this.senderId,messageObj).subscribe((data:JobMessages)=>{
       this.isSending=false;
@@ -83,6 +79,10 @@ export class JobChatComponent implements OnInit {
       this.isSending=false;
 
     })
+  }
+
+  UpdateSeenResponces(){
+    this._jobchatServices.updateJobReponcesCount(this.jobId,this.recipientId,this.senderId).subscribe(()=>{});
   }
    //Back loacation History
    backClicked() {

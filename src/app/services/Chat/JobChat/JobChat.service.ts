@@ -12,4 +12,7 @@ export class JobChatService {
   getJobchatList(jobId:number,senderId:number,recipientId:number){
    return this._http.get(environment.api_url+'Message/GetSingleUserChatByJob/'+jobId+'/'+senderId+'/'+recipientId);
   }
+  updateJobReponcesCount(jobId:number,senderId:number,recipentId:number){
+    return this._http.post(environment.api_url+'Message/JobUserMessageResponceUpdate/'+jobId+'/'+senderId+'/'+recipentId,{});
+  }
 }

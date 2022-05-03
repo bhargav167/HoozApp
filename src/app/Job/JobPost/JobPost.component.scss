@@ -25,7 +25,7 @@
         max-width: 100%;
       }
       .add_post {
-        background: #EFF2F5;
+        background: var(--light-gray-color);
         border-radius: 12px;
         height: 310px;
         width: 100%;
@@ -38,6 +38,13 @@
         font-weight: 700;
         position: relative;
         padding: 13px;
+        .ap_img_wrp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 5px 0;
+        }
         &::before {
           content: "";
           left: 13px;
@@ -59,7 +66,8 @@
           border-radius: 50%;
         }
         img {
-          width: 100%;
+          max-width: 100%;
+          max-height: 100%;
         }
         input#real-file {opacity: 0;width: 0;}
         @media (max-width:767px) {
@@ -85,7 +93,7 @@
       textarea.form-control,
       .form-control.taginput,
       .location_sec {
-          background: #EFF2F5;
+          background: var(--light-gray-color);
           border-radius: 12px;
           height: 145px;
           border: none;
