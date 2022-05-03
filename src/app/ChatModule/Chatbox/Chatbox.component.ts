@@ -1,6 +1,6 @@
 import { MessageForCreationDto } from './../../Model/Message/MessageForCreationDto';
 import { SocialAuthentication } from './../../Model/User/SocialAuthentication';
-import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../services/Auth/Profile.service';
 import { UserChatService } from '../../services/Chat/User/UserChat.service';
@@ -11,9 +11,8 @@ import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
 
 @Component({
   selector: "app-Chatbox",
-  encapsulation: ViewEncapsulation.None,
   templateUrl: "./Chatbox.component.html",
-  styleUrls: ["./Chatbox.component.scss"],
+  styleUrls: ["./Chatbox.component.css"],
 })
 export class ChatboxComponent implements OnInit {
   senderId: number;
