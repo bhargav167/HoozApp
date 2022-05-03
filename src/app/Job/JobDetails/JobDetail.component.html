@@ -8,16 +8,16 @@
     <div class="row col-sm-12">
         <div class="d-flex switch_button_wrap">
           <div class="d-flex flex-row justify-content-between">
-            <div class="switch-button">
-              <input class="switch-button-checkbox" type="checkbox" />
-              <label class="switch-button-label" for=""><span class="switch-button-label-span">Post</span>
+            <div   class="switch-button">
+              <input  (change)="ResponceTab()" class="switch-button-checkbox" type="checkbox" />
+              <label  class="switch-button-label" for=""><span class="switch-button-label-span">Post</span>
               </label>
               <label  class="ll" for="">
                 <span>
                   Responce
-                  <!-- <span  class="badge rounded-pill bg-Responce">
+                 <span  class="badge rounded-pill bg-Responce">
                     {{totalResponces}}
-                  </span> -->
+                  </span>
               </span>
               </label>
 
@@ -26,13 +26,14 @@
         </div>
     </div>
   </div>
-  <div class="my_container">
+
+  <div *ngIf="IsOnResponces==false" class="my_container mt-5">
     <div id="custom-button" class="img_wrap desk_view left_sec">
         <div  *ngIf="job?.ImagesUrl==null" class="overlay_bg">
             <img  src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
         </div>
-        <div  *ngIf="job?.ImagesUrl!=null" class="overlay_bg">
-          <img class="img img-responsive img-fluid" [src]="job.ImagesUrl" alt="job image" />
+        <div  *ngIf="job?.ImagesUrl!=null">
+          <img class="img img-responsive img-fluid" [src]="job?.ImagesUrl" alt="job image" />
         </div>
     </div>
     <!-- User Sections -->
@@ -71,9 +72,12 @@
               <div class="job_opt">
                 <div class="select">
                   <div class="select__field">
-                    {{job.JobStatus}}
+                    {{job?.JobStatus}}
                   </div>
                 </div>
+              </div>
+              <div *ngIf="loggedUserId!=job?.User?.Id"  class="chat_sec">
+                <button  [routerLink]="['/jobchatbox']" [queryParams]="{jobId: job.Id,senderId:loggedUserId,recipientId:job.User.Id}" type="button" class="btn">Chat</button>
               </div>
             </div>
 
@@ -86,16 +90,14 @@
                  <div class="select">
                   <i class="fa fa-caret-down"></i>
                      <select (change)="UpdateStatus($event)" name="nameValueSelect" class="select__field" required>
-                         <option [selected]="job.JobStatus==='OPEN'" value="OPEN">Open</option>
-                         <option [selected]="job.JobStatus==='ON HOLD'" value="ON HOLD">On hold</option>
-                         <option [selected]="job.JobStatus==='CLOSED'" value="CLOSED">Closed</option>
-                         <option [selected]="job.JobStatus==='DELETED'" value="DELETED">Delete</option>
+                         <option [selected]="job?.JobStatus==='OPEN'" value="OPEN">Open</option>
+                         <option [selected]="job?.JobStatus==='ON HOLD'" value="ON HOLD">On hold</option>
+                         <option [selected]="job?.JobStatus==='CLOSED'" value="CLOSED">Closed</option>
+                         <option [selected]="job?.JobStatus==='DELETED'" value="DELETED">Delete</option>
                      </select>
                    </div>
               </div>
-              <div *ngIf="loggedUserId!=job?.User?.Id"  class="chat_sec">
-                  <button type="button" routerLink="/chat" class="btn">Chat</button>
-              </div>
+
               <div *ngIf="loggedUserId==job?.User?.Id" class="edit_sec">
                   <button (click)="Edit(job.Id)" type="button" class="btn">Edit</button>
               </div>
@@ -136,6 +138,12 @@
 
     </div>
   </div>
+
+  <div *ngIf="IsOnResponces==true" class=" mt-5">
+
+    <app-JobResponce></app-JobResponce>
+  </div>
+
 </div>
 
 <!-- SHARE MODAL -->

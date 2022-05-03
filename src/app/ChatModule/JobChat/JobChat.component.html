@@ -4,21 +4,21 @@
           <i (click)="backClicked()" aria-hidden="true" class="back fa fa-2x fa fa-angle-left"></i>
       </div>
       <div class="tp_user">
-          <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
-              <img src="{{user?.ImageUrl}}" alt="avatar">
+          <a [routerLink]="['/jobDetails']" [queryParams]="{target: job?.Id}" data-toggle="modal" data-target="#view_info">
+              <img src="{{job?.ImagesUrl}}" alt="hooz">
           </a>
-          <h2>{{user?.Name}}</h2>
+          <h2>You are messaging to Job Id {{job?.Id}}</h2>
       </div>
   </div>
   <div class="chat">
       <div class="chat-header clearfix">
-              Last seen: 2 hr ago
+
       </div>
       <div  class="chat-history">
-          <ul *ngFor="let item of messages" class="m-b-0">
+          <ul *ngFor="let item of jobMessages" class="m-b-0">
               <li *ngIf="item.SenderContent==null" class="clearfix">
                   <div class="message-data">
-                      <img src="{{user?.ImageUrl}}" alt="avatar">
+                      <img src="{{item?.RecipientPhotoUrl}}" alt="avatar">
                       <div class="message other-message"> {{item.Content}}</div>
                   </div>
                   <div class="message-data-time" timeago [date]="item.MessageSent"></div>

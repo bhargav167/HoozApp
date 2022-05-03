@@ -32,8 +32,8 @@ export class JobPostService {
       return this._http.get(this.baseURL+'Job/WebSingleJobByJobId/'+id);
     }
 
-    GetResponceCount(jobId:number){
-      return  this._http.get(this.baseURL + 'WebPost/ResponceCount/'+jobId);
+    GetResponceCount(jobId:number,senderId:number){
+      return  this._http.get(this.baseURL + 'WebPost/ResponceCount/'+jobId + '/'+senderId);
     }
 
     GetAllWithAddedJob(userId:number, page?, itemsPerPage?,Jobstatus?): Observable<PaginatedResult<JobResponces>>{
