@@ -48,7 +48,7 @@ export class JobEditComponent implements OnInit {
     this.jobPostForm = this.fb.group({
       Descriptions: ['',Validators.required],
       ImagesUrl:[''],
-      Address:['Sector 112, Noida Extension, Noida'],
+      Address:[''],
       Latitude:[''],
       Longitude:[''],
       IsAnonymous:[false],
@@ -63,6 +63,7 @@ export class JobEditComponent implements OnInit {
        this.jobPostForm.controls['IsAnonymous'].setValue(this.jobModel.IsAnonymous);
        this.jobPostForm.controls['IsPublic'].setValue(this.jobModel.IsPublic);
        this.jobPostForm.controls['ImagesUrl'].setValue(this.jobModel.ImagesUrl);
+       this.jobPostForm.controls['Address'].setValue(this.jobModel.Address);
        this.ischeckedAnonymously = this.jobModel.IsAnonymous;
        this.ischeckedPublic = this.jobModel.IsPublic;
        this.imgURL = this.jobModel.JobDetailImage;
