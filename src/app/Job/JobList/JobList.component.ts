@@ -110,9 +110,7 @@ export class JobListComponent implements OnInit {
         text: `Confirm to add Job Post Id: ${jobId}`,
         showDenyButton: true,
         confirmButtonText: 'Yes',
-        confirmButtonColor:'#00fa9a',
-        denyButtonText: `No`,
-        denyButtonColor:'black'
+        denyButtonText: `No`
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
@@ -139,13 +137,11 @@ export class JobListComponent implements OnInit {
     //Report Job
     Report(jobId){
       swal.fire({
-        title: `Report`,
+        title: `Report Post`,
         input: 'textarea',
         showDenyButton: true,
         confirmButtonText: 'Report',
-        confirmButtonColor:'#00fa9a',
-        denyButtonText: `Cancel`,
-        denyButtonColor:'black'
+        denyButtonText: `Cancel`
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
