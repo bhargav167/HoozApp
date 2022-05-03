@@ -194,7 +194,6 @@ export class EditComponent implements OnInit {
       text: `Are you sure to reset`,
       showDenyButton: true,
       confirmButtonText: 'Yes',
-      confirmButtonColor:'#00fa9a',
       denyButtonText: `No`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
@@ -213,7 +212,6 @@ export class EditComponent implements OnInit {
       text: `Are you sure to Delete you photo`,
       showDenyButton: true,
       confirmButtonText: 'Yes',
-      confirmButtonColor:'#00fa9a',
       denyButtonText: `No`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
