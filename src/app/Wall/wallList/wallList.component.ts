@@ -215,13 +215,11 @@ export class WallListComponent implements OnInit {
   Report(jobId) {
     swal
       .fire({
-        title: `Report`,
+        title: `Report Post`,
         input: "textarea",
         showDenyButton: true,
         confirmButtonText: "Report",
-        confirmButtonColor: "#00fa9a",
         denyButtonText: `Cancel`,
-        denyButtonColor: "black",
       })
       .then((result) => {
         /* Read more about isConfirmed, isDenied below */

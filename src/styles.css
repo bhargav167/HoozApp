@@ -98,7 +98,7 @@ input[type="search"]::-webkit-search-cancel-button {
     padding: 8px;
 }
 .JobdetailDroupdown {
-  top: -22px;
+  top: 25px;
 }
 .share_sec span {
   display: flex;
@@ -419,8 +419,11 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
 .user_name_wrap h5 {font-size: var(--font-size-xl) ;font-weight: 700;}
 .user_name {margin-bottom: 18px;}
 .btn-hoozOn,
-.btn-hoozOn-2 {
+.btn-hoozOn-2,
+.swal2-actions .swal2-styled.swal2-confirm,
+.swal2-actions .swal2-styled.swal2-deny {
   background: var(--green);
+  color: var(--btn-color);
   border: none;
   box-sizing: border-box;
   font-size: var(--body-font-size);
@@ -434,6 +437,9 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
   background: var(--btn-bg-color);
   color: var(--btn-text-color);
 }
+.swal2-actions .swal2-styled.swal2-deny {
+  background: var(--light-gray-color);
+}
 .btn-hoozOn:hover {
   background: var(--btn-color);
   color: var(--btn-text-color);
@@ -441,6 +447,9 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
 .btn-hoozOn-2:hover {
   background: var(--green);
   color: var(--btn-bg-color);
+}
+.swal2-actions .swal2-styled:focus {
+  box-shadow: none !important;
 }
 .mb-20 {margin-bottom: 28px;}
 .form-control:focus {
@@ -455,7 +464,8 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgb(0 0 0 / 17%);
+  /* background: rgb(0 0 0 / 17%); */
+  background: rgb(96 125 139 / 4%);
   z-index: 1;
   border-radius: 12px;
 }
@@ -468,6 +478,41 @@ h5.title {font-weight: 700;text-transform: uppercase;margin-bottom: 15px;}
   padding-left: 20px !important;
   padding-right: 20px !important;
   font-weight: 600;
+}
+.swal2-container .swal2-popup {
+  box-shadow: 0px 0px 12px rgb(0 0 0 / 25%);
+  border-radius: 20px;
+  padding: 20px;
+}
+.swal2-container .swal2-actions {
+  flex-direction: row-reverse;
+  justify-content: right;
+}
+.swal2-container .swal2-html-container {
+  font-size: var(--body-font-size);
+  color: var(--body-font-color);
+}
+.modal-dialog .modal-content {border-radius: 20px;padding: 10px;}
+.modal-dialog .modal-title,
+.swal2-container .swal2-title {font-size: var(--font-size-xl);font-weight: 600;color: var(--body-font-color);}
+.modal-dialog .modal-header {justify-content: center;border: none;}
+.modal-dialog .modal-header .btn-close {position: absolute;right: 22px;top: 22px;}
+.swal2-file:focus, .swal2-input:focus, .swal2-textarea:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+textarea.swal2-textarea {
+  margin: 0;
+  border-radius: 8px;
+  border: none;
+  background: var(--light-gray-color);
+  height: 92px;
+  margin: 0 0.3125em;
+  box-shadow: none;
+}
+.swal2-container .swal2-title {
+  margin-bottom: 18px;
+  padding: 0;
 }
 @media (min-width: 920px) {
   .my_container {

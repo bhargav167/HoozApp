@@ -80,7 +80,6 @@ sharedLink: string;
       text: `Are you sure to update status to ${$event.target.value}`,
       showDenyButton: true,
       confirmButtonText: 'Yes',
-      confirmButtonColor:'#00fa9a',
       denyButtonText: `No`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
@@ -175,13 +174,11 @@ sharedLink: string;
   }
   Report(){
     swal.fire({
-      title: `Report`,
+      title: `Report Post`,
       input: 'textarea',
       showDenyButton: true,
       confirmButtonText: 'Report',
-      confirmButtonColor:'#00fa9a',
-      denyButtonText: `Cancel`,
-      denyButtonColor:'black'
+      denyButtonText: `Cancel`
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
