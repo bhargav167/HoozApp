@@ -12,6 +12,8 @@ import { JobResponces } from '../../Model/Job/JobResponces';
 import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
 import { ClipboardService } from 'ngx-clipboard'
 import { HotToastService } from '@ngneat/hot-toast';
+import { TimeagoIntl } from 'ngx-timeago';
+import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
 @Component({
   selector: 'app-JobDetail',
   templateUrl: './JobDetail.component.html',
@@ -27,8 +29,10 @@ isJobAdded:boolean=false;
 IsOnResponces:boolean=false;
 totalResponces:number=0;
 jobResponces:JobResponces[];
-sharedLink: string;
+public sharedLink: string="http://localhost:4200/jobDetails?target=291";
+isCopied:boolean;
   constructor(private _jobServices:JobPostService,
+    intl: TimeagoIntl,
     private navServices:NavbarCommunicationService,
     private _reportServices:ReportJobService,
     private activatedRoute: ActivatedRoute,
@@ -38,7 +42,8 @@ sharedLink: string;
     private _navigaterouter:Router,
    private _location: Location) {
       this._sharedServices.checkInterNetConnection();
-
+      intl.strings = englishStrings;
+    intl.changes.next();
       this.activatedRoute.queryParams.subscribe(params => {
        this.jobId = params['target'];
         this.LoadJobDetailsById(this.jobId);

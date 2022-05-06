@@ -8,7 +8,7 @@ import { SignalrService } from '../../services/signalr.service';
 import {Location} from '@angular/common';
 import { TimeagoIntl } from 'ngx-timeago';
 import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
-
+import { HotToastService } from '@ngneat/hot-toast';
 @Component({
   selector: "app-Chatbox",
   templateUrl: "./Chatbox.component.html",
@@ -26,7 +26,8 @@ export class ChatboxComponent implements OnInit {
     private _chatServices: UserChatService,
     public _signalR:SignalrService,
     private route: ActivatedRoute,
-    private _location: Location
+    private _location: Location,
+    private toast: HotToastService
   ) {
     intl.strings = englishStrings;
     intl.changes.next();
@@ -38,7 +39,7 @@ export class ChatboxComponent implements OnInit {
   }
 
   ngOnInit() {
-   // this._signalR.connect();
+   this._signalR.connect();
     this.loadUserData();
     this.loadUserChat();
   }
@@ -57,9 +58,14 @@ export class ChatboxComponent implements OnInit {
       });
   }
   SendMsg() {
+    let message = (document.getElementById("msg") as HTMLInputElement).value;
+    if(message=="")
+    return  this.toast.info('please type to send.', {
+      position: 'top-center',
+    });
     this.isSending=true;
 
-    let message = (document.getElementById("msg") as HTMLInputElement).value;
+
     let messageObj = {
       SenderId: this.senderId,
       RecipientId: this.recipientId,

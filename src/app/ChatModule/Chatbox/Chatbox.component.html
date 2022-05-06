@@ -4,7 +4,7 @@
           <i (click)="backClicked()" aria-hidden="true" class="back fa fa-2x fa fa-angle-left"></i>
       </div>
       <div class="tp_user">
-          <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+          <a *ngIf="user?.ImageUrl" data-toggle="modal" data-target="#view_info">
               <img src="{{user?.ImageUrl}}" alt="avatar">
           </a>
           <h2>{{user?.Name}}</h2>

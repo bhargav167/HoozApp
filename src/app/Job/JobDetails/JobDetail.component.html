@@ -45,8 +45,8 @@
                 [src]="job?.IsAnonymous==false?job?.User?.UserImage:job?.AnonmousUserPic"/>
             </div>
             <div class="c-details">
-              <h6  *ngIf="job?.IsAnonymous==false">{{job?.User?.Name}} <span>{{job?.TimeAgo}}</span></h6>
-              <h6 *ngIf="job?.IsAnonymous==true">Anonymous <span>{{job?.TimeAgo}}</span></h6>
+              <h6  *ngIf="job?.IsAnonymous==false">{{job?.User?.Name}}  <span timeago [date]="job?.CreatedBy"></span></h6>
+              <h6 *ngIf="job?.IsAnonymous==true">Anonymous  <span timeago [date]="job?.CreatedBy"></span></h6>
             </div>
           </div>
           <div class="share_sec">
@@ -163,13 +163,13 @@
             <a (click)="shareTwitter()" class="social-buttons__button social-button social-button--twitter" aria-label="Twitter">
               <i class="fab fa-twitter"></i>
             </a>
-            <a (click)="GetSharedLink()" class="social-buttons__button social-button social-button--snapchat" aria-label="SnapChat">
+            <a (click)="GetSharedLink()"
+              class="social-buttons__button social-button social-button--snapchat" aria-label="SnapChat">
               <i class="fa fa-link"></i>
             </a>
             <a  (click)="shareWhatsApp()" class="social-buttons__button social-button social-button--steam" aria-label="Whatsapp">
               <i class="fab fa-whatsapp"></i>
             </a>
-
           </div>
 
 

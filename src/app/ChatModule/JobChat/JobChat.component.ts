@@ -9,7 +9,7 @@ import { JobPostService } from '../../services/JobPost/JobPost.service';
 import { JobModel } from '../../Model/Job/JobModel';
 import { JobMessages } from '../../Model/Message/JobMessages';
 import { JobChatService } from '../../services/Chat/JobChat/JobChat.service';
-
+import { HotToastService } from '@ngneat/hot-toast';
 @Component({
   selector: 'app-JobChat',
   templateUrl: './JobChat.component.html',
@@ -30,7 +30,8 @@ export class JobChatComponent implements OnInit {
     private _jobchatServices:JobChatService,
     public _signalR:SignalrService,
     private route: ActivatedRoute,
-    private _location: Location
+    private _location: Location,
+    private toast: HotToastService
   ) {
     intl.strings = englishStrings;
     intl.changes.next();
@@ -45,12 +46,11 @@ export class JobChatComponent implements OnInit {
     this.UpdateSeenResponces();
   }
   ngOnInit() {
-   // this._signalR.connect();
+    this._signalR.connect();
   }
   getJobChat(){
     this._jobchatServices.getJobchatList(this.jobId,this.senderId,this.recipientId).subscribe((data:any[])=>{
       this.jobMessages=data;
-
     })
   }
   LoadJobDetailsById(){
@@ -60,8 +60,13 @@ export class JobChatComponent implements OnInit {
   }
 
   SendMsg() {
-    this.isSending=true;
     let message = (document.getElementById("msg") as HTMLInputElement).value;
+    if(message=="")
+    return this.toast.info('please type to send.', {
+      position: 'top-center',
+    });
+    this.isSending=true;
+
     let messageObj = {
       JobId:this.jobId,
       SenderId: this.senderId,

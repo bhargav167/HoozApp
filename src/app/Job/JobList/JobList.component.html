@@ -42,10 +42,8 @@
         <!-- post Sections -->
         <div (click)="RedirectToJob(item.Id)" class="job_list_item">
             <div id="custom-button" class="img_wrap">
-                <div *ngIf="item.ImagesUrl==null">
-                  <img src="../../../assets/thumbImg.png" alt="hooz image" />
-                </div>
-                <div *ngIf="item.ImagesUrl!=null" class="overlay_bg">
+
+                <div class="overlay_bg">
                   <img [src]="item.JobDetailImage" alt="hooz image" />
                 </div>
             </div>
@@ -55,8 +53,8 @@
                 <i class="fa fa-angle-right"></i>
               </div>
               <div class="bt_sec">
-                <div *ngIf="item.Descriptions.length<=33">{{item.TimeAgo}}</div>
-                <div *ngIf="item.Descriptions.length>=34">{{item.TimeAgo}}</div>
+                <div *ngIf="item.Descriptions.length<=33"><span timeago [date]="item?.CreatedBy"></span></div>
+                <div *ngIf="item.Descriptions.length>=34"><span timeago [date]="item?.CreatedBy"></span></div>
                 <div class="ResponceBadge">Responce <span class="badge rounded-pill bg-Responce">{{item.TotalResponces}}</span></div>
               </div>
             </div>

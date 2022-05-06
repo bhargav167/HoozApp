@@ -4,7 +4,7 @@
           <i (click)="backClicked()" aria-hidden="true" class="back fa fa-2x fa fa-angle-left"></i>
       </div>
       <div class="tp_user">
-          <a [routerLink]="['/jobDetails']" [queryParams]="{target: job?.Id}" data-toggle="modal" data-target="#view_info">
+          <a *ngIf="job?.ImagesUrl" [routerLink]="['/jobDetails']" [queryParams]="{target: job?.Id}" data-toggle="modal" data-target="#view_info">
               <img src="{{job?.ImagesUrl}}" alt="hooz">
           </a>
           <h2>You are messaging to Job Id {{job?.Id}}</h2>

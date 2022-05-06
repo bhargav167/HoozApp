@@ -63,6 +63,7 @@ isShowingMenu: boolean = true;
     (document.getElementById("searchTag") as HTMLInputElement).value = "";
     this.showClose = false;
     this.hidesearchlist = false;
+    this.SearchByClick("");
 
   }
   fireSearchlist() {

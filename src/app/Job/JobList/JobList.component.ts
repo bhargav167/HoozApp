@@ -4,6 +4,8 @@ import { Pagination } from '../../Model/Pagination';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { JobPostService } from '../../services/JobPost/JobPost.service';
 import swal from 'sweetalert2';
+import { TimeagoIntl } from 'ngx-timeago';
+import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
 import {Location} from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SharedService } from '../../services/SharedServices/Shared.service';
@@ -33,6 +35,7 @@ export class JobListComponent implements OnInit {
   IsOnJob: boolean = true;
   JobStatus:string='OPEN';
   constructor(private _jobServices: JobPostService,
+    intl: TimeagoIntl,
     private _reportServices:ReportJobService,
     private navServices:NavbarCommunicationService,
     private activatedRoute: ActivatedRoute,
@@ -40,6 +43,8 @@ export class JobListComponent implements OnInit {
     private _router:Router,
     private _location: Location) {
       this._sharedServices.checkInterNetConnection();
+      intl.strings = englishStrings;
+      intl.changes.next();
      this.loadUserData();
     }
 

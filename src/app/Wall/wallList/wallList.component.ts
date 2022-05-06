@@ -15,6 +15,8 @@ import { ClipboardService } from 'ngx-clipboard'
 import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
+import { TimeagoIntl } from 'ngx-timeago';
+import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
 @Component({
   selector: "app-wallList",
   templateUrl: "./wallList.component.html",
@@ -49,7 +51,7 @@ export class WallListComponent implements OnInit {
   // TabToggleTrackVariable
   IsOnJob: boolean = true;
   constructor(
-    private meta: Meta,
+    intl: TimeagoIntl,
     private _clipboardService: ClipboardService,
     private navServices:NavbarCommunicationService,
     private _wallServices: WallService,
@@ -60,6 +62,8 @@ export class WallListComponent implements OnInit {
     private toast: HotToastService,
     private _router:Router
   ) {
+    intl.strings = englishStrings;
+    intl.changes.next();
     if(localStorage.getItem('user')){
       this.user= JSON.parse(localStorage.getItem('user'));
       this.userId=this.user.Id;
@@ -102,6 +106,10 @@ export class WallListComponent implements OnInit {
 
 
   LoadWallData(currentPage: number, itemsPerPage: number, userParams, userId) {
+    if(userParams!=""){
+      currentPage=1;
+
+    }
     this.isLoading = true;
     this._wallServices
       .GetWall(currentPage, itemsPerPage, userParams, userId)
@@ -257,7 +265,7 @@ export class WallListComponent implements OnInit {
   getJobId(jobId,imgUrl) {
     this.shareimgUrl=imgUrl;
     this.shareJobId = jobId;
-    this.meta.updateTag({ property: 'og:image:type', content: imgUrl });
+   // this.meta.updateTag({ property: 'og:image:type', content: imgUrl });
    // window.document.querySelector('meta[property="og:image:type"]').setAttribute("content", imgUrl);
   }
   public shareFB(jobId) {
