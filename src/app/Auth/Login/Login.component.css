@@ -46,6 +46,15 @@
 .sc_lg:hover {
     background-color: #eee;
 }
+.login_overlay {
+    display: none;
+    background: rgb(255 255 255 / 50%);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
 @media (max-width:992px) {
     .logo img.img-responsive {
         max-width: 100%;
