@@ -37,7 +37,7 @@
                 <span><img class="img img-responsive share" src="./../../../assets/Logo/3dots.svg" /></span>
                 <div class="dropdown-content mt-0">
                   <a *ngIf="userId!=item.Job?.User?.Id && userId && !item.Job?.IsAdded" style="cursor: pointer;"
-                    (click)="AddToJob(item?.Job?.Id)">Add To Job</a>
+                    (click)="AddToJob(item?.Job?.Id)">Add to My Jobs</a>
                   <a *ngIf="userId!=item.Job?.User?.Id && userId && item.Job?.IsAdded" (click)="RemoveToJob(item?.Job?.Id)">Remove Job</a>
                   <a *ngIf="userId!=item.Job?.User?.Id && userId" style="cursor: pointer;"
                     (click)="Report(item?.Job?.Id)">Report</a>
@@ -88,7 +88,7 @@
       <div *ngIf="!NotEmptPost">
         <br><br> <br>
         <div class="col-md-12 d-flex justify-content-center">
-          <div class="text-muted h6 alert alert-secondary p-2">{{noResultText}}</div>
+          <div class="Search-result">{{noResultText}}</div>
         </div>
       </div>
     </div>

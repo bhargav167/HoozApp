@@ -49,9 +49,9 @@
           </div>
           <div class="share_sec">
             <div class="dropdown">
-                <img class="img share" src="./../../../assets/Logo/3dots.svg" />
+                <span><img class="img share" src="./../../../assets/Logo/3dots.svg" /></span>
                 <div class="dropdown-content JobdetailDroupdown mt-0">
-                  <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && isJobAdded" style="cursor: pointer;" (click)="AddToJob()">Add To Job</a>
+                  <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && isJobAdded" style="cursor: pointer;" (click)="AddToJob()">Add to My Jobs</a>
                   <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && !isJobAdded" style="cursor: pointer;" (click)="RemoveToJob()">Remove Job</a>
                   <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId" style="cursor: pointer;" (click)="Report()">Report</a>
                   <a  data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">Share</a>

@@ -127,7 +127,7 @@ export class WallListComponent implements OnInit {
           this.walldatas = [];
           this.NotEmptPost = false;
           this.notScrollY = false;
-          this.noResultText = `Sorry, we couldn't find any Post with ${userParams} tag.`;
+          this.noResultText = `Couldn't find any Post with tag "${userParams}" try a different keyword.`;
         }
       );
   }

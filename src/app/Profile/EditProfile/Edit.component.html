@@ -11,11 +11,16 @@
          <div class="outer-div">
            <div class="inner-div">
              <div class="front">
+              <label class="cover_pic">
                 <div
                   style="background-image: url({{CoverImageUrl}});"
                   class="front__bkg-photo overlay_bg">
                 </div>
                 <input #file  (change)="FileUploadCover(file.files)" type="file" size="60" >
+                <span  class="upload_cover">
+                  <i class="fa-solid fa-upload"></i>
+                </span>
+              </label>
                <label>
                 <div style="background-image: url({{ImageUrl}});"
                   class="front__face-photo overlay_bg overlay_radius">
