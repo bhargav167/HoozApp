@@ -29,23 +29,21 @@
 
   <div *ngIf="IsOnResponces==false" class="my_container mt-5">
     <div id="custom-button" class="img_wrap desk_view left_sec">
-        <div  *ngIf="job?.ImagesUrl==null" class="overlay_bg">
-            <img  src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
-        </div>
-        <div  *ngIf="job?.ImagesUrl!=null">
-          <img class="img img-responsive img-fluid" [src]="job?.ImagesUrl" alt="job image" />
+
+        <div style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#exampleModal"  *ngIf="job?.ImagesUrl">
+          <img class="img img-responsive img-fluid" [src]="job?.ImagesUrl" alt="post image" />
         </div>
     </div>
     <!-- User Sections -->
       <div class="right_sec">
         <div class="d-flex job_details">
-          <div (click)="RedirectToUser(job.User.Id)" class="user_details">
+          <div  class="user_details">
             <div class="icon">
               <img class="rounded-circle img-fluid"
                 [src]="job?.IsAnonymous==false?job?.User?.UserImage:job?.AnonmousUserPic"/>
             </div>
             <div class="c-details">
-              <h6  *ngIf="job?.IsAnonymous==false">{{job?.User?.Name}}  <span timeago [date]="job?.CreatedBy"></span></h6>
+              <h6 (click)="RedirectToUser(job.User.Id)" *ngIf="job?.IsAnonymous==false">{{job?.User?.Name}}  <span timeago [date]="job?.CreatedBy"></span></h6>
               <h6 *ngIf="job?.IsAnonymous==true">Anonymous  <span timeago [date]="job?.CreatedBy"></span></h6>
             </div>
           </div>
@@ -174,6 +172,21 @@
 
 
         </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!--Image Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <img class="img img-responsive img-fluid" [src]="job?.ImagesUrl" alt="job image" />
       </div>
 
     </div>

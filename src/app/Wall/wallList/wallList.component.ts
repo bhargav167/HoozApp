@@ -67,6 +67,7 @@ export class WallListComponent implements OnInit {
     if(localStorage.getItem('user')){
       this.user= JSON.parse(localStorage.getItem('user'));
       this.userId=this.user.Id;
+      this.isLoading = true;
     }
   }
   ngOnInit() {
@@ -106,11 +107,11 @@ export class WallListComponent implements OnInit {
 
 
   LoadWallData(currentPage: number, itemsPerPage: number, userParams, userId) {
-    if(userParams!=""){
+    if(userParams==""){
       currentPage=1;
 
     }
-    this.isLoading = true;
+
     this._wallServices
       .GetWall(currentPage, itemsPerPage, userParams, userId)
       .subscribe(
@@ -154,7 +155,7 @@ export class WallListComponent implements OnInit {
   onScroll() {
     if (this.notScrollY && this.NotEmptPost) {
       this.noResultText = "Explore more with different keyword";
-      this.isLoading = true;
+
       this.notScrollY = false;
       this.LoadNextPost();
     }

@@ -1,3 +1,4 @@
+import { MapsAPILoader } from '@agm/core';
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,7 +10,7 @@ import { TagMaster } from '../../Model/TagMaster';
  import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { ProfileService } from '../../services/Auth/Profile.service';
 import { NavbarCommunicationService } from '../services/NavbarCommunication.service';
-
+var addressLocation;
 @Component({
   selector: 'app-TopNavBar',
   templateUrl: './TopNavBar.component.html',
@@ -26,7 +27,10 @@ tag: TagMaster;
 searchval: any;
 isShowingMenu: boolean = true;
 @Output() notifyParent: EventEmitter<any> = new EventEmitter();
-  constructor(private _profileServices:ProfileService,private _router:Router, public navServices:NavbarCommunicationService,private _http: HttpClient) {
+  constructor(private _profileServices:ProfileService,private _router:Router,
+    private apiloader: MapsAPILoader,
+    public navServices:NavbarCommunicationService,private _http: HttpClient) {
+      this.AskForLocation();
     if(localStorage.getItem('user')){
       this.user= JSON.parse(localStorage.getItem('user'));
       this._profileServices.GetUserProfile(this.user.Id).subscribe((data:SocialAuthentication)=>{
@@ -43,6 +47,49 @@ isShowingMenu: boolean = true;
   ngOnInit() {
     this.fireSearchlist();
   }
+  // ask for location
+  AskForLocation(){
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position: any) => {
+
+          if (position) {
+
+                 this.apiloader.load().then(() => {
+                  let geocoder = new google.maps.Geocoder;
+                  let latlng = {
+                      lat: position.coords.latitude,
+                      lng: position.coords.longitude
+                  };
+
+                  geocoder.geocode({
+                      'location': latlng
+                  }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                      if (results[1]) {
+                        console.log(results[1].address_components)
+                        addressLocation= results[1].address_components[0].long_name +', '+ results[1].address_components[1].long_name +', '+ results[1].address_components[2].long_name;
+                        window.document.getElementById('addressTitle').innerText=results[1].address_components[5].long_name;
+                        window.document.getElementById('addrDetails').innerText= addressLocation;
+                      }
+                  }
+                    else {
+                          console.log('Not found');
+                      }
+                  });
+              });
+
+
+          }else{
+            window.document.getElementById('addressTitle').innerText='No address';
+            window.document.getElementById('addrDetails').innerText= '';
+          }
+      })
+  }else{
+
+  }
+  }
+
    //Search wall by click
    SearchByClick(searchTerm) {
     this.hidesearchlist = false;

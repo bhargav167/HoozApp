@@ -47,7 +47,7 @@
             </div>
           </div>
           <p class="heading">
-            {{item?.Job.Descriptions | slice:0:50}}{{ item?.Job.Descriptions.length > 40 ? '...' : '' }}
+            {{item?.Job.Descriptions | slice:0:70}}{{ item?.Job.Descriptions.length > 70 ? '...' : '' }}
           </p>
           <div (click)="RedirectToJob(item.Job.Id)" class="mt-1">
             <div class=" ">

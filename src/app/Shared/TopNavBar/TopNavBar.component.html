@@ -7,8 +7,8 @@
       <div class="location">
         <i class="fas fa-map-marker-alt"></i>
         <div class="loc_des">
-          <div class="title">Noida <i class="fas fa-caret-down"></i></div>
-          <span>Sector 1, Bisrakh, Greater Noida, U.P.</span>
+          <div id="addressTitle" class="title">Featching location... <i class="fas fa-caret-down"></i></div>
+          <span id="addrDetails">...</span>
         </div>
       </div>
       <!----------Location end----------->
@@ -70,7 +70,7 @@
       <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a><br><br>
     </div> -->
 
-    <div *ngIf="isLogedIn && this.navServices.isShowingMenu" class="section-dropdown tog">
+    <div *ngIf="isLogedIn && this.navServices.isShowingMenu" (click)="hide()" class="section-dropdown tog">
       <div class="dr_top">
         <div *ngIf="isLogedIn">
           <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE</a>
@@ -94,7 +94,7 @@
  <div class="collapse navbar-collapse tog justify-content-end" id="navbarCollapse">
       <div class="navbar-nav mr-auto mt-2 mt-md-0">
         <form class="d-flex">
-          <ul class="navbar-nav ">
+          <ul (click)="hide()" class="navbar-nav ">
             <li *ngIf="isLogedIn" class="nav-item">
               <a class="nav-link active" [routerLink]="['/joblist']">Job listing</a>
             </li>
@@ -139,7 +139,7 @@
 
       <!-- DropDown Toggle2 -->
 
-        <div *ngIf="isLogedIn && this.navServices.isShowingMenu" class="section-dropdown">
+        <div *ngIf="isLogedIn && this.navServices.isShowingMenu" (click)="hide()" class="section-dropdown">
           <div class="dr_top">
             <div *ngIf="isLogedIn">
               <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE</a>
