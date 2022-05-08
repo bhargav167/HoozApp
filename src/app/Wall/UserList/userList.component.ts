@@ -47,6 +47,7 @@ export class UserListComponent implements OnInit {
       this.walldatas = res.result;
       this.pagination = res.pagination;
       this.isLoading = false;
+      console.log(this.walldatas)
     })
   }
 }

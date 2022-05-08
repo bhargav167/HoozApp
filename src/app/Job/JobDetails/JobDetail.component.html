@@ -14,8 +14,8 @@
               </label>
               <label  class="ll" for="">
                 <span>
-                  Responce
-                 <span  class="badge rounded-pill bg-Responce">
+                  Response
+                 <span *ngIf="totalResponces!=0" class="badge rounded-pill bg-Responce">
                     {{totalResponces}}
                   </span>
               </span>
@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <div *ngIf="IsOnResponces==false" class="my_container mt-5">
+  <div class="my_container mt-5">
     <div id="custom-button" class="img_wrap desk_view left_sec">
 
         <div style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#exampleModal"  *ngIf="job?.ImagesUrl">
@@ -35,7 +35,7 @@
         </div>
     </div>
     <!-- User Sections -->
-      <div class="right_sec">
+      <div  *ngIf="IsOnResponces==false" class="right_sec">
         <div class="d-flex job_details">
           <div  class="user_details">
             <div class="icon">
@@ -138,7 +138,6 @@
   </div>
 
   <div *ngIf="IsOnResponces==true" class=" mt-5">
-
     <app-JobResponce></app-JobResponce>
   </div>
 

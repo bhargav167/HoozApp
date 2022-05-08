@@ -107,10 +107,7 @@ export class WallListComponent implements OnInit {
 
 
   LoadWallData(currentPage: number, itemsPerPage: number, userParams, userId) {
-    if(userParams==""){
-      currentPage=1;
-
-    }
+    currentPage=1;
 
     this._wallServices
       .GetWall(currentPage, itemsPerPage, userParams, userId)

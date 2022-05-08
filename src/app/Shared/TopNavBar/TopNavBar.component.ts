@@ -10,7 +10,7 @@ import { TagMaster } from '../../Model/TagMaster';
  import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { ProfileService } from '../../services/Auth/Profile.service';
 import { NavbarCommunicationService } from '../services/NavbarCommunication.service';
-var addressLocation;
+var addressLocation=null;
 @Component({
   selector: 'app-TopNavBar',
   templateUrl: './TopNavBar.component.html',
@@ -26,11 +26,11 @@ showClose: boolean = false;
 tag: TagMaster;
 searchval: any;
 isShowingMenu: boolean = true;
+location:any;
 @Output() notifyParent: EventEmitter<any> = new EventEmitter();
   constructor(private _profileServices:ProfileService,private _router:Router,
     private apiloader: MapsAPILoader,
     public navServices:NavbarCommunicationService,private _http: HttpClient) {
-      this.AskForLocation();
     if(localStorage.getItem('user')){
       this.user= JSON.parse(localStorage.getItem('user'));
       this._profileServices.GetUserProfile(this.user.Id).subscribe((data:SocialAuthentication)=>{
@@ -41,15 +41,22 @@ isShowingMenu: boolean = true;
       this.isLogedIn=true;
     }else{
       this.isLogedIn=false;
+
     }
    }
 
   ngOnInit() {
     this.fireSearchlist();
+    if(!localStorage.getItem("location")){
+      this.AskForLocation();
+    }else{
+      this.location= JSON.parse(localStorage.getItem('location'));
+      window.document.getElementById('addressTitle').innerText=this.location.address_components[5].long_name;
+      window.document.getElementById('addrDetails').innerText= this.location.address_components[0].long_name +', '+ this.location.address_components[1].long_name +', '+ this.location.address_components[2].long_name;
+    }
   }
   // ask for location
   AskForLocation(){
-
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position: any) => {
 
@@ -67,7 +74,8 @@ isShowingMenu: boolean = true;
                   }, function(results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                       if (results[1]) {
-                        console.log(results[1].address_components)
+                        localStorage.setItem('location',JSON.stringify(results[1]))
+
                         addressLocation= results[1].address_components[0].long_name +', '+ results[1].address_components[1].long_name +', '+ results[1].address_components[2].long_name;
                         window.document.getElementById('addressTitle').innerText=results[1].address_components[5].long_name;
                         window.document.getElementById('addrDetails').innerText= addressLocation;
@@ -168,13 +176,13 @@ isShowingMenu: boolean = true;
    }
 
   LogoClick() {
-    window.location.href = "/";
+    this._router.navigate(['/']);
   }
   RedirectToUser(userId){
     this._router.navigate(['/profile'], { queryParams: {target: userId}});
   }
   LogOut(){
-    localStorage.clear();
+    localStorage.removeItem('user');
     location.href='/';
   }
   url(){

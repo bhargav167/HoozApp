@@ -55,7 +55,7 @@
               <div class="bt_sec">
                 <div *ngIf="item.Descriptions.length<=33"><span timeago [date]="item?.CreatedBy"></span></div>
                 <div *ngIf="item.Descriptions.length>=34"><span timeago [date]="item?.CreatedBy"></span></div>
-                <div class="ResponceBadge">Responce <span class="badge rounded-pill bg-Responce">{{item.TotalResponces}}</span></div>
+                <div *ngIf="!IsOnJob" class="ResponceBadge">Responce <span class="badge rounded-pill bg-Responce">{{item.TotalResponces}}</span></div>
               </div>
             </div>
         </div>
