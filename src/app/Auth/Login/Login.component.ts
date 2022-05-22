@@ -16,11 +16,10 @@ var addressLocation;
 export class LoginComponent implements OnInit {
   loginUser:SocialAuthentication;
   loginForm:FormGroup;
-
+  isGetLocationOnlOad:boolean=false;
   // Location Variable
   latitude: number;
   longitude: number;
-  zoom: number;
   address: string;
   geoCoder:any;
   constructor(private fb:FormBuilder,
@@ -57,9 +56,9 @@ export class LoginComponent implements OnInit {
     })
   }
   AskForLocation(){
-
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position: any) => {
+      navigator.geolocation.getCurrentPosition(
+        (position: any) => {
 
           if (position) {
               this.latitude = position.coords.latitude;
@@ -84,12 +83,16 @@ export class LoginComponent implements OnInit {
                       }
                   });
               });
-
+              this.isGetLocationOnlOad=true;
 
           }else{
             this.showToast();
             return;
           }
+      },err=>{
+      return  this.toast.error('Please allow location of your device', {
+          position: 'top-center',
+        });
       })
   }else{
     this.toast.info('location not supported by this browser', {
@@ -99,7 +102,7 @@ export class LoginComponent implements OnInit {
   }
   // Google Login
   signInWithGoogle(): void {
-    if(this.latitude && this.longitude){
+     if(this.isGetLocationOnlOad){
       this.authService
       .signIn(GoogleLoginProvider.PROVIDER_ID)
       .then((data: any) => {
@@ -121,11 +124,9 @@ export class LoginComponent implements OnInit {
              location.href = "/";
           });
       });
-    }else{
-      this.toast.info('Please wait! Fetching location', {
-        position: 'top-center',
-      });
-    }
+     }else{
+       this.AskForLocation();
+     }
   }
 signInWithFacebook():void{
   this.authService.signIn(FacebookLoginProvider.PROVIDER_ID)

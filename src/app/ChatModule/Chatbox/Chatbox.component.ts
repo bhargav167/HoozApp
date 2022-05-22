@@ -9,6 +9,7 @@ import {Location} from '@angular/common';
 import { TimeagoIntl } from 'ngx-timeago';
 import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
 import { HotToastService } from '@ngneat/hot-toast';
+import { RealChatDtos } from '../../Model/Message/RealChatDtos';
 @Component({
   selector: "app-Chatbox",
   templateUrl: "./Chatbox.component.html",
@@ -20,11 +21,14 @@ export class ChatboxComponent implements OnInit {
   user: SocialAuthentication;
   messages: Array<any>;
   isSending:boolean=false;
+  checkIsSend:boolean=false;
+  isOnline:boolean=false;
+  LastActive:Date;
   constructor(
     intl: TimeagoIntl,
     private _profileDetails: ProfileService,
     private _chatServices: UserChatService,
-    public _signalR:SignalrService,
+    private _signalR:SignalrService,
     private route: ActivatedRoute,
     private _location: Location,
     private toast: HotToastService
@@ -34,15 +38,22 @@ export class ChatboxComponent implements OnInit {
     let user = JSON.parse(localStorage.getItem("user"));
     this.recipientId = user.Id;
     this.route.queryParams.subscribe((params) => {
-      this.senderId = params["uid"];
+      this.senderId =parseInt(params["uid"]);
     });
   }
 
   ngOnInit() {
-   this._signalR.connect();
     this.loadUserData();
     this.loadUserChat();
+    setInterval(()=>{
+     this.loadUserChat();
+     this.IsOnline();
+    },2000)
+   // this.loadUserChat();
+    this._signalR.retrieveMappedObject().subscribe( (receivedObj: RealChatDtos) => {  this.addToInbox(receivedObj);});
   }
+  msgDto: RealChatDtos = new RealChatDtos();
+  msgInboxArray: RealChatDtos[] = [];
   loadUserData() {
     this._profileDetails
       .GetUserProfile(this.senderId)
@@ -54,8 +65,14 @@ export class ChatboxComponent implements OnInit {
     this._chatServices
       .getMessages(this.senderId, this.recipientId)
       .subscribe((data: any[]) => {
-        this.messages = data;
+        this.msgInboxArray = data;
       });
+  }
+  IsOnline(){
+    this._profileDetails.IsOnline(this.senderId).subscribe((data:any)=>{
+      this.isOnline=data.IsOnline;
+      this.LastActive=data.LastActive;
+    })
   }
   SendMsg() {
     let message = (document.getElementById("msg") as HTMLInputElement).value;
@@ -63,10 +80,9 @@ export class ChatboxComponent implements OnInit {
     return  this.toast.info('please type to send.', {
       position: 'top-center',
     });
-    this.isSending=true;
+   this.isSending=true;
 
-
-    let messageObj = {
+    this.msgDto = {
       SenderId: this.senderId,
       RecipientId: this.recipientId,
       Content: message,
@@ -74,15 +90,26 @@ export class ChatboxComponent implements OnInit {
       SenderContent:message,
       MessageSent:new Date()
     };
-    this.messages.push(messageObj);
+
     (document.getElementById("msg") as HTMLInputElement).value="";
-    this._signalR.sendMessageToApi(this.senderId,messageObj).subscribe((data:MessageForCreationDto)=>{
+    this._signalR.mapReceivedMessage(this.msgDto);
+     this._signalR.sendMessageToApi(this.senderId,this.msgDto).subscribe((data:MessageForCreationDto)=>{
+       this.isSending=false;
+       this.checkIsSend=true;
+     },err=>{
       this.isSending=false;
 
-    },err=>{
-      this.isSending=false;
+     })
+  }
+  addToInbox(obj: RealChatDtos) {
+    let newObj = new RealChatDtos();
+    newObj.SenderId = obj.SenderId;
+    newObj.SenderContent = obj.SenderContent;
+    newObj.RecipientId = obj.RecipientId;
+    newObj.RecipientContent = obj.RecipientContent;
+    newObj.Content = obj.Content;
 
-    })
+    this.msgInboxArray.push(newObj);
   }
    //Back loacation History
    backClicked() {

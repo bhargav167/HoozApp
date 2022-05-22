@@ -19,7 +19,7 @@ var addressLocation=null;
 export class TopNavBarComponent implements OnInit {
 @ViewChild("movieSearchInput", { static: true }) movieSearchInput: ElementRef;
 user:SocialAuthentication;
-navbarUserPic:string='http://res.cloudinary.com/livsolution/image/upload/c_fill,f_auto,g_faces,h_128,q_auto,w_128/DefaultUser_ktw7ga.png';
+navbarUserPic:string='https://res.cloudinary.com/drmnyie0t/image/upload/v1652501879/Default_User_1_esjtmm.png';
 isLogedIn:boolean=false;
 hidesearchlist: boolean = false;
 showClose: boolean = false;
@@ -41,7 +41,6 @@ location:any;
       this.isLogedIn=true;
     }else{
       this.isLogedIn=false;
-
     }
    }
 
@@ -59,9 +58,7 @@ location:any;
   AskForLocation(){
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position: any) => {
-
           if (position) {
-
                  this.apiloader.load().then(() => {
                   let geocoder = new google.maps.Geocoder;
                   let latlng = {
@@ -75,7 +72,6 @@ location:any;
                     if (status == google.maps.GeocoderStatus.OK) {
                       if (results[1]) {
                         localStorage.setItem('location',JSON.stringify(results[1]))
-
                         addressLocation= results[1].address_components[0].long_name +', '+ results[1].address_components[1].long_name +', '+ results[1].address_components[2].long_name;
                         window.document.getElementById('addressTitle').innerText=results[1].address_components[5].long_name;
                         window.document.getElementById('addrDetails').innerText= addressLocation;
@@ -170,6 +166,7 @@ location:any;
 
     hide(){
       this.navServices.isShowingMenu=false;
+
    }
    ShowMenu(){
     this.navServices.isShowingMenu=true;
@@ -182,8 +179,10 @@ location:any;
     this._router.navigate(['/profile'], { queryParams: {target: userId}});
   }
   LogOut(){
-    localStorage.removeItem('user');
-    location.href='/';
+    this._profileServices.LogOut(this.user.Id).subscribe(()=>{
+      localStorage.removeItem('user');
+      location.href='/';
+    })
   }
   url(){
     return window.location.pathname.replace('/','')

@@ -27,4 +27,10 @@ export class ProfileService {
   Login(user:SocialAuthentication){
     return this._http.post(this.baseURL+'AuthLogin/AddAuthUser',user);
   }
+  LogOut(loginId:number){
+    return this._http.post(this.baseURL+'AuthLogin/LogOut/'+loginId,{});
+  }
+  IsOnline(loginId:number){
+    return this._http.get(this.baseURL+'AuthLogin/IsOnline/'+loginId);
+  }
 }

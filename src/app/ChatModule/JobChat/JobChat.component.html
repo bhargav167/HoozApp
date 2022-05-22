@@ -39,9 +39,9 @@
           <!-- <div class="input-group-prepend">
               <img class="img send" src="./../../../assets/Logo/upload.svg" alt="img">
           </div> -->
-          <input type="text" class="form-control" id="msg" value="" placeholder="Enter text here...">
+          <input (keyup.enter)="SendMsg()" type="text" class="form-control" id="msg" value="" placeholder="Enter text here...">
           <div class="send_wrap">
-              <img (click)="SendMsg()" class="img send" src="./../../../assets/Logo/send.svg" alt="img">
+              <img  (click)="SendMsg()" class="img send" src="./../../../assets/Logo/send.svg" alt="img">
           </div>
       </div>
   </div>

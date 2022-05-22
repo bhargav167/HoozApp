@@ -46,7 +46,9 @@ export class JobChatComponent implements OnInit {
     this.UpdateSeenResponces();
   }
   ngOnInit() {
-    this._signalR.connect();
+    setInterval(()=>{
+      this.getJobChat();
+    },2000)
   }
   getJobChat(){
     this._jobchatServices.getJobchatList(this.jobId,this.senderId,this.recipientId).subscribe((data:any[])=>{
@@ -75,15 +77,15 @@ export class JobChatComponent implements OnInit {
       Content: message,
       MessageSent:new Date()
     };
-    this.jobMessages.push(messageObj);
+    this._signalR.broadcastJobMessage(messageObj);
     (document.getElementById("msg") as HTMLInputElement).value="";
-    this._signalR.sendMessageToJobApi(this.jobId,this.recipientId,this.senderId,messageObj).subscribe((data:JobMessages)=>{
-      this.isSending=false;
+     this._signalR.sendMessageToJobApi(this.jobId,this.recipientId,this.senderId,messageObj).subscribe((data:JobMessages)=>{
+       this.isSending=false;
 
-    },err=>{
-      this.isSending=false;
+     },err=>{
+       this.isSending=false;
 
-    })
+     })
   }
 
   UpdateSeenResponces(){

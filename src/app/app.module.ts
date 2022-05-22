@@ -26,7 +26,7 @@ import { MessagesComponent } from './Shared/messages/messages.component';
 import { HotToastModule } from '@ngneat/hot-toast';
 // for HttpClient import:
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
-
+import { NgxCopyToClipboardModule } from 'ngx-copy-to-clipboard';
 // for Router import:
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
@@ -41,9 +41,11 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { ChatsComponent } from './ChatModule/Chats/Chats.component';
 import { ChatboxComponent } from './ChatModule/Chatbox/Chatbox.component';
 import { TimeagoCustomFormatter, TimeagoFormatter, TimeagoIntl, TimeagoModule } from 'ngx-timeago';
+import { PendingChangesGuard } from './guard/activate-guard';
 export class MyIntl extends TimeagoIntl {
   // do extra stuff here...
   }
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,12 +78,13 @@ export class MyIntl extends TimeagoIntl {
     ClipboardModule,
     HttpClientModule,
     InfiniteScrollModule,
+    NgxCopyToClipboardModule,
     TimeagoModule.forRoot({
       intl: { provide: TimeagoIntl, useClass: MyIntl },
       formatter: { provide: TimeagoFormatter, useClass: TimeagoCustomFormatter },
     }),
       // for HttpClient use:
-      LoadingBarHttpClientModule,
+      // LoadingBarHttpClientModule,
 
       // for Router use:
       LoadingBarRouterModule,
@@ -93,6 +96,9 @@ export class MyIntl extends TimeagoIntl {
       apiKey: 'AIzaSyC2FrT93DXiG5u9Ow2LCAie6wIxoQzv5qQ',
       libraries: ['places']
     })
+  ],
+  exports:[
+    ClipboardModule
   ],
   providers: [
     SharedService,
@@ -115,6 +121,7 @@ export class MyIntl extends TimeagoIntl {
         ]
       } as SocialAuthServiceConfig,
     },
+    PendingChangesGuard
   ],
   bootstrap: [AppComponent]
 })

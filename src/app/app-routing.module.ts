@@ -17,7 +17,7 @@ import { DownloadComponent } from './Settings/Download/Download.component';
 import { HelpDeskComponent } from './Settings/HelpDesk/HelpDesk.component';
 import { MessagesComponent } from './Shared/messages/messages.component';
 import { WallListComponent } from './Wall/wallList/wallList.component';
-
+import { PendingChangesGuard } from './guard/activate-guard';
 const routes: Routes = [
   {
     path: 'login',
@@ -31,7 +31,8 @@ const routes: Routes = [
   {
     path: 'jobpost',
     component:JobPostComponent,
-    canActivate: [LoginGaurd]
+    canActivate: [LoginGaurd],
+    canDeactivate: [PendingChangesGuard]
   },
   {
     path: 'joblist',

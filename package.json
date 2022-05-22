@@ -41,6 +41,7 @@
     "bootstrap": "^5.0.1",
     "chart.js": "2.9.4",
     "ngx-clipboard": "^14.0.2",
+    "ngx-copy-to-clipboard": "^2.3.0",
     "ngx-infinite-scroll": "^10.0.1",
     "ngx-timeago": "^2.0.0",
     "ngx-window-token": "^6.0.0",

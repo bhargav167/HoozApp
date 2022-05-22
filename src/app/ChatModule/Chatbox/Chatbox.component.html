@@ -11,11 +11,16 @@
       </div>
   </div>
   <div class="chat">
-      <div class="chat-header clearfix">
-              Last seen: 2 hr ago
+      <div *ngIf="isOnline==false" class="chat-header clearfix">
+        Last seen: <i class="fa fa-circle offline"></i>&nbsp; <div class="message-data-time" timeago [date]="LastActive"></div>
+      </div>
+
+      <div *ngIf="isOnline==true" class="chat-header clearfix">
+        <div class="status"> <i class="fa fa-circle online"></i>&nbsp;  <b>Online</b></div>
       </div>
       <div  class="chat-history">
-          <ul *ngFor="let item of messages" class="m-b-0">
+          <ul *ngFor="let item of msgInboxArray" class="m-b-0">
+
               <li *ngIf="item.SenderContent==null" class="clearfix">
                   <div class="message-data">
                       <img src="{{user?.ImageUrl}}" alt="avatar">
@@ -39,7 +44,7 @@
           <!-- <div class="input-group-prepend">
               <img class="img send" src="./../../../assets/Logo/upload.svg" alt="img">
           </div> -->
-          <input type="text" class="form-control" id="msg" value="" placeholder="Enter text here...">
+          <input type="text" (keyup.enter)="SendMsg()" class="form-control" id="msg" value="" placeholder="Type here...">
           <div class="send_wrap">
               <img (click)="SendMsg()" class="img send" src="./../../../assets/Logo/send.svg" alt="img">
           </div>

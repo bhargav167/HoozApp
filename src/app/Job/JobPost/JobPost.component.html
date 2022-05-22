@@ -41,7 +41,7 @@
           <div class="jobpost_right">
             <div class="mb-20">
               <label for="exampleInputEmail1" class="form-label">
-                Add description
+                Add description<sup>*</sup>
               </label>
               <textarea  type="text"
                 formControlName="Descriptions"
@@ -49,11 +49,11 @@
               </textarea>
               <small
                 *ngIf="jobPostForm.get('Descriptions').hasError('required') && jobPostForm.get('Descriptions').touched"
-                id="emailHelp" class="form-text text text-danger">Description is requires.</small>
+                id="emailHelp" class="form-text text text-danger">Description is required.</small>
             </div>
 
             <div class="mb-20">
-              <label for="exampleInputPassword1" class="form-label form-label1">Add tags</label>
+              <label for="exampleInputPassword1" class="form-label form-label1">Add tags<sup>*</sup></label>
               <div class="add_tag">
                 <input (keyup.enter)="AddTagging()" formControlName="Tags" placeholder=" add tags to your post"  class="form-control taginput"  type="text">
                 <button type="button" (click)="AddTagging()" class="btn btn-hoozOn-2" id="showPassword">Add</button>
@@ -97,7 +97,7 @@
                 </label>
                 <div>
                   <label class="form-label" for="flexcheckboxDefault2">
-                    Post Localy
+                    Post Locally
                   </label>
                   <p class="parapost">Post will be shown to your nearby users only upto 80 kms</p>
                 </div>

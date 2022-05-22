@@ -1,6 +1,6 @@
 import { Tags } from "./Tags";
 
-export interface SocialAuthentication { 
+export interface SocialAuthentication {
   Id:number;
   UserName:string;
   Email:string;
@@ -21,4 +21,6 @@ export interface SocialAuthentication {
   Success:boolean;
   Status_Message:string;
   IsProfileCreated:boolean;
-} 
+  LastActive:Date;
+  IsOnline:boolean;
+}

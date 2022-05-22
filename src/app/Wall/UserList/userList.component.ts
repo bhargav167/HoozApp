@@ -20,6 +20,8 @@ export class UserListComponent implements OnInit {
   walldata: UserResponce;
   walldatas: UserResponce[];
   isLoading: boolean = true;
+  NotEmptPost: boolean = true;
+  noResultText: string = "Explore more with different keyword";
   constructor(private _wallServices:WallService,private activatedRoute: ActivatedRoute) {
     if(localStorage.getItem('user')){
       this.user= JSON.parse(localStorage.getItem('user'));
@@ -47,7 +49,14 @@ export class UserListComponent implements OnInit {
       this.walldatas = res.result;
       this.pagination = res.pagination;
       this.isLoading = false;
-      console.log(this.walldatas)
-    })
+      this.NotEmptPost = true;
+    },
+    (err) => {
+      this.isLoading = false;
+      this.walldatas = [];
+      this.NotEmptPost = false;
+      this.noResultText = `Couldn't find any Post with tag "${userParams}" try a different keyword.`;
+    }
+    )
   }
 }

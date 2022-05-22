@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ComponentCanDeactivate } from './../../guard/activate-guard';
+import { HostListener } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { FormGroup, FormBuilder, Validators }  from '@angular/forms';
 import { JobModel } from '../../Model/Job/JobModel';
 import { JobTags } from '../../Model/Job/JobTags';
@@ -20,7 +23,7 @@ function isValid(str){
   templateUrl: './JobPost.component.html',
   styleUrls: ['./JobPost.component.scss']
 })
-export class JobPostComponent implements OnInit {
+export class JobPostComponent implements OnInit,ComponentCanDeactivate {
   public btnLoader: boolean;
   jobPostForm:FormGroup;
   Tags:JobTags[]=[];
@@ -34,6 +37,7 @@ export class JobPostComponent implements OnInit {
   public Tagmessage: string;
   ischeckedAnonymously:boolean=false;
   ischeckedPublic:boolean=true;
+  isPostClick:boolean=false;
   userId:number;
   latitude: number;
   longitude: number;
@@ -59,7 +63,19 @@ export class JobPostComponent implements OnInit {
 
   ngOnInit() {
     this.createJobPostForm();
-
+    this.isPostClick=false;
+  }
+  @HostListener('window:beforeunload')
+  canDeactivate(): Observable<boolean> | boolean {
+    if(!this.isPostClick){
+      let description= this.jobPostForm.controls['Descriptions'].value;
+      if(description!=''){
+        return false;
+      }else
+      return true;
+    }else{
+      return true;
+    }
   }
   createJobPostForm() {
     this.jobPostForm = this.fb.group({
@@ -139,6 +155,7 @@ export class JobPostComponent implements OnInit {
     }
 
               this.btnLoader=true;
+              this.isPostClick=true;
               this.jobPostForm.controls['UserId'].setValue(this.userId);
               this.jobPostForm.controls['Tags'].setValue(this.Tags);
               this.jobPostForm.controls["Latitude"].setValue(this.latitude);
@@ -147,7 +164,6 @@ export class JobPostComponent implements OnInit {
               this.jobPostForm.controls['IsPublic'].setValue(this.ischeckedPublic);
               this.jobPostForm.controls['Address'].setValue(addressLocation);
               this.jobModel = Object.assign({}, this.jobPostForm.value);
-
               this._jobServices.AddJobPost(this.jobModel).subscribe((data: any) => {
                 if (this.filetoPost == undefined) {
                   this._jobServices.AddPostImages(data.CreatedJob.Id, null).subscribe(() => {

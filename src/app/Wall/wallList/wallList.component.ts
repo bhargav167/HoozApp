@@ -1,10 +1,10 @@
- import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+
+ import {Clipboard} from '@angular/cdk/clipboard';
+import { Component, HostListener, OnInit} from '@angular/core';
 import { Pagination } from '../../Model/Pagination';
 import { TagMaster } from '../../Model/TagMaster';
 import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { WallResponce } from '../../Model/Wall/WallResponce';
-import { ProfileService } from '../../services/Auth/Profile.service';
 import { SharedService } from '../../services/SharedServices/Shared.service';
 import { WallService } from '../../services/Wall/Wall.service';
 import swal from 'sweetalert2';
@@ -14,10 +14,9 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { ClipboardService } from 'ngx-clipboard'
 import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
 import { TimeagoIntl } from 'ngx-timeago';
 import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
-@Component({
+ @Component({
   selector: "app-wallList",
   templateUrl: "./wallList.component.html",
   styleUrls: ["./wallList.component.scss"],
@@ -53,6 +52,7 @@ export class WallListComponent implements OnInit {
   constructor(
     intl: TimeagoIntl,
     private _clipboardService: ClipboardService,
+    private clipboard: Clipboard,
     private navServices:NavbarCommunicationService,
     private _wallServices: WallService,
     private activatedRoute: ActivatedRoute,
@@ -69,7 +69,9 @@ export class WallListComponent implements OnInit {
       this.userId=this.user.Id;
       this.isLoading = true;
     }
+
   }
+
   ngOnInit() {
     this._sharedServices.checkInterNetConnection();
     this.activatedRoute.queryParams.subscribe(params => {
@@ -117,6 +119,7 @@ export class WallListComponent implements OnInit {
           this.walldatas = res.result;
           this.pagination = res.pagination;
           this.isLoading = false;
+          console.log(this.walldatas);
           this.noResultText = "Explore more with different keyword";
         },
         (err) => {
@@ -263,8 +266,8 @@ export class WallListComponent implements OnInit {
   getJobId(jobId,imgUrl) {
     this.shareimgUrl=imgUrl;
     this.shareJobId = jobId;
-   // this.meta.updateTag({ property: 'og:image:type', content: imgUrl });
-   // window.document.querySelector('meta[property="og:image:type"]').setAttribute("content", imgUrl);
+    window.document.querySelector('meta[property="og:description"]').setAttribute("content", imgUrl);
+    window.document.querySelector('meta[property="og:url"]').setAttribute("content", 'https://hoozonline.com/jobDetails?target=' +jobId);
   }
   public shareFB(jobId) {
     return window.open(

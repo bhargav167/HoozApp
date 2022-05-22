@@ -11,7 +11,7 @@ export class MessagesComponent implements OnInit {
   constructor(public signalRService: SignalrService) { }
 
   ngOnInit(): void {
-    this.signalRService.connect();
+
   }
   sendMessage(): void {
     // this.signalRService.sendMessageToApi(this.text).subscribe({

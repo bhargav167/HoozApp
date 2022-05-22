@@ -61,6 +61,9 @@ isCopied:boolean;
   }
 
   ngOnInit() {
+    setInterval(() => {
+     this.loadResponcesData(this.loggedUserId);
+    }, 2000);
   }
   showToast() {
     this.toast.success('Link copied!', {
@@ -73,6 +76,7 @@ isCopied:boolean;
       this.IsAddedJob(this.loggedUserId,this.jobId);
     })
   }
+
 
   loadResponcesData(userId:number){
     this._jobServices.GetResponceCount(this.jobId,userId).subscribe((data:number)=>{
@@ -101,7 +105,7 @@ isCopied:boolean;
     })
   }
 
-//Check is this job added already
+  //Check is this job added already
   IsAddedJob(userId: number, jobId: number) {
     this._jobServices.IsAddedJob(userId,jobId).subscribe((data:any)=>{
       if(data.Status==200){

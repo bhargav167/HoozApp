@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   this.token = localStorage.getItem('user');
   this.IsLogin();
   }
+
   Search(searchTerm) {
     this._routers.navigate(['/'], { queryParams: {searchTag:searchTerm }});
 }

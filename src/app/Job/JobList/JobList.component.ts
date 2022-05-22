@@ -58,6 +58,8 @@ export class JobListComponent implements OnInit {
       this.jobModels = res.result.data;
       this.pagination = res.pagination;
       this.isLoading = false;
+    },err=>{
+      this.isLoading=false;
     })
   }
   //Load Post Tab
@@ -66,6 +68,8 @@ export class JobListComponent implements OnInit {
       this.jobModel = res.result;
       this.jobModels = res.result.data;
       this.pagination = res.pagination;
+    },err=>{
+      this.isLoading=false;
     })
   }
 

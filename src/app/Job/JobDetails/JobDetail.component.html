@@ -9,7 +9,7 @@
         <div class="d-flex switch_button_wrap">
           <div class="d-flex flex-row justify-content-between">
             <div   class="switch-button">
-              <input  (change)="ResponceTab()" class="switch-button-checkbox" type="checkbox" />
+              <input (change)="ResponceTab()" class="switch-button-checkbox" type="checkbox" />
               <label  class="switch-button-label" for=""><span class="switch-button-label-span">Post</span>
               </label>
               <label  class="ll" for="">
@@ -106,11 +106,9 @@
        <div class="">
         <div class="d-flex">
             <label id="custom-button" class="img_wrap mob_view">
-              <div  *ngIf="job?.ImagesUrl==null">
-                  <img  src="../../../assets/DummyProfileImg/ImgThumb.png" alt="your image" />
-              </div>
-              <div  *ngIf="job?.ImagesUrl!=null" class="overlay_bg">
-                <img class="img img-responsive img-fluid" [src]="job.ImagesUrl" alt="job image" />
+
+              <div class="overlay_bg">
+                <img class="img img-responsive img-fluid" [src]="job?.ImagesUrl" alt="job image" />
               </div>
           </label>
         </div>
