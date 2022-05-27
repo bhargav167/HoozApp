@@ -13,7 +13,7 @@ import { RealChatDtos } from '../../Model/Message/RealChatDtos';
 @Component({
   selector: "app-Chatbox",
   templateUrl: "./Chatbox.component.html",
-  styleUrls: ["./Chatbox.component.css"],
+  styleUrls: ["./Chatbox.component.scss"],
 })
 export class ChatboxComponent implements OnInit {
   senderId: number;
@@ -45,11 +45,12 @@ export class ChatboxComponent implements OnInit {
   ngOnInit() {
     this.loadUserData();
     this.loadUserChat();
+    this.IsOnline();
     setInterval(()=>{
      this.loadUserChat();
      this.IsOnline();
     },2000)
-   // this.loadUserChat();
+
     this._signalR.retrieveMappedObject().subscribe( (receivedObj: RealChatDtos) => {  this.addToInbox(receivedObj);});
   }
   msgDto: RealChatDtos = new RealChatDtos();
@@ -81,7 +82,6 @@ export class ChatboxComponent implements OnInit {
       position: 'top-center',
     });
    this.isSending=true;
-
     this.msgDto = {
       SenderId: this.senderId,
       RecipientId: this.recipientId,
@@ -96,6 +96,7 @@ export class ChatboxComponent implements OnInit {
      this._signalR.sendMessageToApi(this.senderId,this.msgDto).subscribe((data:MessageForCreationDto)=>{
        this.isSending=false;
        this.checkIsSend=true;
+
      },err=>{
       this.isSending=false;
 
@@ -108,7 +109,7 @@ export class ChatboxComponent implements OnInit {
     newObj.RecipientId = obj.RecipientId;
     newObj.RecipientContent = obj.RecipientContent;
     newObj.Content = obj.Content;
-
+    newObj.MessageSent=new Date();
     this.msgInboxArray.push(newObj);
   }
    //Back loacation History

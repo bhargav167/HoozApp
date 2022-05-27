@@ -55,7 +55,10 @@
               <div class="bt_sec">
                 <div *ngIf="item.Descriptions.length<=33"><span timeago [date]="item?.CreatedBy"></span></div>
                 <div *ngIf="item.Descriptions.length>=34"><span timeago [date]="item?.CreatedBy"></span></div>
-                <div *ngIf="!IsOnJob" class="ResponceBadge">Response <span class="badge rounded-pill bg-Responce">{{item.TotalResponces}}</span></div>
+                <div *ngIf="!IsOnJob" class="ResponceBadge">Response&nbsp;
+                  <span *ngIf="item.TotalResponces>0" class="badge rounded-pill bg-Responce">{{item.TotalResponces}}</span>
+                  <span *ngIf="item.TotalResponces==0" class="badge rounded-pill bg-NoResponce">{{item.TotalResponces}}</span>
+                </div>
               </div>
             </div>
         </div>
@@ -71,6 +74,11 @@
   </div>
 
    </div>
-
+   <div *ngIf="!NotEmptPost">
+    <br><br> <br>
+    <div class="col-md-12 d-flex justify-content-center">
+      <div class="Search-result">{{noResultText}}</div>
+    </div>
+  </div>
 </div>
 </div>

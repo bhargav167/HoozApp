@@ -11,6 +11,7 @@
   --btn-bg-color: #000000;
   --btn-text-color: #fff;
   --green: #00FFE0;
+  --silver:#808080;
   --hover-color: #000000;
   --light-gray-color: #eff2f5;
   --toast-bg-color: #000000;
@@ -25,6 +26,18 @@ body {
   color: black !important;
   background: var(--green);
   border: 1px solid var(--green);
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--body-font-size);
+}
+.bg-NoResponce{
+  color: black !important;
+  background: var(--silver);
+  border: 1px solid var(--silver);
   padding: 0;
   width: 30px;
   height: 30px;

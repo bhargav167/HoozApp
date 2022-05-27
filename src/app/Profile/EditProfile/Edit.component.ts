@@ -9,6 +9,8 @@ import {Location} from '@angular/common';
 import { SharedService } from '../../services/SharedServices/Shared.service';
 import { Router } from '@angular/router';
 import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
+import { TagMaster } from '../../Model/TagMaster';
+import { TagService } from '../../services/Tags/Tag.service';
 @Component({
   selector: 'app-Edit',
   templateUrl: './Edit.component.html',
@@ -32,11 +34,12 @@ export class EditComponent implements OnInit {
 
   public message: string;
   public Tagmessage: string;
-
+  tagMaster:TagMaster;
   ImageUrl:string;
   CoverImageUrl:string;
   constructor(private _profileServices: ProfileService,
     private _sharedServices:SharedService,
+    private _tagService:TagService,
     private fb:FormBuilder,private toast: HotToastService,
     private navServices:NavbarCommunicationService,
     private _router:Router,
@@ -179,7 +182,18 @@ export class EditComponent implements OnInit {
     this.Tags.push(this.userTag);
     this.userForm.controls['tags'].setValue(this.Tags);
     this.Tagmessage = '';
-    this.userForm.controls['stringTags'].setValue('');
+
+    // Addv TAG TO TAG MASTER TABLE
+     // Add Tag To TagMaster for Later show suggetions
+     this.tagMaster = {
+      Id:0,
+      TagName:  this.userForm.controls['stringTags'].value.trim()
+    };
+    this._tagService.AddTag(this.tagMaster).subscribe((data)=>{
+      this.userForm.controls['stringTags'].setValue('');
+    },err=>{
+      console.log("Tag Adding to master Failed");
+    });
   }
   RemoveTagging(item) {
     this.Tags = this.Tags.filter(function (obj) {

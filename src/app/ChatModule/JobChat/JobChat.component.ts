@@ -13,7 +13,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 @Component({
   selector: 'app-JobChat',
   templateUrl: './JobChat.component.html',
-  styleUrls: ['./../Chatbox/Chatbox.component.css']
+  styleUrls: ['./../Chatbox/Chatbox.component.scss']
 })
 export class JobChatComponent implements OnInit {
   senderId: number;

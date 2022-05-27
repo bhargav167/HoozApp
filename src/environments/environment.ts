@@ -5,8 +5,8 @@
 
 export const environment = {
   production: false,
-  // api_url: 'https://hoozonline.com/api/',
-  api_url: 'http://localhost:5000/api/',
+  api_url: 'https://hoozonline.com/api/',
+  //api_url: 'http://localhost:5000/api/',
   hubConnectionURL: 'http://localhost:5000/signalr',
   broadcastURL: 'http://localhost:5000/api/Chat/send',
   broadcastJobURL: 'http://localhost:5000/api/Chat/Jobsend'

@@ -16,7 +16,7 @@
     <div class="d-flex justify-content-between search_wrap">
       <div class="input-group">
         <form class="form">
-          <input type="search" (click)="hide()" autocomplete="off" (keyup.enter)="SearchByEnter()"  #movieSearchInput id="searchTag"
+          <input type="search" (click)="hide()"  autocomplete="off" (keyup.enter)="SearchByEnter()"  #movieSearchInput id="searchTag"
             class="form-control form-input" placeholder="Search" tabindex="-1" aria-activedescendant>
           <div class="searchSuggetion" *ngIf="hidesearchlist">
             <ul>
@@ -142,6 +142,7 @@
             <div *ngIf="isLogedIn">
               <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE</a>
               <a [routerLink]="['/joblist']" id="b"> <i class="far fa-newspaper"></i>Job Listing </a>
+              <a [routerLink]="['/chat']" id="b"> <i class="fa-solid fa-comment-dots"></i>Chats </a>
             </div>
             <a id="b"><i class="fas fa-cog"></i>SETTINGS </a>
             <a id="b" *ngIf="!isLogedIn" href="/login"> <i class="fas fa-cog"></i>Login</a>

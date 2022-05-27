@@ -25,7 +25,7 @@ hidesearchlist: boolean = false;
 showClose: boolean = false;
 tag: TagMaster;
 searchval: any;
-isShowingMenu: boolean = true;
+isShowingMenu: boolean = false;
 location:any;
 @Output() notifyParent: EventEmitter<any> = new EventEmitter();
   constructor(private _profileServices:ProfileService,private _router:Router,
@@ -169,11 +169,11 @@ location:any;
 
    }
    ShowMenu(){
-    this.navServices.isShowingMenu=true;
+    this.navServices.isShowingMenu=!this.navServices.isShowingMenu;
    }
 
   LogoClick() {
-    this._router.navigate(['/']);
+    window.location.href='/';
   }
   RedirectToUser(userId){
     this._router.navigate(['/profile'], { queryParams: {target: userId}});

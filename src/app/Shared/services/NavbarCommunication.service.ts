@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class NavbarCommunicationService {
-isShowingMenu:boolean=true;
+isShowingMenu:boolean=false;
 isShowingSearch:boolean=false;
 constructor() { }
 Toggle(){

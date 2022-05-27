@@ -60,6 +60,7 @@ export class JobListComponent implements OnInit {
       this.isLoading = false;
     },err=>{
       this.isLoading=false;
+      this.NotEmptPost = false;
     })
   }
   //Load Post Tab
@@ -68,8 +69,12 @@ export class JobListComponent implements OnInit {
       this.jobModel = res.result;
       this.jobModels = res.result.data;
       this.pagination = res.pagination;
+      if(this.jobModels.length===0){
+        this.NotEmptPost = false;
+      }
     },err=>{
       this.isLoading=false;
+      this.NotEmptPost = false;
     })
   }
 
@@ -88,6 +93,8 @@ export class JobListComponent implements OnInit {
         this.notScrollY = true;
         this.pagination = res.pagination;
 
+      },err=>{
+        this.isLoading=false;
       })
     } else {
       this._jobServices.GetPostJob(this.currentPage, this.itemsPerPage).subscribe((res: any) => {
@@ -101,6 +108,8 @@ export class JobListComponent implements OnInit {
         this.notScrollY = true;
         this.pagination = res.pagination;
 
+      },err=>{
+        this.isLoading=false;
       })
     }
   }

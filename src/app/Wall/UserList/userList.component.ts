@@ -55,7 +55,7 @@ export class UserListComponent implements OnInit {
       this.isLoading = false;
       this.walldatas = [];
       this.NotEmptPost = false;
-      this.noResultText = `Couldn't find any Post with tag "${userParams}" try a different keyword.`;
+      this.noResultText = `Couldn't find any Profile with tag "${userParams}" try a different keyword.`;
     }
     )
   }

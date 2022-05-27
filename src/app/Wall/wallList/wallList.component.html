@@ -21,8 +21,8 @@
             <div class="d-flex flex-row align-items-center">
               <div class="icon">
                 <img (click)="RedirectToUser(item.Job.User.Id)"  *ngIf="item.Job.IsAnonymous===false"
-                  class="rounded-circle img-fluid" src="{{item.Job.User?.UserImage}}">
-                <img *ngIf="item.Job.IsAnonymous===true" class="rounded-circle img-fluid"
+                  class="rounded-circle img-fluid" src="{{item.Job?.User?.UserImage}}">
+                <img *ngIf="item.Job?.IsAnonymous===true" class="rounded-circle img-fluid"
                   src="{{item.Job?.AnonmousUserPic}}">
               </div>
               <div class="ms-2 c-details">

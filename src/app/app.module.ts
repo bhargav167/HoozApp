@@ -115,7 +115,7 @@ export class MyIntl extends TimeagoIntl {
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('723321922147754')
+            provider: new FacebookLoginProvider('529256848841971')
           },
 
         ]

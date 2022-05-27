@@ -115,11 +115,10 @@ export class WallListComponent implements OnInit {
       .GetWall(currentPage, itemsPerPage, userParams, userId)
       .subscribe(
         (res: any) => {
-          this.walldata = res.result;
+
           this.walldatas = res.result;
           this.pagination = res.pagination;
           this.isLoading = false;
-          console.log(this.walldatas);
           this.noResultText = "Explore more with different keyword";
         },
         (err) => {

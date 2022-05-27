@@ -12,6 +12,9 @@ export class ProfileService {
   GetUserProfile(id:number){
     return this._http.get(this.baseURL+'User/UserById/'+id);
   }
+  load(){
+   return this._http.get('');
+  }
   UpdateUser(id:number,user:SocialAuthentication){
     return this._http.post(this.baseURL+'User/'+id,user);
   }

@@ -7,10 +7,14 @@
           <a *ngIf="user?.ImageUrl" data-toggle="modal" data-target="#view_info">
               <img src="{{user?.ImageUrl}}" alt="avatar">
           </a>
-          <h2>{{user?.Name}}</h2>
+          <div class="c-details">
+            <h2>{{user?.Name}}</h2>
+          <div class="img share">{{user?.City}}, {{user?.State}}</div>
+          </div>
+
       </div>
   </div>
-  <div class="chat">
+  <div *ngIf="user" class="chat">
       <div *ngIf="isOnline==false" class="chat-header clearfix">
         Last seen: <i class="fa fa-circle offline"></i>&nbsp; <div class="message-data-time" timeago [date]="LastActive"></div>
       </div>
@@ -26,13 +30,13 @@
                       <img src="{{user?.ImageUrl}}" alt="avatar">
                       <div class="message other-message"> {{item.Content}}</div>
                   </div>
-                  <div class="message-data-time" timeago [date]="item.MessageSent"></div>
+                  <div  class="message-data-time" timeago [date]="item?.MessageSent"></div>
               </li>
               <li *ngIf="item.SenderContent!=null" class="clearfix">
                   <div class="md_chat">
                       <div class="message my-message">{{item.Content}}</div>
 
-                      <div class="message-data-time" timeago [date]="item.MessageSent"></div>
+                      <div   class="message-data-time" timeago [date]="item?.MessageSent"></div>
                   </div>
               </li>
 

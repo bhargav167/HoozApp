@@ -21,7 +21,7 @@
   display: none;
 }
 .chat-list li:hover .fa-angle-right {
-  display: block;
+  display:block;
 }
 .chat-list li:hover {
   background: var(--light-gray-color);

@@ -43,7 +43,7 @@
       <div class="col-lg-6">
         <div class="">
           <label for="exampleInputEmail1" class="form-label">Name &nbsp; </label>
-          <input type="text" formControlName="Name"
+          <input autocomplete="off" type="text" formControlName="Name"
           class="form-control one" id="exampleInputEmail1" aria-describedby="emailHelp">
           <small class="text text-center"
           *ngIf="userForm.get('Name').hasError('required') && userForm.get('Name').touched"
@@ -56,7 +56,7 @@
        <div class="col-lg-6">
         <div class="">
           <label for="exampleInputEmail1" class="form-label form-label1">UserName &nbsp; </label>
-          <input type="text" formControlName="UserName"
+          <input autocomplete="off" type="text" formControlName="UserName"
           class="form-control one"  id="exampleInputEmail1" aria-describedby="emailHelp">
           <small
           *ngIf="userForm.get('UserName').hasError('required') && userForm.get('UserName').touched"
@@ -71,7 +71,7 @@
       <div class="">
         <label for="exampleInputEmail1" class="form-label">Tags &nbsp; </label>
         <div class="buttonInside">
-          <input (keyup.enter)="AddTagging()" type="text" formControlName="stringTags" class="form-control taginput " id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input autocomplete="off" (keyup.enter)="AddTagging()" type="text" formControlName="stringTags" class="form-control taginput " id="exampleInputEmail1" aria-describedby="emailHelp">
           <button type="button" (click)="AddTagging()" class="tagbutton btn-hoozOn-2" id="showPassword">Add</button>
         </div>
       </div>
@@ -90,7 +90,7 @@
       <div class="">
         <label for="exampleInputEmail1" class="form-label">About Me &nbsp; </label>
 
-        <textarea style="height: 80px;"
+        <textarea autocomplete="off" style="height: 80px;"
         placeholder="Short bio" type="text" formControlName="AboutUs"
 
         class="form-control about"  id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -105,7 +105,7 @@
     <div class="col-md-12">
       <div class="">
         <label for="exampleInputEmail1" class="form-label">Links &nbsp; </label>
-        <input placeholder="Link" type="text" formControlName="WebSiteUrl"
+        <input placeholder="Link" autocomplete="off" type="text" formControlName="WebSiteUrl"
         class="form-control about"  id="exampleInputEmail1" aria-describedby="emailHelp">
       </div>
      </div>
