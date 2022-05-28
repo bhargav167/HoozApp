@@ -1,5 +1,5 @@
 <nav class="mb-5 navbar sticky-top navbar-light bg-light1 mb-5">
-  <div class="container-fluid">
+  <div *ngIf="!enableMobieSearch" class="container-fluid">
     <div class="logo_location">
       <img (click)="LogoClick()" class="img-responsive logo" src="../../../assets/Logo/hoozon.svg" />
       <img (click)="LogoClick()" class="img-responsive logo_mb" src="../../../assets/Logo/hoozon_mb.png" />
@@ -13,6 +13,8 @@
       </div>
       <!----------Location end----------->
     </div>
+
+    <!-- Search on Desktop -->
     <div class="d-flex justify-content-between search_wrap">
       <div class="input-group">
         <form class="form">
@@ -33,7 +35,7 @@
         </form>
       </div>
     </div>
-
+     <!-- End Search on Desktop -->
       <!-- <img [routerLink]="['/jobpost']" class="addIco img img-responsive img-fluid tog" routerLinkActive="router-link-active"
         style="height: 2.5rem; width: 2.5rem; cursor: pointer;" src="../../../assets/HoozIcon/HoozAdd.png" /> -->
       <a *ngIf="isLogedIn" (click)="RedirectToUser(user.Id)"class="nav-item dropdown_mb profileimg">
@@ -160,12 +162,45 @@
 
     </div>
   </div>
+
+
+  <!-- Enable mobile search -->
+  <div *ngIf="enableMobieSearch" class="container-fluid">
+
+    <!-- Search on Mob -->`
+    <div class="d-flex justify-content-between">
+      <div class="input-group">
+        <form class="form">
+          <input type="search" (click)="hide()"  autocomplete="off" (keyup.enter)="SearchByEnter()"  #movieSearchInput id="searchTag"
+            class="form-control form-input" placeholder="Search" tabindex="-1" aria-activedescendant>
+          <div class="searchSuggetion" *ngIf="hidesearchlist">
+            <ul>
+              <li *ngFor="let item of tag.data" (click)="SearchByClick(item.TagName)">
+                <div tabindex="-1">{{item.TagName}}</div>
+              </li>
+            </ul>
+          </div>
+          <span *ngIf="!showClose" class="left-pan">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </span>
+          <span (click)="ClearSearch()" *ngIf="showClose" class="left-pan"> <i
+              class="fa fa-times-circle"></i></span>
+        </form>
+      </div>
+    </div>
+     <!-- End Search on Mob -->
+
+  </div>
 </nav>
+
+
+
+<!-- Footer -->
 <nav class="footer {{url()}}">
   <a class="nav-item" [routerLink]="['/']">
     <i class="fa fa-home" aria-hidden="true"></i>
   </a>
-  <a class="nav-item" (click)="Search()">
+  <a class="nav-item" (click)="EnableSearch()">
     <i class="fa fa-search" aria-hidden="true"></i>
   </a>
   <a class="nav-item add_post" *ngIf="isLogedIn" [routerLink]="['/jobpost']">

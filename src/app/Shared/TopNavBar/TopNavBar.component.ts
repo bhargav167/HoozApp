@@ -27,6 +27,7 @@ tag: TagMaster;
 searchval: any;
 isShowingMenu: boolean = false;
 location:any;
+enableMobieSearch:boolean=false;
 @Output() notifyParent: EventEmitter<any> = new EventEmitter();
   constructor(private _profileServices:ProfileService,private _router:Router,
     private apiloader: MapsAPILoader,
@@ -190,4 +191,8 @@ location:any;
   Search(){
     this.navServices.Toggle();
   }
+  EnableSearch(){
+    this.enableMobieSearch=!this.enableMobieSearch;
+  }
+
 }
