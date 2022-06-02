@@ -573,6 +573,7 @@ textarea.swal2-textarea {
   .main_cnt_wrap {
     position: relative;
     padding-top: 20px;
+    overflow-x: hidden;
   }
   .main_cnt_wrap .back_arrow {
     top: -36px;
