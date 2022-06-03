@@ -558,9 +558,9 @@ textarea.swal2-textarea {
 }
 
 @media (max-width:767px) {
-  body {
+  /* body {
     padding-bottom: 90px;
-  }
+  } */
   .back_arrow {
     margin-left: 15px;
     margin-top: 15px;
@@ -573,9 +573,14 @@ textarea.swal2-textarea {
   .main_cnt_wrap {
     position: relative;
     padding-top: 20px;
+    overflow-x: hidden;
+    padding-bottom: 90px;
   }
   .main_cnt_wrap .back_arrow {
     top: -36px;
+  }
+  .job_list_wrap {
+      padding-bottom: 90px;
   }
 }
 
