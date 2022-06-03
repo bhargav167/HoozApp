@@ -285,7 +285,10 @@ nav.footer .nav-item {
 .nav-item img {
   max-width: 34px;
 }
-nav.chatbox.footer {display: none;}
+nav.chatbox.footer,
+nav.footer.jobchatbox {
+  display: none;
+}
 .logo_location {
   display: flex;
   align-items: center;
