@@ -217,4 +217,12 @@
   font-size: initial;
 }
 
+h3.hc {
+  text-align: center;
+}
 
+@media (max-width:767px) {
+  .Help_page .back_arrow {
+    margin-top: 5px;
+  }
+}
