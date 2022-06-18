@@ -282,6 +282,11 @@ nav.footer .nav-item {
   text-decoration: none;
   font-size: 24px;
 }
+nav.footer .nav-item:hover,
+nav.footer .nav-item:hover svg path {
+  color: var(--green);
+  fill: var(--green);
+}
 .nav-item img {
   max-width: 34px;
 }
@@ -345,6 +350,10 @@ nav.footer.jobchatbox {
     padding-left: 23px;
     padding-right: 23px;
   }
+  nav.navbar .container-fluid .d-flex.justify-content-between,
+  form.form.ng-untouched.ng-pristine.ng-valid {
+      width: 100%;
+  }
   .dropdown_mb.profileimg {
     border: 3px solid var(--green);
   }
@@ -371,6 +380,12 @@ nav.footer.jobchatbox {
   nav.footer .add_post {
     width: 44px;
     height: 44px;
+  }
+  nav.mb-5.navbar.sticky-top.navbar-light.bg-light1.mb-5 {
+    flex-wrap: unset;
+  }
+  input#searchTag {
+    width: 100%;
   }
 }
 @media (min-width: 768px) {

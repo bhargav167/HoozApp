@@ -42,12 +42,12 @@
         <img src="{{navbarUserPic}}" class="rounded-circle img-fluid"
           href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
       </a>
-      <div *ngIf="isLogedIn" type="button" class="navbar-toggler tog mb_menu">
+      <a class="links mb_menu" *ngIf="!isLogedIn" href="/login" >Login</a>
+      <div type="button" class="navbar-toggler tog mb_menu">
         <label class="for-dropdown" for="dropdown1">
             <i class="fas fa-chevron-down"></i>
         </label>
       </div>
-      <a class="links mb_menu" *ngIf="!isLogedIn" href="/login" >Login</a>
       <input (click)="ShowMenu()" class="dropdown tog" type="checkbox" id="dropdown1" name="dropdown1" />
 
     <!-- DropDown Toggle1 -->
@@ -71,7 +71,7 @@
       <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a><br><br>
     </div> -->
 
-    <div *ngIf="isLogedIn && this.navServices.isShowingMenu" (click)="hide()" class="section-dropdown tog">
+    <div *ngIf="this.navServices.isShowingMenu" (click)="hide()" class="section-dropdown tog">
       <div class="dr_top">
         <div *ngIf="isLogedIn">
           <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE</a>
@@ -132,14 +132,14 @@
           href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
       </a>
 
-      <label *ngIf="isLogedIn" class="for-dropdown menu" for="dropdown">
+      <label class="for-dropdown menu" for="dropdown">
         <i class="fas fa-chevron-down"></i>
       </label>
-      <input (click)="ShowMenu()" *ngIf="isLogedIn" class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
+      <input (click)="ShowMenu()" class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
 
       <!-- DropDown Toggle2 -->
 
-        <div *ngIf="isLogedIn && this.navServices.isShowingMenu" (click)="hide()" class="section-dropdown">
+        <div *ngIf="this.navServices.isShowingMenu" (click)="hide()" class="section-dropdown">
           <div class="dr_top">
             <div *ngIf="isLogedIn">
               <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE</a>
@@ -167,7 +167,7 @@
   <!-- Enable mobile search -->
   <div *ngIf="enableMobieSearch" class="container-fluid">
 
-    <!-- Search on Mob -->`
+    <!-- Search on Mob -->
     <div class="d-flex justify-content-between">
       <div class="input-group">
         <form class="form">
@@ -207,7 +207,10 @@
     <i class="fa fa-plus"></i>
   </a>
   <a class="nav-item jobs" [routerLink]="['/joblist']" >
-    <img src="../../../assets/Logo/jobs.png" class="img-fluid" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" />
+    <svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19.7865 0C24.42 0 27 2.67 27 7.245V22.74C27 27.39 24.42 30 19.7865 30H7.215C2.655 30 0 27.39 0 22.74V7.245C0 2.67 2.655 0 7.215 0H19.7865ZM7.62 20.61C7.39922 20.587 7.17643 20.6268 6.97736 20.7251C6.77829 20.8233 6.61106 20.9758 6.495 21.165C6.37735 21.3541 6.315 21.5723 6.315 21.795C6.315 22.0177 6.37735 22.2359 6.495 22.425C6.61201 22.6124 6.77991 22.7627 6.9791 22.8583C7.1783 22.9539 7.40057 22.9909 7.62 22.965H19.38C19.6694 22.9323 19.9366 22.7941 20.1306 22.577C20.3246 22.3598 20.4319 22.0787 20.4319 21.7875C20.4319 21.4963 20.3246 21.2152 20.1306 20.998C19.9366 20.7809 19.6694 20.6427 19.38 20.61H7.62ZM19.38 13.7685H7.62C7.3095 13.7685 7.01171 13.8918 6.79215 14.1114C6.5726 14.331 6.44925 14.6287 6.44925 14.9392C6.44925 15.2498 6.5726 15.5475 6.79215 15.7671C7.01171 15.9867 7.3095 16.11 7.62 16.11H19.38C19.6905 16.11 19.9883 15.9867 20.2078 15.7671C20.4274 15.5475 20.5508 15.2498 20.5508 14.9392C20.5508 14.6287 20.4274 14.331 20.2078 14.1114C19.9883 13.8918 19.6905 13.7685 19.38 13.7685ZM12.1035 6.975H7.62V6.99C7.3097 6.99 7.0121 7.11327 6.79269 7.33268C6.57327 7.5521 6.45 7.8497 6.45 8.16C6.45 8.4703 6.57327 8.7679 6.79269 8.98732C7.0121 9.20673 7.3097 9.33 7.62 9.33H12.1035C12.4158 9.33 12.7153 9.20594 12.9361 8.98512C13.1569 8.76429 13.281 8.46479 13.281 8.1525C13.281 7.84021 13.1569 7.54071 12.9361 7.31988C12.7153 7.09906 12.4158 6.975 12.1035 6.975Z" fill="black"/>
+    </svg>      
+    <!-- <img src="../../../assets/Logo/jobs.png" class="img-fluid" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" /> -->
   </a>
   <a class="nav-item chat" [routerLink]="['/chat']">
     <i class="fa-solid fa-comment-dots"></i>
