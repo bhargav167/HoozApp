@@ -1,0 +1,193 @@
+.edit_profile {
+  max-width: 100%;
+  width: 630px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 80px;
+}
+.edit_profile_top {
+  margin-bottom: 25px;
+}
+.btn-circle {
+  width: 45px;
+  height: 45px;
+  padding: 0px;
+  border-radius: 70px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+  position: absolute;
+  margin-left: -38px;
+  background-color: #fff;
+  z-index: 999;
+  margin-top: -61px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+label.form-label {font-weight: 600;margin-bottom: 12px;}
+.about {
+  height: 48px;
+  width: 100%;
+  background-color: #f7f7f9;
+  font-weight: 300;
+  color: black;
+  border-width: 0;
+  border-radius: 0.5rem;
+}
+.one {
+  height: 48px;
+  width: 100%;
+  background-color: #f7f7f9;
+  font-weight: 300;
+  color: black;
+  border-width: 0;
+  border-radius: 0.5rem;
+}
+.buttonInside{
+  position:relative;
+  margin-bottom:10px;
+}
+.taginput {
+  height: 85px;
+  width: 100%;
+  background-color: #f7f7f9;
+  font-weight: 300;
+  color: black;
+  border-width: 0;
+  padding-left:10px;
+  border-radius: 0.5rem;
+  border:none;
+  outline:none;
+}
+.tagbutton {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+}
+.btn-ChatHooz {
+  background-color: #00fa9a;
+  color: black;
+  border-radius: 0.5rem;
+  width: 4.6rem;
+  font-weight: bold;
+  margin-top: -80px;
+  margin-left: -178px;
+}
+.btn-EditHooz {
+  background-color: black;
+  color: white;
+  border-radius: 0.5rem;
+  width: 4.6rem;
+  font-weight: bold;
+  margin-top: -80px;
+  margin-left: -178px;
+}
+.outer-div {
+  perspective: 900px;
+  perspective-origin: 50% calc(50% - 18em);
+}
+.inner-div {
+  margin: 0 auto;
+  border-radius: 5px;
+  font-weight: 400;
+  color: black;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.6s cubic-bezier(0.8, -0.4, 0.2, 1.7);
+  transform-style: preserve-3d;
+  position: relative;
+}
+.front__bkg-photo {
+  height: 192px;
+  background:no-repeat;
+  background-size: cover;
+  border-radius: 12px;
+  background-position: center;
+  cursor: pointer;
+}
+.front__face-photo {
+  position: relative;
+  height: 134px;
+  width: 134px;
+  margin: 0 auto;
+  margin-top: -67px;
+  border-radius: 50%;
+  background: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  cursor: pointer;
+}
+input[type="file"] {
+  display: none;
+}
+.bg-badge {
+  background-color: #b4b4b4;
+}
+#footer {
+    background:#c7cfd8;
+    color: #fff;
+    height: 74px;
+    font-size: 16px;
+    font-weight: 600;
+    z-index: 1;
+    transition: all .5s;
+}
+.btn-save {
+  border: none;
+  background-color: var(--btn-color);
+  color: white;
+  border-radius: 12px;
+  outline: none;
+  text-align: center;
+  font-weight: bold;
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+.spinner-border-sm {
+  margin-right: 6px;
+}
+.btn-reset {
+  border:none;
+  background-color: white;
+  color: black;
+  border-radius:12px;
+  outline:none;
+  text-align:center;
+  font-weight:bold;
+  width: 85px;
+  height: 48px;
+  margin-right: 20px;
+}
+label.cover_pic {
+  display: block;
+}
+span.upload_cover {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+@media (max-width:767px) {
+  .col-lg-6:first-child {
+    margin-bottom: 25px;
+  }
+  .edit_profile {
+    padding-bottom: 20px;
+  }
+  footer#footer {
+      position: static;
+      margin-bottom: 20px;
+  }
+}

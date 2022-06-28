@@ -1,0 +1,24 @@
+<div class="chat-app">
+    <div id="plist" class="people-list">
+        <!-- <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Search...">
+        </div> -->
+        <ul *ngFor="let item of userlist"  class="list-unstyled chat-list">
+
+            <li *ngIf="item.Id!==userId" [routerLink]="['/chatbox']" [queryParams]="{uid: item.Id}" class="clearfix">
+                <img src="{{item.ImageUrl}}" alt="avatar">
+                <div class="about">
+                    <div class="name">{{item.Name}}</div>
+                     <div class="status">  {{item?.City}}, {{item?.State}} </div>
+                </div>
+                <i  class="fa fa-angle-right"></i>
+            </li>
+
+
+        </ul>
+    </div>
+
+</div>

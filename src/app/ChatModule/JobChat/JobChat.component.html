@@ -1,0 +1,48 @@
+<div class="chat-app">
+  <div class="chat_top_sec">
+      <div class="back_arrow_chat">
+          <i (click)="backClicked()" aria-hidden="true" class="back fa fa-2x fa fa-angle-left"></i>
+      </div>
+      <div class="tp_user">
+          <a *ngIf="job?.ImagesUrl" [routerLink]="['/jobDetails']" [queryParams]="{target: job?.Id}" data-toggle="modal" data-target="#view_info">
+              <img src="{{job?.ImagesUrl}}" alt="hooz">
+          </a>
+          <h2>You are messaging to Job Id {{job?.Id}}</h2>
+      </div>
+  </div>
+  <div *ngIf="job" class="chat">
+      <div class="chat-header clearfix">
+
+      </div>
+      <div  class="chat-history">
+          <ul *ngFor="let item of jobMessages" class="m-b-0">
+              <li *ngIf="item.SenderContent==null" class="clearfix">
+                  <div class="message-data">
+                      <img src="{{item?.RecipientPhotoUrl}}" alt="avatar">
+                      <div class="message other-message"> {{item.Content}}</div>
+                  </div>
+                  <div class="message-data-time" timeago [date]="item.MessageSent"></div>
+              </li>
+              <li *ngIf="item.SenderContent!=null" class="clearfix">
+                  <div class="md_chat">
+                      <div class="message my-message">{{item.Content}}</div>
+
+                      <div class="message-data-time" timeago [date]="item.MessageSent"></div>
+                  </div>
+              </li>
+
+          </ul>
+          <span class="message-sending" *ngIf="isSending">sending...</span>
+      </div>
+
+      <div class="chat-message_btn clearfix">
+          <!-- <div class="input-group-prepend">
+              <img class="img send" src="./../../../assets/Logo/upload.svg" alt="img">
+          </div> -->
+          <input (keyup.enter)="SendMsg()" type="text" class="form-control" id="msg" value="" placeholder="Enter text here...">
+          <div class="send_wrap">
+              <img  (click)="SendMsg()" class="img send" src="./../../../assets/Logo/send.svg" alt="img">
+          </div>
+      </div>
+  </div>
+</div>

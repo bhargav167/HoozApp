@@ -1,0 +1,4 @@
+<ngx-loading-bar [includeSpinner]="false" color="#00fa9a" height="4px"></ngx-loading-bar>
+<app-TopNavBar (notifyParent)="Search($event)" *ngIf="!this._sharedServices.IslogingPage"></app-TopNavBar>
+
+<router-outlet></router-outlet>

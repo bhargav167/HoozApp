@@ -1,0 +1,150 @@
+
+<div (click)="hideEvent()" class="Help_page">
+  <div  class="back_arrow">
+    <i  (click)="backClicked()" class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+  </div>
+  <h3 class="hc">Help Center</h3>
+
+<body>
+  <!-- At Destop -->
+  <div class="InDestop">
+    <div style="background-color: rgb(252 252 253);" class="d-flex mt-5">
+      <div class="NavSection">
+        <ul>
+          <a [ngStyle]="{color: isGS?'rgb(107 93 240)':'black'}"  (click)="GS()">Getting Started</a>
+          <a [ngStyle]="{color: isEX?'rgb(107 93 240)':'black'}" (click)="EX()">Explore</a>
+          <a [ngStyle]="{color: isGetServices?'rgb(107 93 240)':'black'}" (click)="GetServices()">Get Service</a>
+          <a [ngStyle]="{color: isSP?'rgb(107 93 240)':'black'}" (click)="SP()">Service Provider</a>
+          <a [ngStyle]="{color: isCU?'rgb(107 93 240)':'black'}" (click)="CU()">Contact Us</a>
+        </ul>
+      </div>
+
+      <ng-container *ngIf="isGS">
+        <div class="ContentSection mt-2">
+          <a>Getting Started</a>
+          <p>Learn how to create an account, set up your profile, and what you can do on HoozOnline</p>
+          <p class="mb-5"></p>
+          <p>Step1. Login to hoozonline using Google or FB</p>
+          <p>Step2. Update your profile with pic and banner.</p>
+          <p class="mb-5">Step3. Add tags to your profile</p>
+          <p><b style="color: rgb(107 93 240);">Explore</b>  other interesting features</p>
+        </div>
+      </ng-container>
+
+
+      <ng-container *ngIf="isEX">
+        <div class="ContentSection mt-2">
+          <a>EXPLORE</a>
+
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="isGetServices">
+        <div class="ContentSection mt-2">
+          <a>Get Service</a>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="isSP">
+        <div class="ContentSection mt-2">
+          <a>Service Provider</a>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="isCU">
+        <div class="ContentSection mt-2">
+          <a>Write to us</a>
+          <p class="mt-4">Share your feedback and experience with us</p>
+          <div class="">
+            <input placeholder="Email" autocomplete="off" type="email"
+            class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="mt-2">
+           <textarea autocomplete="off" placeholder="Write here..." class="form-control" cols="6" rows="6"></textarea>
+          </div>
+          <br>
+          <button type="submit"  class="btn btn-hoozGreen">
+            Submit
+          </button>
+          <br>
+          <br>
+        </div>
+      </ng-container>
+    <br>
+    </div>
+  </div>
+
+  <!-- At Mobile -->
+  <div class="container-fluid InMobile">
+    <div style="background-color: rgb(252 252 253);" class="row d-flex justify-content-center mt-5">
+
+            <div class="ms-2 c-details">
+              <div class="select">
+                  <select style="color: rgb(107 93 240);" (change)="ChangeEvent($event)" class="select__field" required>
+                      <option [ngStyle]="{color: isGS?'rgb(107 93 240)':'black'}" value="1">Getting Started&nbsp;</option>
+                      <option [ngStyle]="{color: isEX?'rgb(107 93 240)':'black'}"  value="2">Explore&nbsp;</option>
+                      <option [ngStyle]="{color: isGetServices?'rgb(107 93 240)':'black'}" value="3">Get Service&nbsp;</option>
+                      <option [ngStyle]="{color: isSP?'rgb(107 93 240)':'black'}" value="4">Service Provider&nbsp;</option>
+                      <option [ngStyle]="{color: isCU?'rgb(107 93 240)':'black'}" value="5">Contact Us&nbsp;</option>
+                  </select>
+                </div>
+          </div>
+    </div>
+  </div>
+<div class="container-fluid InMobile">
+  <div class="row d-flex justify-content-center">
+    <ng-container *ngIf="isGS">
+      <div class="ContentSection1 mt-2">
+        <a>Getting Started</a>
+        <p>Learn how to create an account, set up your profile, and what you can do on HoozOnline</p>
+        <p class="mb-5"></p>
+        <p>Step1. Login to hoozonline using Google or FB</p>
+        <p>Step2. Update your profile with pic and banner.</p>
+        <p class="mb-5">Step3. Add tags to your profile</p>
+        <p><b style="color: rgb(107 93 240);">Explore</b>  other interesting features</p>
+      </div>
+    </ng-container>
+
+
+    <ng-container *ngIf="isEX">
+      <div class="ContentSection1 mt-2">
+        <a>EXPLORE</a>
+
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="isGetServices">
+      <div class="ContentSection1 mt-2">
+        <a>Get Service</a>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="isSP">
+      <div class="ContentSection1 mt-2">
+        <a>Service Provider</a>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="isCU">
+      <div class="ContentSection1 mt-2">
+        <a>Write to us</a>
+        <p class="mt-4">Share your feedback and experience with us</p>
+        <div class="">
+          <input placeholder="Email" autocomplete="off" type="email"
+          class="form-control"  id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mt-2">
+         <textarea autocomplete="off" placeholder="Write here..." class="form-control" cols="6" rows="6"></textarea>
+        </div>
+        <br>
+        <button type="submit"  class="btn btn-hoozGreen">
+          Submit
+        </button>
+        <br>
+        <br>
+      </div>
+    </ng-container>
+  </div>
+</div>
+</body>
+</div>

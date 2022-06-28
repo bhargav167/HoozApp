@@ -1,0 +1,57 @@
+<div class="chat-app">
+  <div class="chat_top_sec">
+      <div class="back_arrow_chat">
+          <i (click)="backClicked()" aria-hidden="true" class="back fa fa-2x fa fa-angle-left"></i>
+      </div>
+      <div class="tp_user">
+          <a *ngIf="user?.ImageUrl" data-toggle="modal" data-target="#view_info">
+              <img src="{{user?.ImageUrl}}" alt="avatar">
+          </a>
+          <div class="c-details">
+            <h2>{{user?.Name}}</h2>
+          <div class="img share">{{user?.City}}, {{user?.State}}</div>
+          </div>
+
+      </div>
+  </div>
+  <div *ngIf="user" class="chat">
+      <div *ngIf="isOnline==false" class="chat-header clearfix">
+        Last seen: <i class="fa fa-circle offline"></i>&nbsp; <div class="message-data-time" timeago [date]="LastActive"></div>
+      </div>
+
+      <div *ngIf="isOnline==true" class="chat-header clearfix">
+        <div class="status"> <i class="fa fa-circle online"></i>&nbsp;  <b>Online</b></div>
+      </div>
+      <div  class="chat-history">
+          <ul *ngFor="let item of msgInboxArray" class="m-b-0">
+
+              <li *ngIf="item.SenderContent==null" class="clearfix">
+                  <div class="message-data">
+                      <img src="{{user?.ImageUrl}}" alt="avatar">
+                      <div class="message other-message"> {{item.Content}}</div>
+                  </div>
+                  <div  class="message-data-time" timeago [date]="item?.MessageSent"></div>
+              </li>
+              <li *ngIf="item.SenderContent!=null" class="clearfix">
+                  <div class="md_chat">
+                      <div class="message my-message">{{item.Content}}</div>
+
+                      <div   class="message-data-time" timeago [date]="item?.MessageSent"></div>
+                  </div>
+              </li>
+
+          </ul>
+          <span class="message-sending" *ngIf="isSending">sending...</span>
+      </div>
+
+      <div class="chat-message_btn clearfix">
+          <!-- <div class="input-group-prepend">
+              <img class="img send" src="./../../../assets/Logo/upload.svg" alt="img">
+          </div> -->
+          <input type="text" (keyup.enter)="SendMsg()" class="form-control" id="msg" value="" placeholder="Type here...">
+          <div class="send_wrap">
+              <img (click)="SendMsg()" class="img send" src="./../../../assets/Logo/send.svg" alt="img">
+          </div>
+      </div>
+  </div>
+</div>

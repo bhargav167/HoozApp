@@ -1,0 +1,203 @@
+<div (click)="hideEvent()" class="main_cnt_wrap">
+  <div  class="back_arrow">
+    <i  (click)="backClicked()"  class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+    <!-- <h3 class="hc1">Job Detail</h3> -->
+  </div>
+  <!--  Tab Toggle -->
+  <div *ngIf="loggedUserId==job?.User?.Id" class="container-sm mt-0 mb-4">
+    <div class="row col-sm-12">
+        <div class="d-flex switch_button_wrap">
+          <div class="d-flex flex-row justify-content-between">
+            <div   class="switch-button">
+              <input (change)="ResponceTab()" class="switch-button-checkbox" type="checkbox" />
+              <label  class="switch-button-label" for=""><span class="switch-button-label-span">Post</span>
+              </label>
+              <label  class="ll" for="">
+                <span>
+                  Response
+                 <span *ngIf="totalResponces!=0" class="badge rounded-pill bg-Responce">
+                    {{totalResponces}}
+                  </span>
+              </span>
+              </label>
+
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="my_container">
+    <div id="custom-button" class="img_wrap desk_view left_sec">
+
+        <div style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#exampleModal"  *ngIf="job?.ImagesUrl">
+          <img class="img img-responsive img-fluid" [src]="job?.ImagesUrl" alt="post image" />
+        </div>
+    </div>
+    <!-- User Sections -->
+      <div  *ngIf="IsOnResponces==false && IsChatActive==false" class="right_sec">
+        <div class="d-flex job_details">
+          <div  class="user_details">
+            <div class="icon">
+              <img class="rounded-circle img-fluid"
+                [src]="job?.IsAnonymous==false?job?.User?.UserImage:job?.AnonmousUserPic"/>
+            </div>
+            <div class="c-details">
+              <h6 (click)="RedirectToUser(job.User.Id)" *ngIf="job?.IsAnonymous==false">{{job?.User?.Name}}  <span timeago [date]="job?.CreatedBy"></span></h6>
+              <h6 *ngIf="job?.IsAnonymous==true">Anonymous  <span timeago [date]="job?.CreatedBy" ></span></h6>
+            </div>
+          </div>
+          <div class="share_sec">
+            <div class="dropdown">
+                <span><img class="img share" src="./../../../assets/Logo/3dots.svg" /></span>
+                <div class="dropdown-content JobdetailDroupdown mt-0">
+                  <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && isJobAdded" style="cursor: pointer;" (click)="AddToJob()">Add to My Jobs</a>
+                  <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId && !isJobAdded" style="cursor: pointer;" (click)="RemoveToJob()">Remove Job</a>
+                  <a *ngIf="loggedUserId!=job?.User?.Id && loggedUserId" style="cursor: pointer;" (click)="Report()">Report</a>
+                  <a   (click)="GetSharedLink(job.Id)" style="cursor: pointer;">Copy Link</a>
+                  <a  data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">Share</a>
+                </div>
+            </div>
+          </div>
+        </div>
+
+          <!-- Section-2 Job Status -->
+          <div class="">
+            <!-- If Other Job Details -->
+            <div *ngIf="loggedUserId!=job?.User?.Id" class="job_status">
+              <div class="title">
+                <p>Job Status</p>
+              </div>
+              <div class="job_opt">
+                <div class="select">
+                  <div class="select__field">
+                    {{job?.JobStatus}}
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="loggedUserId!=job?.User?.Id"  class="chat_sec">
+                <button  (click)="Chat()"  type="button" class="btn">Chat</button>
+              </div>
+            </div>
+
+             <!-- If Other Job Details -->
+             <div *ngIf="loggedUserId==job?.User?.Id" class="job_status">
+              <div class="title">
+                <p>Job status</p>
+              </div>
+              <div class="job_opt">
+                 <div class="select">
+                  <i class="fa fa-caret-down" ></i>
+                     <select (change)="UpdateStatus($event)" name="nameValueSelect" class="select__field" required>
+                         <option [selected]="job?.JobStatus==='OPEN'" value="OPEN">Open</option>
+                         <option [selected]="job?.JobStatus==='ON HOLD'" value="ON HOLD">On hold</option>
+                         <option [selected]="job?.JobStatus==='CLOSED'" value="CLOSED">Closed</option>
+                         <option [selected]="job?.JobStatus==='DELETED'" value="DELETED">Delete</option>
+                     </select>
+                   </div>
+              </div>
+
+              <div *ngIf="loggedUserId==job?.User?.Id" class="edit_sec">
+                  <button (click)="Edit(job.Id)" type="button" class="btn">Edit</button>
+              </div>
+            </div>
+          </div>
+
+      <!-- Image Section-2 -->
+       <div class="">
+        <div class="d-flex">
+            <label id="custom-button" class="img_wrap mob_view">
+
+              <div class="overlay_bg">
+                <img class="img img-responsive img-fluid" [src]="job?.ImagesUrl" alt="job image" />
+              </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Job Descriptions -->
+      <div class="job_des">
+          <p>{{job?.Descriptions}}</p>
+      </div>
+
+      <!-- Locations -->
+      <div class="locations">
+        <!-- <label for="exampleInputPassword1"  class="form-label">Location</label> -->
+        <p>{{job?.Address}}</p>
+    </div>
+
+      <!-- Tags -->
+      <div class="badgeTagWrap" >
+        <div *ngFor="let item of job?.Tags" class="badgeTag" >
+          {{item.TagName}}
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf="IsOnResponces==true && IsChatActive==false"  class="right_sec">
+      <div class="d-flex job_details">
+        <app-JobResponce (notifySender)="SetSenderId($event)" (notifyParent)="OnChat()"></app-JobResponce>
+      </div>
+     </div>
+
+     <div *ngIf="IsChatActive==true"  class="right_sec">
+      <div class="d-flex job_details">
+         <app-JobChat (notifyParent)="chatBack($event)"></app-JobChat>
+      </div>
+     </div>
+
+  </div>
+
+
+
+</div>
+
+<!-- SHARE MODAL -->
+ <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+    <div class="modal-content ShareModel">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Share with</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="social-buttons">
+            <a (click)="shareFB()" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a (click)="shareTwitter()" class="social-buttons__button social-button social-button--twitter" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <!-- <a (click)="GetSharedLink(jobId)"
+              class="social-buttons__button social-button social-button--snapchat" aria-label="SnapChat">
+              <i class="fa fa-link"></i>
+            </a> -->
+            <a  (click)="shareWhatsApp()" class="social-buttons__button social-button social-button--steam" aria-label="Whatsapp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!--Image Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <img class="img img-responsive img-fluid" [src]="job?.ImagesUrl" alt="job image" />
+      </div>
+
+    </div>
+  </div>
+</div>
+

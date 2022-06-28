@@ -1,0 +1,197 @@
+<nav class="mb-5 navbar sticky-top navbar-light bg-light1 mb-5">
+  <div *ngIf="!enableMobieSearch" class="container-fluid">
+    <div class="logo_location">
+      <img (click)="LogoClick()" class="img-responsive logo" src="../../../assets/Logo/hoozon.svg" />
+      <img (click)="LogoClick()" class="img-responsive logo_mb" src="../../../assets/Logo/hoozon_mb.png" />
+      <!----------Location----------->
+      <div class="location">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="loc_des">
+          <div id="addressTitle" class="title">{{countryName}} <i class="fas fa-caret-down"></i></div>
+          <span id="addrDetails">{{addressLoc}}</span>
+        </div>
+      </div>
+      <!----------Location end----------->
+    </div>
+
+    <!-- Search on Desktop -->
+    <div class="d-flex justify-content-between search_wrap">
+      <div class="input-group">
+        <form class="form">
+          <input type="search" (click)="hide()" #movieSearchInput (keyup)="fireSearchlist($event)" autocomplete="off"
+            (keyup.enter)="SearchByEnter()" id="searchTag" class="form-control form-input" placeholder="Search"
+            tabindex="-1" aria-activedescendant>
+          <div class="searchSuggetion" *ngIf="hidesearchlist">
+            <ul>
+              <li *ngFor="let item of tag.data" (click)="SearchByClick(item.TagName)">
+                <div tabindex="-1">{{item.TagName}}</div>
+              </li>
+            </ul>
+          </div>
+          <span *ngIf="!showClose" class="left-pan">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </span>
+          <span (click)="ClearSearch()" *ngIf="showClose" class="left-pan"> <i class="fa fa-times-circle"></i></span>
+        </form>
+      </div>
+    </div>
+    <!-- End Search on Desktop -->
+    <!-- <img [routerLink]="['/jobpost']" class="addIco img img-responsive img-fluid tog" [routerLink]Active="router-link-active"
+        style="height: 2.5rem; width: 2.5rem; cursor: pointer;" src="../../../assets/HoozIcon/HoozAdd.png" /> -->
+    <a *ngIf="isLogedIn" (click)="RedirectToUser(user.Id)" class="nav-item dropdown_mb profileimg">
+      <img src="{{navbarUserPic}}" class="rounded-circle img-fluid" href="#" id="navbarDropdown" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false" />
+    </a>
+    <a class="links mb_menu" *ngIf="!isLogedIn" href="/login" >Login</a>
+    <div type="button" class="navbar-toggler tog mb_menu">
+      <label class="for-dropdown" for="dropdown1">
+          <i class="fas fa-chevron-down"></i>
+      </label>
+    </div>
+    <input (click)="ShowMenu()" class="dropdown tog" type="checkbox" id="dropdown1" name="dropdown1" />
+
+
+
+    <div *ngIf="isLogedIn && this.navServices.isShowingMenu" (click)="hide()" class="section-dropdown tog">
+      <div class="dr_top">
+        <div *ngIf="isLogedIn">
+          <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE</a>
+          <a [routerLink]="['/joblist']" id="b"> <i class="far fa-newspaper"></i>Job Listing </a>
+          <a id="b" [routerLink]="['/settings/download']"> <i class="fa fa-download"></i>Download</a>
+        </div>
+        <a id="b"><i class="fas fa-cog"></i>SETTINGS </a>
+        <a id="b" *ngIf="!isLogedIn" href="/login"> <i class="fas fa-cog"></i>Login</a>
+      </div>
+      <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
+      <div class="section-dropdown-sub">
+        <a id="s" href="#">About Us <i class="uil uil-arrow-right"></i></a>
+        <a id="s" [routerLink]="['/settings/helpDesk']">Help & Support<i class="uil uil-arrow-right"></i></a>
+        <a id="s" href="#">Terms & Conditions<i class="uil uil-arrow-right"></i></a>
+        <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a>
+        <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a>
+      </div>
+    </div>
+    <!--End DropDown Toggle1 -->
+
+    <div class="collapse navbar-collapse tog justify-content-end" id="navbarCollapse">
+      <div class="navbar-nav mr-auto mt-2 mt-md-0">
+        <form class="d-flex">
+          <ul (click)="hide()" class="navbar-nav ">
+            <li *ngIf="isLogedIn" class="nav-item">
+              <a class="nav-link active" [routerLink]="['/joblist']">Job listing</a>
+            </li>
+            <li *ngIf="isLogedIn" class="nav-item">
+              <a class="nav-link active" [routerLink]="['/jobpost']">Create Posts</a>
+            </li>
+            <li *ngIf="!isLogedIn" class="nav-item">
+              <a class="nav-link active" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" [routerLink]="['/']">Wall</a>
+            </li>
+            <li [routerLink]="['/profile',user.Id]" *ngIf="isLogedIn" class="nav-item dropdown profileimg">
+              <img src="{{user?.ImageUrl}}" class="nav-link dropdown-toggle img-circle" href="#" id="navbarDropdown"
+                role="button" data-bs-toggle="dropdown" aria-expanded="false" />
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+
+    <div class="justify-content-end togs">
+      <!-- <a [routerLink]="['/settings/download']" class="links">Download App</a>
+      <a class="links" *ngIf="isLogedIn" [routerLink]="['/joblist']">Job Posts</a> -->
+      <a class="links add_post" *ngIf="isLogedIn" [routerLink]="['/jobpost']">
+        <i class="fa fa-plus"></i>
+      </a>
+      <a class="links" *ngIf="!isLogedIn" href="/login">Login</a>
+
+      <!-- <a  class="links" aria-current="page" [routerLink]="['/']">Wall</a> &nbsp;&nbsp; -->
+      <a *ngIf="isLogedIn" (click)="RedirectToUser(user.Id)" class="nav-item dropdown profileimg">
+        <img src="{{navbarUserPic}}" class="rounded-circle img-fluid" href="#" id="navbarDropdown" role="button"
+          data-bs-toggle="dropdown" aria-expanded="false" />
+      </a>
+
+      <label class="for-dropdown menu" for="dropdown">
+        <i class="fas fa-chevron-down"></i>
+      </label>
+      
+      <input (click)="ShowMenu()" class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
+
+      <!-- DropDown Toggle2 -->
+
+      <div *ngIf="this.navServices.isShowingMenu" (click)="hide()" class="section-dropdown">
+        <div class="dr_top">
+          <div *ngIf="isLogedIn">
+            <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE</a>
+            <a [routerLink]="['/joblist']" id="b"> <i class="far fa-newspaper"></i>Job Listing </a>
+            <a [routerLink]="['/chat']" id="b"> <i class="fa-solid fa-comment-dots"></i>Chats </a>
+          </div>
+          <a id="b"><i class="fas fa-cog"></i>SETTINGS </a>
+          <a id="b" *ngIf="!isLogedIn" href="/login"> <i class="fas fa-cog"></i>Login</a>
+        </div>
+        <input class="dropdown-sub" type="checkbox" id="dropdown-sub" name="dropdown-sub" />
+        <div class="section-dropdown-sub">
+          <a id="s" href="#">About Us <i class="uil uil-arrow-right"></i></a>
+          <a id="s" [routerLink]="['/settings/helpDesk']">Help & Support<i class="uil uil-arrow-right"></i></a>
+          <a id="s" href="#">Terms & Conditions<i class="uil uil-arrow-right"></i></a>
+          <a id="s" href="#">Privacy Policies<i class="uil uil-arrow-right"></i></a>
+          <a id="s" *ngIf="isLogedIn" (click)="LogOut()">Logout<i class="uil uil-arrow-right"></i></a>
+        </div>
+      </div>
+      <!--End DropDown Toggle2 -->
+
+    </div>
+  </div>
+
+  <!-- Enable mobile search -->
+  <div *ngIf="enableMobieSearch" class="container-fluid">
+
+    <!-- Search on Mob -->
+    <div class="d-flex justify-content-between">
+      <div class="input-group">
+        <form class="form">
+          <input type="search" (click)="hide()" #movieSearchInput (keyup)="fireSearchlist($event)" autocomplete="off"
+            (keyup.enter)="SearchByEnter()" id="searchTag" class="form-control form-input" placeholder="Search"
+            tabindex="-1" aria-activedescendant>
+          <div class="searchSuggetion" *ngIf="hidesearchlist">
+            <ul>
+              <li *ngFor="let item of tag.data" (click)="SearchByClick(item.TagName)">
+                <div tabindex="-1">{{item.TagName}}</div>
+              </li>
+            </ul>
+          </div>
+          <span *ngIf="!showClose" class="left-pan">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </span>
+          <span (click)="ClearSearch()" *ngIf="showClose" class="left-pan"> <i class="fa fa-times-circle"></i></span>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End Search on Mob -->
+
+
+</nav>
+
+
+
+<!-- Footer -->
+<nav class="footer {{url()}}">
+  <a class="nav-item" (click)="LogoClick()">
+    <i class="fa fa-home" aria-hidden="true"></i>
+  </a>
+  <a class="nav-item" (click)="EnableSearch()">
+    <i class="fa fa-search" aria-hidden="true"></i>
+  </a>
+  <a class="nav-item add_post" (click)="HideMobSearch()" *ngIf="isLogedIn" [routerLink]="['/jobpost']">
+    <i class="fa fa-plus"></i>
+  </a>
+  <a class="nav-item jobs" (click)="HideMobSearch()" [routerLink]="['/joblist']">
+    <img src="../../../assets/Logo/jobs.png" class="img-fluid" href="#" id="navbarDropdown" role="button"
+      data-bs-toggle="dropdown" aria-expanded="false" />
+  </a>
+  <a class="nav-item chat" (click)="HideMobSearch()" [routerLink]="['/chat']">
+    <i class="fa-solid fa-comment-dots"></i>
+  </a>
+</nav>

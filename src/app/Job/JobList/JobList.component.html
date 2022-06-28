@@ -1,0 +1,84 @@
+<div (click)="hideEvent()">
+  <div  class="back_arrow">
+    <i  (click)="backClicked()" class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+  </div>
+
+<!-- MAIN CONTENT -->
+<div class="job_list_wrap">
+   <!-- User Sections -->
+   <!-- <h3 class="hc1">Job List</h3> -->
+    <!--  Tab Toggle -->
+    <div class="container-sm mt-0 mb-1">
+      <div class="row col-sm-12">
+          <div class="d-flex switch_button_wrap">
+            <div class="d-flex flex-row">
+              <div class="switch-button">
+                <input [(ngModel)]="!IsOnJob" (change)="checkValue(IsOnJob?false:true)" class="switch-button-checkbox" type="checkbox" />
+                <label  class="switch-button-label" for=""><span class="switch-button-label-span">Jobs</span></label>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+   <div class="content">
+      <div class="d-flex job_list_text">
+          <div class="title">
+            List of all posts with status
+          </div>
+          <div class="job_opt">
+            <div class="select">
+              <i class="fa fa-caret-down"></i>
+              <select (change)="JobStatusChange($event)" name="nameValueSelect" class="select__field" required>
+                  <option value="OPEN">Open</option>
+                  <option value="ON HOLD">On hold</option>
+                  <option value="CLOSED">Closed</option>
+                  <option value="DELETED">Delete</option>
+              </select>
+            </div>
+          </div>
+      </div>
+    <div infiniteScroll [infiniteScrollDistance]="7" (scrolled)="onScroll()" class="search-results">
+    <div *ngFor="let item of jobModels; let i = index">
+        <!-- post Sections -->
+        <div (click)="RedirectToJob(item.Id,item.User.Id)" class="job_list_item">
+            <div id="custom-button" class="img_wrap">
+
+                <div class="overlay_bg">
+                  <img [src]="item.JobDetailImage" alt="hooz image" />
+                </div>
+            </div>
+            <div class="right_sec">
+              <div class="title">
+                <span>{{item.Descriptions |  slice:0:50}}</span>
+                <i class="fa fa-angle-right"></i>
+              </div>
+              <div class="bt_sec">
+                <div *ngIf="item.Descriptions.length<=33"><span timeago [date]="item?.CreatedBy"></span></div>
+                <div *ngIf="item.Descriptions.length>=34"><span timeago [date]="item?.CreatedBy"></span></div>
+                <div *ngIf="!IsOnJob" class="ResponceBadge">Response&nbsp;
+                  <span *ngIf="item.TotalResponces>0" class="badge rounded-pill bg-Responce">{{item.TotalResponces}}</span>
+                  <span *ngIf="item.TotalResponces==0" class="badge rounded-pill bg-NoResponce">{{item.TotalResponces}}</span>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isLoading" class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <br><br>
+    </div>
+
+  </div>
+
+   </div>
+   <div *ngIf="!NotEmptPost">
+    <br><br> <br>
+    <div class="col-md-12 d-flex justify-content-center">
+      <div class="Search-result">No Results</div>
+    </div>
+  </div>
+</div>
+</div>

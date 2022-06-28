@@ -1,0 +1,160 @@
+
+<div (click)="hideEvent()" class="main_cnt_wrap">
+  <div  class="back_arrow">
+    <i  (click)="backClicked()" class="back fa fa-2x fa-arrow-left" aria-hidden="true"></i>
+  </div>
+
+  <div class="jobpost_wrap">
+      <div class="jobpost_top">
+        <div class="j_left">
+          <p>POST YOUR REQUIREMENT </p>
+          <h2>Create post</h2>
+        </div>
+        <div class="j_right">
+          <button type="submit"   form="postForm" id="post" [disabled]="!jobPostForm.valid || btnLoader"  class="btn btn-hoozOn">
+            <span class="button-content">
+              <span *ngIf="this.btnLoader"  class="spinner-border text-light spinner-border-sm" role="status"></span>
+              <span *ngIf="this.btnLoader"  class="load-text"> Posting...</span>
+              <span *ngIf="!this.btnLoader" class="btn-text">  Post</span>
+              <!-- <i *ngIf="!this.btnLoader" class="fa fa-paper-plane"></i> -->
+            </span>
+          </button>
+        </div>
+      </div>
+
+     <div class="jobpost_main">
+        <form (keydown.enter)="$event.preventDefault()" id="postForm" [formGroup]="jobPostForm"   (ngSubmit)="AddJobPost()">
+          <div class="jobpost_left">
+            <label id="custom-button" class="add_post">
+              <div  *ngIf="!imgURL">
+                <i  class="fas fa-plus"></i>
+                <p>Add image</p>
+              </div>
+              <div *ngIf="imgURL" class="ap_img_wrp">
+                <img [src]="imgURL" alt="your image" />
+              </div>
+              <input  formControlName="ImagesUrl" #file id="real-file" (change)="FileUpload(file.files)" type="file" size="60" >
+              </label>
+              <small class="text text-danger">{{message}}</small>
+          </div>
+
+          <div class="jobpost_right">
+            <div class="mb-20">
+              <label for="exampleInputEmail1" class="form-label">
+                Add description<sup>*</sup>
+              </label>
+              <textarea  type="text"
+                formControlName="Descriptions"
+                class="form-control one" placeholder="What are you looking for?" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </textarea>
+              <small
+                *ngIf="jobPostForm.get('Descriptions')!.hasError('required') && jobPostForm.get('Descriptions')!.touched"
+                id="emailHelp" class="form-text text text-danger">Description is required.</small>
+            </div>
+
+            <div class="mb-20">
+              <label for="exampleInputPassword1" class="form-label form-label1">Add tags<sup>*</sup></label>
+              <div class="add_tag">
+                <input (keyup.enter)="AddTagging()" formControlName="Tags" placeholder=" add tags to your post"  class="form-control taginput"  type="text">
+                <button type="button" (click)="AddTagging()" class="btn btn-hoozOn-2" id="showPassword">Add</button>
+              </div>
+            </div>
+
+            <div class="badgeTagWrap" >
+              <span *ngFor="let item of Tags" class="badgeTag">
+                {{item.TagName}} <i (click)="RemoveTagging(item.TagName)" class="fa fa-times" aria-hidden="true"></i>
+              </span>
+            </div>
+
+            <div class="mb-20 location">
+              <label for="exampleInputPassword1"  class="form-label">Location*</label>
+              <div class="location_sec">
+                <span id="location" >featching location...</span>
+                <!-- <button class="btn btn-hoozOn-2">Edit</button> -->
+              </div>
+            </div>
+
+            <div class="mb-20">
+              <div class="form-check">
+                <input class="form-check-input" (change)="changePostAnonymously()" [checked]="ischeckedAnonymously" type="checkbox" id="flexcheckboxDefault1">
+                <label class="check" for="flexcheckboxDefault1">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div>
+                  <label class="form-label" for="flexcheckboxDefault1">
+                    Post Anonymously
+                  </label>
+                  <p class="parapost">Post as anonymous user, creators information will not be shown</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-20">
+              <div class="form-check">
+                <input class="form-check-input" (change)="changePostPublic()" [checked]="ischeckedPublic"  type="checkbox" name="flexcheckDefault" id="flexcheckboxDefault2" checked>
+                <label class="check" for="flexcheckboxDefault2">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </label>
+                <div>
+                  <label class="form-label" for="flexcheckboxDefault2">
+                    Post Locally
+                  </label>
+                  <p class="parapost">Post will be shown to your nearby users only upto 80 kms</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="post_button">
+        <button type="submit"   form="postForm" id="post" [disabled]="!jobPostForm.valid || btnLoader"  class="btn btn-hoozOn">
+          <span class="button-content">
+            <span *ngIf="this.btnLoader"  class="spinner-border text-light spinner-border-sm" role="status"></span>
+            <span *ngIf="this.btnLoader"  class="load-text"> Posting...</span>
+            <span *ngIf="!this.btnLoader" class="btn-text">  Post</span>
+            <!-- <i *ngIf="!this.btnLoader" class="fa fa-paper-plane"></i> -->
+          </span>
+        </button>
+      </div>
+
+    <!-- <div class="row">
+    <div class="col-md-12">
+      <div class="mt-4">
+        <label for="exampleInputPassword1"  class="form-label">Location* &nbsp; </label>
+        <button class="EditBtn"><i class="fas fa-pencil-alt"></i></button>
+      <p id="location" style="font-size: 12px; font-weight: bold;"></p>
+      </div>
+    </div>
+    </div> -->
+      <div class="row">
+
+      <!-- <div class="row">
+        <div class="col-md-6">
+          <p class="headingparapost">Local or Global decides the reach of your post</p>
+          <div class="row">
+            <div class="col-md-6">
+            <div class="form-check">
+              <input class="form-check-input"   type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Local
+              </label>
+            </div>
+            </div>
+            <div class="col-md-6">
+            <div class="form-check">
+              <input class="form-check-input"   type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked >
+              <label class="form-check-label" for="flexRadioDefault2">
+                Global
+              </label></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <div class="form-check">
+            <p class="headingparapost1">Set local post reach   <span id="rangeValue">0&nbsp;kms</span></p>
+            <input class="range" type="range"   value="0" min="0" max="1000" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)"/>
+          </div>
+        </div>
+      </div> -->
+  </div>
+</div>
