@@ -36,7 +36,7 @@ body {
 }
 .bg-NoResponce{
   color: black !important;
-  background: var(--silver);
+  background: var(--light-gray-color);
   border: 1px solid var(--silver);
   padding: 0;
   width: 30px;
@@ -584,4 +584,128 @@ textarea.swal2-textarea {
   }
 }
 
-/* Image-modal */
+
+/* Notification */
+ 
+.notifications-dropdown .dropdown-menu {
+	padding-top: 0;
+	padding-bottom: 0;
+    border-radius: 9px;
+    overflow-y: auto;
+}
+
+.notifications-dropdown .dropdown-menu-header {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 6px;
+    background:  var(--green);
+    color: #FFF;
+    overflow-y: auto;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.notifications-dropdown .dropdown-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-width: 350px;
+    overflow-y: auto;
+    white-space: inherit;
+	border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+.notifications-dropdown .dropdown-item:last-child {
+	border-bottom: none;
+}
+
+.notifications-dropdown .dropdown-item small {
+    color: #6f6f6f;
+}
+
+.notifications-dropdown a {
+	color: #333;
+	text-decoration: none;
+	font-size: 14px;
+    display: block;
+    width: 100%;
+    padding-top: 2px;
+    padding-left: 8px;
+}
+
+.notifications-dropdown img {
+    border-radius: 100px;
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border: 1px solid var(--light-gray-color);
+}
+
+.notifications-dropdown-footer {   
+	text-align: center;
+    font-size: 13px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background: #e2e2e2;
+    text-transform: uppercase;
+}
+
+
+/* //Loader */
+
+.lds-ring {
+  display: inline-block;
+  position: fixed;
+  width: 80px;
+  height: 80px;
+  top: 260px;
+  z-index: 9;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border: 8px solid black;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: black transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loader {
+  padding: 5px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 20px;
+  height: 20px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

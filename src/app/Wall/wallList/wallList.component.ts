@@ -63,6 +63,11 @@ export class WallListComponent implements OnInit {
     private _seo: SeoServiceService,
     private _router:Router
   ) {
+    // this._seo.generatesTags({
+    //   title: 'HoozOnline',
+    //   description: 'Services booking Application',
+    //   image: 'https://res.cloudinary.com/drmnyie0t/image/upload/v1656995689/hoozon_iiguz5.svg',
+    // });
     intl.strings = englishStrings;
     intl.changes.next();
     if(localStorage.getItem('user')!){
@@ -151,7 +156,6 @@ export class WallListComponent implements OnInit {
   onScroll() {
     if (this.notScrollY && this.NotEmptPost) {
       this.noResultText = "Explore more with different keyword";
-
       this.notScrollY = false;
       this.LoadNextPost();
     }

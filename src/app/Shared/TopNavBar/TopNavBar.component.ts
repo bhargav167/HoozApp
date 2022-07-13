@@ -1,10 +1,10 @@
 import { MapsAPILoader } from '@agm/core';
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output, ViewChild, ElementRef, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { fromEvent, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
+import { Router } from '@angular/router'; 
+import { of } from 'rxjs';
+import { JobPostService } from 'src/app/services/JobPost/JobPost.service';
+ 
 import { environment } from '../../../environments/environment';
  import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { ProfileService } from '../../services/Auth/Profile.service';
@@ -21,6 +21,7 @@ export class TopNavBarComponent implements OnInit {
 user!:SocialAuthentication;
 navbarUserPic:string='https://res.cloudinary.com/drmnyie0t/image/upload/v1652501879/Default_User_1_esjtmm.png';
 isLogedIn:boolean=false;
+isNotificationLoading:boolean=false;
 hidesearchlist: boolean = false;
 showClose: boolean = false;
 tag!: any;
@@ -29,10 +30,13 @@ isShowingMenu: boolean = false;
 location:any;
 enableMobieSearch:boolean=false;
 fireSearchlistTxt: string = '';
+totalResponces:number=0;
+notificationData:any=[];
   countryName: string = 'location';  
   addressLoc: string = '...';
 @Output() notifyParent: EventEmitter<any> = new EventEmitter();
   constructor(private _profileServices:ProfileService,private _router:Router,
+    private _jobPostService:JobPostService,
     private apiloader: MapsAPILoader,
     public navServices: NavbarCommunicationService, private _http: HttpClient) {
       this.location=JSON.parse(sessionStorage.getItem('location')!);
@@ -42,14 +46,19 @@ fireSearchlistTxt: string = '';
       .subscribe({
         next:(data:any) => {
           this.navbarUserPic=data.UserImage;
+          this.isLogedIn=true;
+        this.loadCount();
         }
       })
-      this.isLogedIn=true;
+     
     }else{
       this.isLogedIn=false;
     }
    }
   ngOnInit() {
+    if(this.isLogedIn){
+      setInterval(()=>{this.loadCount()},2500)
+    }
     if(this.location==null){
       this.AskForLocation();
     } else {
@@ -59,6 +68,33 @@ fireSearchlistTxt: string = '';
       // window.document.getElementById('addrDetails')!.innerText= this.location.address_components[0].long_name +', '+ this.location.address_components[1].long_name +', '+ this.location.address_components[2].long_name;
     }
    this.fireSearchlist(null);
+  
+  }
+  // Load Notification
+  loadNotification():void{
+    this.isNotificationLoading=true;
+      this._jobPostService.GetResponceCountGlobal(this.user.Id)
+      .subscribe(
+        {
+          next:
+          (res:any) => {
+             this.notificationData=res;
+             this.isNotificationLoading=false;
+        }
+       }
+      )
+  }
+
+  loadCount(){
+    this._jobPostService.GetCount(this.user.Id)
+    .subscribe(
+      {
+        next:
+        (res:any) => { 
+          this.totalResponces=res;
+      }
+     }
+    )
   }
   // ask for location
   AskForLocation(){

@@ -40,6 +40,12 @@ lo(){
     GetResponceCount(jobId:number,senderId:number){
       return  this._http.get(this.baseURL + 'WebPost/ResponceCount/'+jobId + '/'+senderId);
     }
+    GetResponceCountGlobal(senderId:number){
+      return  this._http.get(this.baseURL + 'WebPost/ResponceCountGlobal/'+senderId);
+    }
+    GetCount(senderId:number){
+      return  this._http.get(this.baseURL + 'WebPost/GetCount/'+senderId);
+    }
 
     GetAllWithAddedJob(userId:number, page?:number, itemsPerPage?:number,Jobstatus?:any): Observable<PaginatedResult<JobResponces>>{
       const paginatedResult: PaginatedResult<JobResponces> = new PaginatedResult<JobResponces>();

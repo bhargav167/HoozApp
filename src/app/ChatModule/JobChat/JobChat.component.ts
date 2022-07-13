@@ -2,12 +2,10 @@ import { SocialAuthentication } from './../../Model/User/SocialAuthentication';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SignalrService } from '../../services/signalr.service';
-import {Location} from '@angular/common';
 import { TimeagoIntl } from 'ngx-timeago';
 import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
 import { JobPostService } from '../../services/JobPost/JobPost.service';
-import { JobModel } from '../../Model/Job/JobModel';
-import { JobMessages } from '../../Model/Message/JobMessages';
+import { JobModel } from '../../Model/Job/JobModel'; 
 import { JobChatService } from '../../services/Chat/JobChat/JobChat.service';
 import { HotToastService } from '@ngneat/hot-toast';
 @Component({
@@ -31,7 +29,6 @@ export class JobChatComponent implements OnInit {
     private _jobchatServices:JobChatService,
     public _signalR:SignalrService,
     private route: ActivatedRoute,
-    private _location: Location,
     private toast: HotToastService
   ) {
     intl.strings = englishStrings;
@@ -44,7 +41,6 @@ export class JobChatComponent implements OnInit {
       }else{
         this.senderId = parseInt(sessionStorage.getItem('senderId')!);
       }
-
       this.recipientId = params["recipientId"];
     });
     this.LoadJobDetailsById();
@@ -95,7 +91,7 @@ export class JobChatComponent implements OnInit {
   }
 
   UpdateSeenResponces(){
-    this._jobchatServices.updateJobReponcesCount(this.jobId,this.recipientId,this.senderId).subscribe(()=>{});
+    this._jobchatServices.updateJobReponcesCount(this.jobId,this.senderId,this.recipientId).subscribe(()=>{});
   }
    //Back loacation History
    backClicked() {

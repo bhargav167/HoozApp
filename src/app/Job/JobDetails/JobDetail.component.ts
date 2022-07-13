@@ -52,10 +52,11 @@ export class JobDetailComponent implements OnInit {
     this._jobServices
       .GetJobById(parseInt(this.activatedRoute.snapshot.paramMap.get('id')!))
       .subscribe((jb: any) => {
+        console.log(jb);
         this._seo.generatesTags({
           title: jb[0]?.Descriptions,
           description: jb[0]?.Descriptions.trim(),
-          image: jb[0]?.ImagesUrl,
+          image: jb[0]?.ThumbNailImage,
         });
       });
     this._shareService.checkInterNetConnection();
@@ -88,7 +89,7 @@ export class JobDetailComponent implements OnInit {
     ) {
       setInterval(() => {
         this.loadResponcesData(this.loggedUserId);
-      }, 2000);
+      }, 4000);
     }
   }
 
@@ -285,7 +286,7 @@ export class JobDetailComponent implements OnInit {
   public shareFB() {
     return window.open(
       'https://www.facebook.com/sharer/sharer.php?' +
-        `u=http://hoozonline.com/jobDetails/${this.jobId}?target=` +
+        `u=https://hoozonline.com/jobDetails/${this.jobId}?target=` +
         this.jobId,
       'Hooz',
       `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
@@ -295,7 +296,7 @@ export class JobDetailComponent implements OnInit {
 
   public shareTwitter() {
     return window.open(
-      'http://twitter.com/share?' +
+      'https://twitter.com/share?' +
         `url=http://hoozonline.com/jobDetails/${this.jobId}?target=` +
         this.jobId,
       'Hooz',
@@ -305,7 +306,7 @@ export class JobDetailComponent implements OnInit {
   }
   public shareWhatsApp() {
     return window.open(
-      `https://api.whatsapp.com/send?text=http://hoozonline.com/jobDetails/${this.jobId}?target=` +
+      `https://api.whatsapp.com/send?text=https://hoozonline.com/jobDetails/${this.jobId}?target=` +
         this.jobId,
       '_blank'
     );
@@ -314,7 +315,7 @@ export class JobDetailComponent implements OnInit {
   //Shared Link
   GetSharedLink(jobId: number) {
     this.sharedLink =
-      `http://hoozonline.com/jobDetails/${jobId}?target=` + this.jobId;
+      `https://hoozonline.com/jobDetails/${jobId}?target=` + this.jobId;
     this._clipboardService.copy(this.sharedLink);
     this.showToast();
   }

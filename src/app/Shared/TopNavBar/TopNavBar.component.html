@@ -99,11 +99,55 @@
     </div>
 
     <div class="justify-content-end togs">
-      <!-- <a [routerLink]="['/settings/download']" class="links">Download App</a>
-      <a class="links" *ngIf="isLogedIn" [routerLink]="['/joblist']">Job Posts</a> -->
+     
       <a class="links add_post" *ngIf="isLogedIn" [routerLink]="['/jobpost']">
         <i class="fa fa-plus"></i>
       </a>
+  
+      <ul *ngIf="isLogedIn" style="list-style: none;" class="">                     
+        <li class="dropdown notifications-dropdown">
+            <a class="nav-link dropdown-toggle" href="#" (click)="loadNotification()" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell">{{totalResponces}}</i>                       
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="dropdown-menu-header">
+                Notifications
+              </div>
+              <ng-container *ngIf="isNotificationLoading">
+                <div class="row">
+                  <div class="col-md-4">
+                    
+                  </div>
+                  <div class="col-md-4">
+                    <div class="loader mb-2"></div>
+                  </div>
+                  <div class="col-md-4">
+                    
+                  </div>
+                 
+                </div>
+              </ng-container>
+              <ng-container *ngIf="!isNotificationLoading">
+                <div *ngFor="let item of notificationData" class="dropdown-item">
+                  <div class="row">
+                    <div class="col-md-2 profile-img">
+                      <img src={{item.Job.ImagesUrl}} />
+                    </div>
+                    <div class="col-md-10">
+                      <a href="">
+                          <b>Hi!</b> 1 New message on Post {{item.Job.Descriptions}}
+                          <br>
+                          <small timeago [date]="item?.CreateDate"></small>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+             
+           
+            </div>
+        </li>
+    </ul>
       <a class="links" *ngIf="!isLogedIn" href="/login">Login</a>
 
       <!-- <a  class="links" aria-current="page" [routerLink]="['/']">Wall</a> &nbsp;&nbsp; -->

@@ -34,8 +34,6 @@ export class JobResponceComponent implements OnInit {
   RedirectToJob(senderId:number){
     this.notifyParent.emit(false);
     this.notifySender.emit(senderId);
-   // window.location.href=`/jobDetails/${jobId}?target=${jobId}&senderId=${this.userId}&recipientId=${recipientId}`;
-  // this._router.navigate(['/jobDetails'], { queryParams: {target: jobId}});
   }
 RedirectToUser(userId:number){
   this._navigaterouter.navigate(['/profile'], { queryParams: {target: userId}});

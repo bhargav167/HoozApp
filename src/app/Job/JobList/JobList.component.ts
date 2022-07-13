@@ -97,8 +97,8 @@ export class JobListComponent implements OnInit {
       },err=>{
         this.isLoading=false;
       })
-    } else {
-      this._jobServices.GetPostJob(this.currentPage, this.itemsPerPage).subscribe((res: any) => {
+    } else { 
+      this._jobServices.GetPostJob(this.userId,this.currentPage, this.itemsPerPage,this.JobStatus).subscribe((res: any) => {
         const newData = res.result.data;
         this.isLoading = false;
         if (newData.length === 0) {
