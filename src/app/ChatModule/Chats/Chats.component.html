@@ -12,7 +12,7 @@
                 <img src="{{item.ImageUrl}}" alt="avatar">
                 <div class="about">
                     <div class="name">{{item.Name}}</div>
-                     <div class="status">  {{item?.City}}, {{item?.State}} </div>
+                     <div class="status">  {{item.UserAddress.split(',')[item.UserAddress.split(',').length - 3] + ", " +item.UserAddress.split(',')[item.UserAddress.split(',').length - 4]}} </div>
                 </div>
                 <i  class="fa fa-angle-right"></i>
             </li>

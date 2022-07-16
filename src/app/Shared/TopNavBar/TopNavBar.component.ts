@@ -62,11 +62,9 @@ notificationData:any=[];
     if(this.location==null){
       this.AskForLocation();
     } else {
-      this.countryName = this.location.address_components[5].long_name;
-      this.addressLoc=this.location.address_components[0].long_name +', '+ this.location.address_components[1].long_name +', '+ this.location.address_components[2].long_name;
-      // window.document.getElementById('addressTitle')!.innerText=this.location.address_components[5].long_name;
-      // window.document.getElementById('addrDetails')!.innerText= this.location.address_components[0].long_name +', '+ this.location.address_components[1].long_name +', '+ this.location.address_components[2].long_name;
-    }
+      this.countryName = this.location[6];
+      this.addressLoc=this.location[5] +', '+ this.location[4];
+      }
    this.fireSearchlist(null);
   
   }
@@ -113,18 +111,22 @@ notificationData:any=[];
                   }, function(results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
                       if (results[1]) {
-                        sessionStorage.setItem('location', JSON.stringify(results[1]))
-                        
-                        addressLocation= results[1].address_components[0].long_name +', '+ results[1].address_components[1].long_name +', '+ results[1].address_components[2].long_name;
-                        window.document.getElementById('addressTitle')!.innerText=results[1].address_components[5].long_name;
-                        window.document.getElementById('addrDetails')!.innerText= addressLocation;
+                     var addressSplit=  results[1].formatted_address.split(',');
+                     sessionStorage.setItem('location', JSON.stringify(addressSplit))
+                      let country=addressSplit.pop();
+                      let state = addressSplit[addressSplit.length - 1];
+                      let city =addressSplit[addressSplit.length - 2];
+                      let colony =addressSplit[addressSplit.length - 3]; 
+                   
+                        window.document.getElementById('addressTitle')!.innerText=state;
+                        window.document.getElementById('addrDetails')!.innerText= city +', '+ colony;
                       }
                   }
                     else {
                           console.log('Not found');
                       }
                   });
-              });
+              }); 
 
 
           }

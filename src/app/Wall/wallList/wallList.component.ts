@@ -14,8 +14,7 @@ import { ClipboardService } from 'ngx-clipboard'
 import { NavbarCommunicationService } from '../../Shared/services/NavbarCommunication.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TimeagoIntl } from 'ngx-timeago';
-import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
-import { Meta, Title } from '@angular/platform-browser';
+import {strings as englishStrings} from 'ngx-timeago/language-strings/en'; 
 import { Subject } from 'rxjs';
 import { SeoServiceService } from 'src/app/services/SeoService.service';
  @Component({

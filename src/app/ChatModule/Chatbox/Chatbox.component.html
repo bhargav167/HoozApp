@@ -9,7 +9,7 @@
           </a>
           <div class="c-details">
             <h2>{{user?.Name}}</h2>
-          <div class="img share">{{user?.City}}, {{user?.State}}</div>
+          <div class="img share">{{user.UserAddress.split(',')[user.UserAddress.split(',').length - 3] + ", " +user.UserAddress.split(',')[user.UserAddress.split(',').length - 4]}}</div>
           </div>
 
       </div>

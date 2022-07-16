@@ -23,7 +23,7 @@
       <div class="user_name_wrap">
         <div class="user_name">
           <h5 >{{user?.Name}}</h5>
-          <div>{{user?.UserAddress}}</div>
+          <div>{{user.UserAddress.split(',')[user.UserAddress.split(',').length - 3] + ", " +user.UserAddress.split(',')[user.UserAddress.split(',').length - 4]}}</div>
         </div>
         <div class="chat_sec">
             <button type="button" *ngIf="userId!=loggedUserId" (click)="Chat()" class="btn">Chat</button>
