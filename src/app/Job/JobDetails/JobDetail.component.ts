@@ -64,6 +64,9 @@ export class JobDetailComponent implements OnInit {
     intl.changes.next();
     this.activatedRoute.queryParams.subscribe((params) => {
       this.jobId = params['target'];
+      if(params['onChat']){ 
+        this.IsChatActive=true;
+      }
       this.LoadJobDetailsById(this.jobId);
       this.loadUserData();
     });

@@ -31,6 +31,7 @@ export class JobChatComponent implements OnInit {
     private route: ActivatedRoute,
     private toast: HotToastService
   ) {
+   
     intl.strings = englishStrings;
     intl.changes.next();
     let user = JSON.parse(localStorage.getItem("user")!);
@@ -53,6 +54,7 @@ export class JobChatComponent implements OnInit {
     },2000)
   }
   getJobChat(){
+    
     this._jobchatServices.getJobchatList(this.jobId,this.senderId,this.recipientId).subscribe((data:any)=>{
       this.jobMessages=data;
     })

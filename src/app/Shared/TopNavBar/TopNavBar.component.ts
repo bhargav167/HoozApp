@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { of } from 'rxjs';
+import { JobChatService } from 'src/app/services/Chat/JobChat/JobChat.service';
 import { JobPostService } from 'src/app/services/JobPost/JobPost.service';
  
 import { environment } from '../../../environments/environment';
@@ -37,6 +38,7 @@ notificationData:any=[];
 @Output() notifyParent: EventEmitter<any> = new EventEmitter();
   constructor(private _profileServices:ProfileService,private _router:Router,
     private _jobPostService:JobPostService,
+    private _jobchatServices:JobChatService,
     private apiloader: MapsAPILoader,
     public navServices: NavbarCommunicationService, private _http: HttpClient) {
       this.location=JSON.parse(sessionStorage.getItem('location')!);
@@ -57,7 +59,7 @@ notificationData:any=[];
    }
   ngOnInit() {
     if(this.isLogedIn){
-      setInterval(()=>{this.loadCount()},2500)
+      setInterval(()=>{this.loadCount()},5000)
     }
     if(this.location==null){
       this.AskForLocation();
@@ -77,6 +79,8 @@ notificationData:any=[];
           next:
           (res:any) => {
              this.notificationData=res;
+             console.log( this.notificationData);
+             
              this.isNotificationLoading=false;
         }
        }
@@ -226,6 +230,10 @@ notificationData:any=[];
   }
   HideMobSearch() {
     this.enableMobieSearch = false;
+  }
+  NotifyJob(jobId:number,senderId:number){
+    this._jobchatServices.updateJobReponcesCount(jobId,senderId,this.user.Id).subscribe(()=>{});
+    this._router.navigate([`/jobDetails/${jobId}`], { queryParams: {target: jobId,senderId:this.user.Id,recipientId:senderId,onChat:true}});
   }
   @HostListener('window:resize', ['$event'])
   onResize(event:any) {

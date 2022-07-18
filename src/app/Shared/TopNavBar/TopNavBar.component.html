@@ -42,6 +42,50 @@
       <img src="{{navbarUserPic}}" class="rounded-circle img-fluid" href="#" id="navbarDropdown" role="button"
         data-bs-toggle="dropdown" aria-expanded="false" />
     </a>
+    <ul *ngIf="isLogedIn" style="list-style: none;" class="nav-item dropdown_mb mobNotifyBellIcon">                     
+      <li class="dropdown notifications-dropdown">
+          <a class="nav-link dropdown-toggle" href="#" (click)="loadNotification()" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-bell">{{totalResponces}}</i>                       
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu-header">
+              Notifications
+            </div>
+            <ng-container *ngIf="isNotificationLoading">
+              <div class="row">
+                <div class="col-md-4">
+                  
+                </div>
+                <div class="col-md-4">
+                  <div class="loader mb-2"></div>
+                </div>
+                <div class="col-md-4">
+                  
+                </div>
+               
+              </div>
+            </ng-container>
+            <ng-container *ngIf="!isNotificationLoading">
+              <div *ngFor="let item of notificationData" class="dropdown-item">
+                <div (click)="NotifyJob(item.JobId,item.SenderId)" class="row">
+                  <div class="col-md-2 profile-img">
+                    <img src={{item.Job.ImagesUrl}} />
+                  </div>
+                  <div class="col-md-10">
+                    
+                        <b>Hi!</b> 1 New message on Post {{item.Job.Descriptions}}
+                        <br>
+                        <small timeago [date]="item?.CreateDate"></small>
+                     
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+           
+         
+          </div>
+      </li>
+  </ul>
     <a class="links mb_menu" *ngIf="!isLogedIn" href="/login" >Login</a>
     <div type="button" class="navbar-toggler tog mb_menu">
       <label class="for-dropdown" for="dropdown1">
@@ -129,16 +173,16 @@
               </ng-container>
               <ng-container *ngIf="!isNotificationLoading">
                 <div *ngFor="let item of notificationData" class="dropdown-item">
-                  <div class="row">
+                  <div (click)="NotifyJob(item.JobId,item.SenderId)" class="row">
                     <div class="col-md-2 profile-img">
                       <img src={{item.Job.ImagesUrl}} />
                     </div>
                     <div class="col-md-10">
-                      <a href="">
+                      
                           <b>Hi!</b> 1 New message on Post {{item.Job.Descriptions}}
                           <br>
                           <small timeago [date]="item?.CreateDate"></small>
-                      </a>
+                       
                     </div>
                   </div>
                 </div>

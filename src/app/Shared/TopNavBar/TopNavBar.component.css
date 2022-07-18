@@ -227,6 +227,13 @@ nav.navbar .container-fluid {
   justify-content: center;
   margin-left: 15px;
 }
+.mobNotifyBellIcon{ 
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+}
 .profileimg:hover {
   background-color: var(--green);
 }
@@ -393,6 +400,9 @@ nav.footer.jobchatbox {
     display: contents;
   }
   .tog, .dropdown_mb.profileimg, .logo_mb, .mb_menu {
+    display: none;
+  }
+  .tog, .dropdown_mb.mobNotifyBellIcon, .logo_mb, .mb_menu {
     display: none;
   }
   nav.footer {
