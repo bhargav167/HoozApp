@@ -7,7 +7,7 @@
       </div> -->
       <div *ngIf="userlist.length>=1">
         <ul *ngFor="let item of userlist"  class="list-unstyled chat-list">
-          <li *ngIf="item.Sender.Id!==userId" (click)="RedirectToJob(item.Sender.Id)"
+          <li *ngIf="item.Sender.Id!==userId" (click)="RedirectToJob(item.SenderId)"
            class="clearfix">
               <img src="{{item.Sender.ImageUrl}}" alt="avatar">
               <div class="about">

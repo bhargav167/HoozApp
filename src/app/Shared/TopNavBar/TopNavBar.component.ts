@@ -64,7 +64,10 @@ notificationData:any=[];
     if(this.location==null){
       this.AskForLocation();
     } else {
-      this.countryName = this.location[6];
+      let stateArr=this.location[6].split(' ');
+      let stateArrpop=stateArr.pop();
+      
+      this.countryName = stateArr.toString().replace(",","");
       this.addressLoc=this.location[5] +', '+ this.location[4];
       }
    this.fireSearchlist(null);
@@ -119,10 +122,13 @@ notificationData:any=[];
                      sessionStorage.setItem('location', JSON.stringify(addressSplit))
                       let country=addressSplit.pop();
                       let state = addressSplit[addressSplit.length - 1];
+                      
                       let city =addressSplit[addressSplit.length - 2];
-                      let colony =addressSplit[addressSplit.length - 3]; 
-                   
-                        window.document.getElementById('addressTitle')!.innerText=state;
+                      let colony =addressSplit[addressSplit.length - 3];
+                      let stateArr=state.split(' ');
+                 let stateArrpop=stateArr.pop();
+                  
+                        window.document.getElementById('addressTitle')!.innerText=stateArr.toString().replace(",","");
                         window.document.getElementById('addrDetails')!.innerText= city +', '+ colony;
                       }
                   }

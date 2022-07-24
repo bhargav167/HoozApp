@@ -28,7 +28,7 @@ export class JobResponceComponent implements OnInit {
 
   LoadUserChatList() {
     this._jobresponceServices.GetJobResponces(this.jobId, this.userId).subscribe((data:any)=>{
-      this.userlist=data;
+      this.userlist=data;  
     })
   }
   RedirectToJob(senderId:number){

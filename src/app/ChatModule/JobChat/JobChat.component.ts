@@ -38,11 +38,11 @@ export class JobChatComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.jobId = params["target"];
       if(sessionStorage.getItem('senderId')==null){
-        this.senderId = params["senderId"];
+        this.recipientId = params["recipientId"];
       }else{
-        this.senderId = parseInt(sessionStorage.getItem('senderId')!);
+        this.recipientId= parseInt(sessionStorage.getItem('senderId')!);
       }
-      this.recipientId = params["recipientId"];
+      this.senderId = params["senderId"];
     });
     this.LoadJobDetailsById();
     this.getJobChat();
@@ -57,6 +57,7 @@ export class JobChatComponent implements OnInit {
     
     this._jobchatServices.getJobchatList(this.jobId,this.senderId,this.recipientId).subscribe((data:any)=>{
       this.jobMessages=data;
+      console.log(this.jobMessages)
     })
   }
   LoadJobDetailsById(){
