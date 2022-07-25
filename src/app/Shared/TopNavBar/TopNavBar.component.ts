@@ -71,7 +71,6 @@ notificationData:any=[];
       this.addressLoc=this.location[5] +', '+ this.location[4];
       }
    this.fireSearchlist(null);
-  
   }
   // Load Notification
   loadNotification():void{
