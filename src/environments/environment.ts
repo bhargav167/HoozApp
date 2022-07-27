@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'https://www.livsolution.co.in/api/',
+ api_url: 'https://www.livsolution.co.in/api/',
   //api_url: 'http://localhost:5000/api/',
   hubConnectionURL: 'http://localhost:5000/signalr',
   broadcastURL: 'http://localhost:5000/api/Chat/send',

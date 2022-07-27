@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeSetComponent } from './Admin/HomeSet/HomeSet.component';
 import { LoginComponent } from './Auth/Login/Login.component';
 import { ChatboxComponent } from './ChatModule/Chatbox/Chatbox.component';
 import { ChatsComponent } from './ChatModule/Chats/Chats.component';
@@ -78,6 +79,11 @@ const routes: Routes = [
   {
     path: 'settings/download',
     component:DownloadComponent
+  },
+
+  {
+    path: 'admin/homeset',
+    component:HomeSetComponent
   },
 ];
 

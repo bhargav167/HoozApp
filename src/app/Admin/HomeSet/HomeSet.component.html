@@ -1,0 +1,28 @@
+<div class="container mt-5 mb-5 d-flex justify-content-center">
+  <div class="card px-1 py-4">
+      <div class="card-body">
+          <h6 class="card-title mb-3"> Sets</h6>
+          <div class="d-flex flex-row"> <label class="radio mr-1"> <input type="radio" name="add" value="anz" checked> <span> <i
+                  class="fa fa-user"></i> Set </span> </label> </div>  <h6 class="information mt-4">Please provide following informationto create set</h6>
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="form-group">
+                      <!-- <label for="name">Name</label> --> <input [(ngModel)]="setName" class="form-control" type="text" placeholder="Set name"> </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="form-group">
+                    <small>Enter Job Id like 2,4,6</small>
+                      <div class="input-group"> <input class="form-control" [(ngModel)]="jobId" type="text" placeholder="Job Id"> </div>
+                  </div>
+              </div>
+          </div>
+          <hr/>
+       <button [disabled]="loading" (click)="Create()" class="btn btn-primary btn-block confirm-button">
+        <span *ngIf="loading">please wait...</span>
+        <span *ngIf="!loading" >Create</span>
+       </button>
+      </div>
+  </div>
+</div>
