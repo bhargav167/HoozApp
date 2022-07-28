@@ -38,6 +38,7 @@ import { JobChatComponent } from './ChatModule/JobChat/JobChat.component';
 import { EditComponent } from './Profile/EditProfile/Edit.component';
 import { UserProfileComponent } from './Profile/UserProfile/UserProfile.component';
 import { HomeSetComponent } from './Admin/HomeSet/HomeSet.component';
+import { UserHomeComponent } from './Home/UserHome/UserHome.component';
 export class MyIntl extends TimeagoIntl {
   // do extra stuff here...
   }
@@ -87,7 +88,8 @@ export class MyIntl extends TimeagoIntl {
     JobChatComponent,
     HelpDeskComponent,
     DownloadComponent,
-    HomeSetComponent
+    HomeSetComponent,
+    UserHomeComponent
   ],
   providers: [
 

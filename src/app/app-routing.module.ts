@@ -8,6 +8,7 @@ import { JobChatComponent } from './ChatModule/JobChat/JobChat.component';
 import { PendingChangesGuard } from './guard/activate-guard';
 import { authPageGaurd } from './guard/authPage.guard';
 import { LoginGaurd } from './guard/Login.guard';
+import { UserHomeComponent } from './Home/UserHome/UserHome.component';
 import { JobDetailComponent } from './Job/JobDetails/JobDetail.component';
 import { JobEditComponent } from './Job/JobEdit/JobEdit.component';
 import { JobListComponent } from './Job/JobList/JobList.component';
@@ -84,6 +85,10 @@ const routes: Routes = [
   {
     path: 'admin/homeset',
     component:HomeSetComponent
+  },
+  {
+    path: 'HOME',
+    component:UserHomeComponent
   },
 ];
 

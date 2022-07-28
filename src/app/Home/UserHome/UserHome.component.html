@@ -1,0 +1,24 @@
+<div class="container-sm">
+  <div class="row col-8">
+    <ul class="cards">
+      <li *ngFor="let item of sets; let i = index">
+
+        <a href="" class="card">
+          <img src="{{item?.Job?.ImagesUrl}}" class="card__image" alt="" />
+          <div class="card__overlay">
+            <div class="card__header">
+
+              <div class="card__header-text">
+                <!-- <h3 class="card__title">{{item[i].Set?.Name}}</h3> -->
+              </div>
+            </div>
+            <!-- <h3 class="card__title">{{item[i].Set?.Name}}</h3> -->
+          </div>
+        </a>
+        <h3 class="card__title">{{item?.Set?.Name}}</h3>
+      </li>
+
+    </ul>
+  </div>
+</div>
+

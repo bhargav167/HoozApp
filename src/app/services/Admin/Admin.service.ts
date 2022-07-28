@@ -12,4 +12,10 @@ export class AdminService {
   PostSets(sets:any){
    return this._http.post(environment.api_url+'Admin/AddSet',sets);
   }
+  GetAllSets(){
+    return this._http.get(environment.api_url+'Admin/GetAllSet');
+  }
+  GetAllJobSets(setId:number){
+    return this._http.get(environment.api_url+'Admin/GetAllSetJob/'+setId);
+  }
 }
