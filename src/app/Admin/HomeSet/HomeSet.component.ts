@@ -13,7 +13,7 @@ export class HomeSetComponent implements OnInit {
   loading:boolean=false;
   constructor(private _adminServices:AdminService,    private _navigaterouter: Router) {
     let user=JSON.parse(localStorage.getItem('user')!);
-    if(user.Email!='bhargav.kshitiz55kk@gmail.com')
+    if(user.Email!='akkitripathi2@gmail.com')
     this._navigaterouter.navigateByUrl('/');
   }
 

@@ -1,11 +1,12 @@
 import { MapsAPILoader } from '@agm/core';
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output, ViewChild, ElementRef, HostListener } from '@angular/core';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { JobChatService } from 'src/app/services/Chat/JobChat/JobChat.service';
 import { JobPostService } from 'src/app/services/JobPost/JobPost.service';
- 
+import { SharedService } from 'src/app/services/SharedServices/Shared.service';
+
 import { environment } from '../../../environments/environment';
  import { SocialAuthentication } from '../../Model/User/SocialAuthentication';
 import { ProfileService } from '../../services/Auth/Profile.service';
@@ -33,16 +34,19 @@ enableMobieSearch:boolean=false;
 fireSearchlistTxt: string = '';
 totalResponces:number=0;
 notificationData:any=[];
-  countryName: string = 'location';  
+  countryName: string = 'location';
   addressLoc: string = '...';
+  isOnChatModule:boolean=true;
 @Output() notifyParent: EventEmitter<any> = new EventEmitter();
   constructor(private _profileServices:ProfileService,private _router:Router,
     private _jobPostService:JobPostService,
     private _jobchatServices:JobChatService,
+    public _sharedServices:SharedService,
     private apiloader: MapsAPILoader,
     public navServices: NavbarCommunicationService, private _http: HttpClient) {
       this.location=JSON.parse(sessionStorage.getItem('location')!);
     if(localStorage.getItem('user')!){
+
       this.user = JSON.parse(localStorage.getItem('user')!);
       this._profileServices.GetUserProfile(this.user.Id)
       .subscribe({
@@ -52,22 +56,26 @@ notificationData:any=[];
         this.loadCount();
         }
       })
-     
+
     }else{
       this.isLogedIn=false;
     }
    }
   ngOnInit() {
+    this._sharedServices.isonChatBox$.subscribe(res=>{
+      this.isOnChatModule=res;
+    })
     if(this.isLogedIn){
-      setInterval(()=>{this.loadCount()},5000)
+
+      setInterval(()=>{this.loadCount()},2500)
     }
     if(this.location==null){
       this.AskForLocation();
     } else {
       let stateArr=this.location[6].split(' ');
       let stateArrpop=stateArr.pop();
-      
-      this.countryName = stateArr.toString().replace(",","");
+this.countryName=this.location[5];
+     // this.countryName = stateArr.toString().replace(",","");
       this.addressLoc=this.location[5] +', '+ this.location[4];
       }
    this.fireSearchlist(null);
@@ -82,7 +90,7 @@ notificationData:any=[];
           (res:any) => {
              this.notificationData=res;
              console.log( this.notificationData);
-             
+
              this.isNotificationLoading=false;
         }
        }
@@ -94,7 +102,7 @@ notificationData:any=[];
     .subscribe(
       {
         next:
-        (res:any) => { 
+        (res:any) => {
           this.totalResponces=res;
       }
      }
@@ -121,13 +129,13 @@ notificationData:any=[];
                      sessionStorage.setItem('location', JSON.stringify(addressSplit))
                       let country=addressSplit.pop();
                       let state = addressSplit[addressSplit.length - 1];
-                      
+
                       let city =addressSplit[addressSplit.length - 2];
                       let colony =addressSplit[addressSplit.length - 3];
                       let stateArr=state.split(' ');
                  let stateArrpop=stateArr.pop();
-                  
-                        window.document.getElementById('addressTitle')!.innerText=stateArr.toString().replace(",","");
+
+                        window.document.getElementById('addressTitle')!.innerText=city;
                         window.document.getElementById('addrDetails')!.innerText= city +', '+ colony;
                       }
                   }
@@ -135,7 +143,7 @@ notificationData:any=[];
                           console.log('Not found');
                       }
                   });
-              }); 
+              });
 
 
           }
@@ -209,7 +217,7 @@ notificationData:any=[];
     this.enableMobieSearch = false;
     if ((document.getElementById("searchTag") as HTMLInputElement).value == "") {
       this.ClearSearch();
-      this._router.navigate(['/']);   
+      this._router.navigate(['/']);
     } else if((document.getElementById("searchTag") as HTMLInputElement).value != "") {
       this.ClearSearch();
       window.location.href = '/';

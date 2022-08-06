@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HotToastService } from '@ngneat/hot-toast';
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
   public IslogingPage:boolean=false;
+  public isonChatBox$=new Subject<boolean>();
 constructor(private toast: HotToastService,) { }
 
   checkInterNetConnection():any {

@@ -1,19 +1,20 @@
 import { SocialAuthentication } from './../../Model/User/SocialAuthentication';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SignalrService } from '../../services/signalr.service';
 import { TimeagoIntl } from 'ngx-timeago';
 import {strings as englishStrings} from 'ngx-timeago/language-strings/en';
 import { JobPostService } from '../../services/JobPost/JobPost.service';
-import { JobModel } from '../../Model/Job/JobModel'; 
+import { JobModel } from '../../Model/Job/JobModel';
 import { JobChatService } from '../../services/Chat/JobChat/JobChat.service';
 import { HotToastService } from '@ngneat/hot-toast';
+import { SharedService } from 'src/app/services/SharedServices/Shared.service';
 @Component({
   selector: 'app-JobChat',
   templateUrl: './JobChat.component.html',
   styleUrls: ['./../Chatbox/Chatbox.component.scss']
 })
-export class JobChatComponent implements OnInit {
+export class JobChatComponent implements OnInit,OnDestroy {
   senderId!: number;
   recipientId!: number;
   jobId!:number;
@@ -28,10 +29,10 @@ export class JobChatComponent implements OnInit {
     private _jobServices:JobPostService,
     private _jobchatServices:JobChatService,
     public _signalR:SignalrService,
+    public _sharedServices:SharedService,
     private route: ActivatedRoute,
     private toast: HotToastService
   ) {
-   
     intl.strings = englishStrings;
     intl.changes.next();
     let user = JSON.parse(localStorage.getItem("user")!);
@@ -49,15 +50,18 @@ export class JobChatComponent implements OnInit {
     this.UpdateSeenResponces();
   }
   ngOnInit() {
+    this._sharedServices.isonChatBox$.next(false);
     setInterval(()=>{
       this.getJobChat();
     },2000)
   }
+  ngOnDestroy(): void {
+    this._sharedServices.isonChatBox$.next(true);
+  }
   getJobChat(){
-    
+
     this._jobchatServices.getJobchatList(this.jobId,this.senderId,this.recipientId).subscribe((data:any)=>{
       this.jobMessages=data;
-      console.log(this.jobMessages)
     })
   }
   LoadJobDetailsById(){
