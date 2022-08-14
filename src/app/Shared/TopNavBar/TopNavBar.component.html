@@ -43,14 +43,15 @@
       <img src="{{navbarUserPic}}" class="rounded-circle img-fluid" href="#" id="navbarDropdown" role="button"
         data-bs-toggle="dropdown" aria-expanded="false" />
     </a>
-    <ul *ngIf="isLogedIn" style="list-style: none;" class="nav-item dropdown_mb mobNotifyBellIcon">
+    <ul *ngIf="isLogedIn" style="list-style: none;" class="nav-item dropdown_mb mobNotifyBellIcon notifications_ul">
       <li class="dropdown notifications-dropdown">
           <a class="nav-link dropdown-toggle" href="#" (click)="loadNotification()" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-bell">{{totalResponces}}</i>
+              <i class="fas fa-bell"></i>
+              <span class="count">{{totalResponces}}</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <div class="dropdown-menu-header">
-              Notifications
+              <strong>{{totalResponces}}</strong> New responses on post
             </div>
             <ng-container *ngIf="isNotificationLoading">
               <div class="row">
@@ -74,8 +75,7 @@
                   </div>
                   <div class="col-md-10">
 
-                        <b>Hi!</b> 1 New message on Post {{item.Job.Descriptions}}
-                        <br>
+                        <div class="nf_title"><strong>Hi!</strong> 1 New message on Post {{item.Job.Descriptions}}</div>
                         <small timeago [date]="item?.CreateDate"></small>
 
                   </div>
@@ -149,14 +149,15 @@
         <i class="fa fa-plus"></i>
       </a>
 
-      <ul *ngIf="isLogedIn" style="list-style: none;" class="">
+      <ul *ngIf="isLogedIn" style="list-style: none;" class="notifications_ul">
         <li class="dropdown notifications-dropdown">
             <a class="nav-link dropdown-toggle" href="#" (click)="loadNotification()" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell">{{totalResponces}}</i>
+                <i class="fas fa-bell"></i>
+                <span class="count">{{totalResponces}}</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <div class="dropdown-menu-header">
-                Notifications
+               <strong>{{totalResponces}}</strong> New responses on post
               </div>
               <ng-container *ngIf="isNotificationLoading">
                 <div class="row">
@@ -180,8 +181,7 @@
                     </div>
                     <div class="col-md-10">
 
-                          <b>Hi!</b> 1 New message on Post {{item.Job.Descriptions}}
-                          <br>
+                          <div class="nf_title"><strong>Hi!</strong> 1 New message on Post {{item.Job.Descriptions}}</div>
                           <small timeago [date]="item?.CreateDate"></small>
 
                     </div>

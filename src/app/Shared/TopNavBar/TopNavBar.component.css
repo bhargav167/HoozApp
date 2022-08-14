@@ -227,7 +227,7 @@ nav.navbar .container-fluid {
   justify-content: center;
   margin-left: 15px;
 }
-.mobNotifyBellIcon{ 
+.mobNotifyBellIcon{
   margin-left: auto;
   display: flex;
   align-items: center;
@@ -354,8 +354,8 @@ nav.footer.jobchatbox {
     top: -9px;
   }
   nav.navbar .container-fluid {
-    padding-left: 23px;
-    padding-right: 23px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
   nav.navbar .container-fluid .d-flex.justify-content-between,
   form.form.ng-untouched.ng-pristine.ng-valid {
@@ -393,6 +393,9 @@ nav.footer.jobchatbox {
   }
   input#searchTag {
     width: 100%;
+  }
+  .mobNotifyBellIcon {
+    margin-left: 10px;
   }
 }
 @media (min-width: 768px) {
