@@ -370,6 +370,9 @@ nav.footer.jobchatbox {
   .profileimg ~ .mb_menu {
     margin-left: 0;
   }
+  .links.mb_menu + .navbar-toggler.tog.mb_menu {
+      margin-left: 7px;
+  }
   .section-dropdown {
     right: 15px;
     width: 280px;
