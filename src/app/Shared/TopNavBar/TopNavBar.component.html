@@ -1,6 +1,5 @@
-<nav   class="mb-5 navbar sticky-top navbar-light bg-light1 mb-5">
-
-  <div *ngIf="!enableMobieSearch" class="container-fluid">
+<nav *ngIf="!enableMobieSearch" class="mb-5 navbar sticky-top navbar-light bg-light1 mb-5">
+  <div class="container-fluid">
     <div class="logo_location">
       <img (click)="LogoClick()" class="img-responsive logo" src="../../../assets/Logo/hoozon.svg" />
       <img (click)="LogoClick()" class="img-responsive logo_mb" src="../../../assets/Logo/hoozon_mb.png" />
@@ -232,9 +231,10 @@
 
     </div>
   </div>
-
+</nav>
+<nav  *ngIf="enableMobieSearch" class="mb-5 navbar sticky-top navbar-light bg-light1 mb-5 search_act">
   <!-- Enable mobile search -->
-  <div *ngIf="enableMobieSearch" class="container-fluid">
+  <div  class="container-fluid">
 
     <!-- Search on Mob -->
     <div class="d-flex justify-content-between">
@@ -259,18 +259,16 @@
     </div>
   </div>
   <!-- End Search on Mob -->
-
-
 </nav>
 
 
 
 <!-- Footer -->
 <nav *ngIf="isOnChatModule" class="footer {{url()}}">
-  <a class="nav-item" (click)="LogoClick()">
+  <a class="nav-item home" (click)="LogoClick()">
     <i class="fa fa-home" aria-hidden="true"></i>
   </a>
-  <a class="nav-item" (click)="EnableSearch()">
+  <a class="nav-item search" (click)="EnableSearch()">
     <i class="fa fa-search" aria-hidden="true"></i>
   </a>
   <a class="nav-item add_post" (click)="HideMobSearch()" *ngIf="isLogedIn" [routerLink]="['/jobpost']">

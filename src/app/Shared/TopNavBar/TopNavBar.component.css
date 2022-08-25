@@ -291,8 +291,20 @@ nav.footer .nav-item {
 }
 nav.footer .nav-item:hover,
 nav.footer .nav-item:hover svg path {
+  color: var(--silver);
+  fill: var(--silver);
+}
+nav.footer.hmchat .nav-item.chat,
+.search_act ~ nav.footer .nav-item.search,
+nav.footer.hm .nav-item.home {
   color: var(--green);
-  fill: var(--green);
+}
+nav.footer .nav-item.add_post:hover {
+  background: var(--silver);
+}
+nav.footer.hmjobpost .nav-item.add_post {
+  background: var(--btn-bg-color);
+  color: #fff;
 }
 .nav-item img {
   max-width: 34px;

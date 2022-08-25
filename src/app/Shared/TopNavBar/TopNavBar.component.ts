@@ -233,7 +233,7 @@ this.countryName=this.location[5];
     })
   }
   url(){
-    return window.location.pathname.replace('/','')
+    return window.location.pathname.replace('/','hm')
   }
   Search(){
     this.navServices.Toggle();
