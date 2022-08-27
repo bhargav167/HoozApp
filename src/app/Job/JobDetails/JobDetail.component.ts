@@ -335,5 +335,14 @@ export class JobDetailComponent implements OnInit {
   }
   OnChat(){
     this.IsChatActive=true;
+    return ('chatPg')
+  }
+  OnChatPg(){
+    // if (this.IsChatActive=true) {
+    //   return ('chatPg');
+    // } else {
+    //   return null;
+    // }
+    return ('chatPg')
   }
 }

@@ -572,8 +572,8 @@ textarea.swal2-textarea {
   }
   .main_cnt_wrap {
     position: relative;
-    padding-top: 20px;
-    overflow-x: hidden;
+    padding-top: 10px;
+    /* overflow-x: hidden; */
     padding-bottom: 90px;
   }
   .main_cnt_wrap .back_arrow {

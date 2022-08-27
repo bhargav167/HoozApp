@@ -142,7 +142,7 @@
   padding: 12px 30px;
   font-weight: normal;
   display: block;
-  color: #fff;
+  color: var(--silver);
 }
 /* Other */
 .dropdown-item {
@@ -295,6 +295,7 @@ nav.footer .nav-item:hover svg path {
   fill: var(--silver);
 }
 nav.footer.hmchat .nav-item.chat,
+nav.footer.hmjoblist .nav-item.jobs,
 .search_act ~ nav.footer .nav-item.search,
 nav.footer.hm .nav-item.home {
   color: var(--green);
@@ -309,8 +310,8 @@ nav.footer.hmjobpost .nav-item.add_post {
 .nav-item img {
   max-width: 34px;
 }
-nav.chatbox.footer,
-nav.footer.jobchatbox {
+nav.hmchatbox.footer,
+nav.footer.hmjobchatbox {
   display: none;
 }
 .logo_location {

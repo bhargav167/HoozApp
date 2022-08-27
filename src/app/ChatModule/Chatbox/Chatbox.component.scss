@@ -211,6 +211,9 @@
 .tp_user img {width: 48px; height: 48px; border-radius: 50%;}
 .tp_user a {margin-right: 20px;}
 @media (max-width:767px) {
+  .chat_top_sec h2 {
+    font-size: 20px; 
+  }
   .back_arrow_chat i {
     font-size: 30px;
   }

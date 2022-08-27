@@ -100,7 +100,7 @@
       <div class="dr_top">
         <div *ngIf="isLogedIn">
           <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE</a>
-          <a [routerLink]="['/joblist']" id="b"> <i class="far fa-newspaper"></i>Job Listing </a>
+          <a [routerLink]="['/joblist']" id="b"> <i class="fa-solid fa-window-restore"></i>Job Listing </a>
           <a id="b" [routerLink]="['/settings/download']"> <i class="fa fa-download"></i>Download</a>
         </div>
         <a id="b"><i class="fas fa-cog"></i>SETTINGS </a>
@@ -212,7 +212,7 @@
         <div class="dr_top">
           <div *ngIf="isLogedIn">
             <a id="b" (click)="RedirectToUser(user.Id)"><i class="far fa-user-circle"></i>MY PROFILE</a>
-            <a [routerLink]="['/joblist']" id="b"> <i class="far fa-newspaper"></i>Job Listing </a>
+            <a [routerLink]="['/joblist']" id="b"> <i class="fa-solid fa-window-restore"></i>Job Listing </a>
             <a [routerLink]="['/chat']" id="b"> <i class="fa-solid fa-comment-dots"></i>Chats </a>
           </div>
           <a id="b"><i class="fas fa-cog"></i>SETTINGS </a>
@@ -266,7 +266,7 @@
 <!-- Footer -->
 <nav *ngIf="isOnChatModule" class="footer {{url()}}">
   <a class="nav-item home" (click)="LogoClick()">
-    <i class="fa fa-home" aria-hidden="true"></i>
+    <i class="fa-solid fa-house"></i>
   </a>
   <a class="nav-item search" (click)="EnableSearch()">
     <i class="fa fa-search" aria-hidden="true"></i>
@@ -275,8 +275,9 @@
     <i class="fa fa-plus"></i>
   </a>
   <a class="nav-item jobs" (click)="HideMobSearch()" [routerLink]="['/joblist']">
-    <img src="../../../assets/Logo/jobs.png" class="img-fluid" href="#" id="navbarDropdown" role="button"
-      data-bs-toggle="dropdown" aria-expanded="false" />
+    <i class="fa-solid fa-window-restore"></i>
+    <!-- <img src="../../../assets/Logo/jobs.png" class="img-fluid" href="#" id="navbarDropdown" role="button"
+      data-bs-toggle="dropdown" aria-expanded="false" /> -->
   </a>
   <a class="nav-item chat" (click)="HideMobSearch()" [routerLink]="['/chat']">
     <i class="fa-solid fa-comment-dots"></i>
