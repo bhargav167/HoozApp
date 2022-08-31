@@ -300,6 +300,11 @@ nav.footer.hmjoblist .nav-item.jobs,
 nav.footer.hm .nav-item.home {
   color: var(--green);
 }
+.search_act ~ nav.footer .nav-item.chat,
+.search_act ~ nav.footer .nav-item.jobs,
+.search_act ~ nav.footer .nav-item.home {
+  color: #000;
+}
 nav.footer .nav-item.add_post:hover {
   background: var(--silver);
 }
@@ -396,6 +401,9 @@ nav.footer.hmjobchatbox {
   .logo_location .location {
       margin-left: 16px;
       margin-bottom: 8px;
+      max-width: 128px;
+      word-break: break-word;
+      word-wrap: break-word;
   }
   .location i.fa-map-marker-alt {
       font-size: 20px;
@@ -412,6 +420,10 @@ nav.footer.hmjobchatbox {
   }
   .mobNotifyBellIcon {
     margin-left: 10px;
+  }
+  .loc_des .title {
+    font-weight: 500;
+    font-size: 18px;
   }
 }
 @media (min-width: 768px) {
