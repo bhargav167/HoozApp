@@ -291,14 +291,15 @@ nav.footer .nav-item {
 }
 nav.footer .nav-item:hover,
 nav.footer .nav-item:hover svg path {
-  color: var(--silver);
-  fill: var(--silver);
+  color: var(--green);
+  fill: var(--green);
 }
 nav.footer.hmchat .nav-item.chat,
 nav.footer.hmjoblist .nav-item.jobs,
 .search_act ~ nav.footer .nav-item.search,
 nav.footer.hm .nav-item.home {
-  color: var(--green);
+  /* color: var(--green); */
+  color: #828E9B;
 }
 .search_act ~ nav.footer .nav-item.chat,
 .search_act ~ nav.footer .nav-item.jobs,
@@ -309,7 +310,8 @@ nav.footer .nav-item.add_post:hover {
   background: var(--silver);
 }
 nav.footer.hmjobpost .nav-item.add_post {
-  background: var(--btn-bg-color);
+  /* background: var(--btn-bg-color); */
+  background: #828E9B;
   color: #fff;
 }
 .nav-item img {

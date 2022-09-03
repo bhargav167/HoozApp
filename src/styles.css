@@ -36,8 +36,9 @@ body {
 }
 .bg-NoResponce{
   color: black !important;
-  background: var(--light-gray-color);
-  border: 1px solid var(--silver);
+  /* background: var(--light-gray-color); */
+  background: #fff;
+  /* border: 1px solid var(--silver); */
   padding: 0;
   width: 30px;
   height: 30px;
@@ -786,5 +787,11 @@ textarea.swal2-textarea {
 @media (max-width:480px) {
   .notifications-dropdown .dropdown-menu {
       right: -65px;
+  }
+  .notifications-dropdown .dropdown-menu {
+    width: 335px;
+  }
+  .notifications-dropdown .dropdown-item {
+    min-width: 100%;
   }
 }
