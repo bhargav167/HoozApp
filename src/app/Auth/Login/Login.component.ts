@@ -9,6 +9,7 @@ import { ProfileService } from '../../services/Auth/Profile.service';
 import { SharedService } from '../../services/SharedServices/Shared.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Meta, Title } from '@angular/platform-browser';
+import { state } from '@angular/animations';
 var addressLocation='';
 var City='';
 var State='';
@@ -95,6 +96,7 @@ export class LoginComponent implements OnInit {
                       State=results[1].address_components[7].long_name;
                       Country=results[1].address_components[8].long_name;
                       PinCode=  results[1].address_components[9].long_name;
+
                     }
                   } else {
                     console.log("Not found");

@@ -126,7 +126,7 @@ this.countryName=this.location[5];
                     if (status == google.maps.GeocoderStatus.OK) {
                       if (results[1]) {
                      var addressSplit=  results[1].formatted_address.split(',');
-                     sessionStorage.setItem('location', JSON.stringify(addressSplit))
+                     localStorage.setItem('location', JSON.stringify(addressSplit))
                       let country=addressSplit.pop();
                       let state = addressSplit[addressSplit.length - 1];
 

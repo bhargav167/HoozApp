@@ -128,15 +128,16 @@ export class JobPostComponent implements OnInit,ComponentCanDeactivate {
                   }
                     else {
                           console.log('Not found');
-                      }
+                         }
                   });
               });
 
 
           }else{
-            this.showToast();
-            return;
+
           }
+      },err=>{
+        window.document.getElementById('location')!.innerHTML=JSON.stringify(localStorage.getItem('location')).replace(/[&\/\\#+()$~%.['":*?<>{}]/g, '');
       })
   }else{
     this.toast.info('location not supported by this browser', {
@@ -145,6 +146,9 @@ export class JobPostComponent implements OnInit,ComponentCanDeactivate {
   }
   }
   AddJobPost() {
+    if(addressLocation==''){
+      addressLocation=JSON.stringify(localStorage.getItem('location')).replace(/[&\/\\#+()$~%.['":*?<>{}]/g, '');
+    }
     if(this.Tags.length==0){
       this.toast.warning('Tag is required!', {
         position: 'top-center',
@@ -160,7 +164,9 @@ export class JobPostComponent implements OnInit,ComponentCanDeactivate {
               this.jobPostForm.controls["Longitude"].setValue(this.longitude);
               this.jobPostForm.controls['IsAnonymous'].setValue(this.ischeckedAnonymously);
               this.jobPostForm.controls['IsPublic'].setValue(this.ischeckedPublic);
-              this.jobPostForm.controls['Address'].setValue(addressLocation);
+
+                this.jobPostForm.controls['Address'].setValue(addressLocation);
+
               this.jobModel = Object.assign({}, this.jobPostForm.value);
               this._jobServices.AddJobPost(this.jobModel).subscribe((data: any) => {
                 if (this.filetoPost == undefined) {
